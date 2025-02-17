@@ -10,7 +10,7 @@ ini_set('display_errors', '1');
 $_SESSION["generales"]["zonahoraria"] = "America/Bogota";
 $_SESSION["generales"]["idioma"] = "es";
 date_default_timezone_set($_SESSION["generales"]["zonahoraria"]);
-require_once('config/config.php');
+require_once('../config/config.php');
 
 if (file_exists(PATH_ABSOLUTO_SITIO)) {
     $_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
