@@ -348,7 +348,7 @@ class API extends REST
         require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
         require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
         require_once($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/librerias/wsRestSII/v1/funcionesAPI.php');
+        require_once('funcionesAPI.php');
         $resError = set_error_handler('myErrorHandler');
 
         //
