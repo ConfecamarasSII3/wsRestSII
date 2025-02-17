@@ -23,7 +23,7 @@ if (file_exists(PATH_ABSOLUTO_LOGS)) {
     $_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
     $_SESSION["generales"]["pathabsoluto"] = PATH_ABSOLUTO_SITIO;
 } else {
-    echo "No existe la ruta del PATH_ABSOLUTO_LOGS";
+    echo "No existe la ruta del PATH_ABSOLUTO_LOGS " . PATH_ABSOLUTO_SITIO;
     die();
 }
 $_SESSION["generales"]["pathabsolutologs"] = PATH_ABSOLUTO_LOGS;
