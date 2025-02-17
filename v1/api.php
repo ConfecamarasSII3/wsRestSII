@@ -353,7 +353,7 @@ class API extends REST
 
         //
         if (isset($_REQUEST['rquest'])) {
-            $func = (trim(str_replace("/", "", $_REQUEST['rquest'])));
+            $func = isset($_REQUEST['rquest']) ? trim(str_replace("/", "", $_REQUEST['rquest'])) : '';
         } else {
             $func = "";
         }
@@ -417,7 +417,11 @@ class API extends REST
         $mysqli->close();
 
         //2017-12-08 WSIERRA: Se utiliza unicamente el llamdo a la función y se descarta el control anterior
-        call_user_func(array($this, $func), $this);
+        if (is_callable(value: [$this, $func])) {
+            call_user_func([$this, $func], $this);
+        } else {
+            $this->armarsalidaApi('9999', 'No se encuentra el método: ' . $func);
+        }
     }
 
     public function json($data)
@@ -562,6 +566,13 @@ class API extends REST
     {
         return ((is_string($string) && (is_object(json_decode($string)) ||
             is_array(json_decode($string))))) ? true : false;
+    }
+    public function armarsalidaApi($cod, $msj)
+    {
+
+        $_SESSION["jsonsalida"]["codigoerror"] = $cod;
+        $_SESSION["jsonsalida"]["mensajeerror"] = $msj;
+        $this->response($this->json($_SESSION["jsonsalida"]), 200);
     }
 }
 

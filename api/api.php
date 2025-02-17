@@ -12,7 +12,7 @@ $_SESSION["generales"]["idioma"] = "es";
 date_default_timezone_set($_SESSION["generales"]["zonahoraria"]);
 $_SESSION["generales"]["pathabsoluto"] = getcwd();
 $_SESSION["generales"]["pathabsoluto"] = str_replace("\\", "/", $_SESSION["generales"]["pathabsoluto"]);
-$_SESSION["generales"]["pathabsoluto"] = str_replace(array("/scripts/", "/scripts", "/api/","/api"), "", $_SESSION["generales"]["pathabsoluto"]);
+$_SESSION["generales"]["pathabsoluto"] = str_replace(array("/scripts/", "/scripts", "/api/", "/api"), "", $_SESSION["generales"]["pathabsoluto"]);
 require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
 $_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
 $_SESSION["generales"]["pathabsoluto"] = PATH_ABSOLUTO_SITIO;
@@ -42,7 +42,8 @@ include("mregVotaciones.php");
 use api\API;
 use api\REST;
 
-class API extends REST {
+class API extends REST
+{
 
     use apiValidaciones;
     use devolverTramite;
@@ -57,12 +58,13 @@ class API extends REST {
     use mregReingresarGenerico;
     use mregSolicitudDeposito;
     use mregTramitesRues;
-    use mregValidaciones;    
+    use mregValidaciones;
     use mregVotaciones;
 
     public $data = "";
 
-    public function __construct() {
+    public function __construct()
+    {
         // Init parent contructor
         parent::__construct();
     }
@@ -73,7 +75,8 @@ class API extends REST {
      *
      */
 
-    public function processApi() {
+    public function processApi()
+    {
 
         // ********************************************************************** //
         // Captura de parametros
@@ -147,13 +150,13 @@ class API extends REST {
                 if ($temp == '') {
                     $temp = $this->encrypt_decrypt('decrypt', ENCRYPTION_SECRET_KEY, ENCRYPTION_SECRET_IV, $_SESSION["entrada"]["acceso"]);
                 }
-                
+
                 // echo 'temp: '. $temp . '<br>';
-                if (substr_count($temp,'|') == 1) {
+                if (substr_count($temp, '|') == 1) {
                     list($us, $tk) = explode('|', $temp);
                     $em = '';
                 }
-                if (substr_count($temp,'|') == 2) {
+                if (substr_count($temp, '|') == 2) {
                     list($us, $tk, $em) = explode('|', $temp);
                 }
                 $_SESSION["entrada"]["usuariows"] = $us;
@@ -197,7 +200,7 @@ class API extends REST {
             $this->response($this->json($_SESSION["jsonsalida"]), 200);
         } else {
             require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-            require_once ('mysqli.php');
+            require_once('mysqli.php');
         }
         if (isset($_REQUEST['rquest'])) {
             $func = (trim(str_replace("/", "", $_REQUEST['rquest'])));
@@ -205,21 +208,9 @@ class API extends REST {
             $func = "";
         }
 
-
-        /*
-          if (trait_exists(__NAMESPACE__ . '\\' . $func)) {
-          // echo "trait exits";
-          call_user_func(array($this, $func), $this);
-          } else {
-          $_SESSION["jsonsalida"]["codigoerror"] = "9999";
-          $_SESSION["jsonsalida"]["mensajeerror"] = 'Funcion o recurso no encontrado ' . $func;
-          $this->response($this->json($_SESSION["jsonsalida"]), 403);
-          }
-         */
         //2017-12-08 WSIERRA: Se utiliza unicamente el llamdo a la función y se descarta el control anterior
-
         try {
-            if (is_callable(array($this, $func))) {
+            if (is_callable([$this, $func])) {
                 call_user_func(array($this, $func), $this);
             } else {
                 $_SESSION["jsonsalida"]["codigoerror"] = "9999";
@@ -233,13 +224,15 @@ class API extends REST {
         }
     }
 
-    public function json($data) {
+    public function json($data)
+    {
         if (is_array($data)) {
             return json_encode($data);
         }
     }
 
-    public function validarToken($metodo, $token_send, $usuariows = '') {
+    public function validarToken($metodo, $token_send, $usuariows = '')
+    {
         $validaTokenUnico = true;
         if ((defined('TOKEN_API_DEFECTO') && TOKEN_API_DEFECTO != '') && (defined('USUARIO_API_DEFECTO') && USUARIO_API_DEFECTO != '')) {
             if ($token_send == md5(sha1(TOKEN_API_DEFECTO)) && $usuariows == md5(sha1(USUARIO_API_DEFECTO))) {
@@ -316,11 +309,13 @@ class API extends REST {
         }
     }
 
-    public function response($data, $status) {
+    public function response($data, $status)
+    {
         parent::response($data, $status);
     }
 
-    public function validarParametro($parametro, $obligatorio, $valecero = false) {
+    public function validarParametro($parametro, $obligatorio, $valecero = false)
+    {
         if (!isset($_SESSION["entrada"][$parametro])) {
             if ($obligatorio) {
                 $_SESSION["jsonsalida"]["codigoerror"] = '9999';
@@ -351,7 +346,8 @@ class API extends REST {
         }
     }
 
-    public function encrypt_decrypt($action, $secret_key, $secret_iv, $string) {
+    public function encrypt_decrypt($action, $secret_key, $secret_iv, $string)
+    {
         $output = false;
         $encrypt_method = "AES-256-CBC";
         $key = hash('sha256', $secret_key);
@@ -367,13 +363,12 @@ class API extends REST {
         return $output;
     }
 
-    public function isJsonApi($string) {
+    public function isJsonApi($string)
+    {
         return ((is_string($string) &&
-                (is_object(json_decode($string)) ||
+            (is_object(json_decode($string)) ||
                 is_array(json_decode($string))))) ? true : false;
     }
-    
-
 }
 
 // Initiate Library
