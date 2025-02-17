@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>Protection</TITLE>
+<STYLE>
+BODY {font-family:"Times New Roman",serif}
+H2 {color:#4000A0}
+.st {font-weight:bold; color:#900000}
+</STYLE>
+</HEAD>
+<BODY>
+<H2>Protection</H2>
+<H4 CLASS="st">Informations</H4>Author: <A HREF="mailto:klemen@virtuni.net?subject=Protection">Klemen Vodopivec</A><BR>License: Freeware
+<H4 CLASS="st">Description</H4>This script allows to protect the PDF, that is to say prevent people from copying its content,
+print it or modify it.<BR>
+<BR>
+<TT>SetProtection([<B>array</B> permissions [, <B>string</B> user_pass [, <B>string</B> owner_pass]]])</TT><BR>
+<BR>
+<TT><U>permissions</U></TT>: the set of permissions. Empty by default (only viewing is allowed).<BR>
+<TT><U>user_pass</U></TT>: user password. Empty by default.<BR>
+<TT><U>owner_pass</U></TT>: owner password. If not specified, a random value is used.<BR>
+<BR>
+The permission array is composed of values taken from the following ones:<BR>
+<BR>
+<UL>
+<LI><TT>copy</TT>: copy text and images to the clipboard
+<LI><TT>print</TT>: print the document
+<LI><TT>modify</TT>: modify it (except for annotations and forms)
+<LI><TT>annot-forms</TT>: add annotations and forms
+</UL>
+Remark: the protection against modification is for people who have the full Acrobat product.<BR>
+<BR>
+If you don't set any password, the document will open as usual. If you set a user password, the
+PDF viewer will ask for it before displaying the document. The master password, if different
+from the user one, can be used to get full access.<BR>
+<BR>
+Note: protecting a document requires to encrypt it, which increases the processing time a lot.
+This can cause a PHP time-out in some cases, especially if the document contains images or fonts.
+</BODY>
+</HTML>
