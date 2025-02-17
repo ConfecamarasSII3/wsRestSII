@@ -16,17 +16,15 @@ if (file_exists(PATH_ABSOLUTO_SITIO)) {
     $_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
     $_SESSION["generales"]["pathabsoluto"] = PATH_ABSOLUTO_SITIO;
 } else {
-    echo "No existe la ruta del PATH_ABSOLUTO_SITIO";
+    echo "No existe la ruta del PATH_ABSOLUTO_SITIO" . PATH_ABSOLUTO_SITIO;
     die();
 }
 if (file_exists(PATH_ABSOLUTO_LOGS)) {
-    $_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
-    $_SESSION["generales"]["pathabsoluto"] = PATH_ABSOLUTO_SITIO;
+    $_SESSION["generales"]["pathabsolutologs"] = PATH_ABSOLUTO_LOGS;
 } else {
-    echo "No existe la ruta del PATH_ABSOLUTO_LOGS " . PATH_ABSOLUTO_SITIO;
+    echo "No existe la ruta del PATH_ABSOLUTO_LOGS " . PATH_ABSOLUTO_LOGS;
     die();
 }
-$_SESSION["generales"]["pathabsolutologs"] = PATH_ABSOLUTO_LOGS;
 
 //2019-07-05 : Weymer : Inicializar clavevalor para evitar reutilización de sesiones entre CC
 $_SESSION["generales"]["clavevalor"] = array();
