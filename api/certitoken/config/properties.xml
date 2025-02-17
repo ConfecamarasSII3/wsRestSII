@@ -1,0 +1,19 @@
+<properties>
+  <general>
+    <CRL_PATH>/opt/sitios/sii/includes/certitoken/resources/crl</CRL_PATH>
+    <VERIFY_TYPE>OCSP_CRL</VERIFY_TYPE>
+    <!--CRL_ONLY CRL_OCSP OCSP_CRL OCSP_ONLY ocsp.certicamara.com -->
+    <KEYSTORE_PATH>/opt/sitios/sii/includes/certitoken/resources/keystore/Keystore</KEYSTORE_PATH>
+    <PATH_TSA_CERTIFICATES>/opt/sitios/sii/includes/certitoken/resources/TSAs</PATH_TSA_CERTIFICATES>
+    <TSA_CERTIFICATE/>
+    <TSA_CERTIFICATE_PASSWORD/>
+    <TSA_URL>http://190.131.205.170:9233</TSA_URL>
+    <!-- http://tsa.certicamara.com-->
+    <TSA_POLICY>1.3.6.1.4.1.23267.60.1</TSA_POLICY>
+    <CERTITOKEN_URL_LIST>https://certitoken.certicamara.com/certificate/list</CERTITOKEN_URL_LIST>
+    <!-- -->
+    <CERTITOKEN_URL_SIGN>https://certitoken.certicamara.com/sign</CERTITOKEN_URL_SIGN>
+    <!-- -->
+    <ACRO6LAYER>TRUE</ACRO6LAYER>
+  </general>
+</properties>
