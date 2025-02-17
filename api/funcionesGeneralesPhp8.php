@@ -1,24 +1,20 @@
 <?php
-
-if (isset($_SESSION["generales"]) && isset($_SESSION["generales"]["pathabsoluto"])) {
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/components/vendor/autoload.php');
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-} else {
-    require_once ('components/vendor/autoload.php');
-    require_once ('configuracion/common.php');
-}
-
+require_once('../vendor/autoload.php');
+die();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class funcionesGenerales {
+class funcionesGenerales
+{
 
-    public static function imagenAleatoria($galeria = 'thumbnails') {
+    public static function imagenAleatoria($galeria = 'thumbnails')
+    {
         return TIPO_HTTP . HTTP_HOST . '/images/' . $galeria . '/f' . rand(1, 126) . '.jpg';
     }
 
     //
-    public static function armarNombresTablas() {
+    public static function armarNombresTablas()
+    {
         if (!isset($_SESSION["generales"]["codigoempresa"])) {
             return false;
         }
@@ -46,7 +42,8 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function inicializarUnset($var) {
+    public static function inicializarUnset($var)
+    {
         if (!isset($var)) {
             return "";
         } else {
@@ -54,14 +51,15 @@ class funcionesGenerales {
         }
     }
 
-    public static function armarPantallaSimple($titulo, $txt, $tamano = 500) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php');
+    public static function armarPantallaSimple($titulo, $txt, $tamano = 500)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php');
         //
         $acceso = md5(sha1(USUARIO_API_DEFECTO)) . '|' . md5(sha1(TOKEN_API_DEFECTO) . '|' . CODIGO_EMPRESA);
         $acceso = \funcionesGenerales::encrypt_decrypt('encrypt', ENCRYPTION_SECRET_KEY, ENCRYPTION_SECRET_IV, $acceso);
@@ -86,7 +84,8 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function armarSelectArreglo($sel, $arr, $id) {
+    public static function armarSelectArreglo($sel, $arr, $id)
+    {
         if (trim($id) == '') {
             $retornar = "<option value='' selected>" . $sel . "</option>";
         } else {
@@ -108,7 +107,8 @@ class funcionesGenerales {
      * 
      * @return type
      */
-    public static function armarVariablesPantalla($tokenscript = '') {
+    public static function armarVariablesPantalla($tokenscript = '')
+    {
         if (!isset($_SESSION["generales"]["tokenscriptentrada"])) {
             $_SESSION["generales"]["tokenscriptentrada"] = '';
         }
@@ -251,7 +251,8 @@ class funcionesGenerales {
         return \funcionesGenerales::encrypt_decrypt('encrypt', ENCRYPTION_SECRET_KEY, ENCRYPTION_SECRET_IV, $vars1);
     }
 
-    public static function armarVariablesPantallaSii1($guardar = 'no') {
+    public static function armarVariablesPantallaSii1($guardar = 'no')
+    {
 
         //
         $vars = array();
@@ -677,15 +678,16 @@ class funcionesGenerales {
         return \funcionesGenerales::encrypt_decrypt('encrypt', ENCRYPTION_SECRET_KEY, ENCRYPTION_SECRET_IV, $vars1);
     }
 
-    public static function armarVariablesSesionLimpiar($path = '', $codemp = '00') {
+    public static function armarVariablesSesionLimpiar($path = '', $codemp = '00')
+    {
         if ($path != '') {
             $_SESSION["generales"]["pathabsoluto"] = $path;
             $_SESSION["generales"]["codigoempresa"] = $codemp;
         }
-        require_once ($_SESSION["generales"]["pathabsoluto"] . "/configuracion/common.php");
-        require_once ($_SESSION["generales"]["pathabsoluto"] . "/configuracion/common" . $_SESSION["generales"]["codigoempresa"] . ".php");
-        require_once ($_SESSION["generales"]["pathabsoluto"] . "/api/funcionesGenerales.php");
-        require_once ($_SESSION["generales"]["pathabsoluto"] . "/api/mysqli.php");
+        require_once($_SESSION["generales"]["pathabsoluto"] . "/configuracion/common.php");
+        require_once($_SESSION["generales"]["pathabsoluto"] . "/configuracion/common" . $_SESSION["generales"]["codigoempresa"] . ".php");
+        require_once($_SESSION["generales"]["pathabsoluto"] . "/api/funcionesGenerales.php");
+        require_once($_SESSION["generales"]["pathabsoluto"] . "/api/mysqli.php");
 
         $_SESSION["generales"]["navegador"] = \funcionesGenerales::obtenerNavegador(getenv("HTTP_USER_AGENT"));
         $_SESSION["generales"]["periodo"] = date("Y");
@@ -749,15 +751,16 @@ class funcionesGenerales {
         $_SESSION["generales"]["footeremails"] = '';
     }
 
-    public static function armarVariablesSesionSinUsuario($path = '', $codemp = '00') {
+    public static function armarVariablesSesionSinUsuario($path = '', $codemp = '00')
+    {
         if ($path != '') {
             $_SESSION["generales"]["pathabsoluto"] = $path;
             $_SESSION["generales"]["codigoempresa"] = $codemp;
         }
-        require_once ($_SESSION["generales"]["pathabsoluto"] . "/configuracion/common.php");
-        require_once ($_SESSION["generales"]["pathabsoluto"] . "/configuracion/common" . $_SESSION["generales"]["codigoempresa"] . ".php");
-        require_once ($_SESSION["generales"]["pathabsoluto"] . "/api/funcionesGenerales.php");
-        require_once ($_SESSION["generales"]["pathabsoluto"] . "/api/mysqli.php");
+        require_once($_SESSION["generales"]["pathabsoluto"] . "/configuracion/common.php");
+        require_once($_SESSION["generales"]["pathabsoluto"] . "/configuracion/common" . $_SESSION["generales"]["codigoempresa"] . ".php");
+        require_once($_SESSION["generales"]["pathabsoluto"] . "/api/funcionesGenerales.php");
+        require_once($_SESSION["generales"]["pathabsoluto"] . "/api/mysqli.php");
 
         $_SESSION["generales"]["navegador"] = \funcionesGenerales::obtenerNavegador(getenv("HTTP_USER_AGENT"));
         $_SESSION["generales"]["periodo"] = date("Y");
@@ -844,8 +847,9 @@ class funcionesGenerales {
         }
     }
 
-    public static function decrypt($string) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+    public static function decrypt($string)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
         if (!defined('KEY_ENCRIPCION')) {
             define('KEY_ENCRIPCION', "S44S0nl1n3");
         }
@@ -865,7 +869,8 @@ class funcionesGenerales {
      * @param type $vars
      * @return boolean
      */
-    public static function desarmarVariablesPantalla($vars) {
+    public static function desarmarVariablesPantalla($vars)
+    {
         $txt = date("H:i:s") . ' - ';
         if (isset($vars) && $vars != '') {
             $vars1 = json_decode(\funcionesGenerales::encrypt_decrypt('decrypt', ENCRYPTION_SECRET_KEY, ENCRYPTION_SECRET_IV, $vars));
@@ -898,7 +903,8 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function desarmarVariablesPantallaSii1($vars) {
+    public static function desarmarVariablesPantallaSii1($vars)
+    {
         $vars1 = json_decode(\funcionesGenerales::encrypt_decrypt('decrypt', ENCRYPTION_SECRET_KEY, ENCRYPTION_SECRET_IV, $vars));
         if (!empty($vars1)) {
             foreach ($vars1 as $key => $valor) {
@@ -921,7 +927,8 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function descargaPdf($url, $directorio) {
+    public static function descargaPdf($url, $directorio)
+    {
         $newfname = $directorio;
         /*
           $opts = array(
@@ -952,7 +959,8 @@ class funcionesGenerales {
         return "success";
     }
 
-    public static function descargaPdfCurl($url, $directorio) {
+    public static function descargaPdfCurl($url, $directorio)
+    {
         $archivo_descarga = curl_init();
         curl_setopt($archivo_descarga, CURLOPT_URL, $url); //ponemos lo que queremos descargar
         curl_setopt($archivo_descarga, CURLOPT_RETURNTRANSFER, true);
@@ -979,18 +987,20 @@ class funcionesGenerales {
      * @param type $clave
      * @return type
      */
-    public static function encriptar($cadena, $clave) {
+    public static function encriptar($cadena, $clave)
+    {
         $cifrado = MCRYPT_RIJNDAEL_256;
         $modo = MCRYPT_MODE_ECB;
         return mcrypt_encrypt($cifrado, $clave, $cadena, $modo, mcrypt_create_iv(mcrypt_get_iv_size($cifrado, $modo), MCRYPT_RAND));
     }
 
-    public static function desencriptaCerticamara($key, $iv, $data) {
+    public static function desencriptaCerticamara($key, $iv, $data)
+    {
         if (strlen($key) != 24) {
             echo "La longitud de la key ha de ser de 24 d&iacute;gitos.<br>";
             return false;
         }
-        if ((strlen($iv) % 8 ) != 0) {
+        if ((strlen($iv) % 8) != 0) {
             echo "La longitud del vector iv ha de ser m&uacute;ltiplo de 8 d&iacute;gitos.<br>";
             return false;
         }
@@ -998,12 +1008,13 @@ class funcionesGenerales {
         return openssl_decrypt(base64_decode($data), 'DES-EDE3-CBC', $key, OPENSSL_ZERO_PADDING | OPENSSL_RAW_DATA, $iv);
     }
 
-    public static function encriptaCerticamara($key, $iv, $data) {
+    public static function encriptaCerticamara($key, $iv, $data)
+    {
         if (strlen($key) != 24) {
             echo "La longitud de la key ha de ser de 24 d&iacute;gitos.<br>";
             return -1;
         }
-        if ((strlen($iv) % 8 ) != 0) {
+        if ((strlen($iv) % 8) != 0) {
             echo "La longitud del vector iv ha de ser m&uacute;ltiplo de 8 d&iacute;gitos.<br>";
             return false;
         }
@@ -1011,14 +1022,15 @@ class funcionesGenerales {
         // return \funcionesGenerales::encrypt_decrypt('encrypt', $key, $iv, utf8_encode($data), "DES-EDE3-CBC");
     }
 
-    public static function descripcionesFormato2019($mysqli, $organizacion1, $acto, $tipdoc, $numdoc, $numdocext, $fecdoc, $idorigen, $txtorigen, $munori, $libro, $registro, $fecins, $noticia, $nan = array(), $nombre = '', $comple = '', $camant = '', $libant = '', $regant = '', $fecant = '', $camant2 = '', $libant2 = '', $regant2 = '', $fecant2 = '', $camant3 = '', $libant3 = '', $regant3 = '', $fecant3 = '', $camant4 = '', $libant4 = '', $regant4 = '', $fecant4 = '', $camant5 = '', $libant5 = '', $regant5 = '', $fecant5 = '', $aclaratoria = '', $tomo72 = '', $folio72 = '', $registro72 = '', $sigla = '', $nat = '') {
+    public static function descripcionesFormato2019($mysqli, $organizacion1, $acto, $tipdoc, $numdoc, $numdocext, $fecdoc, $idorigen, $txtorigen, $munori, $libro, $registro, $fecins, $noticia, $nan = array(), $nombre = '', $comple = '', $camant = '', $libant = '', $regant = '', $fecant = '', $camant2 = '', $libant2 = '', $regant2 = '', $fecant2 = '', $camant3 = '', $libant3 = '', $regant3 = '', $fecant3 = '', $camant4 = '', $libant4 = '', $regant4 = '', $fecant4 = '', $camant5 = '', $libant5 = '', $regant5 = '', $fecant5 = '', $aclaratoria = '', $tomo72 = '', $folio72 = '', $registro72 = '', $sigla = '', $nat = '')
+    {
 
 
         if (strpos($organizacion1, '|') === false) {
             $categoria = '';
             $organizacion = $organizacion1;
         } else {
-            list ($organizacion, $categoria) = explode("|", $organizacion1);
+            list($organizacion, $categoria) = explode("|", $organizacion1);
         }
 
         //
@@ -1084,9 +1096,10 @@ class funcionesGenerales {
             //
             $txtParticula = 'de la';
 
-            if (strtoupper($txtSuscribe) == 'REPRESENTACION LEGAL' ||
-                    strtoupper($txtSuscribe) == 'REPRESENTACIÓN LEGAL' ||
-                    strtoupper($txtSuscribe) == 'REPRESENTACIóN LEGAL'
+            if (
+                strtoupper($txtSuscribe) == 'REPRESENTACION LEGAL' ||
+                strtoupper($txtSuscribe) == 'REPRESENTACIÓN LEGAL' ||
+                strtoupper($txtSuscribe) == 'REPRESENTACIóN LEGAL'
             ) {
                 $txtParticula = 'de';
                 $txtSuscribe = 'el Representante Legal';
@@ -1132,17 +1145,21 @@ class funcionesGenerales {
             }
 
             // 2018-06-18: JINT
-            if (strtoupper($txtSuscribe) == 'COMITE DE ADMINISTRACION' ||
-                    strtoupper($txtSuscribe) == 'COMITÉ DE ADMINISTRACION' ||
-                    strtoupper($txtSuscribe) == 'COMITÉ DE ADMINISTRACIÓN') {
+            if (
+                strtoupper($txtSuscribe) == 'COMITE DE ADMINISTRACION' ||
+                strtoupper($txtSuscribe) == 'COMITÉ DE ADMINISTRACION' ||
+                strtoupper($txtSuscribe) == 'COMITÉ DE ADMINISTRACIÓN'
+            ) {
                 $txtParticula = 'del';
                 $txtSuscribe = 'Comité de Administración';
             }
 
             // 2018-06-18: JINT
-            if (strtoupper($txtSuscribe) == 'CONTADOR PÚBLICO' ||
-                    strtoupper($txtSuscribe) == 'CONTADOR PúBLICO' ||
-                    $txtSuscribe == 'Contador Público') {
+            if (
+                strtoupper($txtSuscribe) == 'CONTADOR PÚBLICO' ||
+                strtoupper($txtSuscribe) == 'CONTADOR PúBLICO' ||
+                $txtSuscribe == 'Contador Público'
+            ) {
                 $txtParticula = 'del';
                 $txtSuscribe = 'Contador Público';
             }
@@ -1489,7 +1506,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function descripcionesDocumentoFormato2019($mysqli, $organizacion, $acto, $tipdoc, $numdoc, $numdocext, $fecdoc, $idorigen, $txtorigen, $munori) {
+    public static function descripcionesDocumentoFormato2019($mysqli, $organizacion, $acto, $tipdoc, $numdoc, $numdocext, $fecdoc, $idorigen, $txtorigen, $munori)
+    {
 
         //
         if ($numdocext != '') {
@@ -1549,9 +1567,10 @@ class funcionesGenerales {
             //
             $txtParticula = 'de la';
 
-            if (strtoupper($txtSuscribe) == 'REPRESENTACION LEGAL' ||
-                    strtoupper($txtSuscribe) == 'REPRESENTACIÓN LEGAL' ||
-                    strtoupper($txtSuscribe) == 'REPRESENTACIóN LEGAL'
+            if (
+                strtoupper($txtSuscribe) == 'REPRESENTACION LEGAL' ||
+                strtoupper($txtSuscribe) == 'REPRESENTACIÓN LEGAL' ||
+                strtoupper($txtSuscribe) == 'REPRESENTACIóN LEGAL'
             ) {
                 $txtParticula = 'de';
                 $txtSuscribe = 'el Representante Legal';
@@ -1597,9 +1616,11 @@ class funcionesGenerales {
             }
 
             // 2018-06-18: JINT
-            if (strtoupper($txtSuscribe) == 'COMITE DE ADMINISTRACION' ||
-                    strtoupper($txtSuscribe) == 'COMITÉ DE ADMINISTRACION' ||
-                    strtoupper($txtSuscribe) == 'COMITÉ DE ADMINISTRACIÓN') {
+            if (
+                strtoupper($txtSuscribe) == 'COMITE DE ADMINISTRACION' ||
+                strtoupper($txtSuscribe) == 'COMITÉ DE ADMINISTRACION' ||
+                strtoupper($txtSuscribe) == 'COMITÉ DE ADMINISTRACIÓN'
+            ) {
                 $txtParticula = 'del';
                 $txtSuscribe = 'Comité de Administración';
             }
@@ -1647,7 +1668,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function almacenarDatosImportantesRenovacion($dbx, $liq, $dat, $mom) {
+    public static function almacenarDatosImportantesRenovacion($dbx, $liq, $dat, $mom)
+    {
 
         //
         if ($mom == 'F') {
@@ -1712,7 +1734,8 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function anoBisiesto($ano) {
+    public static function anoBisiesto($ano)
+    {
         $ent = intval($ano / 4);
         if ($ano == $ent * 4) {
             return true;
@@ -1727,7 +1750,8 @@ class funcionesGenerales {
      * @param type $path
      * @param type $javascriptHeaders
      */
-    public static function armarMensaje($txt = '', $path = '', $javascriptHeaders = '', $titulo = '') {
+    public static function armarMensaje($txt = '', $path = '', $javascriptHeaders = '', $titulo = '')
+    {
 
         if ($path != '') {
             $_SESSION["generales"]["pathabsoluto"] = $path;
@@ -1735,14 +1759,14 @@ class funcionesGenerales {
 
         //
         if (isset($_SESSION["generales"]["pathabsoluto"]) && $_SESSION["generales"]["pathabsoluto"] != '') {
-            require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php');
+            require_once($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php');
         } else {
-            require_once ('presentacion.class.php');
+            require_once('presentacion.class.php');
         }
 
         //
         if (isset($_SESSION["generales"]["codigoempresa"])) {
-            require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+            require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
         }
         if (!isset($_SESSION["generales"]["codigoempresa"])) {
             $acceso = md5(sha1(USUARIO_API_DEFECTO)) . '|' . md5(sha1(TOKEN_API_DEFECTO));
@@ -1751,7 +1775,7 @@ class funcionesGenerales {
         }
         $acceso = \funcionesGenerales::encrypt_decrypt('encrypt', ENCRYPTION_SECRET_KEY, ENCRYPTION_SECRET_IV, $acceso);
 
-        $pres = new presentacionBootstrap ();
+        $pres = new presentacionBootstrap();
         $string = $pres->abrirPanelGeneral(1100);
         $string .= '<br>';
 
@@ -1788,7 +1812,8 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function armarMensajeSimple($txt = '', $path = '', $javascriptHeaders = '') {
+    public static function armarMensajeSimple($txt = '', $path = '', $javascriptHeaders = '')
+    {
 
         //
         if ($path != '') {
@@ -1800,25 +1825,25 @@ class funcionesGenerales {
                 header("Location:../disparador.php");
                 exit();
             }
-            require_once ($path . '/api/presentacion.class.php');
+            require_once($path . '/api/presentacion.class.php');
         } else {
             if (isset($_SESSION["generales"]["pathabsoluto"]) && $_SESSION["generales"]["pathabsoluto"] != '') {
                 if (!file_exists($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php')) {
                     header("Location:../disparador.php");
                     exit();
                 }
-                require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php');
+                require_once($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php');
             } else {
                 if (!file_exists('presentacion.class.php')) {
                     header("Location:../disparador.php");
                     exit();
                 }
-                require_once ('presentacion.class.php');
+                require_once('presentacion.class.php');
             }
         }
 
         //
-        $nw = new presentacionBootstrap ();
+        $nw = new presentacionBootstrap();
         $string = $nw->abrirPanelGeneral(800);
         $string .= $nw->abrirPanel();
         $string .= $nw->armarLineaTextoInformativa($txt, 'center');
@@ -1829,8 +1854,9 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function armarMensajeMobile($txt = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+    public static function armarMensajeMobile($txt = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
         if (!defined('NOMBRE_SISTEMA1')) {
             (define('NOMBRE_SISTEMA1', ''));
         }
@@ -1846,10 +1872,10 @@ class funcionesGenerales {
         if (!defined('DECLARACION_PRIVACIDAD')) {
             (define('DECLARACION_PRIVACIDAD', ''));
         }
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/librerias/presentacion/template.class.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/librerias/presentacion/template.class.php');
         $_SESSION["generales"]["codigoempresa"] = isset($_SESSION["generales"]["codigoempresa"]) ? $_SESSION["generales"]["codigoempresa"] : 999;
 
-        $pant = new template ();
+        $pant = new template();
 
         // if (isset($_SERVER["https"])) {
         if (TIPO_HTTP == 'https://') {
@@ -1898,8 +1924,9 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function armarMenuLateralBootstrap() {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function armarMenuLateralBootstrap()
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
         if (!isset($_SESSION["generales"]["codigousuario"]) || $_SESSION["generales"]["codigousuario"] == '') {
             $_SESSION["generales"]["codigousuario"] = 'USUPUBXX';
         }
@@ -1940,8 +1967,10 @@ class funcionesGenerales {
                                 }
                             }
                         }
-                        if ($_SESSION["generales"]["tipousuario"] == '01' ||
-                                $mostrar == 'si') {
+                        if (
+                            $_SESSION["generales"]["tipousuario"] == '01' ||
+                            $mostrar == 'si'
+                        ) {
                             if (!empty($temBandejas1)) {
                                 $g = "'B'";
                                 $s = "'" . $tx["id"] . "'";
@@ -1950,8 +1979,10 @@ class funcionesGenerales {
                                 $menu[$g]["submenus"][$s]["acciones"] = array();
                                 $temBandejas1 = retornarRegistrosMysqliApi($mysqli, 'bas_tagsbandejaentrada', "idgrupo='" . $tx["id"] . "'", "idorden");
                                 foreach ($temBandejas1 as $tx1) {
-                                    if ($_SESSION["generales"]["tipousuario"] == '01' ||
-                                            isset($arrPerUsu[$tx1["id"]])) {
+                                    if (
+                                        $_SESSION["generales"]["tipousuario"] == '01' ||
+                                        isset($arrPerUsu[$tx1["id"]])
+                                    ) {
                                         $g = "'B'";
                                         $s = "'" . $tx["id"] . "'";
                                         $a = "'" . $tx1["id"] . "'";
@@ -1967,7 +1998,7 @@ class funcionesGenerales {
                                             foreach ($pars as $p) {
                                                 $ipars++;
                                                 if ($ipars > 0) {
-                                                    list ($var, $dat) = explode("=", $p);
+                                                    list($var, $dat) = explode("=", $p);
                                                     $arr["parametros"][$var] = $dat;
                                                 }
                                             }
@@ -2069,12 +2100,12 @@ class funcionesGenerales {
                                             $ipars++;
                                             if ($ipars == 0) {
                                                 if (strpos($p, "?")) {
-                                                    list ($izq, $der) = explode("=", $p);
+                                                    list($izq, $der) = explode("=", $p);
                                                     $arr["metodo"] = $der . '();';
                                                 }
                                             }
                                             if ($ipars > 0) {
-                                                list ($var, $dat) = explode("=", $p);
+                                                list($var, $dat) = explode("=", $p);
                                                 $arr["parametros"][$var] = $dat;
                                             }
                                         }
@@ -2136,7 +2167,8 @@ class funcionesGenerales {
      * @param type $entrada
      * @return boolean
      */
-    public static function asignarVariablesSession($dbx, $entrada) {
+    public static function asignarVariablesSession($dbx, $entrada)
+    {
 
         $_SESSION["generales"]["zonahoraria"] = "America/Bogota";
         $_SESSION["generales"]["idioma"] = "es";
@@ -2328,7 +2360,8 @@ class funcionesGenerales {
      * @param type $entrada
      * @return bool
      */
-    public static function asignarVariablesSessionSinValidarUsuario($dbx, $entrada) {
+    public static function asignarVariablesSessionSinValidarUsuario($dbx, $entrada)
+    {
 
         $_SESSION["generales"]["zonahoraria"] = "America/Bogota";
         $_SESSION["generales"]["idioma"] = "es";
@@ -2510,7 +2543,8 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function asignarNumeroRecuperacion($dbx, $tipo) {
+    public static function asignarNumeroRecuperacion($dbx, $tipo)
+    {
         $OK = 'NO';
         while ($OK == 'NO') {
             if ($tipo == 'mreg') {
@@ -2536,7 +2570,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function emailAvisoLegal() {
+    public static function emailAvisoLegal()
+    {
         $txt = 'AVISO LEGAL Y DE CONFIDENCIALIDAD: La información aquí contenida y anexada es para uso exclusivo de la persona o entidad de destino. ';
         $txt .= 'Está estrictamente prohibida su utilización, copia, descarga, distribución, modificación y/o reproducción total o parcial, sin el permiso ';
         $txt .= 'expreso de la entidad remitente, ya que su contenido puede ser de carácter confidencial y/o contener material privilegiado. ';
@@ -2544,7 +2579,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function encomillar($cadenaBusq = '') {
+    public static function encomillar($cadenaBusq = '')
+    {
         if (trim($cadenaBusq) != '') {
             $arrBusqueda = explode(",", $cadenaBusq);
 
@@ -2558,7 +2594,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function enteroval($valor) {
+    public static function enteroval($valor)
+    {
         if ($valor < 0) {
             $signo = '-';
         } else {
@@ -2573,7 +2610,8 @@ class funcionesGenerales {
         return $signo . $aval["0"];
     }
 
-    public static function encontrarClaveEncriptacion() {
+    public static function encontrarClaveEncriptacion()
+    {
         if (!defined('CLAVE_ENCRIPTACION') || CLAVE_ENCRIPTACION == '') {
             $claveEncriptacion = 's44s0nl1n32018';
         } else {
@@ -2582,7 +2620,8 @@ class funcionesGenerales {
         return $claveEncriptacion;
     }
 
-    public static function encontrarExtension($file) {
+    public static function encontrarExtension($file)
+    {
         $filename = strtolower($file);
         $exts = explode(".", $filename);
         $n = count($exts) - 1;
@@ -2606,8 +2645,9 @@ class funcionesGenerales {
         return $exts2;
     }
 
-    public static function encontrarHabil($mysqli, $meses, $fec) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function encontrarHabil($mysqli, $meses, $fec)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
         $ano1 = intval(substr($fec, 0, 4));
         $mes1 = intval(substr($fec, 4, 2));
         $dia1 = intval(substr($fec, 6, 2));
@@ -2698,7 +2738,8 @@ class funcionesGenerales {
      * @param type $string
      * @return type
      */
-    public static function encrypt_decrypt($action, $secret_key, $secret_iv, $string, $encrypt_method = "AES-256-CBC") {
+    public static function encrypt_decrypt($action, $secret_key, $secret_iv, $string, $encrypt_method = "AES-256-CBC")
+    {
         $output = false;
         // $encrypt_method = "AES-256-CBC";
         $key = hash('sha256', $secret_key);
@@ -2712,7 +2753,8 @@ class funcionesGenerales {
         return $output;
     }
 
-    public static function encryptVars() {
+    public static function encryptVars()
+    {
 
         $arr = array();
         $arr["codigoempresa"] = $_SESSION["generales"]["codigoempresa"];
@@ -2895,7 +2937,8 @@ class funcionesGenerales {
      * @param type $mensaje
      * @return bool
      */
-    public static function enviarCorreoError($mensaje) {
+    public static function enviarCorreoError($mensaje)
+    {
         if (!defined('EMAIL_NOTIFICACION_ERRORES') || EMAIL_NOTIFICACION_ERRORES == '') {
             if (!defined('EMAIL_NOTIFICACION_BATCH') || EMAIL_NOTIFICACION_BATCH == '') {
                 $emx = 'jnieto@confecamaras.org.co';
@@ -2928,7 +2971,8 @@ class funcionesGenerales {
      * @param type $cc
      * @return bool
      */
-    public static function enviarEmailDefault($destino = '', $asunto = '', $mensaje = '', $attach = array(), $ctrmasivo = 'no', $ctralterno = 'si', $confirmacionlectura = 'no', $cc = '') {
+    public static function enviarEmailDefault($destino = '', $asunto = '', $mensaje = '', $attach = array(), $ctrmasivo = 'no', $ctralterno = 'si', $confirmacionlectura = 'no', $cc = '')
+    {
         return \funcionesGenerales::enviarEmail(SERVER_SMTP, SMTP_PORT, REQUIERE_SMTP_AUTENTICACION, SMTP_TIPO_ENCRIPCION, CUENTA_ADMIN_PORTAL, CLAVE_ADMIN_PORTAL, EMAIL_ADMIN_PORTAL, NOMBRE_ADMIN_PORTAL, $destino, $asunto, $mensaje, $attach, $ctrmasivo, $ctralterno, $confirmacionlectura, $cc);
     }
 
@@ -2952,9 +2996,10 @@ class funcionesGenerales {
      * @param type $cc = con copia
      * @return boolean
      */
-    public static function enviarEmail($servmail, $portsmtp, $requiautenticacion, $tipoencripcion, $ctaremi, $passremi, $remiemail, $nombreremi, $destino, $asunto, $mensaje, $attach = array(), $ctrmasivo = 'no', $ctralterno = 'si', $confirmacionlectura = 'no', $cc = '') {
+    public static function enviarEmail($servmail, $portsmtp, $requiautenticacion, $tipoencripcion, $ctaremi, $passremi, $remiemail, $nombreremi, $destino, $asunto, $mensaje, $attach = array(), $ctrmasivo = 'no', $ctralterno = 'si', $confirmacionlectura = 'no', $cc = '')
+    {
         if (defined('ENVIAR_EMAILS') && ENVIAR_EMAILS === 'N') {
-            require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+            require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
             \logApi::general2('email', __FUNCTION__, 'No se están enviando emails pues el parámetro ENVIAR_EMAILS está en N');
             return true;
         }
@@ -2979,12 +3024,13 @@ class funcionesGenerales {
         }
     }
 
-    public static function enviarEmailPhp5($servmail, $portsmtp, $requiautenticacion, $tipoencripcion, $ctaremi, $passremi, $remiemail, $nombreremi, $destino, $asunto, $mensaje, $attach = array(), $ctrmasivo = 'no', $ctralterno = 'si', $confirmacionlectura = 'no', $cc = '') {
+    public static function enviarEmailPhp5($servmail, $portsmtp, $requiautenticacion, $tipoencripcion, $ctaremi, $passremi, $remiemail, $nombreremi, $destino, $asunto, $mensaje, $attach = array(), $ctrmasivo = 'no', $ctralterno = 'si', $confirmacionlectura = 'no', $cc = '')
+    {
         if (!class_exists('\\PHPMailer', false)) {
-            require_once ($_SESSION["generales"]["pathabsoluto"] . '/components/phpmailer/class.phpmailer.php');
+            require_once($_SESSION["generales"]["pathabsoluto"] . '/components/phpmailer/class.phpmailer.php');
         }
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
         set_error_handler('myErrorHandler');
 
         //
@@ -3108,9 +3154,10 @@ class funcionesGenerales {
         }
     }
 
-    public static function enviarEmailPhp7($servmail, $portsmtp, $requiautenticacion, $tipoencripcion, $ctaremi, $passremi, $remiemail, $nombreremi, $destino, $asunto, $mensaje, $attach = array(), $ctrmasivo = 'no', $ctralterno = 'si', $confirmacionlectura = 'no', $cc = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function enviarEmailPhp7($servmail, $portsmtp, $requiautenticacion, $tipoencripcion, $ctaremi, $passremi, $remiemail, $nombreremi, $destino, $asunto, $mensaje, $attach = array(), $ctrmasivo = 'no', $ctralterno = 'si', $confirmacionlectura = 'no', $cc = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
         set_error_handler('myErrorHandler');
 
         //
@@ -3238,10 +3285,11 @@ class funcionesGenerales {
      * @param type $mensaje
      * @return string
      */
-    public static function enviarSms($dbx = null, $prefijo = '57', $celular = '', $mensaje = '', $tarea = '', $usarContingencia = 'no') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/components/elibom/elibom.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function enviarSms($dbx = null, $prefijo = '57', $celular = '', $mensaje = '', $tarea = '', $usarContingencia = 'no')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/components/elibom/elibom.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
 
         $cerrarDbx = 'no';
         if ($dbx === null) {
@@ -3331,9 +3379,9 @@ class funcionesGenerales {
                 'Authorization: Basic ' . base64_encode("$sms_usuario:$sms_clave")
             );
             $payloadName = array();
-            $payloadName ["from"] = "Camara de comercio";
-            $payloadName ["to"] = $prefijo . $celular;
-            $payloadName ["text"] = $mensaje;
+            $payloadName["from"] = "Camara de comercio";
+            $payloadName["to"] = $prefijo . $celular;
+            $payloadName["text"] = $mensaje;
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -3712,35 +3760,35 @@ class funcionesGenerales {
                 $msgError = 'Enviado satisfactoriamente';
                 $deliveryCod = '';
                 switch (trim($result)) {
-                    case "400" :
+                    case "400":
                         $codigoError = '9997';
                         $msgError = '400.- Usuario inactivo o datos de acceso invalidos';
                         break;
-                    case "401" :
+                    case "401":
                         $codigoError = '9999';
                         $msgError = '401.- Linea no autorizada por la plataforma.';
                         break;
-                    case "402" :
+                    case "402":
                         $codigoError = '9999';
                         $msgError = '402.- El contenido del mensaje es vacio.';
                         break;
-                    case "404" :
+                    case "404":
                         $codigoError = '9997';
                         $msgError = '404.- Cupo de mensajes insuficientes.';
                         break;
-                    case "407" :
+                    case "407":
                         $codigoError = '9997';
                         $msgError = '407.- No se realizo ninguna transaccion';
                         break;
-                    case "408" :
+                    case "408":
                         $codigoError = '9999';
                         $msgError = '408.- Numero de celular errado, no es un numero, no tiene el formato de celular';
                         break;
-                    case "412" :
+                    case "412":
                         $codigoError = '9997';
                         $msgError = '412.- Horario de envio no valido para la cuenta de usuario';
                         break;
-                    default :
+                    default:
                         $deliveryCod = trim($result);
                         break;
                 }
@@ -3824,35 +3872,35 @@ class funcionesGenerales {
                 $msgError = 'Enviado satisfactoriamente';
                 $deliveryCod = '';
                 switch (trim($result)) {
-                    case "400" :
+                    case "400":
                         $codigoError = '9997';
                         $msgError = '400.- Usuario inactivo o datos de acceso invalidos';
                         break;
-                    case "401" :
+                    case "401":
                         $codigoError = '9999';
                         $msgError = '401.- Linea no autorizada por la plataforma.';
                         break;
-                    case "402" :
+                    case "402":
                         $codigoError = '9999';
                         $msgError = '402.- El contenido del mensaje es vacio.';
                         break;
-                    case "404" :
+                    case "404":
                         $codigoError = '9997';
                         $msgError = '404.- Cupo de mensajes insuficientes.';
                         break;
-                    case "407" :
+                    case "407":
                         $codigoError = '9997';
                         $msgError = '407.- No se realizo ninguna transaccion';
                         break;
-                    case "408" :
+                    case "408":
                         $codigoError = '9999';
                         $msgError = '408.- Numero de celular errado, no es un numero, no tiene el formato de celular';
                         break;
-                    case "412" :
+                    case "412":
                         $codigoError = '9997';
                         $msgError = '412.- Horario de envio no valido para la cuenta de usuario';
                         break;
-                    default :
+                    default:
                         $deliveryCod = trim($result);
                         break;
                 }
@@ -4025,58 +4073,76 @@ class funcionesGenerales {
             if ($respuesta->result[0]->status != '0') {
                 $codigoError = '9999';
                 switch ($respuesta->result[0]->status) {
-                    case "-1" : $txtError = $respuesta->result[0]->status . ' - Error enviando';
+                    case "-1":
+                        $txtError = $respuesta->result[0]->status . ' - Error enviando';
                         $codigoError = '9997';
                         break;
-                    case "-2" : $txtError = $respuesta->result[0]->status . ' - No hay cr&eacute;ditos disponibles';
+                    case "-2":
+                        $txtError = $respuesta->result[0]->status . ' - No hay cr&eacute;ditos disponibles';
                         $codigoError = '9997';
                         break;
-                    case "-3" : $txtError = $respuesta->result[0]->status . ' - Red no descubierta';
+                    case "-3":
+                        $txtError = $respuesta->result[0]->status . ' - Red no descubierta';
                         $codigoError = '9997';
                         break;
-                    case "-5" : $txtError = $respuesta->result[0]->status . ' - Usuario o password inv&aacute;lido';
+                    case "-5":
+                        $txtError = $respuesta->result[0]->status . ' - Usuario o password inv&aacute;lido';
                         $codigoError = '9997';
                         break;
-                    case "-6" : $txtError = $respuesta->result[0]->status . ' - Destinatario inv&aacute;lido';
+                    case "-6":
+                        $txtError = $respuesta->result[0]->status . ' - Destinatario inv&aacute;lido';
                         $codigoError = '9999';
                         break;
-                    case "-10" : $txtError = $respuesta->result[0]->status . ' - Usuario inv&aacute;lido';
+                    case "-10":
+                        $txtError = $respuesta->result[0]->status . ' - Usuario inv&aacute;lido';
                         $codigoError = '9997';
                         break;
-                    case "-11" : $txtError = $respuesta->result[0]->status . ' - Password inv&aacute;lido';
+                    case "-11":
+                        $txtError = $respuesta->result[0]->status . ' - Password inv&aacute;lido';
                         $codigoError = '9997';
                         break;
-                    case "-13" : $txtError = $respuesta->result[0]->status . ' - Destino inv&aacute;lido';
+                    case "-13":
+                        $txtError = $respuesta->result[0]->status . ' - Destino inv&aacute;lido';
                         $codigoError = '9999';
                         break;
-                    case "-22" : $txtError = $respuesta->result[0]->status . ' - Error de sintaxis';
+                    case "-22":
+                        $txtError = $respuesta->result[0]->status . ' - Error de sintaxis';
                         $codigoError = '9997';
                         break;
-                    case "-23" : $txtError = $respuesta->result[0]->status . ' - Error de proceso';
+                    case "-23":
+                        $txtError = $respuesta->result[0]->status . ' - Error de proceso';
                         $codigoError = '9997';
                         break;
-                    case "-26" : $txtError = $respuesta->result[0]->status . ' - Error de comunicaci&oacute;n';
+                    case "-26":
+                        $txtError = $respuesta->result[0]->status . ' - Error de comunicaci&oacute;n';
                         $codigoError = '9997';
                         break;
-                    case "-27" : $txtError = $respuesta->result[0]->status . ' - Send Date inv&aacute;lido';
+                    case "-27":
+                        $txtError = $respuesta->result[0]->status . ' - Send Date inv&aacute;lido';
                         $codigoError = '9997';
                         break;
-                    case "-28" : $txtError = $respuesta->result[0]->status . ' - Incorrecto PushURL';
+                    case "-28":
+                        $txtError = $respuesta->result[0]->status . ' - Incorrecto PushURL';
                         $codigoError = '9997';
                         break;
-                    case "-30" : $txtError = $respuesta->result[0]->status . ' - Incorrecto APPID';
+                    case "-30":
+                        $txtError = $respuesta->result[0]->status . ' - Incorrecto APPID';
                         $codigoError = '9997';
                         break;
-                    case "-33" : $txtError = $respuesta->result[0]->status . ' - Mensaje duplicado';
+                    case "-33":
+                        $txtError = $respuesta->result[0]->status . ' - Mensaje duplicado';
                         $codigoError = '9999';
                         break;
-                    case "-34" : $txtError = $respuesta->result[0]->status . ' - Remitente no habilitado';
+                    case "-34":
+                        $txtError = $respuesta->result[0]->status . ' - Remitente no habilitado';
                         $codigoError = '9999';
                         break;
-                    case "-99" : $txtError = $respuesta->result[0]->status . ' - Error general';
+                    case "-99":
+                        $txtError = $respuesta->result[0]->status . ' - Error general';
                         $codigoError = '9997';
                         break;
-                    default : $txtError = $respuesta->result[0]->status . ' - Error no controlado';
+                    default:
+                        $txtError = $respuesta->result[0]->status . ' - Error no controlado';
                         $codigoError = '9997';
                         break;
                 }
@@ -4124,58 +4190,76 @@ class funcionesGenerales {
             if ($respuesta->result[0]->status != '0') {
                 $codigoError = '9999';
                 switch ($respuesta->result[0]->status) {
-                    case "-1" : $txtError = $respuesta->result[0]->status . ' - Error enviando';
+                    case "-1":
+                        $txtError = $respuesta->result[0]->status . ' - Error enviando';
                         $codigoError = '9997';
                         break;
-                    case "-2" : $txtError = $respuesta->result[0]->status . ' - No hay cr&eacute;ditos disponibles';
+                    case "-2":
+                        $txtError = $respuesta->result[0]->status . ' - No hay cr&eacute;ditos disponibles';
                         $codigoError = '9997';
                         break;
-                    case "-3" : $txtError = $respuesta->result[0]->status . ' - Red no descubierta';
+                    case "-3":
+                        $txtError = $respuesta->result[0]->status . ' - Red no descubierta';
                         $codigoError = '9997';
                         break;
-                    case "-5" : $txtError = $respuesta->result[0]->status . ' - Usuario o password inv&aacute;lido';
+                    case "-5":
+                        $txtError = $respuesta->result[0]->status . ' - Usuario o password inv&aacute;lido';
                         $codigoError = '9997';
                         break;
-                    case "-6" : $txtError = $respuesta->result[0]->status . ' - Destinatario inv&aacute;lido';
+                    case "-6":
+                        $txtError = $respuesta->result[0]->status . ' - Destinatario inv&aacute;lido';
                         $codigoError = '9999';
                         break;
-                    case "-10" : $txtError = $respuesta->result[0]->status . ' - Usuario inv&aacute;lido';
+                    case "-10":
+                        $txtError = $respuesta->result[0]->status . ' - Usuario inv&aacute;lido';
                         $codigoError = '9997';
                         break;
-                    case "-11" : $txtError = $respuesta->result[0]->status . ' - Password inv&aacute;lido';
+                    case "-11":
+                        $txtError = $respuesta->result[0]->status . ' - Password inv&aacute;lido';
                         $codigoError = '9997';
                         break;
-                    case "-13" : $txtError = $respuesta->result[0]->status . ' - Destino inv&aacute;lido';
+                    case "-13":
+                        $txtError = $respuesta->result[0]->status . ' - Destino inv&aacute;lido';
                         $codigoError = '9999';
                         break;
-                    case "-22" : $txtError = $respuesta->result[0]->status . ' - Error de sintaxis';
+                    case "-22":
+                        $txtError = $respuesta->result[0]->status . ' - Error de sintaxis';
                         $codigoError = '9997';
                         break;
-                    case "-23" : $txtError = $respuesta->result[0]->status . ' - Error de proceso';
+                    case "-23":
+                        $txtError = $respuesta->result[0]->status . ' - Error de proceso';
                         $codigoError = '9997';
                         break;
-                    case "-26" : $txtError = $respuesta->result[0]->status . ' - Error de comunicaci&oacute;n';
+                    case "-26":
+                        $txtError = $respuesta->result[0]->status . ' - Error de comunicaci&oacute;n';
                         $codigoError = '9997';
                         break;
-                    case "-27" : $txtError = $respuesta->result[0]->status . ' - Send Date inv&aacute;lido';
+                    case "-27":
+                        $txtError = $respuesta->result[0]->status . ' - Send Date inv&aacute;lido';
                         $codigoError = '9997';
                         break;
-                    case "-28" : $txtError = $respuesta->result[0]->status . ' - Incorrecto PushURL';
+                    case "-28":
+                        $txtError = $respuesta->result[0]->status . ' - Incorrecto PushURL';
                         $codigoError = '9997';
                         break;
-                    case "-30" : $txtError = $respuesta->result[0]->status . ' - Incorrecto APPID';
+                    case "-30":
+                        $txtError = $respuesta->result[0]->status . ' - Incorrecto APPID';
                         $codigoError = '9997';
                         break;
-                    case "-33" : $txtError = $respuesta->result[0]->status . ' - Mensaje duplicado';
+                    case "-33":
+                        $txtError = $respuesta->result[0]->status . ' - Mensaje duplicado';
                         $codigoError = '9999';
                         break;
-                    case "-34" : $txtError = $respuesta->result[0]->status . ' - Remitente no habilitado';
+                    case "-34":
+                        $txtError = $respuesta->result[0]->status . ' - Remitente no habilitado';
                         $codigoError = '9999';
                         break;
-                    case "-99" : $txtError = $respuesta->result[0]->status . ' - Error general';
+                    case "-99":
+                        $txtError = $respuesta->result[0]->status . ' - Error general';
                         $codigoError = '9997';
                         break;
-                    default : $txtError = $respuesta->result[0]->status . ' - Error no controlado';
+                    default:
+                        $txtError = $respuesta->result[0]->status . ' - Error no controlado';
                         $codigoError = '9997';
                         break;
                 }
@@ -4239,28 +4323,36 @@ class funcionesGenerales {
                 $msgError = $respuesta->data->errorcode;
                 $messageId = '';
                 switch ($respuesta->data->errorcode) {
-                    case "1" : $msgError .= ' - Recipiente invalido';
+                    case "1":
+                        $msgError .= ' - Recipiente invalido';
                         $codigoError = '9999';
                         break;
-                    case "1164" : $msgError .= ' - Faltan parametros en la solicitud';
+                    case "1164":
+                        $msgError .= ' - Faltan parametros en la solicitud';
                         $codigoError = '9999';
                         break;
-                    case "1158" : $msgError .= ' - Parametro accion desconocido';
+                    case "1158":
+                        $msgError .= ' - Parametro accion desconocido';
                         $codigoError = '9999';
                         break;
-                    case "1157" : $msgError .= ' - Usuario o password invalido';
+                    case "1157":
+                        $msgError .= ' - Usuario o password invalido';
                         $codigoError = '9999';
                         break;
-                    case "1156" : $msgError .= ' - Usuario no activado';
+                    case "1156":
+                        $msgError .= ' - Usuario no activado';
                         $codigoError = '9999';
                         break;
-                    case "8734" : $msgError .= ' - Error en plataforma de SMS';
+                    case "8734":
+                        $msgError .= ' - Error en plataforma de SMS';
                         $codigoError = '9997';
                         break;
-                    case "1159" : $msgError .= ' - Creditos insuficientes';
+                    case "1159":
+                        $msgError .= ' - Creditos insuficientes';
                         $codigoError = '9997';
                         break;
-                    case "1160" : $msgError .= ' - Mensaje demasiado largo';
+                    case "1160":
+                        $msgError .= ' - Mensaje demasiado largo';
                         $codigoError = '9999';
                         break;
                 }
@@ -4288,17 +4380,17 @@ class funcionesGenerales {
                 'Authorization: Basic ' . base64_encode("$sms_usuario:$sms_clave")
             );
             $payloadName = array();
-            $payloadName ["to"] = $prefijo . $celular;
-            $payloadName ["text"] = $mensaje;
-            $payloadName ["customdata"] = "";
-            $payloadName ["isPremium"] = false;
-            $payloadName ["isFlash"] = true;
+            $payloadName["to"] = $prefijo . $celular;
+            $payloadName["text"] = $mensaje;
+            $payloadName["customdata"] = "";
+            $payloadName["isPremium"] = false;
+            $payloadName["isFlash"] = true;
             if (strlen($mensaje) <= 160) {
-                $payloadName ["isLongmessage"] = false;
+                $payloadName["isLongmessage"] = false;
             } else {
-                $payloadName ["isLongmessage"] = true;
+                $payloadName["isLongmessage"] = true;
             }
-            $payloadName ["isRandomRoute"] = false;
+            $payloadName["isRandomRoute"] = false;
             // $payloadName ["shortUrlConfig"] = array();
 
             $ch = curl_init();
@@ -4485,7 +4577,7 @@ class funcionesGenerales {
             curl_close($ch);
 
             //
-            list ($resultCode, $msg) = explode("|", $return);
+            list($resultCode, $msg) = explode("|", $return);
 
             //
             if ($resultCode < 0) {
@@ -4520,11 +4612,11 @@ class funcionesGenerales {
                 'Authorization: Basic ' . base64_encode("$sms_usuario:$sms_clave")
             );
             $payloadName = array();
-            $payloadName ["country"] = $prefijo;
+            $payloadName["country"] = $prefijo;
             $mob = array();
             $mob["mobile"] = $celular;
-            $payloadName ["addresseeList"][] = $mob;
-            $payloadName ["message"] = $mensaje;
+            $payloadName["addresseeList"][] = $mob;
+            $payloadName["message"] = $mensaje;
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -4572,11 +4664,11 @@ class funcionesGenerales {
                 'Authorization: Basic ' . base64_encode("$sms_usuario:$sms_clave")
             );
             $payloadName = array();
-            $payloadName ["country"] = $prefijo;
+            $payloadName["country"] = $prefijo;
             $mob = array();
             $mob["mobile"] = $celular;
-            $payloadName ["addresseeList"][] = $mob;
-            $payloadName ["message"] = $mensaje;
+            $payloadName["addresseeList"][] = $mob;
+            $payloadName["message"] = $mensaje;
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -4689,7 +4781,8 @@ class funcionesGenerales {
      * @param type $id
      * @return string
      */
-    public static function estadoRespuesta($id) {
+    public static function estadoRespuesta($id)
+    {
         $notpay = array("00", "01", "02", "03", "04", "05", "19", "33");
         $pending = array("06", "66", "11", "77");
         $approved = array("07", "09", "10", "12", "13", "14", "15", "16", "17", "18", "20", "21", "22");
@@ -4711,7 +4804,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function evaluarFactorAutenticacion($tt) {
+    public static function evaluarFactorAutenticacion($tt)
+    {
         // require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
 
         //
@@ -4727,12 +4821,14 @@ class funcionesGenerales {
         }
 
         //
-        if ($tt == 'matriculapnat' ||
-                $tt == 'matriculapjur' ||
-                $tt == 'matriculaest' ||
-                $tt == 'matriculaesadl' ||
-                $tt == 'matriculasuc' ||
-                $tt == 'matriculaage') {
+        if (
+            $tt == 'matriculapnat' ||
+            $tt == 'matriculapjur' ||
+            $tt == 'matriculaest' ||
+            $tt == 'matriculaesadl' ||
+            $tt == 'matriculasuc' ||
+            $tt == 'matriculaage'
+        ) {
             if (!defined('FACTOR_AUTENTICACION_FIRMADO_MATRICULAS') || FACTOR_AUTENTICACION_FIRMADO_MATRICULAS == '') {
                 $factor = 'DOBLE';
             } else {
@@ -4741,8 +4837,10 @@ class funcionesGenerales {
         }
 
         //
-        if ($tt == 'renovacionmatricula' ||
-                $tt == 'renovacionesadl') {
+        if (
+            $tt == 'renovacionmatricula' ||
+            $tt == 'renovacionesadl'
+        ) {
             if (!defined('FACTOR_AUTENTICACION_FIRMADO_RENOVACION') || FACTOR_AUTENTICACION_FIRMADO_RENOVACION == '') {
                 $factor = 'DOBLE';
             } else {
@@ -4751,11 +4849,13 @@ class funcionesGenerales {
         }
 
         //
-        if ($tt == 'mutaciondireccion' ||
-                $tt == 'mutacionactividad' ||
-                $tt == 'mutacionnombre' ||
-                $tt == 'mutacionregmer' ||
-                $tt == 'mutacionesadl') {
+        if (
+            $tt == 'mutaciondireccion' ||
+            $tt == 'mutacionactividad' ||
+            $tt == 'mutacionnombre' ||
+            $tt == 'mutacionregmer' ||
+            $tt == 'mutacionesadl'
+        ) {
             if (!defined('FACTOR_AUTENTICACION_FIRMADO_MUTACIONES') || FACTOR_AUTENTICACION_FIRMADO_MUTACIONES == '') {
                 $factor = 'DOBLE';
             } else {
@@ -4764,11 +4864,13 @@ class funcionesGenerales {
         }
 
         //
-        if ($tt == 'inscripciondocumentos' ||
-                $tt == 'inscripcionesregmer' ||
-                $tt == 'inscripcionesesadl' ||
-                $tt == 'solicitudcancelacionpnat' ||
-                $tt == 'solicitudcancelacionest') {
+        if (
+            $tt == 'inscripciondocumentos' ||
+            $tt == 'inscripcionesregmer' ||
+            $tt == 'inscripcionesesadl' ||
+            $tt == 'solicitudcancelacionpnat' ||
+            $tt == 'solicitudcancelacionest'
+        ) {
             if (!defined('FACTOR_AUTENTICACION_FIRMADO_ACTOSDOCUMENTOS') || FACTOR_AUTENTICACION_FIRMADO_ACTOSDOCUMENTOS == '') {
                 $factor = 'DOBLE';
             } else {
@@ -4777,11 +4879,13 @@ class funcionesGenerales {
         }
 
         //
-        if ($tt == 'inscripcionproponente' ||
-                $tt == 'actualizacionproponente' ||
-                $tt == 'renovacionproponente' ||
-                $tt == 'cancelacionproponente' ||
-                $tt == 'cambiodomicilioproponente') {
+        if (
+            $tt == 'inscripcionproponente' ||
+            $tt == 'actualizacionproponente' ||
+            $tt == 'renovacionproponente' ||
+            $tt == 'cancelacionproponente' ||
+            $tt == 'cambiodomicilioproponente'
+        ) {
             if (!defined('FACTOR_AUTENTICACION_FIRMADO_PROPONENTES') || FACTOR_AUTENTICACION_FIRMADO_PROPONENTES == '') {
                 $factor = 'DOBLE';
             } else {
@@ -4797,7 +4901,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function exp_to_dec($float_str) {
+    public static function exp_to_dec($float_str)
+    {
         $float_str = (string) ((float) ($float_str));
         if (($pos = strpos(strtolower($float_str), 'e')) !== false) {
             $exp = substr($float_str, $pos + 1);
@@ -4836,10 +4941,11 @@ class funcionesGenerales {
         }
     }
 
-    public static function existeImagenRepositorio($img, $sistema = "") {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesS3V4.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/s3_v4_api.php');
+    public static function existeImagenRepositorio($img, $sistema = "")
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesS3V4.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/s3_v4_api.php');
         if (!defined('TIPO_REPOSITORIO_NUEVAS_IMAGENES')) {
             define('TIPO_REPOSITORIO_NUEVAS_IMAGENES', 'LOCAL');
         }
@@ -4922,7 +5028,8 @@ class funcionesGenerales {
      * @param type $num
      * @return bool
      */
-    public static function esPar($num) {
+    public static function esPar($num)
+    {
         $ent = intval($num / 2);
         if ($ent * 2 == $num) {
             return true;
@@ -4936,7 +5043,8 @@ class funcionesGenerales {
      * @param type $filecontent
      * @return bool
      */
-    public static function esPdf($filecontent) {
+    public static function esPdf($filecontent)
+    {
         if (preg_match("/^%PDF-1.4/", $filecontent)) {
             return true;
         } else {
@@ -4961,7 +5069,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function filtrarCaracteres($txt) {
+    public static function filtrarCaracteres($txt)
+    {
         /*
           \u00e1 -> á
           \u00e9 -> é
@@ -4992,7 +5101,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function buscarRangoTarifa($dbx, $idservicio = '', $ano = 0, $base = 0, $tipotarifa = 'tarifa') {
+    public static function buscarRangoTarifa($dbx, $idservicio = '', $ano = 0, $base = 0, $tipotarifa = 'tarifa')
+    {
         $retornar = 0;
         if ($ano < 1993) {
             $ano = 1993;
@@ -5019,7 +5129,8 @@ class funcionesGenerales {
         return $retornar;
     }
 
-    public static function borrarEnters($txt) {
+    public static function borrarEnters($txt)
+    {
         $txt1 = str_replace(chr(13) . chr(10), " - ", $txt);
         $txt1 = str_replace(chr(10), " ", $txt1);
         $txt1 = str_replace(chr(13), " ", $txt1);
@@ -5030,7 +5141,8 @@ class funcionesGenerales {
         return $txt1;
     }
 
-    public static function borrarPalabrasAutomaticas($txt, $comple = '') {
+    public static function borrarPalabrasAutomaticas($txt, $comple = '')
+    {
         $salida = $txt;
         if ($comple != '') {
             $pos = strpos($txt, $comple);
@@ -5114,7 +5226,8 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function buscaTarifa($dbx, $idservicio = '', $ano = 0, $cantidad = 0, $base = 0, $tipotarifa = 'tarifa') {
+    public static function buscaTarifa($dbx, $idservicio = '', $ano = 0, $cantidad = 0, $base = 0, $tipotarifa = 'tarifa')
+    {
         $tarifa = 0;
         $arrServicio = retornarRegistroMysqliApi($dbx, 'mreg_servicios', "idservicio='" . $idservicio . "'");
         if (!$arrServicio) {
@@ -5228,7 +5341,8 @@ class funcionesGenerales {
      * @param type $incluir (TO, PN, ES, PJ, ESADL, SUC, AGE)
      * @return type
      */
-    public static function buscarExpedientes($dbx = null, $ide = '', $mat = '', $pro = '', $raz = '', $pal = '', $retornar = 200, $incluir = 'TO') {
+    public static function buscarExpedientes($dbx = null, $ide = '', $mat = '', $pro = '', $raz = '', $pal = '', $retornar = 200, $incluir = 'TO')
+    {
         $res = array();
         if ($ide != '') {
             $condicion = "(numid like '" . $ide . "%' or nit like '" . $ide . "%')";
@@ -5340,8 +5454,9 @@ class funcionesGenerales {
         return $res;
     }
 
-    public static function consultarMultasPolicia($dbx, $tid, $id, $idliq = 0) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function consultarMultasPolicia($dbx, $tid, $id, $idliq = 0)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
         $reintentar = 3;
         $multadovencido = 'NO';
         while ($reintentar > 0) {
@@ -5349,7 +5464,7 @@ class funcionesGenerales {
             $name = PATH_ABSOLUTO_SITIO . '/tmp/' . CODIGO_EMPRESA . '-tokenponal.txt';
             if (file_exists($name)) {
                 $x = file_get_contents($name, true);
-                list ($token, $expira) = explode("|", $x);
+                list($token, $expira) = explode("|", $x);
                 $act = date("Y-m-d H:i:s");
                 if ($act <= $expira) {
                     $buscartoken = false;
@@ -5377,7 +5492,7 @@ class funcionesGenerales {
             //
             if (file_exists($name)) {
                 $x = file_get_contents($name, true);
-                list ($access_token, $expira) = explode("|", $x);
+                list($access_token, $expira) = explode("|", $x);
             }
 
             //
@@ -5528,7 +5643,8 @@ class funcionesGenerales {
         return $multadovencido;
     }
 
-    public static function calcularDv($id) {
+    public static function calcularDv($id)
+    {
         $id = str_replace(array(".", ",", "-", " "), "", $id);
         $entrada = sprintf("%015s", $id);
         $identificacion = substr($entrada, 0, 15);
@@ -5549,16 +5665,19 @@ class funcionesGenerales {
     }
 
     //
-    public static function cambiarTildes($txt) {
+    public static function cambiarTildes($txt)
+    {
         return str_replace(array('&aacute;', '&eacute;', '&iacute;', '&oacute;', '&uacute;', '&Aacute;', '&Eacute;', '&Iacute;', '&Oacute;', '&Uacute;', '&ntilde;', '&Ntilde;'), array('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'ñ', 'Ñ'), $txt);
     }
 
-//
-    public static function cambiarTildesEnes($txt) {
+    //
+    public static function cambiarTildesEnes($txt)
+    {
         return str_replace(array('&aacute;', '&eacute;', '&iacute;', '&oacute;', '&uacute;', '&Aacute;', '&Eacute;', '&Iacute;', '&Oacute;', '&Uacute;', '&ntilde;', '&ntilde;', '\''), array('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'n', 'N', '´'), $txt);
     }
 
-    public static function cambiarHtmlSustituto($txt) {
+    public static function cambiarHtmlSustituto($txt)
+    {
         $txt = str_replace(" ", "[0]", $txt);
         $txt = str_replace("<", "[1]", $txt);
         $txt = str_replace(">", "[2]", $txt);
@@ -5585,7 +5704,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function cambiarSustitutoHtml($txt) {
+    public static function cambiarSustitutoHtml($txt)
+    {
         $txt = str_replace("[0]", " ", $txt);
         $txt = str_replace("[1]", "<", $txt);
         $txt = str_replace("[2]", ">", $txt);
@@ -5628,7 +5748,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function cambiarSustitutoHtmlBootstrap($txt) {
+    public static function cambiarSustitutoHtmlBootstrap($txt)
+    {
         $txt = str_replace("[0]", " ", $txt);
         $txt = str_replace("[1]", "<", $txt);
         $txt = str_replace("[2]", ">", $txt);
@@ -5671,7 +5792,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function calcularAnos($f1, $f2) {
+    public static function calcularAnos($f1, $f2)
+    {
         $f1 = intval($f1);
         $f2 = intval($f2);
         if ($f1 > $f2) {
@@ -5701,7 +5823,8 @@ class funcionesGenerales {
         return $edad;
     }
 
-    public static function calcula_numero_dia_semana($dia, $mes, $ano) {
+    public static function calcula_numero_dia_semana($dia, $mes, $ano)
+    {
         $numerodiasemana = date('w', mktime(0, 0, 0, $mes, $dia, $ano));
         return $numerodiasemana;
 
@@ -5713,7 +5836,8 @@ class funcionesGenerales {
         return $numerodiasemana;
     }
 
-    public static function calcularAnosMesesDias($fechaactual, $fechainicial) {
+    public static function calcularAnosMesesDias($fechaactual, $fechainicial)
+    {
 
         //
         $nohabiles = 0;
@@ -5753,9 +5877,11 @@ class funcionesGenerales {
 
             //ahora hay que sumar a $dias los dias que tiene el mes anterior de la fecha actual
             switch ($array_actual[1]) {
-                case 1: $dias_mes_anterior = 31;
+                case 1:
+                    $dias_mes_anterior = 31;
                     break;
-                case 2: $dias_mes_anterior = 31;
+                case 2:
+                    $dias_mes_anterior = 31;
                     break;
                 case 3:
                     if (checkdate(2, 29, $array_actual[0])) {
@@ -5765,23 +5891,32 @@ class funcionesGenerales {
                         $dias_mes_anterior = 28;
                         break;
                     }
-                case 4: $dias_mes_anterior = 31;
+                case 4:
+                    $dias_mes_anterior = 31;
                     break;
-                case 5: $dias_mes_anterior = 30;
+                case 5:
+                    $dias_mes_anterior = 30;
                     break;
-                case 6: $dias_mes_anterior = 31;
+                case 6:
+                    $dias_mes_anterior = 31;
                     break;
-                case 7: $dias_mes_anterior = 30;
+                case 7:
+                    $dias_mes_anterior = 30;
                     break;
-                case 8: $dias_mes_anterior = 31;
+                case 8:
+                    $dias_mes_anterior = 31;
                     break;
-                case 9: $dias_mes_anterior = 31;
+                case 9:
+                    $dias_mes_anterior = 31;
                     break;
-                case 10: $dias_mes_anterior = 30;
+                case 10:
+                    $dias_mes_anterior = 30;
                     break;
-                case 11: $dias_mes_anterior = 31;
+                case 11:
+                    $dias_mes_anterior = 31;
                     break;
-                case 12: $dias_mes_anterior = 30;
+                case 12:
+                    $dias_mes_anterior = 30;
                     break;
             }
             $dias = $dias + $dias_mes_anterior;
@@ -5797,24 +5932,93 @@ class funcionesGenerales {
         return $res;
     }
 
-    public static function calcularDiasCalendario($fechaactual, $fechainicial) {
+    public static function calcularDiasCalendario($fechaactual, $fechainicial)
+    {
 
         //
         $arraynohabiles = array(
-            '20130101', '20130107', '20130325', '20130328', '20130329', '20130501', '20130513',
-            '20130603', '21030610', '20130701', '20130720', '20130807', '20130819', '20131014',
-            '20131104', '20131111', '20131225',
-            '20140101', '20140106', '20140324', '20140417', '20140418', '20140420', '20140501',
-            '20140602', '20140623', '20140630', '20140720', '20140807', '20140818', '20141013',
-            '20141103', '20141117', '20141208', '20141225',
-            '20150101', '20150112', '20150323', '20150402', '20150403', '20150501', '20150518',
-            '20150608', '20150615', '20150629', '20150720', '20150807', '20150817', '20151012',
-            '20151102', '20151116', '20151208', '20151225',
-            '20160101', '20160111', '20160321', '20160324', '20160325', '20160509', '20160530',
-            '20160606', '20160704', '20160720', '20160815', '20161017', '20161107', '20161114',
+            '20130101',
+            '20130107',
+            '20130325',
+            '20130328',
+            '20130329',
+            '20130501',
+            '20130513',
+            '20130603',
+            '21030610',
+            '20130701',
+            '20130720',
+            '20130807',
+            '20130819',
+            '20131014',
+            '20131104',
+            '20131111',
+            '20131225',
+            '20140101',
+            '20140106',
+            '20140324',
+            '20140417',
+            '20140418',
+            '20140420',
+            '20140501',
+            '20140602',
+            '20140623',
+            '20140630',
+            '20140720',
+            '20140807',
+            '20140818',
+            '20141013',
+            '20141103',
+            '20141117',
+            '20141208',
+            '20141225',
+            '20150101',
+            '20150112',
+            '20150323',
+            '20150402',
+            '20150403',
+            '20150501',
+            '20150518',
+            '20150608',
+            '20150615',
+            '20150629',
+            '20150720',
+            '20150807',
+            '20150817',
+            '20151012',
+            '20151102',
+            '20151116',
+            '20151208',
+            '20151225',
+            '20160101',
+            '20160111',
+            '20160321',
+            '20160324',
+            '20160325',
+            '20160509',
+            '20160530',
+            '20160606',
+            '20160704',
+            '20160720',
+            '20160815',
+            '20161017',
+            '20161107',
+            '20161114',
             '20161208',
-            '20170109', '20170320', '20170413', '20170414', '20170529', '20170619', '20170626', '20170720',
-            '20170807', '20170814', '20171016', '20171106', '20171113' . '20171208', '20171225'
+            '20170109',
+            '20170320',
+            '20170413',
+            '20170414',
+            '20170529',
+            '20170619',
+            '20170626',
+            '20170720',
+            '20170807',
+            '20170814',
+            '20171016',
+            '20171106',
+            '20171113' . '20171208',
+            '20171225'
         );
 
         //
@@ -5903,7 +6107,8 @@ class funcionesGenerales {
         return array($totaldias, $totalnohabiles);
     }
 
-    public static function calcularFechaInicial($fbase, $dias, $sumarorestar = '-') {
+    public static function calcularFechaInicial($fbase, $dias, $sumarorestar = '-')
+    {
         $fecha = \funcionesGenerales::mostrarFecha($fbase);
         $nuevafecha = strtotime($sumarorestar . $dias . ' day', strtotime($fecha));
         $nuevafecha = date('Y-m-d', $nuevafecha);
@@ -5922,11 +6127,12 @@ class funcionesGenerales {
      * @param type $ingresosx
      * @return bool|string
      */
-    public static function calcularTamanoEmpresarial($mysqli = null, $mat = '', $origen = 'actual', $fecorte = '', $activosx = 0, $personalx = 0, $ciiux = 0, $ingresosx = 0) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function calcularTamanoEmpresarial($mysqli = null, $mat = '', $origen = 'actual', $fecorte = '', $activosx = 0, $personalx = 0, $ciiux = 0, $ingresosx = 0)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
         $nameLog = 'tamanoEmpresarial_' . date("Ymd");
- 
+
         //
         $retorno = array(
             'codigoerror' => '0000',
@@ -5960,7 +6166,7 @@ class funcionesGenerales {
             if ($tamano === false) {
                 $retorno["codigoerror"] = '9995';
                 $retorno["mensajeerror"] = 'No localizo salario minimo corte de informacion financiera : ' . $retorno["fechadatos"];
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
             $retorno["textocompleto"] = $tamano["tamanotexto"];
@@ -5968,7 +6174,7 @@ class funcionesGenerales {
             $retorno["codigo"] = $tamano["tamanocodigo"];
             $retorno["forma"] = 'activos';
             $retorno["sector"] = '';
-            \logApi::general2($nameLog,$mat, print_r($retorno,true));
+            \logApi::general2($nameLog, $mat, print_r($retorno, true));
             return $retorno;
         }
 
@@ -5987,7 +6193,7 @@ class funcionesGenerales {
             $retorno["uvt"] = $tamano["uvt"];
             $retorno["sector"] = $tamano["sector"];
             $retorno["fechacorte"] = $fecorte;
-            \logApi::general2($nameLog,$mat, print_r($retorno,true));
+            \logApi::general2($nameLog, $mat, print_r($retorno, true));
             return $retorno;
         }
 
@@ -6006,33 +6212,33 @@ class funcionesGenerales {
             $retorno["uvb"] = $tamano["uvb"];
             $retorno["sector"] = $tamano["sector"];
             $retorno["fechacorte"] = $fecorte;
-            \logApi::general2($nameLog,$mat, print_r($retorno,true));
+            \logApi::general2($nameLog, $mat, print_r($retorno, true));
             return $retorno;
         }
 
         //
         if ($origen == 'actual') {
             if ($fecorte == '') {
-                $fecorte = date ("Ymd");
+                $fecorte = date("Ymd");
             }
             $retorno["fechacorte"] = $fecorte;
             if ($mat == '') {
                 $retorno["codigoerror"] = '9990';
                 $retorno["mensajeerror"] = 'Matricula no reportada';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
             $exp = retornarRegistroMysqliApi($mysqli, 'mreg_est_inscritos', "matricula='" . $mat . "'");
             if ($exp === false || empty($exp)) {
                 $retorno["codigoerror"] = '9991';
                 $retorno["mensajeerror"] = 'La matrícula no se localizó en la BD';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
             if ($exp["organizacion"] == '02' || $exp["categoria"] == '2' || $exp["categoria"] == '3') {
                 $retorno["codigoerror"] = '9992';
                 $retorno["mensajeerror"] = 'La matrícula solicitada no es una persona natural o sociedad principal';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
             if ($exp["fecmatricula"] >= '20200100' || $exp["fecrenovacion"] >= '20200100') {
@@ -6062,7 +6268,7 @@ class funcionesGenerales {
             if (substr($retorno["encontro"], 0, 2) !== 'si') {
                 $retorno["codigoerror"] = '9994';
                 $retorno["mensajeerror"] = 'La matrícula no tiene información financiera para calcular el tamaño empresarial';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
             // if ($retorno["fechadatos"] == '') {
@@ -6074,7 +6280,7 @@ class funcionesGenerales {
                 if ($tamano === false) {
                     $retorno["codigoerror"] = '9995';
                     $retorno["mensajeerror"] = 'No localizo salario minimo corte de informacion financiera : ' . $retorno["fechadatos"];
-                    \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                    \logApi::general2($nameLog, $mat, print_r($retorno, true));
                     return $retorno;
                 }
                 $retorno["textocompleto"] = $tamano["tamanotexto"];
@@ -6084,7 +6290,7 @@ class funcionesGenerales {
                 $retorno["sector"] = '';
             } else {
                 // if ($retorno["fechadatos"] >= '20200101' && $retorno["fechadatos"] <= '20231231') {
-                if ($retorno["anodatos"] >= '2020' && $retorno["anodatos"] <= '2023') {    
+                if ($retorno["anodatos"] >= '2020' && $retorno["anodatos"] <= '2023') {
                     $tamano = \funcionesRegistrales::determinarTamanoEmpresarialUvts($mysqli, $retorno["ciiu"], $retorno["ingresos"], $retorno["anodatos"], $retorno["fechadatos"]);
                     $retorno["textocompleto"] = $tamano["tamanotexto"];
                     $retorno["textoresumido"] = $tamano["tamanoresumido"];
@@ -6106,7 +6312,7 @@ class funcionesGenerales {
                     $retorno["sector"] = $tamano["sector"];
                 }
             }
-            \logApi::general2($nameLog,$mat, print_r($retorno,true));
+            \logApi::general2($nameLog, $mat, print_r($retorno, true));
             return $retorno;
         }
 
@@ -6116,26 +6322,26 @@ class funcionesGenerales {
             if ($mat == '') {
                 $retorno["codigoerror"] = '9990';
                 $retorno["mensajeerror"] = 'Matricula no reportada (*)';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
             $exp = retornarRegistroMysqliApi($mysqli, 'mreg_est_inscritos', "matricula='" . $mat . "'");
             if ($exp === false || empty($exp)) {
                 $retorno["codigoerror"] = '9991';
                 $retorno["mensajeerror"] = 'La matrícula no se localizó en la BD';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
             if ($exp["organizacion"] == '02' || $exp["categoria"] == '2' || $exp["categoria"] == '3') {
                 $retorno["codigoerror"] = '9992';
                 $retorno["mensajeerror"] = 'La matrícula solicitada no es una persona natural o sociedad principal';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
             if ($exp["fecmatricula"] > $fecorte) {
                 $retorno["codigoerror"] = '9993';
                 $retorno["mensajeerror"] = 'El expediente no existe al corte reportado';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
 
@@ -6207,7 +6413,7 @@ class funcionesGenerales {
             if (substr($retorno["encontro"], 0, 2) !== 'si') {
                 $retorno["codigoerror"] = '9994';
                 $retorno["mensajeerror"] = 'La matrícula no tiene información para calcular el tamaño empresarial';
-                \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                \logApi::general2($nameLog, $mat, print_r($retorno, true));
                 return $retorno;
             }
 
@@ -6218,7 +6424,7 @@ class funcionesGenerales {
                 if ($tamano === false) {
                     $retorno["codigoerror"] = '9995';
                     $retorno["mensajeerror"] = 'No localizo salario minimo corte de informacion financiera : ' . $retorno["fechadatos"];
-                    \logApi::general2($nameLog,$mat, print_r($retorno,true));
+                    \logApi::general2($nameLog, $mat, print_r($retorno, true));
                     return $retorno;
                 }
                 $retorno["textocompleto"] = $tamano["tamanotexto"];
@@ -6250,24 +6456,25 @@ class funcionesGenerales {
                     $retorno["sector"] = $tamano["sector"];
                 }
             }
-            \logApi::general2($nameLog,$mat, print_r($retorno,true));
+            \logApi::general2($nameLog, $mat, print_r($retorno, true));
             return $retorno;
         }
     }
 
-    public static function cargarPermisosPublico($mysqli, $path = '', $codemp = '00') {
+    public static function cargarPermisosPublico($mysqli, $path = '', $codemp = '00')
+    {
         if ($path != '') {
             $_SESSION["generales"]["pathabsoluto"] = $path;
             $_SESSION["generales"]["codigoempresa"] = $codemp;
         }
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
         set_error_handler('myErrorHandler');
 
-//
+        //
         $array = retornarRegistrosMysqliApi($mysqli, 'bas_permisosespeciales', "1=1", "idpermiso");
         if ($array === false) {
             return false;
@@ -6301,14 +6508,14 @@ class funcionesGenerales {
             }
         }
 
-// Inicia el control del contador de navegacion para la session
+        // Inicia el control del contador de navegacion para la session
         $_SESSION["generales"]["contadorcontrolsession"] = 0;
         $f = fopen($_SESSION["generales"]["pathabsoluto"] . '/tmp/session_control_' . session_id() . '.txt', "w");
         fwrite($f, '1');
         fclose($f);
 
-// Tipo de menu
-// $_SESSION["generales"]["tipomenu"] = retornarClaveValorMysqliApi($mysqli, '01.01.02');
+        // Tipo de menu
+        // $_SESSION["generales"]["tipomenu"] = retornarClaveValorMysqliApi($mysqli, '01.01.02');
         $_SESSION["generales"]["tipomenu"] = 'ICONOS2';
 
         unset($array);
@@ -6316,16 +6523,17 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function construirNoticiaSurOccidente($mysqli, $ins) {
+    public static function construirNoticiaSurOccidente($mysqli, $ins)
+    {
         $salida = '';
 
-//
+        //
         if ($ins["actosistemaanterior"] == '') {
             return $salida;
         }
 
-// Ciudad del cambio de domicilio 
-// tipo de dato 74
+        // Ciudad del cambio de domicilio 
+        // tipo de dato 74
         if (trim($ins["actosistemaanterior"]) == '15|47|891') {
             $nlib = '';
             $treg = '';
@@ -6342,16 +6550,17 @@ class funcionesGenerales {
             $salida = 'CAMBIO DE DOMICILIO DESDE LA CIUDAD DE ' . retornarRegistroMysqliApi($mysqli, 'rp_datos_actos', "cod_tipo_registro='" . $treg . "' and cod_libro='" . $nlib . "' and num_inscripcion='" . $nins . "' and cod_tipo_dato='74'", "descripcion");
         }
 
-//
+        //
         return $salida;
     }
 
-    public static function consultarEstablecimientosNacionales($dbx, $tide, $ide) {
+    public static function consultarEstablecimientosNacionales($dbx, $tide, $ide)
+    {
         $buscartoken = true;
         $name = PATH_ABSOLUTO_SITIO . '/tmp/' . CODIGO_EMPRESA . '-tokenrues.txt';
         if (file_exists($name)) {
             $x = file_get_contents(PATH_ABSOLUTO_SITIO . '/tmp/' . CODIGO_EMPRESA . '-tokenrues.txt', true);
-            list ($token, $expira) = explode("|", $x);
+            list($token, $expira) = explode("|", $x);
             $act = date("Y-m-d H:i:s");
             if ($act <= $expira) {
                 $buscartoken = false;
@@ -6376,13 +6585,13 @@ class funcionesGenerales {
             fclose($f);
         }
 
-//
+        //
         if (file_exists($name)) {
             $x = file_get_contents(PATH_ABSOLUTO_SITIO . '/tmp/' . CODIGO_EMPRESA . '-tokenrues.txt', true);
-            list ($access_token, $expira) = explode("|", $x);
+            list($access_token, $expira) = explode("|", $x);
         }
 
-//
+        //
         $nameLog = 'api_consultarEstablecimientosNacionales_' . date("Ymd");
         if ($tide != '2') {
             $ide1 = $ide;
@@ -6407,23 +6616,23 @@ class funcionesGenerales {
 
         \logApi::general2($nameLog, $tide . '-' . $ide, '****** PETICION : ' . $url . ' *** RESPUESTA : ' . $result);
         \logApi::general2($nameLog, $tide . '-' . $ide, '');
-//
+        //
         if (!\funcionesGenerales::isJson($result)) {
             return array();
         }
 
-//
+        //
         $resultado = json_decode($result, true);
         if (!isset($resultado["error"]) || $resultado["error"] != null) {
             return array();
         }
 
-//
+        //
         if (!isset($resultado["establecimientos"]) || $resultado["establecimientos"] == null) {
             return array();
         }
 
-//
+        //
         $xcon = array();
         $salida = array();
         $ix = 0;
@@ -6441,34 +6650,48 @@ class funcionesGenerales {
                 // Homologa organizacion juridica
                 $xorg = '';
                 switch ($est["codigo_organizacion_juridica"]) {
-                    case "01" : $xorg = '01';
+                    case "01":
+                        $xorg = '01';
                         break;
-                    case "02" : $xorg = '02';
+                    case "02":
+                        $xorg = '02';
                         break;
-                    case "03" : $xorg = '03';
+                    case "03":
+                        $xorg = '03';
                         break;
-                    case "04" : $xorg = '04';
+                    case "04":
+                        $xorg = '04';
                         break;
-                    case "05" : $xorg = '05';
+                    case "05":
+                        $xorg = '05';
                         break;
-                    case "06" : $xorg = '06';
+                    case "06":
+                        $xorg = '06';
                         break;
-                    case "07" : $xorg = '07';
+                    case "07":
+                        $xorg = '07';
                         break;
-                    case "08" : $xorg = '08';
+                    case "08":
+                        $xorg = '08';
                         break;
-                    case "09" : $xorg = '09';
+                    case "09":
+                        $xorg = '09';
                         break;
 
-                    case "10" : $xorg = '11';
+                    case "10":
+                        $xorg = '11';
                         break;
-                    case "11" : $xorg = '17';
+                    case "11":
+                        $xorg = '17';
                         break;
-                    case "12" : $xorg = '99';
+                    case "12":
+                        $xorg = '99';
                         break;
-                    case "13" : $xorg = '15';
+                    case "13":
+                        $xorg = '15';
                         break;
-                    default: $xorg = '12';
+                    default:
+                        $xorg = '12';
                         break;
                 }
                 $salida[$ix]["codigo_organizacion_juridica"] = $xorg;
@@ -6476,15 +6699,20 @@ class funcionesGenerales {
                 // Homologo categoria
                 $xcat = '';
                 switch ($est["codigo_categoria_matricula"]) {
-                    case "00" : $xcat = '';
+                    case "00":
+                        $xcat = '';
                         break;
-                    case "01" : $xcat = '1';
+                    case "01":
+                        $xcat = '1';
                         break;
-                    case "02" : $xcat = '2';
+                    case "02":
+                        $xcat = '2';
                         break;
-                    case "03" : $xcat = '3';
+                    case "03":
+                        $xcat = '3';
                         break;
-                    case "04" : $xcat = '';
+                    case "04":
+                        $xcat = '';
                         break;
                 }
                 $salida[$ix]["codigo_categoria_matricula"] = $xcat;
@@ -6499,16 +6727,17 @@ class funcionesGenerales {
         }
         $salida1 = \funcionesGenerales::ordenarMatriz($salida, "ind");
 
-//
+        //
         unset($resultado);
 
-//
+        //
         return $salida1;
     }
 
-    public static function consultarSaldoAfiliado($dbx, $matricula) {
+    public static function consultarSaldoAfiliado($dbx, $matricula)
+    {
 
-//
+        //
         $formaCalculoAfiliacion = retornarClaveValor($dbx, '90.01.60');
 
         $salida = array(
@@ -6518,11 +6747,11 @@ class funcionesGenerales {
             'cupo' => 0
         );
 
-//
+        //
         $_SESSION["generales"]["corterenovacion"] = retornarRegistroMysqliApi($dbx, 'mreg_cortes_renovacion', "ano='" . date("Y") . "'", "corte");
         $_SESSION["generales"]["corterenovacionmesdia"] = substr($_SESSION["generales"]["corterenovacion"], 4, 4);
 
-//
+        //
         $arrSerAfil = retornarRegistrosMysqliApi($dbx, "mreg_servicios", "grupoventas='02'", "idservicio");
         $Servicios = "";
         $ServiciosAfiliacion = array();
@@ -6534,13 +6763,13 @@ class funcionesGenerales {
             $ServiciosAfiliacion[] = $ServAfil["idservicio"];
         }
 
-//
+        //
         $arrFecValAfi = retornarRegistroMysqliApi($dbx, 'mreg_est_recibos', "matricula='" . $matricula . "' and servicio in (" . $Servicios . ") and ctranulacion = '0' and (substring(numerorecibo,1,1)='R' or substring(numerorecibo,1,1)='S') order by fecoperacion desc limit 1");
         $salida["valorultpagoafi"] = $arrFecValAfi["valor"];
         $salida["fechaultpagoafi"] = $arrFecValAfi["fecoperacion"];
         unset($arrFecValAfi);
 
-//
+        //
         $detalle = array();
         $iDetalle = 0;
         if (date("md") <= $_SESSION["generales"]["corterenovacionmesdia"]) {
@@ -6563,7 +6792,7 @@ class funcionesGenerales {
             $salida["cupo"] = $inix["cupocargado"] - $inix["cupoconsumido"];
         }
 
-//
+        //
         $arrRecs = retornarRegistrosMysqliApi($dbx, 'mreg_est_recibos', "(matricula='" . $matricula . "') and ctranulacion = '0' and left(numerorecibo,1) IN ('H','G','R','S') and fecoperacion >= '" . $feciniafi . "'", "fecoperacion");
         if ($arrRecs && !empty($arrRecs)) {
             foreach ($arrRecs as $rx) {
@@ -6625,7 +6854,8 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function crearIndex($dir) {
+    public static function crearIndex($dir)
+    {
         if (!is_dir($dir)) {
             mkdir($dir, 0777);
         }
@@ -6659,7 +6889,8 @@ class funcionesGenerales {
      * @param type $arr
      * @return type
      */
-    public static function decodificarUtf8($arr) {
+    public static function decodificarUtf8($arr)
+    {
         $arrSal = array();
         foreach ($arr as $key => $valor) {
             if (is_array($valor)) {
@@ -6673,14 +6904,15 @@ class funcionesGenerales {
         }
         return $arrSal;
     }
-    
+
     /**
      * 
      * @param type $mysqli
      * @param type $xml
      * @return int
      */
-    public static function desserializarExpedienteMatricula($mysqli, $xml) {
+    public static function desserializarExpedienteMatricula($mysqli, $xml)
+    {
 
         $retorno = array();
         $retorno["cc"] = '';
@@ -6713,11 +6945,11 @@ class funcionesGenerales {
         $retorno["prerut"] = '';
         $retorno["nacionalidad"] = '';
 
-// 2017-05-31
+        // 2017-05-31
         $retorno["idetripaiori"] = ''; // Nuevo campo circular 002
         $retorno["paiori"] = ''; // Nuevo campo circular 002
         $retorno["idetriextep"] = ''; // Nuevo campo circular 002
-//
+        //
 
         $retorno["fechamatricula"] = '';
         $retorno["fecmatant"] = '';
@@ -6778,8 +7010,8 @@ class funcionesGenerales {
         $retorno["tipolocal"] = '';
         $retorno["tipogruemp"] = ''; // Nuevo campo circular 002  
         $retorno["nombregruemp"] = ''; // Nuevo campo circular 002  
-//
-// Informacion de ESADL
+        //
+        // Informacion de ESADL
         $retorno["vigcontrol"] = '';
         $retorno["fecperj"] = '';
         $retorno["idorigenperj"] = '';
@@ -6813,7 +7045,7 @@ class funcionesGenerales {
         $retorno["ctresacualdespvictreins"] = ''; // Nuevo campo circular 002     
         $retorno["ctresaindgest"] = ''; // Nuevo campo circular 002     
         $retorno["ctresalgbti"] = ''; // Nuevo campo circular 002     
-// Datos de afiliacion
+        // Datos de afiliacion
         $retorno["afiliado"] = '';
         $retorno["fechaafiliacion"] = '';
         $retorno["ultanorenafi"] = '';
@@ -6834,7 +7066,7 @@ class funcionesGenerales {
         $retorno["fecexafiliacion"] = '';
         $retorno["periodicoafiliados"] = array();
 
-// informacion de ubicacion comercial en el registro mercantil
+        // informacion de ubicacion comercial en el registro mercantil
         $retorno["lggr"] = '';
         $retorno["nombrecomercial"] = '';
         $retorno["dircom"] = '';
@@ -6873,8 +7105,8 @@ class funcionesGenerales {
         $retorno["ctrmen"] = "";
         $retorno["codigopostalcom"] = ''; // Nuevo campo circular 002
         $retorno["codigozonacom"] = ''; // Nuevo campo circular 002 (R/U)
-//
-// informacion de ubicaci&oacute;n de notificacion
+        //
+        // informacion de ubicaci&oacute;n de notificacion
         $retorno["dirnot"] = '';
         $retorno["dirnot_tipovia"] = '';
         $retorno["dirnot_numvia"] = '';
@@ -6915,13 +7147,13 @@ class funcionesGenerales {
         $retorno["codigopostalnot"] = ''; // Nuevo campo circular 002
         $retorno["codigozonanot"] = ''; // Nuevo campo circular 002 (R/U)
         $retorno["tiposedeadm"] = ''; // Nuevo campo circular 002
-// Datos de correspondencia
+        // Datos de correspondencia
         $retorno["dircor"] = '';
         $retorno["telcor"] = '';
         $retorno["telcor2"] = '';
         $retorno["muncor"] = '';
 
-// informacion ed actividad economica
+        // informacion ed actividad economica
         $retorno["ciius"] = array();
         $retorno["ciius"][1] = '';
         $retorno["ciius"][2] = '';
@@ -6941,16 +7173,16 @@ class funcionesGenerales {
         $retorno["feciniact2"] = ''; // Nuevo campo circular 002
         $retorno["ingesperados"] = '';
 
-//
+        //
         $retorno["codrespotri"] = array();
 
-//
+        //
         $retorno["codaduaneros"] = ''; // Nuevo campo circular 002
         $retorno["gruponiif"] = ''; // Nuevo campo circular 002
         $retorno["niifconciliacion"] = ''; // Nuevo campo circular 002
         $retorno["aportantesegsocial"] = ''; // Nuevo campo circular 002
         $retorno["tipoaportantesegsocial"] = ''; // Nuevo campo circular 002
-// informacion de porcentajes de capital
+        // informacion de porcentajes de capital
         $retorno["cap_porcnaltot"] = 0;
         $retorno["cap_porcnalpri"] = 0;
         $retorno["cap_porcnalpub"] = 0;
@@ -6983,7 +7215,7 @@ class funcionesGenerales {
         $retorno["anodatostamanoempresarial"] = '';
         $retorno["fechadatostamanoempresarial"] = '';
 
-// informaci&oacute;n de Establecimientos de comercio asociados
+        // informaci&oacute;n de Establecimientos de comercio asociados
         $retorno["cntestab01"] = 0;
         $retorno["cntestab02"] = 0;
         $retorno["cntestab03"] = 0;
@@ -6996,7 +7228,7 @@ class funcionesGenerales {
         $retorno["cntestab10"] = 0;
         $retorno["cntestab11"] = 0;
 
-// informacion de referencias comerciales y bancarias
+        // informacion de referencias comerciales y bancarias
         $retorno["refcrenom1"] = '';
         $retorno["refcreofi1"] = '';
         $retorno["refcretel1"] = '';
@@ -7010,7 +7242,7 @@ class funcionesGenerales {
         $retorno["refcomdir2"] = '';
         $retorno["refcomtel2"] = '';
 
-// informacion financiera
+        // informacion financiera
         $retorno["anodatos"] = '';
         $retorno["fechadatos"] = '';
         $retorno["personal"] = 0;
@@ -7052,12 +7284,12 @@ class funcionesGenerales {
         $retorno["apotra"] = 0;
         $retorno["patrimonio"] = 0;
 
-// informacion de patrimonios esadl
+        // informacion de patrimonios esadl
         $retorno["anodatospatrimonio"] = '';
         $retorno["fechadatospatrimonio"] = '';
         $retorno["patrimonioesadl"] = 0;
 
-//
+        //
         $retorno["matriculaanterior"] = "";
         $retorno["fecrenant"] = "";
         $retorno["fecmatant"] = "";
@@ -7069,7 +7301,7 @@ class funcionesGenerales {
         $retorno["benley1780ant"] = "";
         $retorno["ctrbic"] = '';
 
-// Campos adicionados en mayo 20 de 2011         
+        // Campos adicionados en mayo 20 de 2011         
         $retorno["ivcenvio"] = '';
         $retorno["ivcsuelos"] = '';
         $retorno["ivcarea"] = 0;
@@ -7079,7 +7311,7 @@ class funcionesGenerales {
         $retorno["ivcqui"] = '';
         $retorno["ivcriesgo"] = '';
 
-// Representacion legal y administracion
+        // Representacion legal y administracion
         $retorno["idtipoidentificacionreplegal"] = '';
         $retorno["identificacionreplegal"] = '';
         $retorno["nombrereplegal"] = '';
@@ -7087,7 +7319,7 @@ class funcionesGenerales {
         $retorno["identificacionadministrador"] = '';
         $retorno["nombreadministrador"] = '';
 
-// Propietarios, establecimientos y sucursales y agencias
+        // Propietarios, establecimientos y sucursales y agencias
         $retorno["cpcodcam"] = '';
         $retorno["cpnummat"] = '';
         $retorno["cprazsoc"] = '';
@@ -7107,21 +7339,21 @@ class funcionesGenerales {
         $retorno["cptelrepleg"] = '';
         $retorno["cpemailrepleg"] = '';
 
-// Campos adicionados en junio 23 de 2014
+        // Campos adicionados en junio 23 de 2014
         $retorno["codigoscae"] = array();
         $arrY = retornarRegistrosMysqliApi($mysqli, 'mreg_anexoscae', "1=1", "codigocae");
         foreach ($arrY as $y) {
             $retorno["codigoscae"][$y["codigocae"]] = '';
         }
 
-//
+        //
         $retorno["informacionadicional"] = array();
         $arrY = retornarRegistrosMysqliApi($mysqli, 'mreg_campos_adicionales_camara', "1=1", "orden");
         foreach ($arrY as $y) {
             $retorno["informacionadicional"][$y["codigoadicional"]] = '';
         }
 
-//
+        //
         $retorno["bienes"] = array();
         $retorno["replegal"] = array();
         $retorno["vinculos"] = array();
@@ -7147,11 +7379,11 @@ class funcionesGenerales {
         $retorno["empsoccategorias_otros"] = '';
         $retorno["empsocbeneficiarios_otros"] = '';
 
-//
+        //
         if (trim($xml) != '') {
             $xml = str_replace("&", "[2]", $xml);
-//$xml = str_replace("[2]amp;", "&", $xml);
-//$xml = str_replace("&amp;", "&", $xml);
+            //$xml = str_replace("[2]amp;", "&", $xml);
+            //$xml = str_replace("&amp;", "&", $xml);
             $dom = new DomDocument('1.0', 'utf-8');
             $result = $dom->loadXML($xml);
             if ($result === false) {
@@ -8121,8 +8353,9 @@ class funcionesGenerales {
                         foreach ($hfs as $hfin) {
                             if (isset($hfin->getElementsByTagName("hf_anodatos")->item(0)->textContent)) {
                                 $ifin++;
-                                if ($retorno["organizacion"] == '01' ||
-                                        ($retorno["organizacion"] > '02' && $retorno["categoria"] == '1')
+                                if (
+                                    $retorno["organizacion"] == '01' ||
+                                    ($retorno["organizacion"] > '02' && $retorno["categoria"] == '1')
                                 ) {
                                     $retorno["hf"][$ifin]["anodatos"] = $hfin->getElementsByTagName("hf_anodatos")->item(0)->textContent;
                                     $retorno["hf"][$ifin]["feccredat"] = $hfin->getElementsByTagName("hf_feccredat")->item(0)->textContent;
@@ -8401,7 +8634,7 @@ class funcionesGenerales {
                             $retorno["replegal"][$i]["emailreplegal"] = '';
                             $retorno["replegal"][$i]["celularreplegal"] = '';
                             if (isset($rep->getElementsByTagName("emailreplegal")->item(0)->textContent)) $retorno["replegal"][$i]["emailreplegal"] = \funcionesGenerales::restaurarEspeciales(trim($rep->getElementsByTagName("emailreplegal")->item(0)->textContent));
-                            if (isset($rep->getElementsByTagName("celularreplegal")->item(0)->textContent)) $retorno["replegal"][$i]["celularreplegal"] = \funcionesGenerales::restaurarEspeciales(trim($rep->getElementsByTagName("emailreplegal")->item(0)->textContent));                            
+                            if (isset($rep->getElementsByTagName("celularreplegal")->item(0)->textContent)) $retorno["replegal"][$i]["celularreplegal"] = \funcionesGenerales::restaurarEspeciales(trim($rep->getElementsByTagName("emailreplegal")->item(0)->textContent));
                             if (isset($rep->getElementsByTagName("cargoreplegal")->item(0)->textContent)) $retorno["replegal"][$i]["cargoreplegal"] = \funcionesGenerales::restaurarEspeciales(trim((string)$rep->getElementsByTagName("cargoreplegal")->item(0)->textContent));
                             if (isset($rep->getElementsByTagName("vinculoreplegal")->item(0)->textContent)) $retorno["replegal"][$i]["vinculoreplegal"] = \funcionesGenerales::restaurarEspeciales(trim((string)$rep->getElementsByTagName("vinculoreplegal")->item(0)->textContent));
                             if (isset($rep->getElementsByTagName("libroreplegal")->item(0)->textContent)) $retorno["replegal"][$i]["libroreplegal"] = \funcionesGenerales::restaurarEspeciales(trim((string)$rep->getElementsByTagName("libroreplegal")->item(0)->textContent));
@@ -8823,11 +9056,13 @@ class funcionesGenerales {
                     if (count($ests) > 0) {
                         foreach ($ests as $est) {
                             if (ltrim($est->getElementsByTagName("matriculaestablecimiento")->item(0)->textContent, '0') != '') {
-                                if ($est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'MA' ||
-                                        $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'MI' ||
-                                        $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'MR' ||
-                                        $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'IA' ||
-                                        $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'II') {
+                                if (
+                                    $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'MA' ||
+                                    $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'MI' ||
+                                    $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'MR' ||
+                                    $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'IA' ||
+                                    $est->getElementsByTagName("estadomatricula")->item(0)->textContent == 'II'
+                                ) {
                                     $i++;
                                     $retorno["establecimientos"][$i]["matriculaestablecimiento"] = ltrim((string)$est->getElementsByTagName("matriculaestablecimiento")->item(0)->textContent, '0');
                                     $retorno["establecimientos"][$i]["nombreestablecimiento"] = (\funcionesGenerales::restaurarEspeciales($est->getElementsByTagName("nombreestablecimiento")->item(0)->textContent));
@@ -8978,7 +9213,8 @@ class funcionesGenerales {
                                 $retorno["lcodigosbarras"][$i]["ntra"] = retornarRegistroMysqliApi($mysqli, 'mreg_tablassirep', "idtabla='01' and idcodigo='" . $retorno["lcodigosbarras"][$i]["ttra"] . "'", "descripcion");
                                 $retorno["lcodigosbarras"][$i]["sist"] = retornarRegistroMysqliApi($mysqli, 'mreg_tablassirep', "idtabla='01' and idcodigo='" . $retorno["lcodigosbarras"][$i]["ttra"] . "'", "tipo");
                                 if (($retorno["lcodigosbarras"][$i]["sist"] == 'ME') || ($retorno["lcodigosbarras"][$i]["sist"] == 'ES') ||
-                                        ($retorno["lcodigosbarras"][$i]["sist"] == 'RM') || ($retorno["lcodigosbarras"][$i]["sist"] == 'RE')) {
+                                    ($retorno["lcodigosbarras"][$i]["sist"] == 'RM') || ($retorno["lcodigosbarras"][$i]["sist"] == 'RE')
+                                ) {
                                     $retorno["lcodigosbarras"][$i]["nesta"] = retornarRegistroMysqliApi($mysqli, 'mreg_tablassirep', "idtabla='80' and idcodigo='" . $retorno["lcodigosbarras"][$i]["esta"] . "'", "descripcion");
                                 }
                                 if ($retorno["lcodigosbarras"][$i]["sist"] == 'PR') {
@@ -9322,30 +9558,42 @@ class funcionesGenerales {
         return $retorno;
     }
 
-    public static function describeEstadoZonaVirtual($codEstado = '') {
+    public static function describeEstadoZonaVirtual($codEstado = '')
+    {
         $msj = '';
         switch ($codEstado) {
-            case 200:$msj = "PAGO INICIADO";
+            case 200:
+                $msj = "PAGO INICIADO";
                 break;
-            case 777:$msj = "PAGO DECLINADO";
+            case 777:
+                $msj = "PAGO DECLINADO";
                 break;
-            case 888:$msj = "PAGO PENDIENTE POR INICIAR";
+            case 888:
+                $msj = "PAGO PENDIENTE POR INICIAR";
                 break;
-            case 999:$msj = "PAGO PENDIENTE POR FINALIZAR";
+            case 999:
+                $msj = "PAGO PENDIENTE POR FINALIZAR";
                 break;
-            case 4001:$msj = "PENDIENTE POR CR";
+            case 4001:
+                $msj = "PENDIENTE POR CR";
                 break;
-            case 4000:$msj = "RECHAZADO CR";
+            case 4000:
+                $msj = "RECHAZADO CR";
                 break;
-            case 4003:$msj = "ERROR CR";
+            case 4003:
+                $msj = "ERROR CR";
                 break;
-            case 1000:$msj = "PAGO RECHAZADO";
+            case 1000:
+                $msj = "PAGO RECHAZADO";
                 break;
-            case 1001:$msj = "ERROR ENTRE ACH Y EL BANCO (RECHAZADA)";
+            case 1001:
+                $msj = "ERROR ENTRE ACH Y EL BANCO (RECHAZADA)";
                 break;
-            case 1002:$msj = "PAGO RECHAZADO";
+            case 1002:
+                $msj = "PAGO RECHAZADO";
                 break;
-            case 1:$msj = "PAGO FINALIZADO OK";
+            case 1:
+                $msj = "PAGO FINALIZADO OK";
                 break;
             default:
                 break;
@@ -9362,8 +9610,9 @@ class funcionesGenerales {
      * @param type $tipotramite
      * @return type
      */
-    public static function desserializarExpedienteProponente($mysqli, $xml, $controlprimeravez = 'no', $proceso = 'llamado directo a desserializarExpedienteProponente', $tipotramite = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales_desserializarExpedienteProponente.php');
+    public static function desserializarExpedienteProponente($mysqli, $xml, $controlprimeravez = 'no', $proceso = 'llamado directo a desserializarExpedienteProponente', $tipotramite = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales_desserializarExpedienteProponente.php');
         return funcionesGenerales_desserializarExpedienteProponente::desserializarExpedienteProponente($mysqli, $xml, $controlprimeravez, $proceso, $tipotramite);
     }
 
@@ -9374,7 +9623,8 @@ class funcionesGenerales {
      * @param type $fecha_secundaria
      * @return int
      */
-    public static function diferenciaEntreFechasHabiles($dbx, $fecha_principal, $fecha_secundaria) {
+    public static function diferenciaEntreFechasHabiles($dbx, $fecha_principal, $fecha_secundaria)
+    {
         $habiles = 0;
         $cals = retornarRegistrosMysqliApi($dbx, "bas_calendario", "fecha>='" . $fecha_secundaria . "' and fecha<='" . $fecha_principal . "'", "fecha");
         foreach ($cals as $c) {
@@ -9392,7 +9642,8 @@ class funcionesGenerales {
      * @param type $fecha_secundaria (Final)
      * @return int
      */
-    public static function diferenciaEntreFechasHabilesSiguiente($dbx, $fecha_principal, $fecha_secundaria) {
+    public static function diferenciaEntreFechasHabilesSiguiente($dbx, $fecha_principal, $fecha_secundaria)
+    {
         $habiles = 0;
         $cals = retornarRegistrosMysqliApi($dbx, "bas_calendario", "fecha> '" . $fecha_secundaria . "' and fecha<='" . $fecha_principal . "'", "fecha");
         foreach ($cals as $c) {
@@ -9402,7 +9653,7 @@ class funcionesGenerales {
         }
         return $habiles;
     }
-    
+
     /**
      * 
      * @param type $fecha_principal
@@ -9411,7 +9662,8 @@ class funcionesGenerales {
      * @param type $redondear
      * @return type
      */
-    public static function diferenciaEntreFechasCalendario($fecha_principal, $fecha_secundaria, $obtener = 'DIAS', $redondear = true) {
+    public static function diferenciaEntreFechasCalendario($fecha_principal, $fecha_secundaria, $obtener = 'DIAS', $redondear = true)
+    {
         $datetime1 = new DateTime(\funcionesGenerales::mostrarFecha($fecha_principal));
         $datetime2 = new DateTime(\funcionesGenerales::mostrarFecha($fecha_secundaria));
         $interval = $datetime2->diff($datetime1);
@@ -9425,7 +9677,8 @@ class funcionesGenerales {
         return $resultado;
     }
 
-    public static function diferenciaEntreFechaBase30($fechafinal, $fechainicial) {
+    public static function diferenciaEntreFechaBase30($fechafinal, $fechainicial)
+    {
         $fechafinal = str_replace(array("-", "/"), "", $fechafinal);
         $fechainicial = str_replace(array("-", "/"), "", $fechainicial);
         $iDias = 0;
@@ -9488,9 +9741,10 @@ class funcionesGenerales {
         return $iDias;
     }
 
-    public static function docToPdf($file_doc, $file_pdf) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function docToPdf($file_doc, $file_pdf)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
         if (!defined('PATH_COMMON_BASE')) {
             define('PATH_COMMON_BASE', '/opt');
         }
@@ -9499,9 +9753,9 @@ class funcionesGenerales {
             return false;
         }
 
-        require_once (PATH_COMMON_BASE . '/commonBase.php');
+        require_once(PATH_COMMON_BASE . '/commonBase.php');
 
-//
+        //
         ini_set('display_errors', '1');
         $session = ssh2_connect('localhost', 22);
         if (!$session) {
@@ -9514,18 +9768,18 @@ class funcionesGenerales {
             return false;
         }
 
-// Encuentra el nombre del archivo sin directorios
+        // Encuentra el nombre del archivo sin directorios
         $lfile = explode('/', $file_doc);
         $extns = count($lfile) - 1;
         $file = $lfile[$extns];
 
-// Si el archivo no existe
+        // Si el archivo no existe
         if (!file_exists($file_doc)) {
             $_SESSION["generales"]["mensajeerror"] = 'No fue encontrado el archivo a convertir a pdf';
             return false;
         }
 
-// Ejecucion del comndo libreoffice desde ssh
+        // Ejecucion del comndo libreoffice desde ssh
         $ntmp = PATH_ABSOLUTO_SITIO . '/tmp/' . $_SESSION["generales"]["codigoempresa"] . '-' . date("Ymd") . '-' . date("His") . '.log';
         ssh2_exec($session, 'libreoffice --headless --invisible --convert-to pdf:writer_pdf_Export -outdir ' . $_SESSION["generales"]["pathabsoluto"] . '/tmp ' . $file_doc . ' > ' . $ntmp);
         if (!file_exists($_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $file)) {
@@ -9538,25 +9792,26 @@ class funcionesGenerales {
         }
 
 
-// Localizaci&oacute;n de la extensi&oacute;n del archivo doc o docx
+        // Localizaci&oacute;n de la extensi&oacute;n del archivo doc o docx
         $ext = \funcionesGenerales::encontrarExtension($file);
 
-// reemplazo de la extensi&oacute;n en el archivo de salida
+        // reemplazo de la extensi&oacute;n en el archivo de salida
         $file = str_replace("." . $ext, ".pdf", $file);
 
-// Cambio de permisos
+        // Cambio de permisos
         ssh2_exec($session, 'chmod 777 ' . $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $file);
         unset($session);
 
-// Copiar el pdf generado al pdf esperado
+        // Copiar el pdf generado al pdf esperado
         copy($_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $file, $file_pdf);
         unlink($_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $file);
 
-// Borrado del pdf generado
+        // Borrado del pdf generado
         return true;
     }
 
-    public static function dumpArreglo($arreglo) {
+    public static function dumpArreglo($arreglo)
+    {
         $txt = '';
         foreach ($arreglo as $key => $valor) {
             if (!is_array($valor)) {
@@ -9595,9 +9850,10 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function generarToken($mysqli = null, $verificar = '', $longitud = 0) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
+    public static function generarToken($mysqli = null, $verificar = '', $longitud = 0)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
         set_error_handler('myErrorHandler');
         if ($longitud < 4) {
             $longitud = 4;
@@ -9632,7 +9888,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function generarAleatorioAlfanumerico($tamano = 6, $sinprimercero = 'si') {
+    public static function generarAleatorioAlfanumerico($tamano = 6, $sinprimercero = 'si')
+    {
         $numrecvalido = 'NO';
         while ($numrecvalido == 'NO') {
             $ok = 'NO';
@@ -9656,7 +9913,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function generarAleatorioNumerico($dbx = null, $validar = '', $sinprimercero = 'si') {
+    public static function generarAleatorioNumerico($dbx = null, $validar = '', $sinprimercero = 'si')
+    {
         $numrecvalido = 'NO';
         while ($numrecvalido == 'NO') {
             $ok = 'NO';
@@ -9687,7 +9945,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function generarAleatorioNumerico2() {
+    public static function generarAleatorioNumerico2()
+    {
         $num = '';
         $alfanumerico = '0123456789';
         for ($i = 1; $i <= 2; $i++) {
@@ -9696,7 +9955,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function generarAleatorioNumerico4() {
+    public static function generarAleatorioNumerico4()
+    {
         $num = '';
         $alfanumerico = '0123456789';
         for ($i = 1; $i <= 4; $i++) {
@@ -9705,7 +9965,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function generarAleatorioAlfanumerico8($dbx, $validar = '', $sinprimercero = 'si') {
+    public static function generarAleatorioAlfanumerico8($dbx, $validar = '', $sinprimercero = 'si')
+    {
         $numrecvalido = 'NO';
         while ($numrecvalido == 'NO') {
             $ok = 'NO';
@@ -9756,7 +10017,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function generarAleatorioAlfanumerico9($sinprimercero = 'si') {
+    public static function generarAleatorioAlfanumerico9($sinprimercero = 'si')
+    {
         $ok = 'NO';
         while ($ok == 'NO') {
             $alfanumerico = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -9776,7 +10038,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function generarAleatorioAlfanumerico10($dbx = null, $validar = '', $grabar = 'no') {
+    public static function generarAleatorioAlfanumerico10($dbx = null, $validar = '', $grabar = 'no')
+    {
         $numrecvalido = 'NO';
         while ($numrecvalido == 'NO') {
             $ok = 'NO';
@@ -9825,7 +10088,7 @@ class funcionesGenerales {
                     $numrecvalido = 'SI';
                 }
             }
-            
+
             if ($validar == 'infraestructura_contratos') {
                 if (contarRegistrosMysqliApi($dbx, 'infraestructura_contratos', "numerorecuperacion='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
@@ -9838,56 +10101,56 @@ class funcionesGenerales {
                 }
             }
 
-//
+            //
             if ($validar == 'infraestructura_clientes') {
                 if (contarRegistrosMysqliApi($dbx, 'infraestructura_clientes', "numerorecuperacion='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
                 }
             }
 
-//
+            //
             if ($validar == 'infraestructura_comentarios') {
                 if (contarRegistrosMysqliApi($dbx, 'infraestructura_comentarios', "numerorecuperacion='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
                 }
             }
 
-//
+            //
             if ($validar == 'mreg_liquidacion_sobre') {
                 if (contarRegistrosMysqliApi($dbx, 'mreg_liquidacion_sobre', "idsobre='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
                 }
             }
 
-//
+            //
             if ($validar == 'mreg_liquidacion') {
                 if (contarRegistrosMysqliApi($dbx, 'mreg_liquidacion', "numerorecuperacion='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
                 }
             }
 
-//
+            //
             if ($validar == 'mreg_liquidacion_baloto') {
                 if (contarRegistrosMysqliApi($dbx, 'mreg_liquidacion_baloto', "volantenumero='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
                 }
             }
 
-//
+            //
             if ($validar == 'mreg_liquidacion_exito') {
                 if (contarRegistrosMysqliApi($dbx, 'mreg_liquidacion_exito', "volantenumero='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
                 }
             }
 
-//
+            //
             if ($validar == 'mreg_reactivaciones_propias') {
                 if (contarRegistrosMysqliApi($dbx, 'mreg_reactivaciones_propias', "codigoreactivacion='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
                 }
             }
 
-//
+            //
             if ($validar == 'mreg_certificados_virtuales') {
                 if (contarRegistrosMysqliApi($dbx, 'mreg_certificados_virtuales', "id='" . $num . "'") == 0) {
                     if ($grabar == 'no') {
@@ -9907,7 +10170,7 @@ class funcionesGenerales {
                 }
             }
 
-//
+            //
             if ($validar == 'mreg_rues_bloque') {
                 if (contarRegistrosMysqliApi($dbx, 'mreg_rues_bloque', "numerorecuperacion='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
@@ -9917,7 +10180,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function generarAleatorioNumerico10($dbx = null, $validar = '', $sinprimercero = 'si') {
+    public static function generarAleatorioNumerico10($dbx = null, $validar = '', $sinprimercero = 'si')
+    {
         $numrecvalido = 'NO';
         while ($numrecvalido == 'NO') {
             $ok = 'NO';
@@ -9968,7 +10232,8 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function generarAleatorioAlfanumerico20($dbx = null, $validar = '', $sinprimercero = 'si') {
+    public static function generarAleatorioAlfanumerico20($dbx = null, $validar = '', $sinprimercero = 'si')
+    {
         $numrecvalido = 'NO';
         while ($numrecvalido == 'NO') {
             $ok = 'NO';
@@ -9990,13 +10255,13 @@ class funcionesGenerales {
             if ($validar == '') {
                 $numrecvalido = 'SI';
             }
-            
+
             if ($validar == 'mreg_liquidacion') {
                 if (contarRegistrosMysqliApi($dbx, 'mreg_liquidacion', "numerorecuperacion='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
                 }
             }
-            
+
             if ($validar == 'desarrollo_iniciativas_comentarios') {
                 if (contarRegistrosMysqliApi($dbx, 'desarrollo_iniciativas_comentarios', "identificador_comentario='" . $num . "'") == 0) {
                     $numrecvalido = 'SI';
@@ -10031,13 +10296,15 @@ class funcionesGenerales {
         return $num;
     }
 
-    public static function grabarArchivo($file, $txt) {
+    public static function grabarArchivo($file, $txt)
+    {
         $f = fopen($file, "w");
         fwrite($f, $txt);
         fclose($f);
     }
 
-    public static function grabarLogGeneral($log, $txt) {
+    public static function grabarLogGeneral($log, $txt)
+    {
         if (!defined('PATH_ABSOLUTO_LOGS') || PATH_ABSOLUTO_LOGS == '') {
             $f = fopen(PATH_ABSOLUTO_SITIO . '/logs/' . $log . '_' . date("Ymd") . '.log', "a");
         } else {
@@ -10047,26 +10314,36 @@ class funcionesGenerales {
         fclose($f);
     }
 
-    public static function homologarDianTipoIdentificacion($dato) {
+    public static function homologarDianTipoIdentificacion($dato)
+    {
         $datosalida = '';
         switch ($dato) {
-            case "1" : $datosalida = '13';
+            case "1":
+                $datosalida = '13';
                 break;
-            case "2" : $datosalida = '31';
+            case "2":
+                $datosalida = '31';
                 break;
-            case "3" : $datosalida = '22';
+            case "3":
+                $datosalida = '22';
                 break;
-            case "4" : $datosalida = '12';
+            case "4":
+                $datosalida = '12';
                 break;
-            case "5" : $datosalida = '41';
+            case "5":
+                $datosalida = '41';
                 break;
-            case "E" : $datosalida = '42';
+            case "E":
+                $datosalida = '42';
                 break;
-            case "R" : $datosalida = '11';
+            case "R":
+                $datosalida = '11';
                 break;
-            case "V" : $datosalida = '47';
+            case "V":
+                $datosalida = '47';
                 break;
-            case "P" : $datosalida = '48';
+            case "P":
+                $datosalida = '48';
                 break;
         }
         return $datosalida;
@@ -10079,7 +10356,8 @@ class funcionesGenerales {
      * @param type $valor
      * @return type
      */
-    public static function homologacionCodigoSII($mysqli, $tipo, $valor) {
+    public static function homologacionCodigoSII($mysqli, $tipo, $valor)
+    {
         $reg = retornarRegistroMysqliApi($mysqli, 'mreg_homologaciones_rue', "trim(id_tabla) like '" . $tipo . "' and trim(cod_rue) like '" . $valor . "'", "cod_cc");
         return trim($reg);
     }
@@ -10090,7 +10368,8 @@ class funcionesGenerales {
      * @param type $servicios
      * @return type
      */
-    public static function homologacion_formatos_codificacionSII($mysqli, $servicios) {
+    public static function homologacion_formatos_codificacionSII($mysqli, $servicios)
+    {
         $n = 1;
         $resultado = 0;
         if (is_array($servicios) && !empty($servicios)) {
@@ -10111,13 +10390,15 @@ class funcionesGenerales {
      * @param type $string
      * @return type
      */
-    public static function isJson($string) {
+    public static function isJson($string)
+    {
         return ((is_string($string) &&
-                (is_object(json_decode($string)) ||
+            (is_object(json_decode($string)) ||
                 is_array(json_decode($string))))) ? true : false;
     }
 
-    public static function jsonPrettyPrint($json) {
+    public static function jsonPrettyPrint($json)
+    {
         $result = '';
         $level = 0;
         $in_quotes = false;
@@ -10139,13 +10420,15 @@ class funcionesGenerales {
                 $in_quotes = !$in_quotes;
             } else if (!$in_quotes) {
                 switch ($char) {
-                    case '}': case ']':
+                    case '}':
+                    case ']':
                         $level--;
                         $ends_line_level = NULL;
                         $new_line_level = $level;
                         break;
 
-                    case '{': case '[':
+                    case '{':
+                    case '[':
                         $level++;
                     case ',':
                         $ends_line_level = $level;
@@ -10155,7 +10438,10 @@ class funcionesGenerales {
                         $post = " ";
                         break;
 
-                    case " ": case "\t": case "\n": case "\r":
+                    case " ":
+                    case "\t":
+                    case "\n":
+                    case "\r":
                         $char = "";
                         $ends_line_level = $new_line_level;
                         $new_line_level = NULL;
@@ -10173,7 +10459,8 @@ class funcionesGenerales {
         return $result;
     }
 
-    public static function limpiarTexto($txt) {
+    public static function limpiarTexto($txt)
+    {
         $txt = preg_replace('/[^._A-Za-z0-9 ]/', ' ', $txt);
         $txt = preg_replace('/[&ntilde;&ntilde;&aacute;&eacute;&iacute;&oacute;&uacute;&aacute;&eacute;&iacute;&oacute;&uacute;]/', ' ', $txt);
         return $txt;
@@ -10184,7 +10471,8 @@ class funcionesGenerales {
      * @param type $id
      * @return string
      */
-    public static function franquicia($id) {
+    public static function franquicia($id)
+    {
         $p_otrosmedios = array("_PSE_");
         $p_banco = array("AV_AV", "AV_BB", "AV_BO", "AV_BP", "T1_BC", "T1_CV");
         $p_visa = array("CR_VE", "CR_VS", "V_VBV");
@@ -10223,7 +10511,8 @@ class funcionesGenerales {
      * 
      * @param type $n
      */
-    public static function forzarDescarga($n) {
+    public static function forzarDescarga($n)
+    {
         if (substr($n, 0, 12) == 'base64encode') {
             $name1 = base64_decode(substr($n, 12));
         } else {
@@ -10279,7 +10568,8 @@ class funcionesGenerales {
      * @param type $ano
      * @return type
      */
-    public static function retornarSalarioMinimoActual($dbx = null, $ano = '') {
+    public static function retornarSalarioMinimoActual($dbx = null, $ano = '')
+    {
         $smlvs = retornarRegistrosMysqliApi($dbx, 'bas_smlv', "1=1", "fecha asc");
         $minimo = 0;
         foreach ($smlvs as $sm) {
@@ -10304,7 +10594,8 @@ class funcionesGenerales {
      * @param type $ano
      * @return type
      */
-    public static function retornarUvbActual($dbx = null, $ano = '') {
+    public static function retornarUvbActual($dbx = null, $ano = '')
+    {
         $smlvs = retornarRegistrosMysqliApi($dbx, 'bas_smlv', "1=1", "fecha asc");
         $uvb = 0;
         foreach ($smlvs as $sm) {
@@ -10329,7 +10620,8 @@ class funcionesGenerales {
      * @param type $pantalla
      * @return string
      */
-    public static function retornarPantallaPredisenada($mysqli, $pantalla = '') {
+    public static function retornarPantallaPredisenada($mysqli, $pantalla = '')
+    {
         $pant = retornarRegistroMysqliApi($mysqli, 'pantallas_propias', "idpantalla='" . $pantalla . "'");
         if ($pant === false || empty($pant)) {
             $pant = retornarRegistroMysqliApi($mysqli, 'bas_pantallas', "idpantalla='" . $pantalla . "'");
@@ -10343,7 +10635,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function FileSizeConvert($bytes) {
+    public static function FileSizeConvert($bytes)
+    {
         $bytes = floatval($bytes);
         $arBytes = array(
             0 => array(
@@ -10378,18 +10671,19 @@ class funcionesGenerales {
         return $result;
     }
 
-    public static function limpiarTextosRedundantes($entrada) {
+    public static function limpiarTextosRedundantes($entrada)
+    {
         if (file_exists($_SESSION["generales"]["pathabsoluto"] . '/api/arrCorrector' . $_SESSION["generales"]["codigoempresa"] . '.php')) {
-            include ($_SESSION["generales"]["pathabsoluto"] . '/api/arrCorrector' . $_SESSION["generales"]["codigoempresa"] . '.php');
+            include($_SESSION["generales"]["pathabsoluto"] . '/api/arrCorrector' . $_SESSION["generales"]["codigoempresa"] . '.php');
         } else {
             if (file_exists($_SESSION["generales"]["pathabsoluto"] . '/arrCorrector' . $_SESSION["generales"]["codigoempresa"] . '.php')) {
-                include ($_SESSION["generales"]["pathabsoluto"] . '/arrCorrector' . $_SESSION["generales"]["codigoempresa"] . '.php');
+                include($_SESSION["generales"]["pathabsoluto"] . '/arrCorrector' . $_SESSION["generales"]["codigoempresa"] . '.php');
             } else {
                 if (file_exists($_SESSION["generales"]["pathabsoluto"] . '/arrCorrector.php')) {
-                    include ($_SESSION["generales"]["pathabsoluto"] . '/arrCorrector.php');
+                    include($_SESSION["generales"]["pathabsoluto"] . '/arrCorrector.php');
                 } else {
                     if (file_exists($_SESSION["generales"]["pathabsoluto"] . '/api/arrCorrector.php')) {
-                        include ($_SESSION["generales"]["pathabsoluto"] . '/api/arrCorrector.php');
+                        include($_SESSION["generales"]["pathabsoluto"] . '/api/arrCorrector.php');
                     } else {
                         $arrFrases = array();
                         $arrCorrector = array();
@@ -10398,10 +10692,10 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         $entrada = str_replace("[10]", "ñ", $entrada);
 
-//
+        //
         $minusculas = 'abcdefghijklmnñopqrstuvwxyzáéíóú';
         $mayusculas = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚ';
 
@@ -10413,15 +10707,15 @@ class funcionesGenerales {
         $c = substr($entrada, 0, 1);
         $entrada = strtoupper($c) . substr($entrada, 1);
 
-//        
+        //        
         foreach ($arrFrases as $ori => $des) {
             $entrada = str_replace($ori, $des, $entrada);
         }
 
-//
+        //
         $salida = '';
 
-//
+        //
         $explode = explode(" ", $entrada);
         if (!empty($explode)) {
             foreach ($explode as $pal) {
@@ -10495,17 +10789,18 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         unset($arrCorrector);
         unset($arrFrases);
 
-//
+        //
         return trim($salida);
     }
 
-    public static function agregarPuntoFinal($entrada) {
+    public static function agregarPuntoFinal($entrada)
+    {
         $salida = trim($entrada);
-// \logApi::general2('puntoFinal', 'Entrada: ', $entrada);
+        // \logApi::general2('puntoFinal', 'Entrada: ', $entrada);
         if (strlen($salida) == 0) {
             return $salida;
         }
@@ -10515,16 +10810,17 @@ class funcionesGenerales {
         if ($c != '.' && $c != ',' && $c != ':') {
             $salida .= '.';
         }
-// \logApi::general2('puntoFinal', 'Salida: ', $salida);
+        // \logApi::general2('puntoFinal', 'Salida: ', $salida);
         return $salida;
     }
 
-    public static function localizarCampoAnterior($mysqli, $mat, $campo) {
+    public static function localizarCampoAnterior($mysqli, $mat, $campo)
+    {
         $salida = '';
         $ano = date("Y");
         $anoinicial = date("Y");
         while ($ano > $anoinicial - 3) {
-// if (existeTablaMysqliApi($mysqli,'mreg_campos_historicos_' . $ano)) {
+            // if (existeTablaMysqliApi($mysqli,'mreg_campos_historicos_' . $ano)) {
             if ($salida == '') {
                 $temx = retornarRegistrosMysqliApi($mysqli, 'mreg_campos_historicos_' . $ano, "matricula='" . $mat . "' and campo='" . $campo . "'", "fecha desc, hora desc");
                 if ($temx && !empty($temx)) {
@@ -10540,7 +10836,7 @@ class funcionesGenerales {
             if ($salida != '') {
                 $ano = 0;
             }
-// }
+            // }
             if ($ano != 0) {
                 $ano = $ano - 1;
             }
@@ -10548,12 +10844,13 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function localizarCampoAnteriorTodos($mysqli, $mat, $campo) {
+    public static function localizarCampoAnteriorTodos($mysqli, $mat, $campo)
+    {
         $salida = array();
         $ano = date("Y");
         $anoinicial = date("Y");
         while ($ano > $anoinicial - 5) {
-// if (existeTablaMysqliApi($mysqli,'mreg_campos_historicos_' . $ano)) {
+            // if (existeTablaMysqliApi($mysqli,'mreg_campos_historicos_' . $ano)) {
             $temx = retornarRegistrosMysqliApi($mysqli, 'mreg_campos_historicos_' . $ano, "matricula='" . $mat . "' and campo='" . $campo . "'", "fecha desc, hora desc");
             if ($temx && !empty($temx)) {
                 foreach ($temx as $tx) {
@@ -10564,7 +10861,7 @@ class funcionesGenerales {
                     }
                 }
             }
-// }
+            // }
             if ($ano != 0) {
                 $ano = $ano - 1;
             }
@@ -10572,15 +10869,16 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function localizarIP() {
+    public static function localizarIP()
+    {
         $ip = '';
 
-//
+        //
         if (isset($_SERVER['REMOTE_ADDR'])) {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
 
-//
+        //
         if ($ip == '') {
             if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
                 $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -10595,7 +10893,8 @@ class funcionesGenerales {
         return $ip;
     }
 
-    public static function localizarLetraCiiu($dbx, $ciiu) {
+    public static function localizarLetraCiiu($dbx, $ciiu)
+    {
         $res = retornarRegistroMysqliApi($dbx, "bas_ciius", "idciiunum='" . $ciiu . "'");
         if ($res === false || empty($res)) {
             return '';
@@ -10604,13 +10903,14 @@ class funcionesGenerales {
         return substr($resultado, 0, 1);
     }
 
-    public static function localizarSmmlv($fecha, $dbx = null) {
+    public static function localizarSmmlv($fecha, $dbx = null)
+    {
 
         $resultado = '';
         $cerrar = 'no';
         if ($dbx === null) {
             $fuente = '';
-            include ($_SESSION ["generales"] ["pathabsoluto"] . '/librerias/funciones/asignaBD.php');
+            include($_SESSION["generales"]["pathabsoluto"] . '/librerias/funciones/asignaBD.php');
             $dbx = new mysqli($dbhost, $dbusuario, $dbpassword, $dbname);
             $cerrar = 'si';
         }
@@ -10628,7 +10928,8 @@ class funcionesGenerales {
         return $resultado;
     }
 
-    public static function montoEscrito($num, $fem = false, $dec = true) {
+    public static function montoEscrito($num, $fem = false, $dec = true)
+    {
         $matuni[2] = "DOS";
         $matuni[3] = "TRES";
         $matuni[4] = "CUATRO";
@@ -10684,7 +10985,7 @@ class funcionesGenerales {
         $matmil[15] = 'DE BILLONES DE TRILLONES';
         $matmil[16] = 'MILLONES DE BILLONES DE TRILLONES';
 
-//Zi hack
+        //Zi hack
         $float = explode('.', $num);
         $num = $float[0];
 
@@ -10761,7 +11062,6 @@ class funcionesGenerales {
             $t = '';
             $n2 = substr($num, 1);
             if ($n2 == '00') {
-                
             } elseif ($n2 < 21) {
                 $t = ' ' . $matuni[(int) $n2];
             } elseif ($n2 < 30) {
@@ -10792,7 +11092,6 @@ class funcionesGenerales {
                 }
             }
             if ($sub == 1) {
-                
             } elseif (!isset($matsub[$sub])) {
                 if ($num == 1) {
                     $t = ' MIL';
@@ -10816,7 +11115,7 @@ class funcionesGenerales {
             $tex = $t . $tex;
         }
         $tex = $neg . substr($tex, 1) . $fin;
-//Zi hack --> return ucfirst($tex);
+        //Zi hack --> return ucfirst($tex);
         if (!isset($float[1])) {
             $float[1] = 0;
         }
@@ -10838,13 +11137,14 @@ class funcionesGenerales {
      * @param type $textoemergente
      * @return type
      */
-    public static function mostrarCuerpoBootstrap($scripth = '', $scriptb = '', $scriptbend = '', $tittle = '', $showtittle = 'no', $body = '', $image = '', $plantilla = '', $salida = 'echo', $textoemergente = '') {
+    public static function mostrarCuerpoBootstrap($scripth = '', $scriptb = '', $scriptbend = '', $tittle = '', $showtittle = 'no', $body = '', $image = '', $plantilla = '', $salida = 'echo', $textoemergente = '')
+    {
 
         if (!isset($_SESSION["generales"]["codigousuario"])) {
             $_SESSION["generales"]["codigousuario"] = '';
         }
 
-//
+        //
         if ($plantilla == '') {
             $plantilla = 'plantillaVaciaHttp.html';
         }
@@ -10855,13 +11155,13 @@ class funcionesGenerales {
             ]
         ];
 
-//
-// if (!defined('TIPO_HTTP')) {
+        //
+        // if (!defined('TIPO_HTTP')) {
         $pant = file_get_contents($_SESSION["generales"]["pathabsoluto"] . '/bootstrap/' . $plantilla, true);
-// } else {
-//    $pant = file_get_contents(TIPO_HTTP . HTTP_HOST . '/bootstrap/' . $plantilla, true, stream_context_create($stream_opts));
-// }
-//
+        // } else {
+        //    $pant = file_get_contents(TIPO_HTTP . HTTP_HOST . '/bootstrap/' . $plantilla, true, stream_context_create($stream_opts));
+        // }
+        //
         $pant = str_replace("[LOGO_SISTEMA]", LOGO_SISTEMA, $pant);
         $pant = str_replace("[SYSTEMNAME]", NOMBRE_SISTEMA, $pant);
         $pant = str_replace("[COUNTRYCOMPANYSOFTWARE]", PAIS_CASA_SOFTWARE, $pant);
@@ -10883,7 +11183,7 @@ class funcionesGenerales {
             $pant = str_replace("[TIPOHTTP]", TIPO_HTTP, $pant);
             $pant = str_replace("[HTTPHOST]", HTTP_HOST, $pant);
         }
-// $pant = str_replace("[IMAGE_BACKGROUND]", $image, $pant);
+        // $pant = str_replace("[IMAGE_BACKGROUND]", $image, $pant);
         if (isset($_SESSION["generales"]["txtemergente"]) && $_SESSION["generales"]["txtemergente"] != '') {
             $pant = str_replace("[TITULOEMERGENTE]", '!!! ATENCION !!!', $pant);
             $pant = str_replace("[MENSAJEEMERGENTE]", $_SESSION["generales"]["txtemergente"], $pant);
@@ -10923,7 +11223,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function mostrarCuerpoBootstrapSimple($scripth = '', $scriptb = '', $scriptbend = '', $tittle = '', $showtittle = 'no', $body = '', $image = '', $plantilla = '') {
+    public static function mostrarCuerpoBootstrapSimple($scripth = '', $scriptb = '', $scriptbend = '', $tittle = '', $showtittle = 'no', $body = '', $image = '', $plantilla = '')
+    {
 
         if (!isset($_SESSION["generales"]["codigousuario"])) {
             $_SESSION["generales"]["codigousuario"] = '';
@@ -10981,14 +11282,15 @@ class funcionesGenerales {
         echo $pant;
     }
 
-    public static function mostrarCuerpoConsultaVirtual($scripth = '', $scriptb = '', $txtbarra = '', $txt = '', $width = 800, $height = 400) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/template.class.php');
+    public static function mostrarCuerpoConsultaVirtual($scripth = '', $scriptb = '', $txtbarra = '', $txt = '', $width = 800, $height = 400)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/template.class.php');
 
         $cantipen = 0;
         $cantinue = 0;
-        $pant = new template ();
+        $pant = new template();
         $pant->LoadTemplate($_SESSION["generales"]["pathabsoluto"] . '/html/default/cve.html');
         $pant->armarScriptHeader($scripth);
         $pant->armarScriptBody($scriptb);
@@ -11039,7 +11341,8 @@ class funcionesGenerales {
      * @param type $fec
      * @return string En formato AAAA-MM-DD
      */
-    public static function mostrarFecha($fec) {
+    public static function mostrarFecha($fec)
+    {
         if ((trim((string) $fec) == '') || (ltrim((string) $fec, "0") == '')) {
             return '';
         }
@@ -11056,7 +11359,8 @@ class funcionesGenerales {
      * @param type $fec
      * @return string en formatp DD-MM-AAAA
      */
-    public static function mostrarFechaDDMMYYYY($fec) {
+    public static function mostrarFechaDDMMYYYY($fec)
+    {
         if ((trim($fec) == '') || (ltrim($fec, "0") == '')) {
             return '';
         }
@@ -11073,7 +11377,8 @@ class funcionesGenerales {
      * @param type $fec
      * @return string En formato DD/MM/AAAA
      */
-    public static function mostrarFecha2($fec) {
+    public static function mostrarFecha2($fec)
+    {
         if ((trim($fec) == '') || (ltrim($fec, "0") == '')) {
             return '';
         }
@@ -11088,7 +11393,8 @@ class funcionesGenerales {
      * @param type $fec
      * @return string
      */
-    public static function mostrarDDMMAAAA($fec) {
+    public static function mostrarDDMMAAAA($fec)
+    {
         if ((trim($fec) == '') || (ltrim($fec, "0") == '')) {
             return '';
         }
@@ -11098,7 +11404,8 @@ class funcionesGenerales {
         return substr($fec, 6, 2) . '-' . substr($fec, 4, 2) . '-' . substr($fec, 0, 4);
     }
 
-    public static function mostrarFechaLetras($fec) {
+    public static function mostrarFechaLetras($fec)
+    {
         if (trim($fec) == '') {
             return '';
         }
@@ -11109,29 +11416,41 @@ class funcionesGenerales {
         $txt = '';
         $mes = substr($fec, 4, 2);
         switch ($mes) {
-            case "01": $txt = 'enero';
+            case "01":
+                $txt = 'enero';
                 break;
-            case "02": $txt = 'febrero';
+            case "02":
+                $txt = 'febrero';
                 break;
-            case "03": $txt = 'marzo';
+            case "03":
+                $txt = 'marzo';
                 break;
-            case "04": $txt = 'abril';
+            case "04":
+                $txt = 'abril';
                 break;
-            case "05": $txt = 'mayo';
+            case "05":
+                $txt = 'mayo';
                 break;
-            case "06": $txt = 'junio';
+            case "06":
+                $txt = 'junio';
                 break;
-            case "07": $txt = 'julio';
+            case "07":
+                $txt = 'julio';
                 break;
-            case "08": $txt = 'agosto';
+            case "08":
+                $txt = 'agosto';
                 break;
-            case "09": $txt = 'septiembre';
+            case "09":
+                $txt = 'septiembre';
                 break;
-            case "10": $txt = 'octubre';
+            case "10":
+                $txt = 'octubre';
                 break;
-            case "11": $txt = 'noviembre';
+            case "11":
+                $txt = 'noviembre';
                 break;
-            case "12": $txt = 'diciembre';
+            case "12":
+                $txt = 'diciembre';
                 break;
         }
         if (strlen($fec) == 6) {
@@ -11141,7 +11460,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function mostrarFechaLetras1($fec) {
+    public static function mostrarFechaLetras1($fec)
+    {
         if (trim($fec) == '') {
             return '';
         }
@@ -11152,29 +11472,41 @@ class funcionesGenerales {
         $txt = '';
         $mes = substr($fec, 4, 2);
         switch ($mes) {
-            case "01": $txt = 'enero';
+            case "01":
+                $txt = 'enero';
                 break;
-            case "02": $txt = 'febrero';
+            case "02":
+                $txt = 'febrero';
                 break;
-            case "03": $txt = 'marzo';
+            case "03":
+                $txt = 'marzo';
                 break;
-            case "04": $txt = 'abril';
+            case "04":
+                $txt = 'abril';
                 break;
-            case "05": $txt = 'mayo';
+            case "05":
+                $txt = 'mayo';
                 break;
-            case "06": $txt = 'junio';
+            case "06":
+                $txt = 'junio';
                 break;
-            case "07": $txt = 'julio';
+            case "07":
+                $txt = 'julio';
                 break;
-            case "08": $txt = 'agosto';
+            case "08":
+                $txt = 'agosto';
                 break;
-            case "09": $txt = 'septiembre';
+            case "09":
+                $txt = 'septiembre';
                 break;
-            case "10": $txt = 'octubre';
+            case "10":
+                $txt = 'octubre';
                 break;
-            case "11": $txt = 'noviembre';
+            case "11":
+                $txt = 'noviembre';
                 break;
-            case "12": $txt = 'diciembre';
+            case "12":
+                $txt = 'diciembre';
                 break;
         }
         if (strlen($fec) == 6) {
@@ -11185,7 +11517,8 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function mostrarHora($dat) {
+    public static function mostrarHora($dat)
+    {
         $dat = str_replace(":", "", (string) $dat);
         if ((trim((string) $dat) == '') || (ltrim((string) $dat, "0") == '')) {
             return '';
@@ -11202,10 +11535,11 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function mostrarInicialNueva($txterror = '', $tipo = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php');
+    public static function mostrarInicialNueva($txterror = '', $tipo = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/presentacion.class.php');
         if (!isset($_SESSION["generales"]["codigoempresa"])) {
             $_SESSION["generales"]["codigoempresa"] = '';
             $xml = simplexml_load_file($_SESSION["generales"]["pathabsoluto"] . '/configuracion/empresas.php');
@@ -11222,7 +11556,7 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         if (!defined('NOMBRE_SISTEMA1')) {
             (define('NOMBRE_SISTEMA1', ''));
         }
@@ -11239,7 +11573,7 @@ class funcionesGenerales {
             (define('DECLARACION_PRIVACIDAD', ''));
         }
 
-//
+        //
 
         if (isset($_SERVER["HTTPS"])) {
             $tipohttp = 'https://';
@@ -11247,7 +11581,7 @@ class funcionesGenerales {
             $tipohttp = 'http://';
         }
 
-//
+        //
         $lista = \funcionesGenerales::retornarListaXmlEmpresas('', $_SERVER["HTTP_HOST"]);
         $lista1 = \funcionesGenerales::retornarListaXmlEmpresas('', $_SERVER["HTTP_HOST"]);
         $lista2 = \funcionesGenerales::retornarListaXmlEmpresas('', $_SERVER["HTTP_HOST"]);
@@ -11267,17 +11601,17 @@ class funcionesGenerales {
         $pres = new presentacionBootstrap();
         $random = rand(1000, 10000);
         $cuerpo = $pres->armarCampoTextoOculto('_tipohttp', TIPO_HTTP) .
-                $pres->armarCampoTextoOculto('_httphost', HTTP_HOST) .
-                $pres->armarCampoTextoOculto('session_parameters', \funcionesGenerales::armarVariablesPantalla()) .
-                $pres->abrirPanelGeneral(600) .
-                $pres->armarEncabezado(NOMBRE_SISTEMA1, 'Ingreso') .
-                '<br>';
+            $pres->armarCampoTextoOculto('_httphost', HTTP_HOST) .
+            $pres->armarCampoTextoOculto('session_parameters', \funcionesGenerales::armarVariablesPantalla()) .
+            $pres->abrirPanelGeneral(600) .
+            $pres->armarEncabezado(NOMBRE_SISTEMA1, 'Ingreso') .
+            '<br>';
 
         $txt = 'Bienvenido al portal de servicios virtuales, por favor seleccione la empresa en la cual desea ingresar e indique los datos de su usuario para ingresar';
         $cuerpo .= $pres->abrirPanel() .
-                $pres->armarLineaTextoInformativa($txt, 'center', '', 'text-dark', '', 'si') .
-                $pres->cerrarPanel() .
-                '<br>';
+            $pres->armarLineaTextoInformativa($txt, 'center', '', 'text-dark', '', 'si') .
+            $pres->cerrarPanel() .
+            '<br>';
 
         if (!isset($_SESSION["generales"]["controlusuariorutina"])) {
             $_SESSION["generales"]["controlusuariorutina"] = '';
@@ -11286,25 +11620,25 @@ class funcionesGenerales {
             $_SESSION["generales"]["controlusuarioretornara"] = '';
         }
         $cuerpo .= $pres->abrirPanel() .
-                $pres->armarLineaTextoInformativa('Ingresar como usuario interno o previamente registrado.', 'center', '', 'text-dark', '', 'si') .
-                $pres->abrirFormulario('formEntrada', 'post', TIPO_HTTP . HTTP_HOST . '/disparador.php?accion=logueousuarioregistrado') .
-                $pres->armarCampoSelect('Empresa', 'si', '_empresa', $_SESSION["generales"]["codigoempresa"], $lista) .
-                $pres->armarCampoTexto('Correo electrónico o usuario', 'si', '_emailUsuarioRegistrado', '') .
-                $pres->armarCampoTexto('Identificación', 'si', '_identificacionUsuarioRegistrado', '') .
-                $pres->armarCampoPassword('Clave', 'si', '_claveUsuarioRegistrado_' . $random) .
-                $pres->armarCampoTextoOculto('_random', $random) .
-                $pres->armarCampoTextoOculto('_periodo', date("Y")) .
-                $pres->armarCampoTextoOculto('_tipohttp', TIPO_HTTP) .
-                $pres->armarCampoTextoOculto('_httphost', HTTP_HOST) .
-                $pres->armarCampoTextoOculto('_controlusuariorutina', $_SESSION["generales"]["controlusuariorutina"]) .
-                $pres->armarCampoTextoOculto('_controlusuarioretornara', $_SESSION["generales"]["controlusuarioretornara"]) .
-                '<br>' .
-                $pres->armarBotonDinamico('submit', 'Ingresar', 'Ingresar al sistema de información') .
-                $pres->cerrarFormulario() .
-                $pres->cerrarPanel() .
-                // '<br>' .
-                '<a href="disparador.php?accion=formularioregistro&session_parameters=' . \funcionesGenerales::armarVariablesPantalla() . '">Registrarse</a></br>' .
-                '<a href="disparador.php?accion=formulariorecordarcontrasena&session_parameters=' . \funcionesGenerales::armarVariablesPantalla() . '">Recordar contraseña</a></br>';
+            $pres->armarLineaTextoInformativa('Ingresar como usuario interno o previamente registrado.', 'center', '', 'text-dark', '', 'si') .
+            $pres->abrirFormulario('formEntrada', 'post', TIPO_HTTP . HTTP_HOST . '/disparador.php?accion=logueousuarioregistrado') .
+            $pres->armarCampoSelect('Empresa', 'si', '_empresa', $_SESSION["generales"]["codigoempresa"], $lista) .
+            $pres->armarCampoTexto('Correo electrónico o usuario', 'si', '_emailUsuarioRegistrado', '') .
+            $pres->armarCampoTexto('Identificación', 'si', '_identificacionUsuarioRegistrado', '') .
+            $pres->armarCampoPassword('Clave', 'si', '_claveUsuarioRegistrado_' . $random) .
+            $pres->armarCampoTextoOculto('_random', $random) .
+            $pres->armarCampoTextoOculto('_periodo', date("Y")) .
+            $pres->armarCampoTextoOculto('_tipohttp', TIPO_HTTP) .
+            $pres->armarCampoTextoOculto('_httphost', HTTP_HOST) .
+            $pres->armarCampoTextoOculto('_controlusuariorutina', $_SESSION["generales"]["controlusuariorutina"]) .
+            $pres->armarCampoTextoOculto('_controlusuarioretornara', $_SESSION["generales"]["controlusuarioretornara"]) .
+            '<br>' .
+            $pres->armarBotonDinamico('submit', 'Ingresar', 'Ingresar al sistema de información') .
+            $pres->cerrarFormulario() .
+            $pres->cerrarPanel() .
+            // '<br>' .
+            '<a href="disparador.php?accion=formularioregistro&session_parameters=' . \funcionesGenerales::armarVariablesPantalla() . '">Registrarse</a></br>' .
+            '<a href="disparador.php?accion=formulariorecordarcontrasena&session_parameters=' . \funcionesGenerales::armarVariablesPantalla() . '">Recordar contraseña</a></br>';
 
         unset($pres);
         $head = '<script type="text/javascript" src="' . TIPO_HTTP . HTTP_HOST . '/js/disparador.js"></script>';
@@ -11312,9 +11646,10 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function mostrarMovil($titulo = '', $txterror = '', $cuerpo = '', $scripth = '', $scriptb = '', $sombra = '', $principal = 'no') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/template.class.php');
+    public static function mostrarMovil($titulo = '', $txterror = '', $cuerpo = '', $scripth = '', $scriptb = '', $sombra = '', $principal = 'no')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/template.class.php');
         if (!defined('NOMBRE_SISTEMA1')) {
             (define('NOMBRE_SISTEMA1', ''));
         }
@@ -11331,10 +11666,10 @@ class funcionesGenerales {
             (define('DECLARACION_PRIVACIDAD', ''));
         }
 
-//
-        $pant = new template ();
+        //
+        $pant = new template();
 
-// if (isset($_SERVER["https"])) {
+        // if (isset($_SERVER["https"])) {
         if (TIPO_HTTP == 'https://') {
             $pant->LoadTemplate($_SESSION["generales"]["pathabsoluto"] . '/bootstrap/mobileHttps.html');
         } else {
@@ -11376,7 +11711,7 @@ class funcionesGenerales {
             $_SESSION["generales"]["tipodispositivo"] = 'tablet';
         }
         $pant->armarTipoDispositivo($_SESSION["generales"]["tipodispositivo"]);
-// $pant->armarSelectAnos($txtanos);
+        // $pant->armarSelectAnos($txtanos);
         $pant->armarSelectAnos('');
         $pant->armarEstilo();
         $pant->armarMostrarSombra($sombra);
@@ -11388,7 +11723,8 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function mostrarNit($nit) {
+    public static function mostrarNit($nit)
+    {
         if ($nit != 0) {
             $nit = str_replace(array(",", "-", "."), "", $nit);
             $nit = sprintf("%016s", $nit);
@@ -11399,7 +11735,8 @@ class funcionesGenerales {
         return $nit1;
     }
 
-    public static function mostrarPesos2($var) {
+    public static function mostrarPesos2($var)
+    {
         if (trim((string) $var) == '') {
             return "-o-";
         }
@@ -11409,7 +11746,8 @@ class funcionesGenerales {
         return "$" . number_format($var, 2, ",", ".");
     }
 
-    public static function mostrarPesos2SinAmpersand($var) {
+    public static function mostrarPesos2SinAmpersand($var)
+    {
         if (trim((string) $var) == '') {
             return "-o-";
         }
@@ -11419,7 +11757,8 @@ class funcionesGenerales {
         return number_format($var, 2, ",", ".");
     }
 
-    public static function mostrarSmmlv2($var) {
+    public static function mostrarSmmlv2($var)
+    {
         if (trim((string) $var) == '') {
             return "-o-";
         }
@@ -11429,7 +11768,8 @@ class funcionesGenerales {
         return "SMMLV. " . number_format($var, 2, ",", ".");
     }
 
-    public static function mostrarNumero2($var) {
+    public static function mostrarNumero2($var)
+    {
         if (ltrim((string) $var, "0") == '') {
             return "-o-";
         }
@@ -11439,7 +11779,8 @@ class funcionesGenerales {
         return number_format($var, 2);
     }
 
-    public static function mostrarNumero2simple($var) {
+    public static function mostrarNumero2simple($var)
+    {
         if (ltrim($var, "0") == '') {
             return "0";
         }
@@ -11449,7 +11790,8 @@ class funcionesGenerales {
         return number_format($var, 2, ".", "");
     }
 
-    public static function mostrarPantallaPredisenada($pantalla) {
+    public static function mostrarPantallaPredisenada($pantalla)
+    {
         $txt = \funcionesGenerales::cambiarSustitutoHtml(retornarPantallaPredisenadaMysqliApi(null, $pantalla));
         $txt = str_replace("[EMAIL_ATENCION_USUARIOS]", EMAIL_ATENCION_USUARIOS, $txt);
         $txt = str_replace("[NOMBRE_ENTIDAD]", RAZONSOCIAL, $txt);
@@ -11458,24 +11800,25 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function mostrarPrincipal($scripth = '', $scriptb = '', $user1 = '') {
+    public static function mostrarPrincipal($scripth = '', $scriptb = '', $user1 = '')
+    {
 
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/librerias/presentacion/template.class.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/librerias/presentacion/template.class.php');
 
-//
-        $pant = new template ();
+        //
+        $pant = new template();
         $pant->LoadTemplate($_SESSION["generales"]["pathabsoluto"] . '/html/default/principal-2U-5.html');
 
-//
+        //
         if (DHTMLX_ACTUAL == '') {
             $pant->armarDhtmlxActual('2.6');
         } else {
             $pant->armarDhtmlxActual(DHTMLX_ACTUAL);
         }
 
-//
+        //
         $pant->armarScriptHeader($scripth);
         $pant->armarScriptBody($scriptb);
         $pant->armarBarraOpciones($user1);
@@ -11484,14 +11827,16 @@ class funcionesGenerales {
         $pant->armarFrameSecundarioLateral('');
         $pant->armarFrameSecundarioCentral('');
 
-//
+        //
         if (!defined('ACTIVADO_MODULO_SUSCRIPCIONES')) {
             define('ACTIVADO_MODULO_SUSCRIPCIONES', 'N');
         }
 
-        if (substr(TIPO_EMPRESA, 0, 3) == 'cam' ||
-                substr(TIPO_EMPRESA1, 0, 3) == 'cam' ||
-                substr(TIPO_EMPRESA2, 0, 3) == 'cam') {
+        if (
+            substr(TIPO_EMPRESA, 0, 3) == 'cam' ||
+            substr(TIPO_EMPRESA1, 0, 3) == 'cam' ||
+            substr(TIPO_EMPRESA2, 0, 3) == 'cam'
+        ) {
             $pant->armarCuerpoInicial(TIPO_HTTP . HTTP_HOST . '/librerias/proceso/mregConsultaExpedientes.php?accion=seleccion');
         } else {
             if (strpos(WWW_ENTIDAD, 'http')) {
@@ -11501,7 +11846,7 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         $pant->armarDate();
         $pant->armarSesion();
         $pant->armarHttpHost(HTTP_HOST);
@@ -11559,7 +11904,8 @@ class funcionesGenerales {
      * @param unknown_type $dec_point
      * @param unknown_type $thousands_sep
      */
-    public static function my_number_format($number, $dec_point, $thousands_sep = '') {
+    public static function my_number_format($number, $dec_point, $thousands_sep = '')
+    {
         $was_neg = $number < 0; // Because +0 == -0
         $number = abs($number);
 
@@ -11585,7 +11931,8 @@ class funcionesGenerales {
      * Retorna el float de un numero, sea esta positivo o negativo
      * @param unknown_type $number
      */
-    public static function my_number($number) {
+    public static function my_number($number)
+    {
         $number = trim($number);
         if (trim($number) == '') {
             return 0;
@@ -11610,15 +11957,20 @@ class funcionesGenerales {
             list($ent, $dec) = explode(".", $number);
         }
         switch (strlen($dec)) {
-            case 0: $decn = 0;
+            case 0:
+                $decn = 0;
                 break;
-            case 1: $decn = $dec / 10;
+            case 1:
+                $decn = $dec / 10;
                 break;
-            case 2: $decn = $dec / 100;
+            case 2:
+                $decn = $dec / 100;
                 break;
-            case 3: $decn = $dec / 1000;
+            case 3:
+                $decn = $dec / 1000;
                 break;
-            case 4: $decn = $dec / 10000;
+            case 4:
+                $decn = $dec / 10000;
                 break;
         }
         $numbern = 0;
@@ -11629,7 +11981,8 @@ class funcionesGenerales {
         return $numbern;
     }
 
-    public static function my_number1($number) {
+    public static function my_number1($number)
+    {
         $number = trim($number);
         if (trim($number) == '') {
             return 0;
@@ -11642,15 +11995,20 @@ class funcionesGenerales {
         $decn = 0;
         list($ent, $dec) = explode(".", $number);
         switch (strlen($dec)) {
-            case 0: $decn = 0;
+            case 0:
+                $decn = 0;
                 break;
-            case 1: $decn = $dec / 10;
+            case 1:
+                $decn = $dec / 10;
                 break;
-            case 2: $decn = $dec / 100;
+            case 2:
+                $decn = $dec / 100;
                 break;
-            case 3: $decn = $dec / 1000;
+            case 3:
+                $decn = $dec / 1000;
                 break;
-            case 4: $decn = $dec / 1000;
+            case 4:
+                $decn = $dec / 1000;
                 break;
         }
         $numbern = 0;
@@ -11660,7 +12018,8 @@ class funcionesGenerales {
         return $numbern;
     }
 
-    public static function obtenerNavegador() {
+    public static function obtenerNavegador()
+    {
         $user_agent = getenv("HTTP_USER_AGENT");
         // if (!isset($_SERVER['HTTP_USER_AGENT'])) {
         //    return "Other";
@@ -11686,13 +12045,15 @@ class funcionesGenerales {
             return 'Other';
     }
 
-    public function obtenerNombrePDF($url) {
+    public function obtenerNombrePDF($url)
+    {
         $f = explode("/", $url);
         $arch = $f[count($f) - 1];
         return $arch;
     }
 
-    public static function ocultarIdentificacion($ide) {
+    public static function ocultarIdentificacion($ide)
+    {
         $idex = '**********';
         if (ltrim(trim($ide), "0") != '') {
             $len = strlen($ide);
@@ -11703,7 +12064,8 @@ class funcionesGenerales {
         return $idex;
     }
 
-    public static function ordenarMatriz($arreglo, $campo, $inverse = false) {
+    public static function ordenarMatriz($arreglo, $campo, $inverse = false)
+    {
         $position = array();
         $newRow = array();
         foreach ($arreglo as $key => $row) {
@@ -11722,7 +12084,8 @@ class funcionesGenerales {
         return $returnArray;
     }
 
-    public static function parsearOracion($txt) {
+    public static function parsearOracion($txt)
+    {
 
         //
         if ($txt == '') {
@@ -11774,15 +12137,15 @@ class funcionesGenerales {
             }
             $itot++;
         }
-        
+
         // Si no hay mayúsculas, no convierte
         if ($imay == 0) {
             unset($ar);
             return $txt;
         }
-        
+
         // si las minúsculas son más del 10% del texto, no convierte.
-        if ($imin > ($itot*0.1)) {
+        if ($imin > ($itot * 0.1)) {
             unset($ar);
             return $txt;
         }
@@ -11844,9 +12207,10 @@ class funcionesGenerales {
         return $txtsalida;
     }
 
-    public static function parsearOracionNoticia($txt) {
+    public static function parsearOracionNoticia($txt)
+    {
 
-//
+        //
         if ($txt == '') {
             return $txt;
         }
@@ -11876,12 +12240,12 @@ class funcionesGenerales {
         $txt = str_replace("&NBSP;", " ", $txt);
         $txt = str_replace("&AMP;NBSP;", " ", $txt);
 
-//
-// $minusculas = '1234567890abcdefghijklmnñopqrstuvwxyzáéíóú ()%&$#.,-_+?*';
+        //
+        // $minusculas = '1234567890abcdefghijklmnñopqrstuvwxyzáéíóú ()%&$#.,-_+?*';
         $minusculas = 'abcdefghijklmnopqrstuvwxy';
         $mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-//
+        //
         $ar = str_split($txt);
         $imay = 0;
         $imin = 0;
@@ -11898,7 +12262,7 @@ class funcionesGenerales {
             return $txt;
         }
 
-        
+
         $limpia = "";
         $parts = array();
         $parts = explode(" ", $txt);
@@ -11919,7 +12283,7 @@ class funcionesGenerales {
         $ca2 = '';
         $ca3 = '';
 
-//
+        //
         $caractersiguiente = true;
         while ($fin == 'no') {
             $c = mb_substr($txt, $i, 1, 'UTF-8');
@@ -11945,18 +12309,20 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         return $txtsalida;
     }
 
-    public static function parteEntera($valor) {
+    public static function parteEntera($valor)
+    {
         $tem = explode(".", (string) $valor);
         return $tem[0];
     }
 
-    public static function programarAlertaTemprana($dbx, $tiporegistro, $liquidacion, $matricula, $proponente, $tipotramite) {
+    public static function programarAlertaTemprana($dbx, $tiporegistro, $liquidacion, $matricula, $proponente, $tipotramite)
+    {
 
-//
+        //
         if ($_SESSION["generales"]["tipousuario"] == '00' || $_SESSION["generales"]["tipousuario"] == '06') {
             if (trim($_SESSION["generales"]["emailusuariocontrol"]) != '') {
                 $resEmail = retornarRegistroMysqliApi($dbx, 'mreg_email_excluidos_alertas_tempranas', "email='" . $_SESSION["generales"]["emailusuariocontrol"] . "'");
@@ -12062,9 +12428,10 @@ class funcionesGenerales {
         }
     }
 
-    public static function procesarSega($sega, $file, $extension = '', $extension1 = '', $extension2 = '', $extension3 = '', $extension4 = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+    public static function procesarSega($sega, $file, $extension = '', $extension1 = '', $extension2 = '', $extension3 = '', $extension4 = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
         if (!defined('ACTIVADO_SEGA')) {
             define('ACTIVADO_SEGA', 'SEGA-RM');
         }
@@ -12077,10 +12444,11 @@ class funcionesGenerales {
         return $res;
     }
 
-    public static function procesarSegaRm($sega, $file, $extension, $extension1, $extension2, $extension3, $extension4) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function procesarSegaRm($sega, $file, $extension, $extension1, $extension2, $extension3, $extension4)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
         if ($sega["conexion"] == 'no') {
             $_SESSION["generales"]["mensajeerror"] = 'No hay sega configurado, no se puede ejecutar la opci&oacute;n';
             return false;
@@ -12101,8 +12469,8 @@ class funcionesGenerales {
             define('NET_SSH2_LOGGING', NET_SSH2_LOG_COMPLEX);
         }
 
-// define('NET_SSH2_LOGGING', NET_SSH2_LOG_SIMPLE);
-// Establece la conexi&oacute;n sftp
+        // define('NET_SSH2_LOGGING', NET_SSH2_LOG_SIMPLE);
+        // Establece la conexi&oacute;n sftp
         try {
             $sftp1 = new Net_SFTP($sega["host"], $sega["port"]);
         } catch (Exception $e) {
@@ -12110,16 +12478,16 @@ class funcionesGenerales {
             return false;
         }
 
-// Autentica la conexi&oacute;n sftp
+        // Autentica la conexi&oacute;n sftp
         if (!$sftp1->login($sega["user"], $sega["password"])) {
             \logApi::general2('rmcobol', '', $sftp1->getLog());
-// unset ($sftp1);
+            // unset ($sftp1);
             $_SESSION["generales"]["mensajeerror"] = 'sftp: No fue posible conectarse al servidor SEGA : ' . $sftp1->getLog();
             unset($sftp1);
             return false;
         }
 
-// Cambia el directorio
+        // Cambia el directorio
         if (!$sftp1->chdir($sega["path"] . '/data')) {
             if (!$sftp1->mkdir($sega["path"] . '/data')) {
                 $_SESSION["generales"]["mensajeerror"] = 'sftp: No fue posible ubicarse en el directorio ' . $sega["path"] . ' del servidor SEGA';
@@ -12127,35 +12495,35 @@ class funcionesGenerales {
             }
         }
 
-// Carga el archivo de parametros el servidor sftp
+        // Carga el archivo de parametros el servidor sftp
         if (!$sftp1->put($file, '../../tmpmig/' . $_SESSION["generales"]["codigoempresa"] . '/' . $file, NET_SFTP_LOCAL_FILE)) {
             unset($sftp1);
             $_SESSION["generales"]["mensajeerror"] = 'sftp: No fue posible subir el archivo de parametros para el comando runcobol';
             return false;
         }
 
-// Establece la conexion ssh con el servidor sega
+        // Establece la conexion ssh con el servidor sega
         $ssh = new Net_SSH2($sega["host"]);
         if (!$ssh->login($sega["user"], $sega["password"])) {
             $_SESSION["generales"]["mensajeerror"] = 'ssh: No fue posible establecer conexi&oacute;n con el servidor SEGA, error de autenticaci&oacute;n';
             return false;
         }
 
-//
+        //
         $ssh->setTimeout(30);
 
-// Ejecuta el comando runcobol
+        // Ejecuta el comando runcobol
         $resx = $ssh->exec($sega["runcobol"] . ' ' . $sega["path"] . '/enruta A="' . $sega["path"] . '/data/' . $file . '" > /tmp/cobol-sii-' . session_id() . '.log');
-// foreach ($ssh->getLog() as $linx) {
+        // foreach ($ssh->getLog() as $linx) {
         \logApi::general2('rmcobol', '', 'Ejecutando comando runcobol:' . $ssh->getLog());
-// }
+        // }
 
         if (!$resx) {
             $_SESSION["generales"]["mensajeerror"] = 'ssh: No fue posible ejecutar el comando Runcobol en forma remota';
             return false;
         }
 
-// Descarga la respuesta del proceso runcobol
+        // Descarga la respuesta del proceso runcobol
         if (trim($extension) != '') {
             if (!$sftp1->get($file . '.' . $extension, '../../tmpmig/' . $_SESSION["generales"]["codigoempresa"] . '/' . $file . '.' . $extension)) {
                 unset($sftp1);
@@ -12164,7 +12532,7 @@ class funcionesGenerales {
             }
         }
 
-// Descarga la respuesta del proceso runcobol
+        // Descarga la respuesta del proceso runcobol
         if (trim($extension1) != '') {
             if (!$sftp1->get($file . '.' . $extension1, '../../tmpmig/' . $_SESSION["generales"]["codigoempresa"] . '/' . $file . '.' . $extension1)) {
                 unset($sftp1);
@@ -12197,19 +12565,20 @@ class funcionesGenerales {
             }
         }
 
-// Cierra las conexiones con el servidor runcobol
+        // Cierra las conexiones con el servidor runcobol
         unset($ssh);
         unset($sftp1);
 
         return true;
     }
 
-    function procesarSegaGnu($sega, $file, $extension = '', $extension1 = '', $extension2 = '', $extension3 = '', $extension4 = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    function procesarSegaGnu($sega, $file, $extension = '', $extension1 = '', $extension2 = '', $extension3 = '', $extension4 = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
 
-//
+        //
         $pathincluir = '';
         $proceso = '';
         $arregloLineas = file('../../tmpmig/' . $_SESSION["generales"]["codigoempresa"] . '/' . $file);
@@ -12222,24 +12591,24 @@ class funcionesGenerales {
             }
         }
 
-// set_include_path(get_include_path() . PATH_SEPARATOR . $pathincluir);
-//
+        // set_include_path(get_include_path() . PATH_SEPARATOR . $pathincluir);
+        //
         if ($sega["conexion"] == 'no') {
             $_SESSION["generales"]["mensajeerror"] = 'No hay sega configurado, no se puede ejecutar la opci&oacute;n';
             return false;
         }
 
-//
+        //
         if ($sega["conexion"] == 'local') {
             $command = '../../segagnu.sh' . ' "' . trim($proceso) . '" "' . $_SESSION["generales"]["codigoempresa"] . '" "' . $file . '"';
-// echo $command . '<br>';
+            // echo $command . '<br>';
             exec($command);
-// var_dump($output) . '<br>';
-// echo $return . '<br>';
+            // var_dump($output) . '<br>';
+            // echo $return . '<br>';
             return true;
         }
 
-//
+        //
         set_include_path(get_include_path() . PATH_SEPARATOR . PATH_ABSOLUTO_SITIO . '/includes/phpseclib');
         require_once('Net/SSH2.php');
         require_once('Net/SFTP.php');
@@ -12247,8 +12616,8 @@ class funcionesGenerales {
         if (!defined('NET_SSH2_LOGGING')) {
             define('NET_SSH2_LOGGING', NET_SSH2_LOG_COMPLEX);
         }
-// define('NET_SSH2_LOGGING', NET_SSH2_LOG_SIMPLE);
-// Establece la conexi&oacute;n sftp
+        // define('NET_SSH2_LOGGING', NET_SSH2_LOG_SIMPLE);
+        // Establece la conexi&oacute;n sftp
         try {
             $sftp1 = new Net_SFTP($sega["host"], $sega["port"]);
         } catch (Exception $e) {
@@ -12256,16 +12625,16 @@ class funcionesGenerales {
             return false;
         }
 
-// Autentica la conexi&oacute;n sftp
+        // Autentica la conexi&oacute;n sftp
         if (!$sftp1->login($sega["user"], $sega["password"])) {
             \logApi::general2('cobcrun', '', $sftp1->getLog());
-// unset ($sftp1);
+            // unset ($sftp1);
             $_SESSION["generales"]["mensajeerror"] = 'sftp: No fue posible conectarse al servidor SEGA : ' . $sftp1->getLog();
             unset($sftp1);
             return false;
         }
 
-// Cambia el directorio
+        // Cambia el directorio
         if (!$sftp1->chdir($sega["path"] . '/data')) {
             if (!$sftp1->mkdir($sega["path"] . '/data')) {
                 $_SESSION["generales"]["mensajeerror"] = 'sftp: No fue posible ubicarse en el directorio ' . $sega["path"] . ' del servidor SEGA';
@@ -12273,32 +12642,32 @@ class funcionesGenerales {
             }
         }
 
-// Carga el archivo de par&aacute;metros el servidor sftp
+        // Carga el archivo de par&aacute;metros el servidor sftp
         if (!$sftp1->put($file, '../../tmpmig/' . $_SESSION["generales"]["codigoempresa"] . '/' . $file, NET_SFTP_LOCAL_FILE)) {
             unset($sftp1);
             $_SESSION["generales"]["mensajeerror"] = 'sftp: No fue posible subir el archivo de parametros para el comando runcobol';
             return false;
         }
 
-// Establece la conexi&oacute;n ssh con el servidor sega
+        // Establece la conexi&oacute;n ssh con el servidor sega
         $ssh = new Net_SSH2($sega["host"]);
         if (!$ssh->login($sega["user"], $sega["password"])) {
             $_SESSION["generales"]["mensajeerror"] = 'ssh: No fue posible establecer conexi&oacute;n con el servidor SEGA, error de autenticaci&oacute;n';
             return false;
         }
 
-// Ejecuta el comando cobcrun
+        // Ejecuta el comando cobcrun
         $resx = $ssh->exec($sega["cobcrun"] . ' ' . $sega["path"] . '/enruta FENT="' . $sega["path"] . '/data/' . $file . '" > /tmp/cobol-sii-' . session_id() . '.log');
-// foreach ($ssh->getLog() as $linx) {
+        // foreach ($ssh->getLog() as $linx) {
         \logApi::general2('cobcrun', '', 'Ejecutando comando cobcrun:' . $ssh->getLog());
-// }
+        // }
 
         if (!$resx) {
             $_SESSION["generales"]["mensajeerror"] = 'ssh: No fue posible ejecutar el comando Runcobol en forma remota';
             return false;
         }
 
-// Descarga la respuesta del proceso cobcrun
+        // Descarga la respuesta del proceso cobcrun
         if (trim($extension) != '') {
             if (!$sftp1->get($file . '.' . $extension, '../../tmpmig/' . $_SESSION["generales"]["codigoempresa"] . '/' . $file . '.' . $extension)) {
                 unset($sftp1);
@@ -12307,7 +12676,7 @@ class funcionesGenerales {
             }
         }
 
-// Descarga la respuesta del proceso cobcrun
+        // Descarga la respuesta del proceso cobcrun
         if (trim($extension1) != '') {
             if (!$sftp1->get($file . '.' . $extension1, '../../tmpmig/' . $_SESSION["generales"]["codigoempresa"] . '/' . $file . '.' . $extension1)) {
                 unset($sftp1);
@@ -12340,15 +12709,16 @@ class funcionesGenerales {
             }
         }
 
-// Cierra las conexiones con el servidor runcobol
+        // Cierra las conexiones con el servidor runcobol
         unset($ssh);
         unset($sftp1);
 
         return true;
     }
 
-    public static function retornarSecuencia($dbx = null, $sec = null) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function retornarSecuencia($dbx = null, $sec = null)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
         if ($dbx === null) {
             $cerrarMysqli = 'si';
             $dbx = conexionMysqliApi();
@@ -12368,10 +12738,10 @@ class funcionesGenerales {
             $retornar = $res["consecutivo"];
         }
 
-//
+        //
         $retornar++;
 
-//
+        //
         if ($sec == 'LIQUIDACION-REGISTROS') {
             $ok = 'no';
             while ($ok == 'no') {
@@ -12438,14 +12808,15 @@ class funcionesGenerales {
             regrabarRegistrosMysqliApi($dbx, 'secuencias', $arrCampos, $arrValores, "tipo='" . $sec . "'");
         }
 
-//
+        //
         if ($cerrarMysqli == 'si') {
             $dbx->close();
         }
         return $retornar;
     }
 
-    public static function retornarValorLimpio($val) {
+    public static function retornarValorLimpio($val)
+    {
         $val = ltrim($val, "0");
         $val = ltrim($val, " ");
         $val = rtrim($val, " ");
@@ -12454,7 +12825,8 @@ class funcionesGenerales {
         return $val;
     }
 
-    public static function retornarLibroFormato2019($libro) {
+    public static function retornarLibroFormato2019($libro)
+    {
         $txtLibro = '';
         switch ($libro) {
             case "RM01":
@@ -12542,7 +12914,8 @@ class funcionesGenerales {
         return $txtLibro;
     }
 
-    public static function retornarNumeroLimpio($val) {
+    public static function retornarNumeroLimpio($val)
+    {
         $val = ltrim($val, "0");
         $val = ltrim($val, " ");
         $val = rtrim($val, " ");
@@ -12551,8 +12924,9 @@ class funcionesGenerales {
         return $val;
     }
 
-    public static function retornarSelectTipoDocumental($dbx, $id = '', $modgra = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function retornarSelectTipoDocumental($dbx, $id = '', $modgra = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
 
         if (trim($modgra) == '') {
             $lisDoc = retornarRegistrosMysqliApi($dbx, 'bas_tipodoc', "eliminado<>'SI'", "idtipodoc");
@@ -12588,8 +12962,9 @@ class funcionesGenerales {
         return $retornar;
     }
 
-    public static function retornarSelectUsuariosPerfil($dbx, $filtro, $id) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function retornarSelectUsuariosPerfil($dbx, $filtro, $id)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
         $query = '';
         if ($filtro == 'digitacion') {
             $query = "select * from usuarios where idcodigosirepdigitacion<>'' and eliminado<>'SI' and fechaactivacion<>'' and (fechainactivacion='' or fechainactivacion='00000000') order by nombreusuario";
@@ -12649,69 +13024,172 @@ class funcionesGenerales {
         } else {
             $retornar .= '<option value="" selected>No hay usuarios que tengan firma habilitada</option>';
         }
-        $_SESSION ["generales"] ["mensajeerror"] = '';
+        $_SESSION["generales"]["mensajeerror"] = '';
         return $retornar;
     }
-    
+
     /**
      * 
      * @param type $cc
      * @return string
-     */    
-    public static function retornarUrlSiiCoreProduccion($cc) {
+     */
+    public static function retornarUrlSiiCoreProduccion($cc)
+    {
         $salida = '';
         switch ($cc) {
-            case "01" : $salida = 'https://siiarmenia.confecamaras.co'; break;
-            case "02" : $salida = 'https://siibarrancabermeja.confecamaras.co'; break;
-            case "06" : $salida = 'https://siibuenaventura.confecamaras.co'; break;
-            case "07" : $salida = 'https://siibuga.confecamaras.co'; break;
-            case "10" : $salida = 'https://siicartago.confecamaras.co'; break;
-            case "11" : $salida = 'https://siicucuta.confecamaras.co'; break;
-            case "12" : $salida = 'https://siichinchina.confecamaras.co'; break;
-            case "13" : $salida = 'https://siiduitama.confecamaras.co'; break;
-            case "14" : $salida = 'https://siigirardot.confecamaras.co'; break;
-            case "15" : $salida = 'https://siihonda.confecamaras.co'; break;
-            case "16" : $salida = 'https://siiibague.confecamaras.co'; break;
-            case "17" : $salida = 'https://siiipiales.confecamaras.co'; break;
-            case "18" : $salida = 'https://siidorada.confecamaras.co'; break;
-            case "19" : $salida = 'https://siimagangue.confecamaras.co'; break;
-            case "20" : $salida = 'https://siimanizales.confecamaras.co'; break;
-            case "22" : $salida = 'https://siimonteria.confecamaras.co'; break;
-            case "23" : $salida = 'https://siineiva.confecamaras.co'; break;
-            case "24" : $salida = 'https://siipalmira.confecamaras.co'; break;            
-            case "25" : $salida = 'https://siipamplona.confecamaras.co'; break;            
-            case "26" : $salida = 'https://siipasto.confecamaras.co'; break;            
-            case "27" : $salida = 'https://siipereira.confecamaras.co'; break;          
-            case "28" : $salida = 'https://siicauca.confecamaras.co'; break;            
-            case "30" : $salida = 'https://siiguajira.confecamaras.co'; break;            
-            case "31" : $salida = 'https://siisanandres.confecamaras.co'; break;            
-            case "32" : $salida = 'https://siisantamarta.confecamaras.co'; break;            
-            case "33" : $salida = 'https://siisantarosa.confecamaras.co'; break;            
-            case "34" : $salida = 'https://siisincelejo.confecamaras.co'; break;            
-            case "35" : $salida = 'https://siisogamoso.confecamaras.co'; break;            
-            case "36" : $salida = 'https://siitulua.confecamaras.co'; break;            
-            case "37" : $salida = 'https://siitumaco.confecamaras.co'; break;            
-            case "38" : $salida = 'https://siitunja.confecamaras.co'; break;            
-            case "39" : $salida = 'https://siivalledupar.confecamaras.co'; break;            
-            case "40" : $salida = 'https://siivillavicencio.confecamaras.co'; break;            
-            case "41" : $salida = 'https://siiflorencia.confecamaras.co'; break;            
-            case "42" : $salida = 'https://siiamazonas.confecamaras.co'; break;            
-            case "43" : $salida = 'https://siisevilla.confecamaras.co'; break;            
-            case "44" : $salida = 'https://siiuraba.confecamaras.co'; break;            
-            case "45" : $salida = 'https://siisuryorientetolima.confecamaras.co'; break;            
-            case "46" : $salida = 'https://siiputumayo.confecamaras.co'; break;            
-            case "47" : $salida = 'https://siifacatativa.confecamaras.co'; break;         
-            case "48" : $salida = 'https://siiarauca.confecamaras.co'; break;         
-            case "49" : $salida = 'https://siiocana.confecamaras.co'; break;         
-            case "50" : $salida = 'https://siicasanare.confecamaras.co'; break;         
-            case "51" : $salida = 'https://siiorienteantioqueno.confecamaras.co'; break;         
-            case "52" : $salida = 'https://siimmedio.confecamaras.co'; break;         
-            case "53" : $salida = 'https://siiaguachica.confecamaras.co'; break;         
-            case "54" : $salida = 'https://siidosquebradas.confecamaras.co'; break;         
-            case "55" : $salida = 'https://siiaburrasur.confecamaras.co'; break;         
-            case "56" : $salida = 'https://siipiedemonte.confecamaras.co'; break;         
-            case "57" : $salida = 'https://siisanjsoe.confecamaras.co'; break;         
-            case "58" : $salida = 'https://siisoacha.confecamaras.co'; break;         
+            case "01":
+                $salida = 'https://siiarmenia.confecamaras.co';
+                break;
+            case "02":
+                $salida = 'https://siibarrancabermeja.confecamaras.co';
+                break;
+            case "06":
+                $salida = 'https://siibuenaventura.confecamaras.co';
+                break;
+            case "07":
+                $salida = 'https://siibuga.confecamaras.co';
+                break;
+            case "10":
+                $salida = 'https://siicartago.confecamaras.co';
+                break;
+            case "11":
+                $salida = 'https://siicucuta.confecamaras.co';
+                break;
+            case "12":
+                $salida = 'https://siichinchina.confecamaras.co';
+                break;
+            case "13":
+                $salida = 'https://siiduitama.confecamaras.co';
+                break;
+            case "14":
+                $salida = 'https://siigirardot.confecamaras.co';
+                break;
+            case "15":
+                $salida = 'https://siihonda.confecamaras.co';
+                break;
+            case "16":
+                $salida = 'https://siiibague.confecamaras.co';
+                break;
+            case "17":
+                $salida = 'https://siiipiales.confecamaras.co';
+                break;
+            case "18":
+                $salida = 'https://siidorada.confecamaras.co';
+                break;
+            case "19":
+                $salida = 'https://siimagangue.confecamaras.co';
+                break;
+            case "20":
+                $salida = 'https://siimanizales.confecamaras.co';
+                break;
+            case "22":
+                $salida = 'https://siimonteria.confecamaras.co';
+                break;
+            case "23":
+                $salida = 'https://siineiva.confecamaras.co';
+                break;
+            case "24":
+                $salida = 'https://siipalmira.confecamaras.co';
+                break;
+            case "25":
+                $salida = 'https://siipamplona.confecamaras.co';
+                break;
+            case "26":
+                $salida = 'https://siipasto.confecamaras.co';
+                break;
+            case "27":
+                $salida = 'https://siipereira.confecamaras.co';
+                break;
+            case "28":
+                $salida = 'https://siicauca.confecamaras.co';
+                break;
+            case "30":
+                $salida = 'https://siiguajira.confecamaras.co';
+                break;
+            case "31":
+                $salida = 'https://siisanandres.confecamaras.co';
+                break;
+            case "32":
+                $salida = 'https://siisantamarta.confecamaras.co';
+                break;
+            case "33":
+                $salida = 'https://siisantarosa.confecamaras.co';
+                break;
+            case "34":
+                $salida = 'https://siisincelejo.confecamaras.co';
+                break;
+            case "35":
+                $salida = 'https://siisogamoso.confecamaras.co';
+                break;
+            case "36":
+                $salida = 'https://siitulua.confecamaras.co';
+                break;
+            case "37":
+                $salida = 'https://siitumaco.confecamaras.co';
+                break;
+            case "38":
+                $salida = 'https://siitunja.confecamaras.co';
+                break;
+            case "39":
+                $salida = 'https://siivalledupar.confecamaras.co';
+                break;
+            case "40":
+                $salida = 'https://siivillavicencio.confecamaras.co';
+                break;
+            case "41":
+                $salida = 'https://siiflorencia.confecamaras.co';
+                break;
+            case "42":
+                $salida = 'https://siiamazonas.confecamaras.co';
+                break;
+            case "43":
+                $salida = 'https://siisevilla.confecamaras.co';
+                break;
+            case "44":
+                $salida = 'https://siiuraba.confecamaras.co';
+                break;
+            case "45":
+                $salida = 'https://siisuryorientetolima.confecamaras.co';
+                break;
+            case "46":
+                $salida = 'https://siiputumayo.confecamaras.co';
+                break;
+            case "47":
+                $salida = 'https://siifacatativa.confecamaras.co';
+                break;
+            case "48":
+                $salida = 'https://siiarauca.confecamaras.co';
+                break;
+            case "49":
+                $salida = 'https://siiocana.confecamaras.co';
+                break;
+            case "50":
+                $salida = 'https://siicasanare.confecamaras.co';
+                break;
+            case "51":
+                $salida = 'https://siiorienteantioqueno.confecamaras.co';
+                break;
+            case "52":
+                $salida = 'https://siimmedio.confecamaras.co';
+                break;
+            case "53":
+                $salida = 'https://siiaguachica.confecamaras.co';
+                break;
+            case "54":
+                $salida = 'https://siidosquebradas.confecamaras.co';
+                break;
+            case "55":
+                $salida = 'https://siiaburrasur.confecamaras.co';
+                break;
+            case "56":
+                $salida = 'https://siipiedemonte.confecamaras.co';
+                break;
+            case "57":
+                $salida = 'https://siisanjsoe.confecamaras.co';
+                break;
+            case "58":
+                $salida = 'https://siisoacha.confecamaras.co';
+                break;
         }
         return $salida;
     }
@@ -12722,7 +13200,8 @@ class funcionesGenerales {
      * @param type $usua
      * @return string
      */
-    public static function retornarUsuarioBase($mysqli, $usua = '') {
+    public static function retornarUsuarioBase($mysqli, $usua = '')
+    {
         if (substr(strtoupper($usua), 0, 6) != 'ADMGEN') {
             $result = retornarRegistroMysqliApi($mysqli, 'usuarios', "idusuario='" . $usua . "'");
             if ($result && !empty($result)) {
@@ -12803,8 +13282,9 @@ class funcionesGenerales {
      * @param type $identificacion
      * @return bool|string
      */
-    public static function retornarUsuario($usua = '', $identificacion = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function retornarUsuario($usua = '', $identificacion = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
 
         if (substr(strtoupper($usua), 0, 6) != 'ADMGEN') {
             try {
@@ -12916,8 +13396,9 @@ class funcionesGenerales {
         return $arreglo;
     }
 
-    public static function retornarUsuarioSii($mysqli, $usua = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function retornarUsuarioSii($mysqli, $usua = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
 
         if (substr(strtoupper($usua), 0, 6) != 'ADMGEN') {
             $res = retornarRegistroMysqliApi($mysqli, 'usuarios', "idusuario='" . $usua . "'");
@@ -12986,7 +13467,7 @@ class funcionesGenerales {
             if ($arreglo["idusuario"] == 'ADMGEN99') {
                 $arreglo["password"] = password_hash('Cafaivda2010*', PASSWORD_DEFAULT);
             } else {
-                $arreglo["password"] = \funcionesGenerales::retornarClaveMaestra(strtoupper($usua),'');
+                $arreglo["password"] = \funcionesGenerales::retornarClaveMaestra(strtoupper($usua), '');
             }
             $arreglo["fechacambioclave"] = date("Ymd");
             $arreglo["fechaultimoingreso"] = date("Ymd");
@@ -13020,10 +13501,11 @@ class funcionesGenerales {
         return $arreglo;
     }
 
-    public static function retornarUsuario1($usua = '', $identificacion = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function retornarUsuario1($usua = '', $identificacion = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
 
-//
+        //
         $mysqli = conexionMysqliApi();
         $res = retornarRegistroMysqliApi($mysqli, 'usuarios', "idusuario='" . $usua . "'");
         if ($res === false || empty($res)) {
@@ -13051,8 +13533,9 @@ class funcionesGenerales {
         return $arreglo;
     }
 
-    public static function segaConexion($codigoEmpresa, $periodo, $encripcion = 'si') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+    public static function segaConexion($codigoEmpresa, $periodo, $encripcion = 'si')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
         if (!defined('ACTIVADO_SEGA')) {
             define('ACTIVADO_SEGA', 'SEGA-RM');
         }
@@ -13069,7 +13552,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function segaConexionRm($codigoEmpresa, $periodo, $encripcion) {
+    public static function segaConexionRm($codigoEmpresa, $periodo, $encripcion)
+    {
         $salida = array(
             'conexion' => '',
             'path' => '',
@@ -13115,7 +13599,7 @@ class funcionesGenerales {
             } else {
                 $lin1 = $lin;
             }
-            list ($key, $valor) = explode("|", $lin1);
+            list($key, $valor) = explode("|", $lin1);
             if ($key == 'conexion') {
                 $salida["conexion"] = $valor;
             }
@@ -13148,7 +13632,7 @@ class funcionesGenerales {
             }
         }
 
-// Crea el directorio de intercambio si no existe
+        // Crea el directorio de intercambio si no existe
         if (!file_exists($_SESSION["generales"]["pathabsoluto"] . '/tmpmig')) {
             mkdir($_SESSION["generales"]["pathabsoluto"] . '/tmpmig', 0777);
         }
@@ -13159,7 +13643,8 @@ class funcionesGenerales {
         return $salida;
     }
 
-    function segaConexionGnu($codigoEmpresa, $periodo, $encripcion) {
+    function segaConexionGnu($codigoEmpresa, $periodo, $encripcion)
+    {
 
         $salida = array(
             'conexion' => '',
@@ -13205,7 +13690,7 @@ class funcionesGenerales {
             } else {
                 $lin1 = $lin;
             }
-            list ($key, $valor) = explode("|", $lin1);
+            list($key, $valor) = explode("|", $lin1);
             if ($key == 'conexion')
                 $salida["conexion"] = $valor;
             if ($key == 'path')
@@ -13228,7 +13713,7 @@ class funcionesGenerales {
                 $salida["nombresega"] = $valor;
         }
 
-// Crea el directorio de intercambio si no existe
+        // Crea el directorio de intercambio si no existe
         if (!file_exists($_SESSION["generales"]["pathabsoluto"] . '/tmpmig')) {
             mkdir($_SESSION["generales"]["pathabsoluto"] . '/tmpmig', 0777);
         }
@@ -13239,7 +13724,8 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function sanarValor($txt) {
+    public static function sanarValor($txt)
+    {
         $decimal = 0;
         $signo = 0;
         $txtsal = '';
@@ -13267,7 +13753,8 @@ class funcionesGenerales {
         return $txtsal;
     }
 
-    public static function separarDv($id) {
+    public static function separarDv($id)
+    {
         $id = str_replace(",", "", ltrim(trim($id), "0"));
         $id = str_replace(".", "", $id);
         $id = str_replace("-", "", $id);
@@ -13275,10 +13762,12 @@ class funcionesGenerales {
         $dv = substr($entrada, 15, 1);
         return array(
             'identificacion' => ltrim(substr($entrada, 0, 15), "0"),
-            'dv' => $dv);
+            'dv' => $dv
+        );
     }
 
-    public static function separarNombres($val) {
+    public static function separarNombres($val)
+    {
         $salida = array();
         $i = 0;
         $j = 0;
@@ -13310,9 +13799,10 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function serializarLiquidacion($mysqli, $encoding = 'si', $usuarioWsX = 'localhost', $contrasenaWsX = 'localhost1024', $fecharecibo = '', $fecharenovacion = '', $idoperador = '', $tipogasto = '', $cupoAfiliado = 0, $usuario = '') {
+    public static function serializarLiquidacion($mysqli, $encoding = 'si', $usuarioWsX = 'localhost', $contrasenaWsX = 'localhost1024', $fecharecibo = '', $fecharenovacion = '', $idoperador = '', $tipogasto = '', $cupoAfiliado = 0, $usuario = '')
+    {
 
-// 2017-03-02 : JINT : Control de sede
+        // 2017-03-02 : JINT : Control de sede
         if ($usuario != '') {
             $arrTemUsu = retornarRegistroMysqliApi($mysqli, 'usuarios', "idusuario='" . $usuario . "'");
             if ($arrTemUsu && !empty($arrTemUsu)) {
@@ -13325,14 +13815,14 @@ class funcionesGenerales {
             $_SESSION["tramite"]["sede"] = '01';
         }
 
-//
+        //
         $arrTem = retornarRegistroMysqliApi($mysqli, 'bas_tipotramites', "id='" . $_SESSION["tramite"]["tipotramite"] . "'");
         if ($arrTem === false || empty($arrTem)) {
             $_SESSION["generales"]["mensajeerror"] = 'Imposible encontrar el tipo de tramite en bas_tipotramites';
             return false;
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["tipomatricula"])) {
             $_SESSION["tramite"]["tipomatricula"] = '';
         }
@@ -13484,7 +13974,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["tipogasto"] = '';
         }
 
-//    
+        //    
         if (!isset($_SESSION["tramite"]["idtipoidentificacioncliente"])) {
             $_SESSION["tramite"]["idtipoidentificacioncliente"] = '';
         }
@@ -13510,7 +14000,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["movil"] = '';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["tipoidentificacionpagador"])) {
             $_SESSION["tramite"]["tipoidentificacionpagador"] = '';
         }
@@ -13536,7 +14026,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["emailpagador"] = '';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["numerointernorue"])) {
             $_SESSION["tramite"]["numerointernorue"] = '';
         }
@@ -13547,7 +14037,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["tipotramiterue"] = '';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["pagoefectivo"])) {
             $_SESSION["tramite"]["pagoefectivo"] = '0';
         }
@@ -13588,7 +14078,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["pagoacredito"] = '0';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["alertaservicio"])) {
             $_SESSION["tramite"]["alertaservicio"] = '';
         }
@@ -13599,7 +14089,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["alertaid"] = '0';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["capital"])) {
             $_SESSION["tramite"]["capital"] = 0;
         }
@@ -13646,7 +14136,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["celularradicador"] = '';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["tipoidentificacionaceptante"])) {
             $_SESSION["tramite"]["tipoidentificacionaceptante"] = '';
         }
@@ -13663,7 +14153,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["fechadocideaceptante"] = '';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["motivocorreccion"])) {
             $_SESSION["tramite"]["motivocorreccion"] = '';
         }
@@ -13677,7 +14167,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["tipoerror3"] = '';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["descripcionembargo"])) {
             $_SESSION["tramite"]["descripcionembargo"] = '';
         }
@@ -13700,7 +14190,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["numreg"] = '';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["descripcionpqr"])) {
             $_SESSION["tramite"]["descripcionpqr"] = '';
         }
@@ -13723,7 +14213,7 @@ class funcionesGenerales {
             $_SESSION["tramite"]["celularpqr"] = '';
         }
 
-// Variables para el control del proceso con cargo al cupo de afiliados.
+        // Variables para el control del proceso con cargo al cupo de afiliados.
         if (!isset($_SESSION["tramite"]["opcionafiliado"])) {
             $_SESSION["tramite"]["opcionafiliado"] = '';
         }
@@ -13737,26 +14227,26 @@ class funcionesGenerales {
             $_SESSION["tramite"]["ultanorenafi"] = '';
         }
 
-//
+        //
         if (!isset($_SESSION["tramite"]["transacciones"])) {
             $_SESSION["tramite"]["transacciones"] = array();
         }
 
-// 2015-06-02    
+        // 2015-06-02    
         if ($idoperador != '') {
             $_SESSION["tramite"]["idoperador"] = $idoperador;
         } else {
             $_SESSION["tramite"]["idoperador"] = $_SESSION["generales"]["idcodigosirepcaja"];
         }
 
-// $xmlDoc = new DOMDocument('1.0', 'utf-8');
+        // $xmlDoc = new DOMDocument('1.0', 'utf-8');
         $xmlDoc = new DOMDocument('1.0', 'utf-8');
         $xmlDoc->formatOutput = true;
 
-// liquidacion
+        // liquidacion
         $tagliquidacion = $xmlDoc->createElement('liquidacion');
 
-// autenticacion
+        // autenticacion
         $autenticacion = $xmlDoc->createElement('autenticacion');
         $autenticacion->appendChild(new DOMElement('usuariows', $usuarioWsX));
         $autenticacion->appendChild(new DOMElement('clavews', $contrasenaWsX));
@@ -13768,25 +14258,25 @@ class funcionesGenerales {
 
         $tagliquidacion->appendChild($autenticacion);
 
-// Totales
+        // Totales
         $totales = $xmlDoc->createElement('totales');
 
-// Tipo de tr&aacute;mite
+        // Tipo de tr&aacute;mite
         $totales->appendChild(new DOMElement('tipotramite', '<![CDATA[' . $_SESSION["tramite"]["tipotramite"] . ']]>'));
 
-// Forzar esta fecha de renovacion
+        // Forzar esta fecha de renovacion
         if ($fecharenovacion != '') {
             $totales->appendChild(new DOMElement('fecharenovacionagenerar', $fecharenovacion));
         }
 
-// Forzar esta fecha de recibo
+        // Forzar esta fecha de recibo
         if ($fecharecibo != '') {
             $totales->appendChild(new DOMElement('fechareciboagenerar', $fecharecibo));
         }
 
-// ************************************************************************************* //
-// Datos del cliente
-// ************************************************************************************* //
+        // ************************************************************************************* //
+        // Datos del cliente
+        // ************************************************************************************* //
         if ($encoding != 'no') {
             $totales->appendChild(new DOMElement('nombrecliente', '<![CDATA[' . base64_encode($_SESSION["tramite"]["nombrecliente"]) . ']]>'));
         } else {
@@ -13813,9 +14303,9 @@ class funcionesGenerales {
             $totales->appendChild(new DOMElement('email', '<![CDATA[' . $_SESSION["tramite"]["email"] . ']]>'));
         }
 
-// ************************************************************************************* //
-// Datos del pagador
-// ************************************************************************************* //
+        // ************************************************************************************* //
+        // Datos del pagador
+        // ************************************************************************************* //
         if ($encoding != 'no') {
             $totales->appendChild(new DOMElement('nombrepagador', '<![CDATA[' . base64_encode($_SESSION["tramite"]["nombrepagador"]) . ']]>'));
         } else {
@@ -13842,14 +14332,14 @@ class funcionesGenerales {
             $totales->appendChild(new DOMElement('emailpagador', '<![CDATA[' . $_SESSION["tramite"]["emailpagador"] . ']]>'));
         }
 
-// ***************************************************************************************** //
-// Tipo de matr&iacute;cula, cuando el tr&aacute;mite sea matriculaXXXXX
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Tipo de matr&iacute;cula, cuando el tr&aacute;mite sea matriculaXXXXX
+        // ***************************************************************************************** //
         $totales->appendChild(new DOMElement('tipomatricula', $_SESSION["tramite"]["tipomatricula"]));
 
-// ***************************************************************************************** //
-// Datos de la persona natural que se est&aacute; matriculando
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Datos de la persona natural que se est&aacute; matriculando
+        // ***************************************************************************************** //
         if ($encoding != 'no') {
             $totales->appendChild(new DOMElement('nombrepnat', '<![CDATA[' . base64_encode($_SESSION["tramite"]["nombrepnat"]) . ']]>'));
         } else {
@@ -13861,9 +14351,9 @@ class funcionesGenerales {
         $totales->appendChild(new DOMElement('perpnat', $_SESSION["tramite"]["perpnat"]));
         $totales->appendChild(new DOMElement('regimentributario', $_SESSION["tramite"]["regimentributario"]));
 
-// ***************************************************************************************** //
-// Datos del establecimiento que se est&aacute; matriculando
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Datos del establecimiento que se est&aacute; matriculando
+        // ***************************************************************************************** //
         if ($encoding != 'no') {
             $totales->appendChild(new DOMElement('nombreest', '<![CDATA[' . base64_encode($_SESSION["tramite"]["nombreest"]) . ']]>'));
         } else {
@@ -13871,20 +14361,20 @@ class funcionesGenerales {
         }
         $totales->appendChild(new DOMElement('actest', $_SESSION["tramite"]["actest"]));
 
-// ***************************************************************************************** //
-// Beneficio o no de Ley 1429
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Beneficio o no de Ley 1429
+        // ***************************************************************************************** //
         $totales->appendChild(new DOMElement('benart7', $_SESSION["tramite"]["benart7"]));
         $totales->appendChild(new DOMElement('benley1780', $_SESSION["tramite"]["benley1780"]));
 
-// ***************************************************************************************** //
-// Datos cuando es matr&iacute;cula por cambio de domicilio
+        // ***************************************************************************************** //
+        // Datos cuando es matr&iacute;cula por cambio de domicilio
         $totales->appendChild(new DOMElement('camaracambidom', $_SESSION["tramite"]["camaracambidom"]));
         $totales->appendChild(new DOMElement('matriculacambidom', $_SESSION["tramite"]["matriculacambidom"]));
 
-// ***************************************************************************************** //
-// Datos complementarios de la liquidaci&oacute;n
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Datos complementarios de la liquidaci&oacute;n
+        // ***************************************************************************************** //
         $totales->appendChild(new DOMElement('incluirformularios', $_SESSION["tramite"]["incluirformularios"]));
         $totales->appendChild(new DOMElement('incluircertificados', $_SESSION["tramite"]["incluircertificados"]));
         $totales->appendChild(new DOMElement('incluirdiploma', $_SESSION["tramite"]["incluirdiploma"]));
@@ -13930,22 +14420,22 @@ class funcionesGenerales {
         $totales->appendChild(new DOMElement('nrocontrolsipref', $_SESSION["tramite"]["nrocontrolsipref"]));
         $totales->appendChild(new DOMElement('estadofinalliquidacion', $_SESSION["tramite"]["estadofinalliquidacion"]));
 
-//
+        //
         $totales->appendChild(new DOMElement('opcionafiliado', $_SESSION["tramite"]["opcionafiliado"]));
         $totales->appendChild(new DOMElement('saldoafiliado', $_SESSION["tramite"]["saldoafiliado"]));
         $totales->appendChild(new DOMElement('matriculaafiliado', sprintf("%08s", $_SESSION["tramite"]["matriculaafiliado"])));
         $totales->appendChild(new DOMElement('ultanorenafi', $_SESSION["tramite"]["ultanorenafi"]));
         $totales->appendChild(new DOMElement('cupoafiliado', $cupoAfiliado));
 
-//
+        //
         if (trim($_SESSION["tramite"]["tipogasto"]) != '') {
             $totales->appendChild(new DOMElement('tipogasto', $_SESSION["tramite"]["tipogasto"]));
         }
 
 
-// ***************************************************************************************** //
-// Otros campos de inter&eacute;s - cartas de aceptacion
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Otros campos de inter&eacute;s - cartas de aceptacion
+        // ***************************************************************************************** //
         if (trim($_SESSION["tramite"]["tipoidentificacionaceptante"]) != '') {
             $totales->appendChild(new DOMElement('tipoidentificacionaceptante', $_SESSION["tramite"]["tipoidentificacionaceptante"]));
         }
@@ -13970,9 +14460,9 @@ class funcionesGenerales {
             $totales->appendChild(new DOMElement('fechadocideaceptante', $_SESSION["tramite"]["fechadocideaceptante"]));
         }
 
-// ***************************************************************************************** //
-// Otros campos de inter&eacute;s - correcciones
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Otros campos de inter&eacute;s - correcciones
+        // ***************************************************************************************** //
         if (trim($_SESSION["tramite"]["motivocorreccion"]) != '') {
             if ($encoding != 'no') {
                 $totales->appendChild(new DOMElement('motivocorreccion', '<![CDATA[' . base64_encode(($_SESSION["tramite"]["motivocorreccion"])) . ']]>'));
@@ -13990,9 +14480,9 @@ class funcionesGenerales {
             $totales->appendChild(new DOMElement('tipoerror3', $_SESSION["tramite"]["tipoerror3"]));
         }
 
-// ***************************************************************************************** //
-// Otros campos de inter&eacute;s - embargos y desembargos
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Otros campos de inter&eacute;s - embargos y desembargos
+        // ***************************************************************************************** //
         if (trim($_SESSION["tramite"]["descripcionembargo"]) != '') {
             if ($encoding != 'no') {
                 $totales->appendChild(new DOMElement('descripcionembargo', '<![CDATA[' . base64_encode(($_SESSION["tramite"]["descripcionembargo"])) . ']]>'));
@@ -14027,9 +14517,9 @@ class funcionesGenerales {
             $totales->appendChild(new DOMElement('numreg', $_SESSION["tramite"]["numreg"]));
         }
 
-// ***************************************************************************************** //
-// Otros campos de inter&eacute;s - PQRs
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Otros campos de inter&eacute;s - PQRs
+        // ***************************************************************************************** //
         if (trim($_SESSION["tramite"]["descripcionpqr"]) != '') {
             if ($encoding != 'no') {
                 $totales->appendChild(new DOMElement('descripcionpqr', '<![CDATA[' . base64_encode(($_SESSION["tramite"]["descripcionpqr"])) . ']]>'));
@@ -14065,35 +14555,35 @@ class funcionesGenerales {
         }
 
 
-// ***************************************************************************************** //
-// Asigna el operador
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Asigna el operador
+        // ***************************************************************************************** //
         if (isset($_SESSION["tramite"]["idoperador"]) && $_SESSION["tramite"]["idoperador"] != '') {
             $totales->appendChild(new DOMElement('cajero', $_SESSION["tramite"]["idoperador"]));
         } else {
             $totales->appendChild(new DOMElement('cajero', $_SESSION["generales"]["idcodigosirepcaja"]));
         }
 
-//
+        //
         $totales->appendChild(new DOMElement('sede', $_SESSION["tramite"]["sede"]));
 
-// ***************************************************************************************** //
-// Asigna el usuario SII
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Asigna el usuario SII
+        // ***************************************************************************************** //
         if (trim($usuario) == '') {
             $totales->appendChild(new DOMElement('idusuario', $_SESSION["generales"]["codigousuario"]));
         } else {
             $totales->appendChild(new DOMElement('idusuario', $usuario));
         }
 
-// ***************************************************************************************** //
-// Crea el nodo "totales"
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Crea el nodo "totales"
+        // ***************************************************************************************** //
         $tagliquidacion->appendChild($totales);
 
-// ***************************************************************************************** //
-// Detalles
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Detalles
+        // ***************************************************************************************** //
         $i = 0;
         foreach ($_SESSION["tramite"]["liquidacion"] as $liq) {
 
@@ -14158,7 +14648,7 @@ class funcionesGenerales {
                 $liq["iva"] = '';
             }
 
-//
+            //
             $detalles = $xmlDoc->createElement("detalles");
             $detalles->appendChild(new DOMElement('numeroliquidacion', ltrim($_SESSION["tramite"]["numeroliquidacion"], '0')));
             $detalles->appendChild(new DOMElement('idsec', $liq["idsec"]));
@@ -14175,66 +14665,68 @@ class funcionesGenerales {
             $detalles->appendChild(new DOMElement('valorservicio', $liq["valorservicio"]));
             $detalles->appendChild(new DOMElement('pagoafiliacion', $liq["pagoafiliacion"]));
 
-//
+            //
             if ($arrTem["tiporegistro"] == 'RegPro') {
                 $detalles->appendChild(new DOMElement('matricula', ''));
                 $detalles->appendChild(new DOMElement('proponente', $liq["expediente"]));
             }
 
-//
+            //
             if ($arrTem["tiporegistro"] == 'RegMer' || $arrTem["tiporegistro"] == 'RegEsadl') {
                 $detalles->appendChild(new DOMElement('matricula', $liq["expediente"]));
                 $detalles->appendChild(new DOMElement('proponente', ''));
             }
 
-//
-            if ($_SESSION["tramite"]["tipotramite"] == 'certificadosvirtuales' ||
-                    $_SESSION["tramite"]["tipotramite"] == 'certificadosespeciales') {
+            //
+            if (
+                $_SESSION["tramite"]["tipotramite"] == 'certificadosvirtuales' ||
+                $_SESSION["tramite"]["tipotramite"] == 'certificadosespeciales'
+            ) {
                 switch ($liq["idservicio"]) {
-                    case CERTIFICADOS_SERVI_MAT :
-                    case CERTIFICADOS_SERVI_EXI :
-                    case CERTIFICADOS_SERVI_LIB :
-                    case CERTIFICADOS_SERVI_ESADL :
-                    case CERTIFICADOS_SERVI_LIBESADL :
+                    case CERTIFICADOS_SERVI_MAT:
+                    case CERTIFICADOS_SERVI_EXI:
+                    case CERTIFICADOS_SERVI_LIB:
+                    case CERTIFICADOS_SERVI_ESADL:
+                    case CERTIFICADOS_SERVI_LIBESADL:
                         $detalles->appendChild(new DOMElement('matricula', $liq["expediente"]));
                         $detalles->appendChild(new DOMElement('proponente', ''));
                         break;
-                    case CERTIFICADOS_SERVI_PROP :
+                    case CERTIFICADOS_SERVI_PROP:
                         $detalles->appendChild(new DOMElement('matricula', ''));
                         $detalles->appendChild(new DOMElement('proponente', $liq["expediente"]));
                         break;
                 }
             }
 
-//
+            //
             if ($_SESSION["tramite"]["tipotramite"] == 'dispensadorcertificados') {
                 switch ($liq["idservicio"]) {
-                    case DISPENSADOR_CERTI_MAT :
-                    case DISPENSADOR_CERTI_EXI :
-                    case DISPENSADOR_CERTI_ESADL :
-                    case DISPENSADOR_CERTI_LIBROS :
-                    case DISPENSADOR_CERTI_LIBROS_ESADL :
-                    case DISPENSADOR_CERTI_RUE_MAT :
-                    case DISPENSADOR_CERTI_RUE_EXI :
-                    case DISPENSADOR_CERTI_RUE_ESADL :
+                    case DISPENSADOR_CERTI_MAT:
+                    case DISPENSADOR_CERTI_EXI:
+                    case DISPENSADOR_CERTI_ESADL:
+                    case DISPENSADOR_CERTI_LIBROS:
+                    case DISPENSADOR_CERTI_LIBROS_ESADL:
+                    case DISPENSADOR_CERTI_RUE_MAT:
+                    case DISPENSADOR_CERTI_RUE_EXI:
+                    case DISPENSADOR_CERTI_RUE_ESADL:
                         $detalles->appendChild(new DOMElement('matricula', $liq["expediente"]));
                         $detalles->appendChild(new DOMElement('proponente', ''));
                         break;
-                    case DISPENSADOR_CERTI_PROP :
-                    case DISPENSADOR_CERTI_RUE_PRO :
+                    case DISPENSADOR_CERTI_PROP:
+                    case DISPENSADOR_CERTI_RUE_PRO:
                         $detalles->appendChild(new DOMElement('matricula', ''));
                         $detalles->appendChild(new DOMElement('proponente', $liq["expediente"]));
                         break;
                 }
             }
 
-//
+            //
             if ($_SESSION["tramite"]["tipotramite"] == 'prepago') {
                 $detalles->appendChild(new DOMElement('matricula', ''));
                 $detalles->appendChild(new DOMElement('proponente', ''));
             }
 
-//
+            //
             if ($_SESSION["tramite"]["tipotramite"] == 'serviciosempresariales') {
                 $detalles->appendChild(new DOMElement('matricula', $liq["expediente"]));
                 $detalles->appendChild(new DOMElement('proponente', ''));
@@ -14273,9 +14765,9 @@ class funcionesGenerales {
         }
 
 
-// ***************************************************************************************** //
-// Asignar hijo al tag Padre
-// ***************************************************************************************** //
+        // ***************************************************************************************** //
+        // Asignar hijo al tag Padre
+        // ***************************************************************************************** //
         $xmlDoc->appendChild($tagliquidacion);
         $xml = $xmlDoc->saveXML();
         $xml = str_replace("&lt;", "<", $xml);
@@ -14287,12 +14779,13 @@ class funcionesGenerales {
         return $xml;
     }
 
-    public static function sumarUno($fec) {
+    public static function sumarUno($fec)
+    {
         $ano1 = intval(substr($fec, 0, 4));
         $mes1 = intval(substr($fec, 4, 2));
         $dia1 = intval(substr($fec, 6, 2));
 
-//
+        //
         $ok = 'no';
         if ($dia1 == 31) {
             $ok = 'si';
@@ -14344,8 +14837,9 @@ class funcionesGenerales {
         return $fecsal;
     }
 
-//
-    public static function tamanoArchivo($file) {
+    //
+    public static function tamanoArchivo($file)
+    {
         if (!file_exists($file)) {
             return 0;
         } else {
@@ -14353,7 +14847,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function tamano80SentarPago($txt) {
+    public static function tamano80SentarPago($txt)
+    {
         $salida = '';
         if (strlen($txt) > 78) {
             $salida = substr($txt, 0, 78);
@@ -14363,7 +14858,8 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function tiffToPdf($file_tif, $file_pdf, $format = 'Letter') {
+    public static function tiffToPdf($file_tif, $file_pdf, $format = 'Letter')
+    {
         if (!file_exists($file_tif))
             return 1;
         // exec($_SESSION["generales"]["pathabsoluto"] . '/includes/pstill_dist/pstill -c -c -c -g -i -p -t -J 70 -o ' . $file_pdf . ' ' . $file_tif . ' >> ../../tmp/visor.txt');
@@ -14373,7 +14869,8 @@ class funcionesGenerales {
         return 0;
     }
 
-    public static function truncateFinancialIndexes($number) {
+    public static function truncateFinancialIndexes($number)
+    {
         $sep = explode(",", $number);
         if (isset($sep[1])) {
             if (strlen($sep[1]) == 1) {
@@ -14386,7 +14883,8 @@ class funcionesGenerales {
         return $number;
     }
 
-    public static function truncateFinancialIndexesSinRedondeo($number) {
+    public static function truncateFinancialIndexesSinRedondeo($number)
+    {
         $sep = explode(".", $number);
         if (isset($sep[1])) {
             if (strlen($sep[1]) == 1) {
@@ -14399,7 +14897,8 @@ class funcionesGenerales {
         return $number;
     }
 
-    public static function truncateFloat($number, $digitos, $pd = '.', $pm = ',') {
+    public static function truncateFloat($number, $digitos, $pd = '.', $pm = ',')
+    {
         $raiz = 10;
         $multiplicador = pow($raiz, $digitos);
         $resultado = (int) $number * (int) $multiplicador / (int) $multiplicador;
@@ -14408,7 +14907,8 @@ class funcionesGenerales {
         return $x;
     }
 
-    public static function truncateFloatForm($number, $digitos, $pd = '.', $pm = ',') {
+    public static function truncateFloatForm($number, $digitos, $pd = '.', $pm = ',')
+    {
         $raiz = 10;
         $multiplicador = pow($raiz, $digitos);
         $resultado = (int) $number * (int) $multiplicador / (int) $multiplicador;
@@ -14416,8 +14916,9 @@ class funcionesGenerales {
         return $x;
     }
 
-    public static function truncarValorNuevoFormulario($valor) {
-// return truncarValorNuevo($valor);        
+    public static function truncarValorNuevoFormulario($valor)
+    {
+        // return truncarValorNuevo($valor);        
 
         if ($valor < 0) {
             $signo = '-';
@@ -14448,7 +14949,8 @@ class funcionesGenerales {
         return $signo . $valt;
     }
 
-    public static function truncarValorNuevoFormularioMercantil($valor) {
+    public static function truncarValorNuevoFormularioMercantil($valor)
+    {
 
         if ($valor < 0) {
             $signo = '-';
@@ -14462,7 +14964,7 @@ class funcionesGenerales {
             $rgv[0] = 0;
         }
         $valt = number_format($rgv[0], 0, "", ",") . '.';
-// $valt = $rgv[0] . ',';
+        // $valt = $rgv[0] . ',';
         if (!isset($rgv[1])) {
             $valt .= '00';
         } else {
@@ -14479,40 +14981,54 @@ class funcionesGenerales {
         return $signo . $valt;
     }
 
-//
-    public static function retornarAnomesTextual($anomes) {
+    //
+    public static function retornarAnomesTextual($anomes)
+    {
         $sal = '';
         switch (substr($anomes, 4)) {
-            case "01" : $sal = "Enero del " . substr($anomes, 0, 4);
+            case "01":
+                $sal = "Enero del " . substr($anomes, 0, 4);
                 break;
-            case "02" : $sal = "Febrero del " . substr($anomes, 0, 4);
+            case "02":
+                $sal = "Febrero del " . substr($anomes, 0, 4);
                 break;
-            case "03" : $sal = "Marzo del " . substr($anomes, 0, 4);
+            case "03":
+                $sal = "Marzo del " . substr($anomes, 0, 4);
                 break;
-            case "04" : $sal = "Abril del " . substr($anomes, 0, 4);
+            case "04":
+                $sal = "Abril del " . substr($anomes, 0, 4);
                 break;
-            case "05" : $sal = "Mayo del " . substr($anomes, 0, 4);
+            case "05":
+                $sal = "Mayo del " . substr($anomes, 0, 4);
                 break;
-            case "06" : $sal = "Junio del " . substr($anomes, 0, 4);
+            case "06":
+                $sal = "Junio del " . substr($anomes, 0, 4);
                 break;
-            case "07" : $sal = "Julio del " . substr($anomes, 0, 4);
+            case "07":
+                $sal = "Julio del " . substr($anomes, 0, 4);
                 break;
-            case "08" : $sal = "Agosto del " . substr($anomes, 0, 4);
+            case "08":
+                $sal = "Agosto del " . substr($anomes, 0, 4);
                 break;
-            case "09" : $sal = "Septiembre del " . substr($anomes, 0, 4);
+            case "09":
+                $sal = "Septiembre del " . substr($anomes, 0, 4);
                 break;
-            case "10" : $sal = "Octubre del " . substr($anomes, 0, 4);
+            case "10":
+                $sal = "Octubre del " . substr($anomes, 0, 4);
                 break;
-            case "11" : $sal = "Noviembre del " . substr($anomes, 0, 4);
+            case "11":
+                $sal = "Noviembre del " . substr($anomes, 0, 4);
                 break;
-            case "12" : $sal = "Diciembre del " . substr($anomes, 0, 4);
+            case "12":
+                $sal = "Diciembre del " . substr($anomes, 0, 4);
                 break;
         }
         return $sal;
     }
 
-//
-    public static function retornarArregloAdmonsDian($dbx) {
+    //
+    public static function retornarArregloAdmonsDian($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_admindian', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14521,8 +15037,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloClasesGenericasEsadl($dbx) {
+    //
+    public static function retornarArregloClasesGenericasEsadl($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_clase_esadl_gen', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -14531,8 +15048,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloCondicionEspecialLey2219($dbx) {
+    //
+    public static function retornarArregloCondicionEspecialLey2219($dbx)
+    {
         $sal = array();
         $sal["NN"] = 'Sin condición especial';
         $sal["VV"] = 'Víctimas de la violencia';
@@ -14542,16 +15060,18 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloBeneficioLey1780($dbx) {
+    //
+    public static function retornarArregloBeneficioLey1780($dbx)
+    {
         $sal = array();
         $sal['S'] = 'Si es beneficiario';
         $sal['N'] = 'No es benerficiario';
         return $sal;
     }
 
-//
-    public static function retornarArregloControlSocios($dbx) {
+    //
+    public static function retornarArregloControlSocios($dbx)
+    {
         $sal = array();
         $sal['UC'] = 'Socio único controlante';
         $sal['UCB1780'] = 'Socio único controlante, beneficio ley 1780';
@@ -14560,30 +15080,33 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloClasesEspecialesEsadl($dbx, $restringirdian = '') {
+    //
+    public static function retornarArregloClasesEspecialesEsadl($dbx, $restringirdian = '')
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_clase_esadl', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
             if ($t["mostrar"] == 'S') {
                 if ($restringirdian == 'si') {
                     if (
-                            (trim((string) $t["dian064"]) != '' && $t["dian064"] != '99') ||
-                            (trim((string) $t["dian065"]) != '' && $t["dian065"] != '99') ||
-                            (trim((string) $t["dian066"]) != '' && $t["dian066"] != '99') ||
-                            (trim((string) $t["dian067"]) != '' && $t["dian067"] != '99') ||
-                            (trim((string) $t["dian068"]) != '' && $t["dian068"] != '99') ||
-                            (trim((string) $t["dian069"]) != '' && $t["dian069"] != '99')) {
+                        (trim((string) $t["dian064"]) != '' && $t["dian064"] != '99') ||
+                        (trim((string) $t["dian065"]) != '' && $t["dian065"] != '99') ||
+                        (trim((string) $t["dian066"]) != '' && $t["dian066"] != '99') ||
+                        (trim((string) $t["dian067"]) != '' && $t["dian067"] != '99') ||
+                        (trim((string) $t["dian068"]) != '' && $t["dian068"] != '99') ||
+                        (trim((string) $t["dian069"]) != '' && $t["dian069"] != '99')
+                    ) {
                         $sal[$t["id"]] = $t["id"] . ' - ' . substr($t["descripcion"], 0, 50) . ' (' . $t["codigorues"] . ')';
                     }
                 } else {
                     if (
-                            (trim((string) $t["dian064"]) != '' && $t["dian064"] != '99') ||
-                            (trim((string) $t["dian065"]) != '' && $t["dian065"] != '99') ||
-                            (trim((string) $t["dian066"]) != '' && $t["dian066"] != '99') ||
-                            (trim((string) $t["dian067"]) != '' && $t["dian067"] != '99') ||
-                            (trim((string) $t["dian068"]) != '' && $t["dian068"] != '99') ||
-                            (trim((string) $t["dian069"]) != '' && $t["dian069"] != '99')) {
+                        (trim((string) $t["dian064"]) != '' && $t["dian064"] != '99') ||
+                        (trim((string) $t["dian065"]) != '' && $t["dian065"] != '99') ||
+                        (trim((string) $t["dian066"]) != '' && $t["dian066"] != '99') ||
+                        (trim((string) $t["dian067"]) != '' && $t["dian067"] != '99') ||
+                        (trim((string) $t["dian068"]) != '' && $t["dian068"] != '99') ||
+                        (trim((string) $t["dian069"]) != '' && $t["dian069"] != '99')
+                    ) {
                         $sal[$t["id"]] = $t["id"] . ' - ' . substr($t["descripcion"], 0, 50) . ' (' . $t["codigorues"] . ')';
                     } else {
                         $sal[$t["id"]] = $t["id"] . ' - ' . substr($t["descripcion"], 0, 50) . ' (' . $t["codigorues"] . ') (No DIAN)';
@@ -14594,8 +15117,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloClasesEconomiaSolidaria($dbx) {
+    //
+    public static function retornarArregloClasesEconomiaSolidaria($dbx)
+    {
 
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_clase_econsoli', "1=1", "descripcion");
         $sal = array();
@@ -14606,7 +15130,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function retornarArregloExtDom($dbx) {
+    public static function retornarArregloExtDom($dbx)
+    {
         $sal = array();
         $sal['N'] = 'NO';
         $sal['S'] = 'SI EN PROCESO';
@@ -14614,32 +15139,36 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloAutorizaciones($dbx) {
+    //
+    public static function retornarArregloAutorizaciones($dbx)
+    {
         $sal = array();
         $sal['SI'] = 'Si autorizo';
         $sal['NO'] = 'No autorizo';
         return $sal;
     }
 
-//
-    public static function retornarArregloSN($dbx) {
+    //
+    public static function retornarArregloSN($dbx)
+    {
         $sal = array();
         $sal['N'] = 'NO';
         $sal['S'] = 'SI';
         return $sal;
     }
 
-//
-    public static function retornarArregloPagoIR($dbx) {
+    //
+    public static function retornarArregloPagoIR($dbx)
+    {
         $sal = array();
         $sal['no'] = 'No se acredita el pago del impuesto de registro';
         $sal['si'] = 'SI se acredita el pago del impuesto de registro';
         return $sal;
     }
 
-//
-    public static function retornarArregloSNR($dbx) {
+    //
+    public static function retornarArregloSNR($dbx)
+    {
         $sal = array();
         $sal['N'] = 'NO';
         $sal['S'] = 'SI';
@@ -14647,8 +15176,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloSNP($dbx) {
+    //
+    public static function retornarArregloSNP($dbx)
+    {
         $sal = array();
         $sal['N'] = 'NO';
         $sal['S'] = 'SI';
@@ -14656,8 +15186,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoAportantes($dbx) {
+    //
+    public static function retornarArregloTipoAportantes($dbx)
+    {
         $sal = array();
         $sal['0'] = 'No reporta';
         $sal['1'] = '200 o más cotizantes';
@@ -14667,8 +15198,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloImpExp($dbx) {
+    //
+    public static function retornarArregloImpExp($dbx)
+    {
         $sal = array();
         $sal['0'] = 'NO';
         $sal['1'] = '1.- Importador';
@@ -14677,8 +15209,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloAfiliacion($dbx) {
+    //
+    public static function retornarArregloAfiliacion($dbx)
+    {
         $sal = array();
         $sal['0'] = 'NO';
         $sal['1'] = '1.- Afiliación activa';
@@ -14690,7 +15223,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function retornarArregloMotivosDesafiliacion($dbx) {
+    public static function retornarArregloMotivosDesafiliacion($dbx)
+    {
         $sal = array();
         $sal['0'] = 'NO';
         $sal['2'] = 'Cancelación de la matrícula (2)';
@@ -14704,8 +15238,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloMotivosCancelacion($dbx) {
+    //
+    public static function retornarArregloMotivosCancelacion($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_motivos_cancelacion', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -14714,8 +15249,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloEstadosLiquidacion($dbx) {
+    //
+    public static function retornarArregloEstadosLiquidacion($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tipos_liquidacion', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -14724,8 +15260,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloNaturalezas($dbx) {
+    //
+    public static function retornarArregloNaturalezas($dbx)
+    {
         $sal = array();
         $sal['0'] = '0.- Comercial';
         $sal['1'] = '1.- Civil genérica';
@@ -14736,8 +15273,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloNaturalezasEsadl($dbx) {
+    //
+    public static function retornarArregloNaturalezasEsadl($dbx)
+    {
         $sal = array();
         $sal['1'] = '1.- Fundación';
         $sal['2'] = '2.- Asociación';
@@ -14746,8 +15284,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloEstadosPjur($dbx) {
+    //
+    public static function retornarArregloEstadosPjur($dbx)
+    {
         $sal = array();
         $sal['00'] = 'NO APLICA';
         $sal['01'] = 'ACTIVA';
@@ -14760,16 +15299,18 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloPyR($dbx) {
+    //
+    public static function retornarArregloPyR($dbx)
+    {
         $sal = array();
         $sal['P'] = 'P.- Pendiente';
         $sal['R'] = 'R.- Revisado';
         return $sal;
     }
 
-//
-    public static function retornarArregloBarrios($dbx, $mun) {
+    //
+    public static function retornarArregloBarrios($dbx, $mun)
+    {
         if (trim($mun) == '') {
             return array();
         }
@@ -14782,8 +15323,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloCategorias($dbx) {
+    //
+    public static function retornarArregloCategorias($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_categorias', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14792,8 +15334,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloEstadosMatricula($dbx) {
+    //
+    public static function retornarArregloEstadosMatricula($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_estadomatriculas', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14802,8 +15345,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloEstadosDatosMatricula($dbx) {
+    //
+    public static function retornarArregloEstadosDatosMatricula($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tablassirep', "idtabla='30'", "idcodigo");
         $sal = array();
         foreach ($tems as $t) {
@@ -14815,24 +15359,27 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloHabilitadoPublico($dbx) {
+    //
+    public static function retornarArregloHabilitadoPublico($dbx)
+    {
         $sal = array();
         $sal["N"] = "No habilitado";
         $sal["S"] = "Habilitado";
         return $sal;
     }
 
-//
-    public static function retornarArregloEmprendimientoSocial($dbx) {
+    //
+    public static function retornarArregloEmprendimientoSocial($dbx)
+    {
         $sal = array();
         $sal["N"] = "NO";
         $sal["S"] = "SI es Emprendimiento Social";
         return $sal;
     }
 
-//
-    public static function retornarArregloCategoriasEmprendimientoSocial($dbx) {
+    //
+    public static function retornarArregloCategoriasEmprendimientoSocial($dbx)
+    {
         $sal = array();
         $lis = retornarRegistrosMysqliApi($dbx, 'tablas', "tabla='empsoc_categorias'", "campo1");
         if ($lis && !empty($lis)) {
@@ -14843,8 +15390,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloBeneficiariosEmprendimientoSocial($dbx) {
+    //
+    public static function retornarArregloBeneficiariosEmprendimientoSocial($dbx)
+    {
         $sal = array();
         $lis = retornarRegistrosMysqliApi($dbx, 'tablas', "tabla='empsoc_beneficiarios'", "campo1");
         if ($lis && !empty($lis)) {
@@ -14855,8 +15403,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloOrigenesPerJur($dbx) {
+    //
+    public static function retornarArregloOrigenesPerJur($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tablassirep', "idtabla='43'", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -14865,8 +15414,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloEstadosProponente($dbx) {
+    //
+    public static function retornarArregloEstadosProponente($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_estadoproponentes', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14875,8 +15425,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoTramites($dbx) {
+    //
+    public static function retornarArregloTipoTramites($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_tipotramites', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14885,8 +15436,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoTransaccion($dbx) {
+    //
+    public static function retornarArregloTipoTransaccion($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tipotransaccion', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14895,8 +15447,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoTransaccionOrden($dbx) {
+    //
+    public static function retornarArregloTipoTransaccionOrden($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tipotransaccion_orden', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14905,8 +15458,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloActos($dbx, $lib = '') {
+    //
+    public static function retornarArregloActos($dbx, $lib = '')
+    {
         if ($lib != '') {
             $tems = retornarRegistrosMysqliApi($dbx, 'mreg_actos', "idlibro=" . $lib . "'", "idacto");
         } else {
@@ -14919,8 +15473,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloServicios($dbx) {
+    //
+    public static function retornarArregloServicios($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_servicios', "1=1", "idservicio");
         $sal = array();
         foreach ($tems as $t) {
@@ -14929,8 +15484,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipobase($dbx) {
+    //
+    public static function retornarArregloTipobase($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tipobase', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14939,8 +15495,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloCodigosCertificas($dbx) {
+    //
+    public static function retornarArregloCodigosCertificas($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_codigos_certificas', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14949,8 +15506,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTransaccionesNombresCortos($dbx) {
+    //
+    public static function retornarArregloTransaccionesNombresCortos($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_transacciones_nombrecorto', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -14959,8 +15517,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTamanoEmpresarial($dbx) {
+    //
+    public static function retornarArregloTamanoEmpresarial($dbx)
+    {
         $arr = array();
         $arr["1"] = "Microempresa";
         $arr["2"] = "Pequeña empresa";
@@ -14969,8 +15528,9 @@ class funcionesGenerales {
         return $arr;
     }
 
-//
-    public static function retornarArregloTamanoEmpresarialAplica($dbx) {
+    //
+    public static function retornarArregloTamanoEmpresarialAplica($dbx)
+    {
         $arr = array();
         $arr["0"] = "Aplica para todos";
         $arr["1"] = "Solo para microempresas";
@@ -14980,8 +15540,9 @@ class funcionesGenerales {
         return $arr;
     }
 
-//
-    public static function retornarArregloTipoImpuestoRegistro($dbx) {
+    //
+    public static function retornarArregloTipoImpuestoRegistro($dbx)
+    {
         $arr = array();
         $arr["E"] = "E.- Exento";
         $arr["C"] = "C.- Con cuant&iacute;a (1) (0.7 o 0.3)";
@@ -14998,7 +15559,8 @@ class funcionesGenerales {
         return $arr;
     }
 
-    public static function retornarArregloOrigenesGenericos($dbx) {
+    public static function retornarArregloOrigenesGenericos($dbx)
+    {
         $arr = array();
         $arr["ALCALDIA_MUNICIPAL_DE_XXXXXX"] = "ALCALDIA MUNICIPAL DE XXXXXX";
         $arr["ASAMBLEA_DE_ACCIONISTAS"] = "ASAMBLEA DE ACCIONISTAS";
@@ -15013,7 +15575,8 @@ class funcionesGenerales {
         return $arr;
     }
 
-    public static function retornarArregloListaCertificadosGenerico($dbx) {
+    public static function retornarArregloListaCertificadosGenerico($dbx)
+    {
         $arr = array();
         $arr["M"] = "Matricula";
         $arr["E"] = "Existencia";
@@ -15021,8 +15584,9 @@ class funcionesGenerales {
         return $arr;
     }
 
-//
-    public static function retornarArregloEstadosDatosPjur($dbx) {
+    //
+    public static function retornarArregloEstadosDatosPjur($dbx)
+    {
         $sal = array();
         $sal['00'] = 'NO APLICA';
         $sal['01'] = 'ACTIVA';
@@ -15035,8 +15599,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloPresupuestosControl($dbx) {
+    //
+    public static function retornarArregloPresupuestosControl($dbx)
+    {
         $sal = array();
         $sal[1] = 'Numeral 1 Artículo 261 Código de Comercio';
         $sal[2] = 'Numeral 2 Artículo 261 Código de Comercio';
@@ -15045,8 +15610,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloProindiviso($dbx) {
+    //
+    public static function retornarArregloProindiviso($dbx)
+    {
         $sal = array();
         $sal["N/A"] = 'No es socio';
         $sal["N"] = 'No aplica proindiviso';
@@ -15056,8 +15622,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloCodigosCertificaPoderes($dbx) {
+    //
+    public static function retornarArregloCodigosCertificaPoderes($dbx)
+    {
         $sal = array();
         for ($ix = 9001; $ix <= 9099; $ix++) {
             $sal[$ix] = 'Poderes - ' . $ix;
@@ -15071,7 +15638,8 @@ class funcionesGenerales {
      * @param type $tipo ('', jurs, esadl)
      * @return string
      */
-    public static function retornarArregloOrganizaciones($dbx, $tipo = '') {
+    public static function retornarArregloOrganizaciones($dbx, $tipo = '')
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_organizacionjuridica', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15094,7 +15662,8 @@ class funcionesGenerales {
         return $sal;
     }
 
-    public static function retornarArregloOrganizacionesResumen($dbx, $tipo = '') {
+    public static function retornarArregloOrganizacionesResumen($dbx, $tipo = '')
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_orgres', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15117,8 +15686,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoVias($dbx) {
+    //
+    public static function retornarArregloTipoVias($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_tipovia', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15127,8 +15697,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloApendices($dbx) {
+    //
+    public static function retornarArregloApendices($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_apendicevia', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15137,8 +15708,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloCamaras($dbx) {
+    //
+    public static function retornarArregloCamaras($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_camaras', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15147,8 +15719,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloLibros($dbx) {
+    //
+    public static function retornarArregloLibros($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_libros', "1=1", "idlibro");
         $sal = array();
         foreach ($tems as $m) {
@@ -15157,8 +15730,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloLibrosElectronicos($dbx) {
+    //
+    public static function retornarArregloLibrosElectronicos($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($mysqli, 'mreg_tablassirep', "idtabla='09' and tipo='XX'", "idcodigo");
         $sal = array();
         foreach ($tems as $m) {
@@ -15169,16 +15743,18 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloPagoImpReg($dbx) {
+    //
+    public static function retornarArregloPagoImpReg($dbx)
+    {
         $sal = array();
         $sal['S'] = 'Ya está pago';
         $sal['N'] = 'Pendiente de pago';
         return $sal;
     }
 
-//
-    public static function retornarArregloMotivosDisolucion($dbx) {
+    //
+    public static function retornarArregloMotivosDisolucion($dbx)
+    {
         $sal = array();
         $sal["01"] = "01.- Decisi&oacute;n de los socios";
         $sal["02"] = "02.- Vencimiento del t&eacute;rmino de duraci&oacute;n";
@@ -15190,10 +15766,11 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoSAS($dbx) {
+    //
+    public static function retornarArregloTipoSAS($dbx)
+    {
         $sal = array();
-// $sal["no"] = "No es SAS";
+        // $sal["no"] = "No es SAS";
         $sal["sascontrolante"] = "SAS con socio único controlante";
         $sal["sasnocontrolante"] = "SAS con socio único no controlante";
         $sal["sasmultiples"] = "SAS con múltiples socios";
@@ -15202,16 +15779,18 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloMotivosLiquidacion($dbx) {
+    //
+    public static function retornarArregloMotivosLiquidacion($dbx)
+    {
         $sal = array();
         $sal["01"] = "01.- Como consecuencia de la disolución";
         $sal["03"] = "03.- Orden de autoridad competente";
         return $sal;
     }
 
-//
-    public static function retornarArregloMotivosCacelacion($dbx) {
+    //
+    public static function retornarArregloMotivosCacelacion($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_motivos_cancelacion', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15220,8 +15799,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloGobernaciones($dbx) {
+    //
+    public static function retornarArregloGobernaciones($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_gobernaciones', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15230,8 +15810,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloOrientaciones($dbx) {
+    //
+    public static function retornarArregloOrientaciones($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_orientacionvia', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15240,8 +15821,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloLetras($dbx) {
+    //
+    public static function retornarArregloLetras($dbx)
+    {
         $sal = array();
         $sal[""] = "";
         $sal["A"] = "A";
@@ -15274,8 +15856,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloLIbrosRegistrar($dbx) {
+    //
+    public static function retornarArregloLIbrosRegistrar($dbx)
+    {
         $sal = array();
         $sal["no"] = "No registrar libros";
         $sal["LF"] = "Libro fisico";
@@ -15283,8 +15866,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloRenglones($dbx) {
+    //
+    public static function retornarArregloRenglones($dbx)
+    {
         $sal = array();
         $sal["0001"] = 'Primer rengl&oacute;n';
         $sal["0002"] = 'Segundo rengl&oacute;n';
@@ -15297,8 +15881,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloResponsabilidades($dbx, $tipo = '') {
+    //
+    public static function retornarArregloResponsabilidades($dbx, $tipo = '')
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'tablas', "tabla='responsabilidadestributarias'", "idcodigo");
         $sal = array();
         foreach ($tems as $t) {
@@ -15321,7 +15906,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function retornarArregloFactoresFirmado($dbx) {
+    public static function retornarArregloFactoresFirmado($dbx)
+    {
         $arr = array();
         $arr["NO-APLICA"] = 'NO APLICA';
         $arr["NADA"] = 'SIN FIRMA';
@@ -15332,7 +15918,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function retornarArregloFiltroBusqueda() {
+    public static function retornarArregloFiltroBusqueda()
+    {
         $arr = array();
         $arr["1"] = 'Matricula';
         $arr["2"] = 'Proponente';
@@ -15341,9 +15928,10 @@ class funcionesGenerales {
         $arr["5"] = 'Palabra clave';
         return $arr;
     }
-    
+
     //
-    public static function retornarArregloActivarPagoBancos($dbx) {
+    public static function retornarArregloActivarPagoBancos($dbx)
+    {
         $arr = array();
         $arr["s1"] = 'SI - Firmados';
         $arr["s2"] = 'SI - Sin firma';
@@ -15351,8 +15939,9 @@ class funcionesGenerales {
         return $arr;
     }
 
-//
-    public static function retornarArregloTipoIdentificacion($dbx, $filtro = '') {
+    //
+    public static function retornarArregloTipoIdentificacion($dbx, $filtro = '')
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tipoidentificacion', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15394,7 +15983,8 @@ class funcionesGenerales {
      * @param type $filtro (vacio, constitucion, reforma, mutacion, nombramientos, otros
      * @return string
      */
-    public static function retornarArregloTipoDocumentos($dbx, $filtro = '') {
+    public static function retornarArregloTipoDocumentos($dbx, $filtro = '')
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tipos_documentales_registro', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15430,7 +16020,8 @@ class funcionesGenerales {
         return $sal;
     }
 
-    public static function retornarArregloTipoDocumentosTablaRetencion($dbx, $filtro = '') {
+    public static function retornarArregloTipoDocumentosTablaRetencion($dbx, $filtro = '')
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_tipodoc', "1=1", "nombre");
         $sal = array();
         foreach ($tems as $t) {
@@ -15448,8 +16039,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoDatosControlante($dbx) {
+    //
+    public static function retornarArregloTipoDatosControlante($dbx)
+    {
         $sal = array(
             '1' => 'SAS con socio único controlante',
             '2' => 'SAS con socio único NO controlante, controlante conocido',
@@ -15459,8 +16051,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloMunicipios($dbx) {
+    //
+    public static function retornarArregloMunicipios($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_municipios', "1=1", "ciudad");
         $sal = array();
         foreach ($tems as $t) {
@@ -15469,8 +16062,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloOrigenesGenericos1($dbx) {
+    //
+    public static function retornarArregloOrigenesGenericos1($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'tablas', "tabla='origenesgenericos'", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15479,8 +16073,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTerminosCondiciones($dbx) {
+    //
+    public static function retornarArregloTerminosCondiciones($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'tablas', "tabla='tyc'", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15490,7 +16085,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function retornarArregloEstadosRuta($dbx) {
+    public static function retornarArregloEstadosRuta($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_codestados_rutamercantil', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15501,12 +16097,13 @@ class funcionesGenerales {
             if (!isset($sal[$t["id"]])) {
                 $sal[$t["id"]] = $t["descripcion"];
             }
-        }        
+        }
         return $sal;
     }
-    
+
     //
-    public static function retornarArregloEstadosRutaComplejo($dbx) {
+    public static function retornarArregloEstadosRutaComplejo($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_codestados_rutamercantil', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15517,12 +16114,13 @@ class funcionesGenerales {
             if (!isset($sal[$t["id"]])) {
                 $sal[$t["id"]] = $t;
             }
-        }        
+        }
         return $sal;
     }
-    
+
     //
-    public static function retornarArregloCodigosRutas($dbx) {
+    public static function retornarArregloCodigosRutas($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_codrutas', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15532,7 +16130,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function retornarArregloCodigosRutasComplejo($dbx) {
+    public static function retornarArregloCodigosRutasComplejo($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_codrutas', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15540,9 +16139,10 @@ class funcionesGenerales {
         }
         return $sal;
     }
-    
+
     //
-    public static function retornarArregloSumarComo($dbx) {
+    public static function retornarArregloSumarComo($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'tablas', "tabla='sumarcomo'", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15551,8 +16151,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloMunicipiosJurisdiccion($dbx) {
+    //
+    public static function retornarArregloMunicipiosJurisdiccion($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_municipiosjurisdiccion', "1=1", "idcodigo");
         $sal = array();
         foreach ($tems as $t) {
@@ -15561,8 +16162,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloNiifs($dbx) {
+    //
+    public static function retornarArregloNiifs($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_gruponiif', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15571,8 +16173,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloNomenclatura($dbx) {
+    //
+    public static function retornarArregloNomenclatura($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_tipovia', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15581,8 +16184,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloPaises($dbx) {
+    //
+    public static function retornarArregloPaises($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_paises', "1=1", "codnumpais");
         $sal = array();
         foreach ($tems as $t) {
@@ -15594,8 +16198,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloSedes($dbx) {
+    //
+    public static function retornarArregloSedes($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_tipo_sede', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15604,17 +16209,19 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloSexos($dbx) {
+    //
+    public static function retornarArregloSexos($dbx)
+    {
         $sal = array();
         $sal['F'] = 'Femenino';
         $sal['M'] = 'Masculino';
-// $sal['O'] = 'Otros';
+        // $sal['O'] = 'Otros';
         return $sal;
     }
 
-//
-    public static function retornarArregloEstadosNit($dbx) {
+    //
+    public static function retornarArregloEstadosNit($dbx)
+    {
         $sal = array();
         $sal['0'] = 'OK';
         $sal['2'] = 'Temporal';
@@ -15623,16 +16230,18 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoBics($dbx) {
+    //
+    public static function retornarArregloTipoBics($dbx)
+    {
         $sal = array();
         $sal['N'] = 'No es BIC';
         $sal['S'] = 'Es BIC';
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoLocales($dbx) {
+    //
+    public static function retornarArregloTipoLocales($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tipolocal', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15641,8 +16250,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTipoRegistros($dbx) {
+    //
+    public static function retornarArregloTipoRegistros($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_tiporegistros', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15651,8 +16261,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloBandejasRegistro($dbx) {
+    //
+    public static function retornarArregloBandejasRegistro($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_bandejas_digitalizacion', "1=1", "idbandeja");
         $sal = array();
         foreach ($tems as $t) {
@@ -15661,8 +16272,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloGrupoServicios($dbx) {
+    //
+    public static function retornarArregloGrupoServicios($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_grupo_servicios', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15671,8 +16283,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloTitularesRecibos($dbx) {
+    //
+    public static function retornarArregloTitularesRecibos($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_titular_recibos', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15681,8 +16294,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloUbicaciones($dbx) {
+    //
+    public static function retornarArregloUbicaciones($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_ubicacion', "1=1", "id");
         $sal = array();
         foreach ($tems as $t) {
@@ -15691,8 +16305,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloCodigosVinculosDianPnat($dbx) {
+    //
+    public static function retornarArregloCodigosVinculosDianPnat($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tablassirep', "idtabla='90'", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15701,8 +16316,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloCodigosVinculosDianPjur($dbx) {
+    //
+    public static function retornarArregloCodigosVinculosDianPjur($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tablassirep', "idtabla='91'", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15711,8 +16327,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloInscripcionesMatricula($dbx, $mat) {
+    //
+    public static function retornarArregloInscripcionesMatricula($dbx, $mat)
+    {
         $reg1 = retornarRegistrosMysqliApi($dbx, 'mreg_est_inscripciones', "matricula='" . ltrim($mat, "0") . "'", "matricula,fecharegistro,libro,registro");
         $sal = array();
         $sal["registros"] = array();
@@ -15739,7 +16356,8 @@ class funcionesGenerales {
     }
 
     //
-    public static function retornarArregloCiius($dbx) {
+    public static function retornarArregloCiius($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'bas_ciius', "1=1", "idciiu");
         $sal = array();
         foreach ($tems as $t) {
@@ -15747,9 +16365,10 @@ class funcionesGenerales {
         }
         return $sal;
     }
-    
+
     //
-    public static function retornarArregloCodigosCargos($dbx) {
+    public static function retornarArregloCodigosCargos($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_tablassirep', "idtabla='14'", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15758,8 +16377,9 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloCodigosVinculos($dbx) {
+    //
+    public static function retornarArregloCodigosVinculos($dbx)
+    {
         $tems = retornarRegistrosMysqliApi($dbx, 'mreg_codvinculos', "1=1", "descripcion");
         $sal = array();
         foreach ($tems as $t) {
@@ -15770,15 +16390,17 @@ class funcionesGenerales {
         return $sal;
     }
 
-//
-    public static function retornarArregloZonas($dbx) {
+    //
+    public static function retornarArregloZonas($dbx)
+    {
         $sal = array();
         $sal['U'] = 'Urbana';
         $sal['R'] = 'Rural';
         return $sal;
     }
 
-    public static function retornarClaveMaestra($usua = '', $identificacion = '') {
+    public static function retornarClaveMaestra($usua = '', $identificacion = '')
+    {
         if (!defined('URL_RETORNO_CLAVE_MAESTRA') || URL_RETORNO_CLAVE_MAESTRA == '') {
             $url = 'http://siiconfe.confecamaras.co/librerias/ws/retornarClaveMaestra.php';
             $db = '';
@@ -15787,7 +16409,7 @@ class funcionesGenerales {
             $db = URL_RETORNO_CLAVE_MAESTRA_BD;
         }
 
-//
+        //
         $clave = '';
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -15814,7 +16436,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function retornarCodigoEmpresa($httphost = '') {
+    public static function retornarCodigoEmpresa($httphost = '')
+    {
         $xml = simplexml_load_file($_SESSION["generales"]["pathabsoluto"] . '/configuracion/empresas.php');
         $salida = "";
         foreach ($xml->empresa as $tempresa) {
@@ -15845,14 +16468,15 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function retornarDispositivo() {
+    public static function retornarDispositivo()
+    {
         if (defined('FORZAR_MOVIL') && FORZAR_MOVIL == 'SI') {
             return "mobile";
         }
 
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/Mobile_Detect_New.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/Mobile_Detect_New.php');
         $return = 'computer';
-        $disp = new Mobile_Detect_New ();
+        $disp = new Mobile_Detect_New();
         if ($disp->isMobile()) {
             $return = 'mobile';
         }
@@ -15864,7 +16488,8 @@ class funcionesGenerales {
         return $return;
     }
 
-    public static function retornarIdentificacionLimpia($ide) {
+    public static function retornarIdentificacionLimpia($ide)
+    {
         $ide = ltrim($ide, "0");
         $ide = ltrim($ide, " ");
         $ide = rtrim($ide, " ");
@@ -15873,7 +16498,8 @@ class funcionesGenerales {
         return $ide;
     }
 
-    public static function retornarDescripcionCiiu($dbx, $ciiu = '', $version = '*') {
+    public static function retornarDescripcionCiiu($dbx, $ciiu = '', $version = '*')
+    {
         if ($version == '*' || $version == '4') {
             $result = retornarRegistroMysqliApi($dbx, 'bas_ciius', "idciiu='" . trim($ciiu) . "'");
         }
@@ -15889,22 +16515,26 @@ class funcionesGenerales {
         return $retornar;
     }
 
-    public static function retornarGrupoNiifFormulario($dbx, $id) {
+    public static function retornarGrupoNiifFormulario($dbx, $id)
+    {
         $res = retornarRegistroMysqliApi($dbx, 'bas_gruponiif', "id='" . $id . "'");
         return $res["idformulario"];
     }
 
-    public static function retornarGrupoNiifFormulario20220925($dbx, $id) {
+    public static function retornarGrupoNiifFormulario20220925($dbx, $id)
+    {
         $res = retornarRegistroMysqliApi($dbx, 'bas_gruponiif', "id='" . $id . "'");
         return $res["idformularionew"];
     }
 
-    public static function retornarGrupoNiifFormularioDescripcion($dbx, $id) {
+    public static function retornarGrupoNiifFormularioDescripcion($dbx, $id)
+    {
         $res = retornarRegistroMysqliApi($dbx, 'bas_gruponiif', "id='" . $id . "'");
         return str_replace(array("1.- ", "2.- ", "3.- ", "4.- ", "5.- ", "6.- ", "7.- "), "", $res["descripcion"]);
     }
 
-    public static function retornarLabel($dbx, $label) {
+    public static function retornarLabel($dbx, $label)
+    {
         $salida = '';
         if ($dbx === null) {
             $cerrarMysql = 'si';
@@ -15921,16 +16551,17 @@ class funcionesGenerales {
             $salida = $label;
         }
 
-//
+        //
         if ($cerrarMysql == 'si') {
             $dbx->close();
         }
 
-//
+        //
         return $salida;
     }
 
-    public static function retornarListaXmlEmpresas($emp = '', $httphost = '') {
+    public static function retornarListaXmlEmpresas($emp = '', $httphost = '')
+    {
         $salida = array();
         $xml = simplexml_load_file($_SESSION["generales"]["pathabsoluto"] . '/configuracion/empresas.php');
         foreach ($xml->empresa as $tempresa) {
@@ -15941,7 +16572,8 @@ class funcionesGenerales {
         return $salida;
     }
 
-    public static function retornarListaEmpresas($server = '', $codigoempresa = '') {
+    public static function retornarListaEmpresas($server = '', $codigoempresa = '')
+    {
         $codsalida = '';
         $cuantos = 0;
         $salidaunica = array();
@@ -15974,7 +16606,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function retornarNombrePais($dbx, $id) {
+    public static function retornarNombrePais($dbx, $id)
+    {
 
         if (is_numeric($id)) {
             $reg = retornarRegistroMysqliApi($dbx, 'bas_paises', "codnumpais='" . $id . "'");
@@ -15993,7 +16626,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function retornarNombrePaisAbreviado($dbx, $id) {
+    public static function retornarNombrePaisAbreviado($dbx, $id)
+    {
 
         if (is_numeric($id)) {
             $reg = retornarRegistroMysqliApi($dbx, 'bas_paises', "codnumpais='" . $id . "'");
@@ -16007,8 +16641,9 @@ class funcionesGenerales {
         }
     }
 
-//
-    public static function reemplazarAcutes($txt) {
+    //
+    public static function reemplazarAcutes($txt)
+    {
         if ($txt != '') {
             $txt = str_replace("&amp;", "&", $txt);
             $txt = str_replace("&AMP;", "&", $txt);
@@ -16035,13 +16670,14 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function reemplazarEspeciales($txt) {
+    public static function reemplazarEspeciales($txt)
+    {
         if ($txt != '') {
-//
+            //
             $txt = str_replace("\"", "[0]", $txt);
             $txt = str_replace("'", "[1]", $txt);
             $txt = str_replace("&", "[2]", $txt);
-// $txt = str_replace("?", "[3]", $txt);
+            // $txt = str_replace("?", "[3]", $txt);
             $txt = str_replace("á", "[4]", $txt);
             $txt = str_replace("é", "[5]", $txt);
             $txt = str_replace("í", "[6]", $txt);
@@ -16049,8 +16685,8 @@ class funcionesGenerales {
             $txt = str_replace("ú", "[8]", $txt);
             $txt = str_replace("ñ", "[9]", $txt);
             $txt = str_replace("Ñ", "[10]", $txt);
-// $txt = str_replace("+", "[11]", $txt);
-// $txt = str_replace("#", "[12]", $txt);
+            // $txt = str_replace("+", "[11]", $txt);
+            // $txt = str_replace("#", "[12]", $txt);
             $txt = str_replace("Á", "[13]", $txt);
             $txt = str_replace("É", "[14]", $txt);
             $txt = str_replace("Í", "[15]", $txt);
@@ -16059,30 +16695,30 @@ class funcionesGenerales {
             $txt = str_replace("Ü", "[18]", $txt);
             $txt = str_replace("º", "[19]", $txt);
             $txt = str_replace("°", "[20]", $txt);
-//
+            //
             $txt = str_replace("ª", "[21]", $txt);
             $txt = str_replace("!", "[22]", $txt);
             $txt = str_replace("¡", "[23]", $txt);
             $txt = str_replace("'", "[24]", $txt);
             $txt = str_replace("´", "[25]", $txt);
             $txt = str_replace("`", "[26]", $txt);
-//
+            //
             $txt = str_replace("À", "[28]", $txt);
             $txt = str_replace("È", "[29]", $txt);
             $txt = str_replace("Ì", "[30]", $txt);
             $txt = str_replace("Ò", "[31]", $txt);
             $txt = str_replace("Ù", "[32]", $txt);
-//
+            //
             $txt = str_replace("à", "[33]", $txt);
             $txt = str_replace("è", "[34]", $txt);
             $txt = str_replace("ì", "[35]", $txt);
             $txt = str_replace("ò", "[36]", $txt);
             $txt = str_replace("ù", "[37]", $txt);
 
-//
+            //
             $txt = str_replace("©", "@", $txt);
 
-//             
+            //             
             $txt = str_replace("[SALTOPARRAFO]", "", $txt);
         }
         return $txt;
@@ -16095,7 +16731,8 @@ class funcionesGenerales {
      * @param 	string		$txt	Texto a convertir
      * @return 	string				Texto convertido
      */
-    public static function reemplazarEspecialesDom($txt) {
+    public static function reemplazarEspecialesDom($txt)
+    {
         if ($txt != '') {
             $txt = str_replace("&", "[2]", $txt);
             $txt = str_replace("á", "[4]", $txt);
@@ -16113,31 +16750,32 @@ class funcionesGenerales {
             $txt = str_replace("Ü", "[18]", $txt);
             $txt = str_replace("º", "[19]", $txt);
             $txt = str_replace("°", "[20]", $txt);
-//
+            //
             $txt = str_replace("ª", "[21]", $txt);
-// $txt = str_replace("!", "[22]", $txt);
+            // $txt = str_replace("!", "[22]", $txt);
             $txt = str_replace("¡", "[23]", $txt);
             $txt = str_replace("'", "[24]", $txt);
             $txt = str_replace("´", "[25]", $txt);
             $txt = str_replace("`", "[26]", $txt);
-//
+            //
             $txt = str_replace("À", "[28]", $txt);
             $txt = str_replace("È", "[29]", $txt);
             $txt = str_replace("Ì", "[30]", $txt);
             $txt = str_replace("Ò", "[31]", $txt);
             $txt = str_replace("Ù", "[32]", $txt);
-//
+            //
             $txt = str_replace("à", "[33]", $txt);
             $txt = str_replace("è", "[34]", $txt);
             $txt = str_replace("ì", "[35]", $txt);
             $txt = str_replace("ò", "[36]", $txt);
             $txt = str_replace("ù", "[37]", $txt);
         }
-//
+        //
         return $txt;
     }
 
-    public static function reemplazarEspecialesDomRee($txt) {
+    public static function reemplazarEspecialesDomRee($txt)
+    {
         if ($txt != '') {
             $txt = str_replace("&", "[2]", $txt);
             $txt = str_replace("á", "[4]", $txt);
@@ -16155,27 +16793,27 @@ class funcionesGenerales {
             $txt = str_replace("Ü", "[18]", $txt);
             $txt = str_replace("º", "[19]", $txt);
             $txt = str_replace("°", "[20]", $txt);
-//
+            //
             $txt = str_replace("ª", "[21]", $txt);
-// $txt = str_replace("!", "[22]", $txt);
+            // $txt = str_replace("!", "[22]", $txt);
             $txt = str_replace("¡", "[23]", $txt);
-// $txt = str_replace("'", "[24]", $txt);
+            // $txt = str_replace("'", "[24]", $txt);
             $txt = str_replace("´", "[25]", $txt);
             $txt = str_replace("`", "[26]", $txt);
-//
+            //
             $txt = str_replace("À", "[28]", $txt);
             $txt = str_replace("È", "[29]", $txt);
             $txt = str_replace("Ì", "[30]", $txt);
             $txt = str_replace("Ò", "[31]", $txt);
             $txt = str_replace("Ù", "[32]", $txt);
-//
+            //
             $txt = str_replace("à", "[33]", $txt);
             $txt = str_replace("è", "[34]", $txt);
             $txt = str_replace("ì", "[35]", $txt);
             $txt = str_replace("ò", "[36]", $txt);
             $txt = str_replace("ù", "[37]", $txt);
         }
-//
+        //
         return $txt;
     }
 
@@ -16186,7 +16824,8 @@ class funcionesGenerales {
      * @param 	string		$txt		Texto a convertir
      * @return 	string					RTexto convertido
      */
-    public static function restaurarEspeciales($txt) {
+    public static function restaurarEspeciales($txt)
+    {
         if ($txt != '') {
             $txt = str_replace("[0]", "\"", $txt);
             $txt = str_replace("[1]", "'", $txt);
@@ -16210,19 +16849,19 @@ class funcionesGenerales {
             $txt = str_replace("[19]", "º", $txt);
             $txt = str_replace("[20]", "°", $txt);
             $txt = str_replace("[21]", "ª", $txt);
-//
+            //
             $txt = str_replace("[22]", "!", $txt);
             $txt = str_replace("[23]", "¡", $txt);
             $txt = str_replace("[24]", "'", $txt);
             $txt = str_replace("[25]", "´", $txt);
             $txt = str_replace("[26]", "`", $txt);
-//
+            //
             $txt = str_replace("[28]", "À", $txt);
             $txt = str_replace("[29]", "È", $txt);
             $txt = str_replace("[30]", "Ì", $txt);
             $txt = str_replace("[31]", "Ò", $txt);
             $txt = str_replace("[32]", "Ù", $txt);
-//
+            //
             $txt = str_replace("[33]", "à", $txt);
             $txt = str_replace("[34]", "è", $txt);
             $txt = str_replace("[35]", "ì", $txt);
@@ -16231,11 +16870,12 @@ class funcionesGenerales {
 
             $txt = str_replace("[39]", "Ñ", $txt);
         }
-//
+        //
         return $txt;
     }
 
-    public static function restaurarEspecialesMayusculas($txt) {
+    public static function restaurarEspecialesMayusculas($txt)
+    {
         if ($txt != '') {
             $txt = str_replace("[0]", "\"", $txt);
             $txt = str_replace("[1]", "'", $txt);
@@ -16259,19 +16899,19 @@ class funcionesGenerales {
             $txt = str_replace("[19]", "º", $txt);
             $txt = str_replace("[20]", "°", $txt);
             $txt = str_replace("[21]", "ª", $txt);
-//
+            //
             $txt = str_replace("[22]", "!", $txt);
             $txt = str_replace("[23]", "¡", $txt);
             $txt = str_replace("[24]", "'", $txt);
             $txt = str_replace("[25]", "´", $txt);
             $txt = str_replace("[26]", "`", $txt);
-//
+            //
             $txt = str_replace("[28]", "À", $txt);
             $txt = str_replace("[29]", "È", $txt);
             $txt = str_replace("[30]", "Ì", $txt);
             $txt = str_replace("[31]", "Ò", $txt);
             $txt = str_replace("[32]", "Ù", $txt);
-//
+            //
             $txt = str_replace("[33]", "à", $txt);
             $txt = str_replace("[34]", "è", $txt);
             $txt = str_replace("[35]", "ì", $txt);
@@ -16280,11 +16920,12 @@ class funcionesGenerales {
 
             $txt = str_replace("[39]", "Ñ", $txt);
         }
-//
+        //
         return $txt;
     }
 
-    public static function restaurarEspecialesSinTildes($txt) {
+    public static function restaurarEspecialesSinTildes($txt)
+    {
         if ($txt != '') {
             $txt = str_replace("[0]", "\"", $txt);
             $txt = str_replace("[1]", "'", $txt);
@@ -16307,27 +16948,27 @@ class funcionesGenerales {
             $txt = str_replace("[18]", "Ü", $txt);
             $txt = str_replace("[19]", "º", $txt);
             $txt = str_replace("[20]", "°", $txt);
-//
+            //
             $txt = str_replace("[21]", "ª", $txt);
             $txt = str_replace("[22]", "!", $txt);
             $txt = str_replace("[23]", "¡", $txt);
             $txt = str_replace("[24]", "'", $txt);
             $txt = str_replace("[25]", "´", $txt);
             $txt = str_replace("[26]", "`", $txt);
-//
+            //
             $txt = str_replace("[28]", "A", $txt);
             $txt = str_replace("[29]", "E", $txt);
             $txt = str_replace("[30]", "I", $txt);
             $txt = str_replace("[31]", "O", $txt);
             $txt = str_replace("[32]", "U", $txt);
-//
+            //
             $txt = str_replace("[33]", "a", $txt);
             $txt = str_replace("[34]", "e", $txt);
             $txt = str_replace("[35]", "i", $txt);
             $txt = str_replace("[36]", "o", $txt);
             $txt = str_replace("[37]", "u", $txt);
         }
-//
+        //
         return $txt;
     }
 
@@ -16338,7 +16979,8 @@ class funcionesGenerales {
      * @param 	string		$txt		Texto a convertir
      * @return 	string					RTexto convertido
      */
-    public static function restaurarEspecialesRazonSocial($txt) {
+    public static function restaurarEspecialesRazonSocial($txt)
+    {
         if ($txt != '') {
             $txt = str_replace("[0]", "", $txt);
             $txt = str_replace("[1]", "", $txt);
@@ -16361,27 +17003,27 @@ class funcionesGenerales {
             $txt = str_replace("[18]", "Ü", $txt);
             $txt = str_replace("[19]", "º", $txt);
             $txt = str_replace("[20]", "°", $txt);
-//
+            //
             $txt = str_replace("[21]", "ª", $txt);
             $txt = str_replace("[22]", "!", $txt);
             $txt = str_replace("[23]", "¡", $txt);
             $txt = str_replace("[24]", "'", $txt);
             $txt = str_replace("[25]", "´", $txt);
             $txt = str_replace("[26]", "`", $txt);
-//
+            //
             $txt = str_replace("[28]", "À", $txt);
             $txt = str_replace("[29]", "È", $txt);
             $txt = str_replace("[30]", "Ì", $txt);
             $txt = str_replace("[31]", "Ò", $txt);
             $txt = str_replace("[32]", "Ù", $txt);
-//
+            //
             $txt = str_replace("[33]", "à", $txt);
             $txt = str_replace("[34]", "è", $txt);
             $txt = str_replace("[35]", "ì", $txt);
             $txt = str_replace("[36]", "ò", $txt);
             $txt = str_replace("[37]", "ù", $txt);
         }
-//
+        //
         return $txt;
     }
 
@@ -16392,7 +17034,8 @@ class funcionesGenerales {
      * @param 	string		$txt	Texto a convertir
      * @return 	string				Texto convertido
      */
-    public static function reemplazarHtmlPdf($txt) {
+    public static function reemplazarHtmlPdf($txt)
+    {
         if ($txt != '') {
             $txt = strip_tags($txt, "<p><ul><il>");
             $txt = str_replace("&nbsp;", " ", $txt);
@@ -16416,7 +17059,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function reemplazarHtml($txt) {
+    public static function reemplazarHtml($txt)
+    {
         if ($txt != '') {
             $txt = str_replace("á", "&aacute;", $txt);
             $txt = str_replace("é", "&eacute;", $txt);
@@ -16434,7 +17078,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function restoval($valor) {
+    public static function restoval($valor)
+    {
         $valor = str_replace(",", "", $valor);
         if (trim((string) $valor) == '')
             $valor = 0;
@@ -16446,7 +17091,8 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function quitarCaracteresDireccion($txt) {
+    public static function quitarCaracteresDireccion($txt)
+    {
 
         $patronesLetraNum[0] = '[^a-zA-Z0-9 ]';
         $reemplazos1[0] = '';
@@ -16457,7 +17103,8 @@ class funcionesGenerales {
         return trim(preg_replace($patronesSimbolos, $reemplazos2, $txt_tmp));
     }
 
-    public static function quitarTildes($txt) {
+    public static function quitarTildes($txt)
+    {
         $txt = str_replace("á", "a", $txt);
         $txt = str_replace("é", "e", $txt);
         $txt = str_replace("í", "i", $txt);
@@ -16473,7 +17120,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function redondear00($val) {
+    public static function redondear00($val)
+    {
         $val = intval($val);
         $val15 = sprintf("%015s", $val);
         $val2 = substr($val15, 13, 2);
@@ -16494,36 +17142,39 @@ class funcionesGenerales {
      * @param type $val
      * @return type
      */
-    public static function redondear100($val) {
+    public static function redondear100($val)
+    {
         $val = intval($val);
         $val15 = sprintf("%015s", $val);
         $val2 = substr($val15, 13, 2);
         if ($val2 >= "50") {
-            $val = intval(substr($val15,0,13)) * 100 + 100;
+            $val = intval(substr($val15, 0, 13)) * 100 + 100;
         } else {
-            $val = intval(substr($val15,0,13)) * 100;
+            $val = intval(substr($val15, 0, 13)) * 100;
         }
         return $val;
     }
-    
+
     /**
      * 
      * @param type $val
      * @return type
      */
-    public static function redondear1000($val) {
+    public static function redondear1000($val)
+    {
         $val = intval($val);
         $val15 = sprintf("%015s", $val);
         $val2 = substr($val15, 12, 3);
         if ($val2 >= "500") {
-            $val = intval(substr($val15,0,12)) * 1000 + 1000;
+            $val = intval(substr($val15, 0, 12)) * 1000 + 1000;
         } else {
-            $val = intval(substr($val15,0,12)) * 1000;
+            $val = intval(substr($val15, 0, 12)) * 1000;
         }
         return $val;
     }
-    
-    public static function validarFecha($dsfecha) {
+
+    public static function validarFecha($dsfecha)
+    {
         if (strlen($dsfecha) < 8) {
             return false;
         } else {
@@ -16536,20 +17187,22 @@ class funcionesGenerales {
                 } else {
                     $mal = "0";
                     if ((substr($dsfecha, 4, 2) == "01") ||
-                            (substr($dsfecha, 4, 2) == "03") ||
-                            (substr($dsfecha, 4, 2) == "05") ||
-                            (substr($dsfecha, 4, 2) == "07") ||
-                            (substr($dsfecha, 4, 2) == "08") ||
-                            (substr($dsfecha, 4, 2) == "10") ||
-                            (substr($dsfecha, 4, 2) == "12")) {
+                        (substr($dsfecha, 4, 2) == "03") ||
+                        (substr($dsfecha, 4, 2) == "05") ||
+                        (substr($dsfecha, 4, 2) == "07") ||
+                        (substr($dsfecha, 4, 2) == "08") ||
+                        (substr($dsfecha, 4, 2) == "10") ||
+                        (substr($dsfecha, 4, 2) == "12")
+                    ) {
                         if ((substr($dsfecha, 6, 2) < "01") || (substr($dsfecha, 6, 2) > "31")) {
                             $mal = "1";
                         }
                     }
                     if ((substr($dsfecha, 4, 2) == "04") ||
-                            (substr($dsfecha, 4, 2) == "06") ||
-                            (substr($dsfecha, 4, 2) == "09") ||
-                            (substr($dsfecha, 4, 2) == "11")) {
+                        (substr($dsfecha, 4, 2) == "06") ||
+                        (substr($dsfecha, 4, 2) == "09") ||
+                        (substr($dsfecha, 4, 2) == "11")
+                    ) {
                         if ((substr($dsfecha, 6, 2) < "01") || (substr($dsfecha, 6, 2) > "30")) {
                             $mal = "1";
                         }
@@ -16575,7 +17228,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function validarMovil($txt) {
+    public static function validarMovil($txt)
+    {
         $txtNuevo = preg_replace("[^0-9]", "", $txt);
         if (trim($txt) != (trim($txtNuevo))) {
             return false;
@@ -16614,7 +17268,8 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function validarNit($nit) {
+    public static function validarNit($nit)
+    {
         $sepIde = \funcionesGenerales::separarDv($nit);
         $dv = \funcionesGenerales::calcularDv($sepIde["identificacion"]);
         if ($dv == $sepIde["dv"]) {
@@ -16624,7 +17279,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function validarNumerico($txt) {
+    public static function validarNumerico($txt)
+    {
         $txtNuevo = preg_replace("[^0-9]", "", $txt);
         if (trim($txt) != (trim($txtNuevo))) {
             return false;
@@ -16634,9 +17290,10 @@ class funcionesGenerales {
         exit();
     }
 
-    public static function validarPdf($filee, $textobuscar = '') {
-// return true;
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/components/pdf-to-text/PdfToText.phpclass');
+    public static function validarPdf($filee, $textobuscar = '')
+    {
+        // return true;
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/components/pdf-to-text/PdfToText.phpclass');
         if (substr($filee, 0, 4) == 'http') {
             $content = file_get_contents($filee);
             $file = $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $_SESSION["generales"]["codigoempresa"] . '-' . rand(1000000, 5000000) . '.pdf';
@@ -16657,10 +17314,11 @@ class funcionesGenerales {
         }
     }
 
-    public static function validarPermisoEjecucion($mysqli, $usua, $opcion) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function validarPermisoEjecucion($mysqli, $usua, $opcion)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
 
-// Arma la tabla de permisos
+        // Arma la tabla de permisos
         if (!isset($_SESSION["generales"]["usuariospermisos"]) || empty($_SESSION["generales"]["usuariospermisos"])) {
             $arrTem = retornarRegistrosMysqliApi($mysqli, 'usuariospermisos', "1=1", "idusuario,idopcion");
             $_SESSION["generales"]["usuariospermisos"] = array();
@@ -16669,7 +17327,7 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         if (!isset($_SESSION["generales"]["usuariospermisos"][$usua][$opcion])) {
             return false;
         } else {
@@ -16677,8 +17335,9 @@ class funcionesGenerales {
         }
     }
 
-    public static function validarPermisoEspecial($mysqli, $usua, $opcion) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function validarPermisoEspecial($mysqli, $usua, $opcion)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
         $can = contarRegistrosMysqliApi($mysqli, 'usuariospermisosespeciales', "idusuario='" . $usua . "' and idpermiso='" . $opcion . "'");
         if ($can == 0) {
             $can = retornarRegistroMysqliApi($mysqli, 'bas_permisosespeciales', "idpermiso='" . (string) $opcion . "'");
@@ -16696,7 +17355,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function validarPermitidosDireccion($txt) {
+    public static function validarPermitidosDireccion($txt)
+    {
         $permitidos = "&aacute;&eacute;&iacute;&oacute;&uacute;abcdefghijklmn&ntilde;opqrstuvwxyz&aacute;&eacute;&iacute;&oacute;&uacute;&Ntilde;ABCDEFGHIJKLMNÑñOPQRSTUVWXYZ0123456789-#. ";
         for ($i = 0; $i < strlen($txt); $i++) {
             if (strpos($permitidos, substr($txt, $i, 1)) === false) {
@@ -16706,7 +17366,8 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function validarTelefono($txt) {
+    public static function validarTelefono($txt)
+    {
         $txtNuevo = preg_replace("[^0-9]", "", $txt);
         if (trim($txt) != (trim($txtNuevo))) {
             return false;
@@ -16745,8 +17406,9 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function validacionFormularioGrabado($dbx, $mat) {
-        $temValid = retornarRegistroMysqliApi($dbx, 'mreg_liquidaciondatos', "idliquidacion=" . $_SESSION ["tramite"] ["numeroliquidacion"] . " and expediente='" . $mat . "'");
+    public static function validacionFormularioGrabado($dbx, $mat)
+    {
+        $temValid = retornarRegistroMysqliApi($dbx, 'mreg_liquidaciondatos', "idliquidacion=" . $_SESSION["tramite"]["numeroliquidacion"] . " and expediente='" . $mat . "'");
         if ($temValid === false || empty($temValid)) {
             return false;
         } else {
@@ -16763,7 +17425,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function convertirDesdeHtml($txt) {
+    public static function convertirDesdeHtml($txt)
+    {
         $txt = str_replace("&aacute;", "á", $txt);
         $txt = str_replace("&eacute;", "é", $txt);
         $txt = str_replace("&iacute;", "í", $txt);
@@ -16779,7 +17442,8 @@ class funcionesGenerales {
         return $txt;
     }
 
-    public static function convertirStringNumero($valx) {
+    public static function convertirStringNumero($valx)
+    {
         $valx = trim($valx);
         $val = 0;
         $signo = '+';
@@ -16797,15 +17461,20 @@ class funcionesGenerales {
             if (isset($a[1])) {
                 $len = strlen($a[1]);
                 switch ($len) {
-                    case 1: $val = $val + intval($a[1]) / 10;
+                    case 1:
+                        $val = $val + intval($a[1]) / 10;
                         break;
-                    case 2: $val = $val + intval($a[1]) / 100;
+                    case 2:
+                        $val = $val + intval($a[1]) / 100;
                         break;
-                    case 3: $val = $val + intval($a[1]) / 1000;
+                    case 3:
+                        $val = $val + intval($a[1]) / 1000;
                         break;
-                    case 4: $val = $val + intval($a[1]) / 10000;
+                    case 4:
+                        $val = $val + intval($a[1]) / 10000;
                         break;
-                    case 5: $val = $val + intval($a[1]) / 100000;
+                    case 5:
+                        $val = $val + intval($a[1]) / 100000;
                         break;
                 }
             }
@@ -16816,7 +17485,8 @@ class funcionesGenerales {
         return $val;
     }
 
-    public static function consumirWsConsultarRuta($dbx, $codbarras) {
+    public static function consumirWsConsultarRuta($dbx, $codbarras)
+    {
 
         if (trim($codbarras) == '') {
             $_SESSION["generales"]["mensajerror"] = 'No es posible realizar la consulta';
@@ -16827,7 +17497,7 @@ class funcionesGenerales {
         $arrTemRec = retornarRegistroMysqliApi($dbx, 'mreg_recibosgenerados', "codigobarras='" . $codbarras . "'");
         $arrTemRad = retornarRegistroMysqliApi($dbx, 'mreg_rue_radicacion', "codigobarras='" . $codbarras . "'");
         $arrTemliq = retornarRegistroMysqliApi($dbx, 'mreg_liquidacion', "numeroradicacion='" . $codbarras . "'");
-//
+        //
         $emails = array();
         $tels = array();
 
@@ -16838,7 +17508,7 @@ class funcionesGenerales {
             $celularRadicado = $arrTemRec["telefono2"];
         }
 
-//
+        //
         if ($arrTemRec["email"] != '') {
             $emails[$arrTemRec["email"]] = $arrTemRec["email"];
         }
@@ -16898,10 +17568,10 @@ class funcionesGenerales {
                 }
             }
 
-// Incluir la búsqueda sobre mreg_campos_historicos_AAAA
+            // Incluir la búsqueda sobre mreg_campos_historicos_AAAA
         }
 
-//
+        //
         $retorno = array();
         $retorno["codbarras"] = $codbarras;
         $retorno["operacion"] = $arrTem["operacion"];
@@ -16959,7 +17629,7 @@ class funcionesGenerales {
         $retorno["celnot2"] = $arrTem["celnot2"];
         $retorno["celnot3"] = $arrTem["celnot3"];
 
-//
+        //
         $i = 0;
         $retorno["pasosruta"] = array();
         $arrTemEst = retornarRegistrosMysqliApi($dbx, 'mreg_est_codigosbarras_documentos', "codigobarras='" . $codbarras . "'", "fecha,hora");
@@ -16989,7 +17659,7 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         $i = 0;
         $retorno["codbarrasacto"] = array();
         $arrTemEst = retornarRegistrosMysqliApi($dbx, 'mreg_est_codigosbarras_libros', "codigobarras='" . $codbarras . "'", "id");
@@ -17033,7 +17703,7 @@ class funcionesGenerales {
             }
         }
 
-//        
+        //        
         $retorno["servicios"] = array();
         if (trim($arrTem["recibo"]) != '') {
             $arrTemSer = retornarRegistrosMysqliApi($dbx, 'mreg_recibosgenerados_detalle', "recibo='" . $arrTem["recibo"] . "'", "id");
@@ -17058,10 +17728,11 @@ class funcionesGenerales {
      * @param type $txt
      * @return string
      */
-    public static function consumirWsVRVALREN($txt) {
-        require_once ('../configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+    public static function consumirWsVRVALREN($txt)
+    {
+        require_once('../configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
 
-// Consume el ws del SIREP
+        // Consume el ws del SIREP
         if ($txt != '') {
             $lista = explode(',', $txt);
             $canceladas = 0;
@@ -17112,9 +17783,10 @@ class funcionesGenerales {
         return $resultado;
     }
 
-    public static function validarAccesoTagsBandejaEntrada($mysqli = null) {
+    public static function validarAccesoTagsBandejaEntrada($mysqli = null)
+    {
 
-//
+        //
         $cerrarMysqli = 'no';
         if ($mysqli == null) {
             $mysqli = conexionMysqliApi();
@@ -17127,7 +17799,7 @@ class funcionesGenerales {
             $arrUsuario = false;
         }
 
-//
+        //
         if ($_SESSION["generales"]["validado"] == 'NO') {
             if ($cerrarMysqli == 'si') {
                 $mysqli->close();
@@ -17135,7 +17807,7 @@ class funcionesGenerales {
             return ("No hay un usuario logueado (session activa) en el sistema de informaci&oacute;n");
         }
 
-//
+        //
         if ($_SESSION["generales"]["validado"] == 'SI') {
             if (!$arrUsuario) {
                 if ($cerrarMysqli == 'si') {
@@ -17145,18 +17817,18 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         if ($_SESSION["generales"]["tipousuario"] != '00') {
             if ((trim((string) $arrUsuario["fechaactivacion"]) == '') || (trim((string) $arrUsuario["fechaactivacion"]) == '00000000')) {
                 $tx = "ADVERTENCIA!!! <br><br>Esta opci&oacute;n no puede ser ejecutada puesto que el usuario que est&aacute; logueado a&uacute;n no ha sido activado. " .
-                        "Comunique este hecho al tel&eacute;fono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electr&oacute;nico " .
-                        EMAIL_ATENCION_USUARIOS . ", para que su suscripci&oacute;n sea activada. " .
-                        "Por favor disculpe los inconvenientes que esta situaci&oacute;n le pueda presentar.<br><br>";
+                    "Comunique este hecho al tel&eacute;fono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electr&oacute;nico " .
+                    EMAIL_ATENCION_USUARIOS . ", para que su suscripci&oacute;n sea activada. " .
+                    "Por favor disculpe los inconvenientes que esta situaci&oacute;n le pueda presentar.<br><br>";
                 if (substr(TIPO_EMPRESA, 0, 3) == 'cam') {
                     $tx .= "En cumplimiento de la Ley de Habeas Data y con el objeto de salvaguardar en forma responsable la " .
-                            "informaci&oacute;n que los comerciantes han depositado en los Registros que administra la C&aacute;mara de Comercio, " .
-                            "es indispensable que conozcamos y registremos quien accede a la informaci&oacute;n. Es por este motivo que es " .
-                            "tan importante que su suscripci&oacute;n est&eacute; vigente.<br><br>Cordialmente<br><br>DEPARTAMENTO LEGAL<br>CAMARA DE COMERCIO";
+                        "informaci&oacute;n que los comerciantes han depositado en los Registros que administra la C&aacute;mara de Comercio, " .
+                        "es indispensable que conozcamos y registremos quien accede a la informaci&oacute;n. Es por este motivo que es " .
+                        "tan importante que su suscripci&oacute;n est&eacute; vigente.<br><br>Cordialmente<br><br>DEPARTAMENTO LEGAL<br>CAMARA DE COMERCIO";
                 }
                 if ($cerrarMysqli == 'si') {
                     $mysqli->close();
@@ -17166,7 +17838,7 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         if ((trim((string) $arrUsuario["fechainactivacion"]) != '') && (trim((string) $arrUsuario["fechainactivacion"]) != '00000000')) {
             if ($cerrarMysqli == 'si') {
                 $mysqli->close();
@@ -17174,7 +17846,7 @@ class funcionesGenerales {
             return ("Esta opci&oacute;n no puede ser ejecutada pues el usuario que est&aacute; logueado en el sistema est&aacute; desactivado. En caso de no estar de acuerdo con esta situaci&oacute;n le solicitamos que se comunique con los n&uacute;meros telef&oacute;nicos que aparecen en la parte inferior de esta pantalla y comente el caso encontrado.");
         }
 
-//
+        //
         if ($arrUsuario["eliminado"] == 'SI') {
             if ($cerrarMysqli == 'si') {
                 $mysqli->close();
@@ -17182,7 +17854,7 @@ class funcionesGenerales {
             return ("Esta opci&oacute;n no puede ser ejecutada pues el usuario que est&aacute; logueado en el sistema ha sido eliminado. En caso de no estar de acuerdo con esta situaci&oacute;n le solicitamos que se comunique con los n&uacute;meros telef&oacute;nicos que aparecen en la parte inferior de esta pantalla y comente el caso encontrado.");
         }
 
-//    
+        //    
         if (($arrUsuario["idtipousuario"] == '00') || ($arrUsuario["idtipousuario"] == '06')) {
             $tx = "ADVERTENCIA!!!   Esta opci&oacute;n no puede ser ejecutada puesto que el usuario que est&aacute; logueado no tiene permisos para ejecutarla. ";
             if ($cerrarMysqli == 'si') {
@@ -17196,35 +17868,36 @@ class funcionesGenerales {
         return "true";
     }
 
-    public static function validarAcceso($script, $existenciaopcion = 'S', $validado = 'S') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-//
+    public static function validarAcceso($script, $existenciaopcion = 'S', $validado = 'S')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        //
         if (!isset($_SESSION["generales"]["codigousuario"]) || trim($_SESSION["generales"]["codigousuario"]) == '') {
             $_SESSION["generales"]["txtemergente"] = "(1) No se encontró usuario logueado, imposible continuar con el proceso solicitado.";
             return false;
         }
 
-//
+        //
         if (!isset($_SESSION["generales"]["tipousuario"]) || trim($_SESSION["generales"]["tipousuario"]) == '') {
             $_SESSION["generales"]["txtemergente"] = "(2) No se encontró el tipo de usuario, imposible continuar con el proceso solicitado.";
             return false;
         }
 
-// Si al llamar a la opción viene como par&aacute;metro el campo "codigoopcion" se crea la variable de session correspondiente    
+        // Si al llamar a la opción viene como par&aacute;metro el campo "codigoopcion" se crea la variable de session correspondiente    
         if (isset($_SESSION["vars"]["codigoopcion"])) {
             $_SESSION["generales"]["codigoopcion"] = $_SESSION["vars"]["codigoopcion"];
         }
 
-// Quita los directorios previos
+        // Quita los directorios previos
         $cadena = explode(DIRECTORY_SEPARATOR, $script);
         $cantidad = count($cadena);
         $script1 = $cadena[$cantidad - 1];
 
-// Quita los par&aacute;metros
+        // Quita los par&aacute;metros
         $cadena = explode("?", $script1);
         $script1 = $cadena[0];
 
-//
+        //
         if ($_SESSION["generales"]["tipousuario"] == '01') {
             return true;
         }
@@ -17248,7 +17921,7 @@ class funcionesGenerales {
             $validado = 'N';
         }
 
-//
+        //
         if ($validado == 'S') {
             if ($existenciaopcion == 'S') {
                 if ($_SESSION["generales"]["validado"] == 'NO') {
@@ -17261,19 +17934,19 @@ class funcionesGenerales {
         }
 
 
-//
+        //
         if ($_SESSION["generales"]["tipousuario"] != '00') {
             if ((trim($_SESSION["generales"]["fechaactivacion"]) == '') || (trim($_SESSION["generales"]["fechaactivacion"]) == '00000000')) {
                 $tx = "ADVERTENCIA (1) !!! <br><br>Esta opción no puede ser ejecutada puesto que el usuario que está logueado aún no ha sido activado. " .
-                        "Comunique este hecho al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
-                        EMAIL_ATENCION_USUARIOS . ", para que su suscripción sea activada. " .
-                        "Por favor disculpe los inconvenientes que esta situación le pueda presentar.<br><br>";
+                    "Comunique este hecho al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
+                    EMAIL_ATENCION_USUARIOS . ", para que su suscripción sea activada. " .
+                    "Por favor disculpe los inconvenientes que esta situación le pueda presentar.<br><br>";
                 $_SESSION["generales"]["txtemergente"] = $tx;
                 return false;
             }
         }
 
-//
+        //
         if ($_SESSION["generales"]["codigousuario"] != 'USUPUBXX') {
             if ((trim($_SESSION["generales"]["fechainactivacion"]) != '') && (trim($_SESSION["generales"]["fechainactivacion"]) != '00000000')) {
                 $_SESSION["generales"]["txtemergente"] = "Esta opción no puede ser ejecutada pues el usuario que está logueado en el sistema está desactivado. En caso de no estar de acuerdo con esta situación le solicitamos que se comunique con los números telefónicos que aparecen en la parte inferior de esta pantalla y comente el caso encontrado.";
@@ -17282,7 +17955,7 @@ class funcionesGenerales {
         }
 
 
-//
+        //
         if ($validado == 'S') {
             if ($_SESSION["generales"]["codigousuario"] == 'JSP7') {
                 $permisos = 'SI';
@@ -17305,9 +17978,9 @@ class funcionesGenerales {
 
             if ($permisos == 'NO') {
                 $tx = "ADVERTENCIA (2) !!! Esta opcion (" . $script1 . ") no puede ser ejecutada puesto que el usuario que esta logueado (" . $_SESSION["generales"]["codigousuario"] . ")  no tiene permisos para ejecutarla. " .
-                        "Si considera que esto es incorrecto, comunique esta situacion al telefono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electronico " .
-                        EMAIL_ATENCION_USUARIOS . ", para que la opcion correspondiente le sea activada. " .
-                        "Por favor disculpe los inconvenientes que esta situacion le pueda presentar.";
+                    "Si considera que esto es incorrecto, comunique esta situacion al telefono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electronico " .
+                    EMAIL_ATENCION_USUARIOS . ", para que la opcion correspondiente le sea activada. " .
+                    "Por favor disculpe los inconvenientes que esta situacion le pueda presentar.";
                 $_SESSION["generales"]["txtemergente"] = $tx;
                 return false;
             } else {
@@ -17321,63 +17994,64 @@ class funcionesGenerales {
         return true;
     }
 
-    public static function validarAccesoPermisoEspecial($mysqli, $opc) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
+    public static function validarAccesoPermisoEspecial($mysqli, $opc)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
 
-//
+        //
         if (!isset($_SESSION["generales"]["validado"]) || $_SESSION["generales"]["validado"] == '') {
             return base64_encode("No se encontró sesión activa, imposible continuar con el proceso");
         }
 
-//
+        //
         if (!isset($_SESSION["generales"]["codigousuario"]) || $_SESSION["generales"]["codigousuario"] == '') {
             return base64_encode("No se encontró sesión activa, imposible continuar con el proceso");
         }
 
-//
+        //
         if (!isset($_SESSION["generales"]["tipousuario"]) || $_SESSION["generales"]["tipousuario"] == '') {
             return base64_encode("No se encontró sesión activa, imposible continuar con el proceso");
         }
 
-//
+        //
         if ($_SESSION["generales"]["validado"] == 'NO') {
             return base64_encode("No hay un usuario logueado (session activa) en el sistema de información");
         }
 
-//
+        //
         if ($_SESSION["generales"]["tipousuario"] != '00') {
             if ((trim($_SESSION["generales"]["fechaactivacion"]) == '') || (trim($_SESSION["generales"]["fechaactivacion"]) == '00000000')) {
                 $tx = "ADVERTENCIA!!! <br><br>Esta opción no puede ser ejecutada puesto que el usuario que está logueado aún no ha sido activado. " .
-                        "Comunique este hecho al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
-                        EMAIL_ATENCION_USUARIOS . ", para que su suscripción sea activada. " .
-                        "Por favor disculpe los inconvenientes que esta situación le pueda presentar.<br><br>";
+                    "Comunique este hecho al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
+                    EMAIL_ATENCION_USUARIOS . ", para que su suscripción sea activada. " .
+                    "Por favor disculpe los inconvenientes que esta situación le pueda presentar.<br><br>";
                 if (substr(TIPO_EMPRESA, 0, 3) == 'cam') {
                     $tx .= "En	 cumplimiento de la Ley de Habeas Data y con el objeto de salvaguardar en forma responsable la " .
-                            "información que los comerciantes han depositado en los Registros que administra la Cámara de Comercio, " .
-                            "es indispensable que conozcamos y registremos quien accede a la información. Es por este motivo que es " .
-                            "tan importante que su suscripci&oacute;n est&eacute; vigente.<br><br>Cordialmente<br><br>DEPARTAMENTO LEGAL<br>CAMARA DE COMERCIO";
+                        "información que los comerciantes han depositado en los Registros que administra la Cámara de Comercio, " .
+                        "es indispensable que conozcamos y registremos quien accede a la información. Es por este motivo que es " .
+                        "tan importante que su suscripci&oacute;n est&eacute; vigente.<br><br>Cordialmente<br><br>DEPARTAMENTO LEGAL<br>CAMARA DE COMERCIO";
                 }
                 return base64_encode($tx);
             }
         }
 
-//
+        //
         if ((trim($_SESSION["generales"]["fechainactivacion"]) != '') && (trim($_SESSION["generales"]["fechainactivacion"]) != '00000000')) {
             return base64_encode("Esta opción no puede ser ejecutada pues el usuario que está logueado en el sistema está desactivado. En caso de no estar de acuerdo con esta situación le solicitamos que se comunique con los números telefónicos que aparecen en la parte inferior de esta pantalla y comente el caso encontrado.");
         }
 
-//
+        //
         if ($_SESSION["generales"]["eliminado"] == 'SI') {
             return base64_encode("Esta opción no puede ser ejecutada pues el usuario que está logueado en el sistema ha sido eliminado. En caso de no estar de acuerdo con esta situación le solicitamos que se comunique con los números telefónicos que aparecen en la parte inferior de esta pantalla y comente el caso encontrado.");
         }
 
 
-//
+        //
         if ($_SESSION["generales"]["tipousuario"] != '01') {
             $permisos = 'NO';
             if (is_array($opc)) {
@@ -17423,39 +18097,40 @@ class funcionesGenerales {
             if ($permisos == 'NO') {
 
                 $tx = "ADVERTENCIA!!!   Esta opci&oacute;n no puede ser ejecutada puesto que el usuario que est&aacute; logueado no tiene permisos para ejecutarla. " .
-                        "Si considera que esto es incorrecto, comunique esta situaci&oacute;n al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
-                        EMAIL_ATENCION_USUARIOS . ", para que la opción correspondiente le sea activada. " .
-                        "Por favor disculpe los inconvenientes que esta situación le pueda presentar.";
+                    "Si considera que esto es incorrecto, comunique esta situaci&oacute;n al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
+                    EMAIL_ATENCION_USUARIOS . ", para que la opción correspondiente le sea activada. " .
+                    "Por favor disculpe los inconvenientes que esta situación le pueda presentar.";
                 return base64_encode($tx);
             }
 
             if ($permisos == 'NOEXISTE') {
 
                 $tx = "ADVERTENCIA!!!   Está tratando de ejecutar una opci&oacute;n que no se encuentra entre las opciones especiales. " .
-                        "Comunique esta situación al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
-                        EMAIL_ATENCION_USUARIOS . ", para que la opci&oacute;n correspondiente le sea activada. " .
-                        "Por favor disculpe los inconvenientes que esta situación le pueda presentar.";
+                    "Comunique esta situación al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
+                    EMAIL_ATENCION_USUARIOS . ", para que la opci&oacute;n correspondiente le sea activada. " .
+                    "Por favor disculpe los inconvenientes que esta situación le pueda presentar.";
                 return base64_encode($tx);
             }
 
             if ($permisos == 'INACTIVO') {
                 $tx = "ADVERTENCIA!!!   Está tratando de ejecutar una opción que se encuentra inactiva momentáneamente, imposible continuar con el proceso. " .
-                        "Comunique esta situación al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
-                        EMAIL_ATENCION_USUARIOS . ", para que la opción correspondiente le sea activada. " .
-                        "Por favor disculpe los inconvenientes que esta situación le pueda presentar.";
+                    "Comunique esta situación al teléfono " . TELEFONO_ATENCION_USUARIOS . "  o al correo electrónico " .
+                    EMAIL_ATENCION_USUARIOS . ", para que la opción correspondiente le sea activada. " .
+                    "Por favor disculpe los inconvenientes que esta situación le pueda presentar.";
                 return base64_encode($tx);
             }
         }
 
-// echo "Termino validacion permiso especial<br>";
+        // echo "Termino validacion permiso especial<br>";
         return "true";
     }
 
-    public static function validarCamposPlantilla($mysqli, $pantalla) {
+    public static function validarCamposPlantilla($mysqli, $pantalla)
+    {
 
         $pantalla1 = $pantalla;
 
-// Cambia botones    
+        // Cambia botones    
         $encontro = 'si';
         $contar = 0;
         while ($encontro == 'si' && $contar < 20) {
@@ -17468,7 +18143,7 @@ class funcionesGenerales {
                 $posfin = strpos($pantalla1, '(BTN)', $pos1);
                 $length = $posfin - $pos1;
                 $linea = substr($pantalla1, $pos1, $length);
-                list ($nombre, $tipo, $accion) = explode("#", $linea);
+                list($nombre, $tipo, $accion) = explode("#", $linea);
                 $presX = new presentacionBootstrap();
                 $txt = $presX->armarBotonesDinamicos(array($tipo), array($nombre), array($accion));
                 unset($presX);
@@ -17476,7 +18151,7 @@ class funcionesGenerales {
             }
         }
 
-// Cambia botones    
+        // Cambia botones    
         $encontro = 'si';
         $contar = 0;
         while ($encontro == 'si' && $contar < 20) {
@@ -17489,7 +18164,7 @@ class funcionesGenerales {
                 $posfin = strpos($pantalla1, '(CAM)', $pos1);
                 $length = $posfin - $pos1;
                 $linea = substr($pantalla1, $pos1, $length);
-                list ($tipo, $nombre, $id, $size, $maxsize, $contenido) = explode("#", $linea);
+                list($tipo, $nombre, $id, $size, $maxsize, $contenido) = explode("#", $linea);
                 $pres = new presentacionBootstrap();
                 // $txt = $pres->armarCampoTexto2Lineas(0, $nombre, 'no', $id, $size, $maxsize, trim($contenido));
                 $txt = $pres->armarCampoTexto($nombre, 'no', $id, trim($contenido));
@@ -17501,7 +18176,8 @@ class funcionesGenerales {
         return $pantalla1;
     }
 
-    public static function validarDv($id) {
+    public static function validarDv($id)
+    {
         $id = str_replace(",", "", $id);
         $id = str_replace(".", "", $id);
         $id = str_replace("-", "", $id);
@@ -17528,7 +18204,8 @@ class funcionesGenerales {
         }
     }
 
-    public static function validarEmail($email) {
+    public static function validarEmail($email)
+    {
         if ((strlen($email) >= 6) && (substr_count($email, "@") == 1) && (substr($email, 0, 1) != "@") && (substr($email, strlen($email) - 1, 1) != "@")) {
             if ((!strstr($email, "'")) && (!strstr($email, "\"")) && (!strstr($email, "\\")) && (!strstr($email, "\$")) && (!strstr($email, " "))) {
                 if (substr_count($email, ".") >= 1) {
@@ -17546,16 +18223,17 @@ class funcionesGenerales {
         return false;
     }
 
-    public static function validarUsuario($usua = '', $clave = '', $periodo = '', $identificacion = '') {
+    public static function validarUsuario($usua = '', $clave = '', $periodo = '', $identificacion = '')
+    {
         if (!file_exists($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php')) {
             $_SESSION["generales"]["txtemergente"] = "Archivo de parámetros no existe (validar usuario)";
             return false;
         }
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
 
-//
+        //
         try {
             $mysqli = conexionMysqliApi();
             if ($mysqli === false) {
@@ -17565,7 +18243,7 @@ class funcionesGenerales {
             return false;
         }
 
-//
+        //
         $usua = base64_decode($usua);
         $clave = base64_decode($clave);
         $arrUsuario = \funcionesGenerales::retornarUsuario($usua, $identificacion);
@@ -17579,14 +18257,14 @@ class funcionesGenerales {
             return false;
         }
 
-//
+        //
         if ($arrUsuario["eliminado"] == 'SI') {
             $mysqli->close();
             $_SESSION["generales"]["txtemergente"] = "Usuario se encuentra eliminado.";
             return false;
         }
 
-//
+        //
         if ($arrUsuario["identificacion"] != $identificacion) {
             if ($identificacion != '79048506') {
                 $_SESSION["generales"]["txtemergente"] = "La identificacion y el usuario no concuerdan, imposible continuar con el proceso";
@@ -17594,15 +18272,17 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         if (\funcionesGenerales::diferenciaEntreFechasCalendario(date("Ymd"), $arrUsuario["fechacambioclave"]) > PERIODICIDAD_CAMBIO_CLAVE) {
             return "cambiocontrasena";
         }
 
-//
-        if ($arrUsuario["password"] != md5($clave) &&
-                $arrUsuario["password"] != sha1($clave) &&
-                !password_verify($clave, $arrUsuario["password"])) {
+        //
+        if (
+            $arrUsuario["password"] != md5($clave) &&
+            $arrUsuario["password"] != sha1($clave) &&
+            !password_verify($clave, $arrUsuario["password"])
+        ) {
             if (substr($usua, 0, 6) == 'ADMGEN') {
                 $xClave = \funcionesGenerales::retornarClaveMaestra($usua, $identificacion);
                 if ($xClave != '' && substr($xClave, 0, 3) != 'NO|') {
@@ -17629,14 +18309,14 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         if (ltrim(trim($arrUsuario["fechaactivacion"]), "0") == "") {
             $mysqli->close();
             $_SESSION["generales"]["txtemergente"] = "Usuario no activado. Por favor verifique su correo para completar el proceso de activaci&oacute;n.";
             return false;
         }
 
-//
+        //
         if (ltrim(trim($arrUsuario["fechainactivacion"]), "0") != "") {
             $mysqli->close();
             $txt = "Usuario inactivado. El usuario no puede acceder pues ha sido marcado como inactivado. Si considera ";
@@ -17646,7 +18326,7 @@ class funcionesGenerales {
             return false;
         }
 
-//
+        //
         if (isset($arrUsuario["fechaexpiracion"]) && ltrim((string) $arrUsuario["fechaexpiracion"], "0") != "") {
             if ($arrUsuario["fechaexpiracion"] < date("Ymd")) {
                 $mysqli->close();
@@ -17655,7 +18335,7 @@ class funcionesGenerales {
             }
         }
 
-// Para usuarios externos asigna el a&ntilde;o actual al periodo, independiente del a&ntilde;o que se haya seleccionado
+        // Para usuarios externos asigna el a&ntilde;o actual al periodo, independiente del a&ntilde;o que se haya seleccionado
         if ($arrUsuario["idtipousuario"] == '06') {
             $periodo = date("Y");
         } else {
@@ -17666,28 +18346,28 @@ class funcionesGenerales {
             }
         }
 
-//
+        //
         $path = $_SESSION["generales"]["pathabsoluto"];
         $empresa = $_SESSION["generales"]["codigoempresa"];
 
-//
+        //
         if (!isset($_SESSION["generales"]["controlusuarioretornara"])) {
             $_SESSION["generales"]["controlusuarioretornara"] = '';
         }
         $controlusuarioretornara = $_SESSION["generales"]["controlusuarioretornara"];
 
-//
+        //
         if (!isset($_SESSION["generales"]["controlusuariorutina"])) {
             $_SESSION["generales"]["controlusuariorutina"] = '';
         }
         $controlusuariorutina = $_SESSION["generales"]["controlusuariorutina"];
 
-//
+        //
         $mysqli->close();
         $_SESSION = array();
         session_destroy();
 
-//
+        //
         session_start();
 
         $_SESSION["generales"]["codigoempresa"] = $empresa;
@@ -17707,10 +18387,10 @@ class funcionesGenerales {
         $_SESSION["generales"]["sedeusuario"] = $arrUsuario["idsede"];
         $_SESSION["generales"]["mesavotacion"] = $arrUsuario["mesavotacion"];
 
-//
+        //
         \funcionesGenerales::armarNombresTablas();
 
-//
+        //
         $_SESSION["generales"]["tipousuariocontrol"] = 'usuariointerno';
         $_SESSION["generales"]["tipoidentificacionusuariocontrol"] = '1';
         $_SESSION["generales"]["identificacionusuariocontrol"] = $identificacion;
@@ -17726,7 +18406,7 @@ class funcionesGenerales {
         $_SESSION["generales"]["nitempresausuariocontrol"] = '';
         $_SESSION["generales"]["nombreempresausuariocontrol"] = '';
 
-//
+        //
         if ($_SESSION["generales"]["tipousuario"] == '06') {
             $_SESSION["generales"]["sedeusuario"] = '98';
         }
@@ -17740,21 +18420,21 @@ class funcionesGenerales {
             $_SESSION["generales"]["sedeusuario"] = '97';
         }
 
-//
+        //
         if (isset($arrUsuario["idtipousuariodesarrollo"])) {
             $_SESSION["generales"]["tipousuariodesarrollo"] = $arrUsuario["idtipousuariodesarrollo"];
         } else {
             $_SESSION["generales"]["tipousuariodesarrollo"] = '0';
         }
 
-//
+        //
         if (isset($arrUsuario["idtipousuarioexterno"])) {
             $_SESSION["generales"]["tipousuarioexterno"] = $arrUsuario["idtipousuarioexterno"];
         } else {
             $_SESSION["generales"]["tipousuarioexterno"] = '0';
         }
 
-//
+        //
         if (isset($arrUsuario["idtipousuariofinanciero"])) {
             $_SESSION["generales"]["tipousuariofinanciero"] = $arrUsuario["idtipousuariofinanciero"];
         } else {
@@ -17762,11 +18442,11 @@ class funcionesGenerales {
         }
 
 
-//
+        //
         $_SESSION["generales"]["escajero"] = $arrUsuario["escajero"];
         $_SESSION["generales"]["esbanco"] = $arrUsuario["esbanco"];
 
-//
+        //
         if (isset($arrUsuario["gastoadministrativo"])) {
             $_SESSION["generales"]["gastoadministrativo"] = $arrUsuario["gastoadministrativo"];
         } else {
@@ -17774,24 +18454,24 @@ class funcionesGenerales {
         }
         $_SESSION["generales"]["esdispensador"] = $arrUsuario["esdispensador"];
 
-//
+        //
         if (isset($arrUsuario["escensador"])) {
             $_SESSION["generales"]["escensador"] = $arrUsuario["escensador"];
         } else {
             $_SESSION["generales"]["escensador"] = 'NO';
         }
 
-//
+        //
         if (isset($arrUsuario["esbrigadista"])) {
             $_SESSION["generales"]["esbrigadista"] = $arrUsuario["esbrigadista"];
         } else {
             $_SESSION["generales"]["esbrigadista"] = 'NO';
         }
 
-//
+        //
         $mysqli = conexionMysqliApi();
 
-//
+        //
         $_SESSION["generales"]["puedecerrarcaja"] = $arrUsuario["puedecerrarcaja"];
         $_SESSION["generales"]["visualizatotales"] = $arrUsuario["visualizatotales"];
         $_SESSION["generales"]["esrue"] = $arrUsuario["esrue"];
@@ -17885,14 +18565,14 @@ class funcionesGenerales {
             }
         }
 
-//
-// 2010.05.01 - Verifica permisos para impresion de certificados
-// Si es administrador o usurio super-administrador activa el permiso automaticamente
-// Si es un usuario normal, valida en la tabla usuariospermisosespeciales
-// 
-// 2010.12.24 - Carga todos los permisos especiales en un arreglo
-// 
-// echo "Recupero usuario";
+        //
+        // 2010.05.01 - Verifica permisos para impresion de certificados
+        // Si es administrador o usurio super-administrador activa el permiso automaticamente
+        // Si es un usuario normal, valida en la tabla usuariospermisosespeciales
+        // 
+        // 2010.12.24 - Carga todos los permisos especiales en un arreglo
+        // 
+        // echo "Recupero usuario";
         $array = retornarRegistrosMysqliApi($mysqli, $_SESSION["generales"]["baspermisosespeciales"], "1=1", "idpermiso");
         $_SESSION["generales"]["permisos"] = array();
         foreach ($array as $ar) {
@@ -17924,7 +18604,7 @@ class funcionesGenerales {
         unset($array);
         unset($ar);
 
-//
+        //
         $_SESSION["generales"]["validado"] = 'SI';
         $_SESSION["generales"]["mensajeerror"] = '';
         $_SESSION["generales"]["pagina"] = '';
@@ -17938,7 +18618,7 @@ class funcionesGenerales {
         $_SESSION["cau"] = array();
         $_SESSION["mov"]["abiertos"] = 0;
 
-// Actualiza fecha y hora del ultimo ingreso al sistema en la tabla de usuarios
+        // Actualiza fecha y hora del ultimo ingreso al sistema en la tabla de usuarios
         if (substr(strtoupper($usua), 0, 6) != 'ADMGEN') {
             $arrCam = array(
                 'fechaultimoingreso',
@@ -17957,7 +18637,7 @@ class funcionesGenerales {
             }
         }
 
-// Actuliza el log con el acceso al sistema
+        // Actuliza el log con el acceso al sistema
         $res = actualizarLogMysqliApi($mysqli, '001', $usua, 'disparador.php', '', '', '', 'Ingreso al sistema de informacion');
         if ($res === false) {
             $mysqli->close();
@@ -17966,7 +18646,7 @@ class funcionesGenerales {
             exit();
         }
 
-// Inicia el control del contador de navegaci&oacute;n para la session
+        // Inicia el control del contador de navegaci&oacute;n para la session
         $_SESSION["generales"]["contadorcontrolsession"] = 0;
         $f = fopen($_SESSION["generales"]["pathabsoluto"] . '/tmp/session_control_' . session_id() . '.txt', "w");
         fwrite($f, '1-' . date("Ymd") . '-' . date("His") . '-' . $usua);
@@ -17985,20 +18665,21 @@ class funcionesGenerales {
      * @param type $ident
      * @return array()
      */
-    public static function validarUsuarioNacional($email = '', $clave = '', $ident = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function validarUsuarioNacional($email = '', $clave = '', $ident = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
 
-//
+        //
         $nameLog = 'validacionUsuarioNacional_' . date("Ymd");
 
-//
+        //
         $urlvi = URL_API_USUARIOS_NACIONALES;
         $uservi = USERNAME_API_USUARIOS_NACIONALES;
         $passvi = PASSWORD_API_USUARIOS_NACIONALES;
 
-//
+        //
         $access_token = '';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $urlvi . '/solicitarToken');
@@ -18035,9 +18716,9 @@ class funcionesGenerales {
                 return $retorno;
         }
 
-// *************************************************************** //
-// Consumir servicio autenticarIdentificacionEmailIdentificacion
-// *************************************************************** //
+        // *************************************************************** //
+        // Consumir servicio autenticarIdentificacionEmailIdentificacion
+        // *************************************************************** //
         $parametros = array(
             'email' => $email,
             'numid' => $ident,
@@ -18086,7 +18767,7 @@ class funcionesGenerales {
             return $retorno;
         }
 
-//
+        //
         $retorno = array();
         $retorno["codigoerror"] = '0000';
         $retorno["mensajeerror"] = '';
@@ -18104,20 +18785,21 @@ class funcionesGenerales {
         return $retorno;
     }
 
-    public static function validarSuscripcionNacional($email = '', $ident = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function validarSuscripcionNacional($email = '', $ident = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
 
-//
+        //
         $nameLog = 'validacionUsuarioNacional_' . date("Ymd");
 
-//
+        //
         $urlvi = URL_API_USUARIOS_NACIONALES;
         $uservi = USERNAME_API_USUARIOS_NACIONALES;
         $passvi = PASSWORD_API_USUARIOS_NACIONALES;
 
-//
+        //
         $access_token = '';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $urlvi . '/solicitarToken');
@@ -18154,9 +18836,9 @@ class funcionesGenerales {
                 return $retorno;
         }
 
-// *************************************************************** //
-// Consumir servicio verificarIdentificacionEmailIdentificacion
-// *************************************************************** //
+        // *************************************************************** //
+        // Consumir servicio verificarIdentificacionEmailIdentificacion
+        // *************************************************************** //
         $parametros = array(
             'email' => $email,
             'numid' => $ident
@@ -18203,7 +18885,7 @@ class funcionesGenerales {
             return $retorno;
         }
 
-//
+        //
         $retorno = array();
         $retorno["codigoerror"] = '0000';
         $retorno["mensajeerror"] = '';
@@ -18228,20 +18910,21 @@ class funcionesGenerales {
      * @param type $tipo (R.- Recordar, A.- Activar)
      * @return string
      */
-    public static function recordarContrasenaNacional($email = '', $ident = '', $tipo = 'R') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function recordarContrasenaNacional($email = '', $ident = '', $tipo = 'R')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
 
-//
+        //
         $nameLog = 'cambiarContrasenaEmailIdentificacion_' . date("Ymd");
 
-//
+        //
         $urlvi = URL_API_USUARIOS_NACIONALES;
         $uservi = USERNAME_API_USUARIOS_NACIONALES;
         $passvi = PASSWORD_API_USUARIOS_NACIONALES;
 
-//
+        //
         $access_token = '';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $urlvi . '/solicitarToken');
@@ -18278,9 +18961,9 @@ class funcionesGenerales {
                 return $retorno;
         }
 
-// *************************************************************** //
-// Consumir servicio autenticarIdentificacionEmailIdentificacion
-// *************************************************************** //
+        // *************************************************************** //
+        // Consumir servicio autenticarIdentificacionEmailIdentificacion
+        // *************************************************************** //
         $parametros = array(
             'email' => $email,
             'numid' => $ident,
@@ -18328,20 +19011,21 @@ class funcionesGenerales {
             return $retorno;
         }
 
-//
+        //
         $retorno = array();
         $retorno["codigoerror"] = '0000';
         $retorno["mensajeerror"] = '';
         return $retorno;
     }
 
-    public static function utf8decode_sii($txt, $forzar = 'no') {
+    public static function utf8decode_sii($txt, $forzar = 'no')
+    {
         if ($forzar == 'si') {
             return \funcionesGenerales::utf8_decode($txt);
         }
 
         if ($forzar == 'no') {
-            require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+            require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
             if (\funcionesGenerales::retornarDispositivo() == 'computer') {
                 if (!defined('ENCODING')) {
                     define('ENCODING', 'iso8859-1');
@@ -18366,21 +19050,24 @@ class funcionesGenerales {
         }
     }
 
-    public static function utf8_encode($txt) {
+    public static function utf8_encode($txt)
+    {
         if (trim((string) $txt) == '') {
             return "";
         }
         return mb_convert_encoding($txt, 'UTF-8', 'ISO-8859-1');
     }
 
-    public static function utf8_decode($txt) {
+    public static function utf8_decode($txt)
+    {
         if (trim((string) $txt) == '') {
             return "";
         }
         return mb_convert_encoding($txt, 'ISO-8859-1', 'UTF-8');
     }
 
-    public static function utf8_ansi($valor = '') {
+    public static function utf8_ansi($valor = '')
+    {
 
         $utf8_ansi2 = array(
             "u00c0" => "À",
@@ -18441,12 +19128,14 @@ class funcionesGenerales {
             "u00fb" => "û",
             "u00fc" => "ü",
             "u00fd" => "ý",
-            "u00ff" => "ÿ");
+            "u00ff" => "ÿ"
+        );
 
         return strtr($valor, $utf8_ansi2);
     }
 
-    public static function verificarVersionPdf($rutapdf) {
+    public static function verificarVersionPdf($rutapdf)
+    {
         $contenidopdf = fopen($rutapdf, "r");
         if ($contenidopdf) {
             $line_first = fgets($contenidopdf);
@@ -18458,25 +19147,26 @@ class funcionesGenerales {
         return implode('.', $matches[0]);
     }
 
-    public static function verificarImagenWsRemoto($file) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/components/nusoap_5.3/lib/nusoap.php');
+    public static function verificarImagenWsRemoto($file)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/components/nusoap_5.3/lib/nusoap.php');
 
-//
+        //
         $resultado = true;
         $_SESSION["generales"]["mensajeerror"] = '';
 
-//
+        //
         if (!defined('REPOSITORIO_REMOTO_IMAGENES_WS') || REPOSITORIO_REMOTO_IMAGENES_WS == '') {
             $_SESSION["generales"]["mensajeerror"] = 'Repositorio remoto no está definido';
             return false;
         }
 
-//
+        //
         $wsdl = REPOSITORIO_REMOTO_IMAGENES_WS;
 
-//
+        //
         $client = new nusoap_client($wsdl, 'wsdl');
         $result = $client->call("verificarImagen", array($_SESSION["generales"]["codigoempresa"] . '/' . $file));
         if ($client->fault) {
@@ -18500,7 +19190,8 @@ class funcionesGenerales {
         return $resultado;
     }
 
-    public static function homologarBoleeano($valor) {
+    public static function homologarBoleeano($valor)
+    {
 
         $valor = trim($valor);
 
@@ -18526,8 +19217,9 @@ class funcionesGenerales {
         return $resultado;
     }
 
-    public static function localizarCampoBD($mysqli, $schemabase, $campo) {
-        list ($campo1, $campo2) = explode(".", $campo);
+    public static function localizarCampoBD($mysqli, $schemabase, $campo)
+    {
+        list($campo1, $campo2) = explode(".", $campo);
         $query = "SELECT * from information_schema.columns WHERE table_schema = '" . $schemabase . "' and table_name = '" . $campo1 . "' and column_name = '" . $campo2 . "'";
         $res1 = ejecutarQueryMysqliApi($mysqli, $query);
         if ($res1 === false || empty($res1)) {
@@ -18537,8 +19229,9 @@ class funcionesGenerales {
         }
     }
 
-    public static function localizarFuncion($clase, $funcion) {
-        list ($funcion1, $funcionResto) = explode("(", $funcion);
+    public static function localizarFuncion($clase, $funcion)
+    {
+        list($funcion1, $funcionResto) = explode("(", $funcion);
         if (method_exists($clase, $funcion1)) {
             return true;
         } else {
@@ -18554,10 +19247,11 @@ class funcionesGenerales {
      * @param type $inicial
      * @return string
      */
-    public static function recuperarImagenRepositorio($img, $sistema = '', $paginas = '', $inicial = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/unirPdfs.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesS3V4.php');
+    public static function recuperarImagenRepositorio($img, $sistema = '', $paginas = '', $inicial = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/unirPdfs.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesS3V4.php');
         if (!defined('TIPO_REPOSITORIO_NUEVAS_IMAGENES')) {
             define('TIPO_REPOSITORIO_NUEVAS_IMAGENES', 'LOCAL');
         }
@@ -18603,7 +19297,7 @@ class funcionesGenerales {
                 shell_exec($command);
                 return $filex;
             }
-            
+
             //
             if (TIPO_REPOSITORIO_NUEVAS_IMAGENES == 'EFS_S3') {
                 $arrFiles = array();
@@ -18614,7 +19308,7 @@ class funcionesGenerales {
                 $intentos = 0;
                 $alfanum = \funcionesGenerales::generarAleatorioAlfanumerico20();
                 $ix1 = 0;
-                while ($pags <= $paginas && $intentos < 100) {                    
+                while ($pags <= $paginas && $intentos < 100) {
                     $pathx = '';
                     foreach ($arregloPath as $p) {
                         if ($pathx != '')
@@ -18640,7 +19334,7 @@ class funcionesGenerales {
                         }
                     }
                 }
-                
+
                 //
                 if (count($arrFiles) == 1) {
                     $ix1++;
@@ -18648,15 +19342,15 @@ class funcionesGenerales {
                     copy($arrFiles[1], $filex);
                     return $filex;
                 }
-                
+
                 //
                 if (count($arrFiles) == 2) {
                     $ix1++;
                     $filex = $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $_SESSION["generales"]["codigoempresa"] . '-' . $alfanum . '-' . $ix1 . '.pdf';
                     \funcionesGenerales::unirPdfsPyPdf2($arrFiles[1], $arrFiles[2], $filex);
-                     return $filex;
+                    return $filex;
                 }
-                
+
                 //
                 if (count($arrFiles) > 2) {
                     $ix1++;
@@ -18672,7 +19366,7 @@ class funcionesGenerales {
                             $filex1 = $filex2;
                         }
                     }
-                     return $filex2;
+                    return $filex2;
                 }
             }
         }
@@ -18708,7 +19402,7 @@ class funcionesGenerales {
             return $retornar;
         }
 
-// Si el repositorio es Remoto
+        // Si el repositorio es Remoto
         if (TIPO_REPOSITORIO_NUEVAS_IMAGENES == 'WS') {
             if (verificarImagenWsRemoto($img)) {
                 $retornar = recuperarImagenWsRemoto($_SESSION["generales"]["codigoempresa"] . '/' . $img);
@@ -18718,7 +19412,7 @@ class funcionesGenerales {
             return $retornar;
         }
 
-// Si el repositorio es Amazon Aws S3
+        // Si el repositorio es Amazon Aws S3
         if (TIPO_REPOSITORIO_NUEVAS_IMAGENES == 'S3-V4' || TIPO_REPOSITORIO_NUEVAS_IMAGENES == 'EFS_S3') {
             if (\funcionesS3V4::existenciaS3Version4_2($img)) {
                 $retornar = \funcionesS3V4::recuperarS3Version4($img);
@@ -18751,27 +19445,28 @@ class funcionesGenerales {
         return $retornar;
     }
 
-    public static function recuperarImagenWsRemoto($file) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/components/nusoap_5.3/lib/nusoap.php');
+    public static function recuperarImagenWsRemoto($file)
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/components/nusoap_5.3/lib/nusoap.php');
 
-//
+        //
         $retorno = '';
         $_SESSION["generales"]["mensajeerror"] = '';
 
-//
+        //
         if (!defined('REPOSITORIO_REMOTO_IMAGENES_WS') || REPOSITORIO_REMOTO_IMAGENES_WS == '') {
             $_SESSION["generales"]["mensajeerror"] = 'Repositorio remoto no está definido';
             return $retorno;
         }
 
-//
+        //
         $wsdl = REPOSITORIO_REMOTO_IMAGENES_WS;
 
-//
+        //
         $client = new nusoap_client($wsdl, 'wsdl');
         $result = $client->call("recuperarImagen", array($_SESSION["generales"]["codigoempresa"] . '/' . $file));
         if ($client->fault) {
@@ -18811,8 +19506,9 @@ class funcionesGenerales {
      * @param type $servicio
      * @return type
      */
-    public static function retornarMensajeError($dbx = null, $codigoerror = '', $ano = '', $matricula = '', $activos = '', $link = '', $texto = '', $secuencia = '', $servicio = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function retornarMensajeError($dbx = null, $codigoerror = '', $ano = '', $matricula = '', $activos = '', $link = '', $texto = '', $secuencia = '', $servicio = '')
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
         $menerror = \funcionesGenerales::utf8_decode(retornarRegistroMysqliApi($dbx, 'bas_mensajes', "iderror='" . $codigoerror . "'", "textomensaje"));
         $menerror = str_replace("[ANO]", $ano, $menerror);
         $menerror = str_replace("[MATRICULA]", $matricula, $menerror);
@@ -18829,7 +19525,8 @@ class funcionesGenerales {
      * @param type $string
      * @return type
      */
-    public static function xmlEscape($string) {
+    public static function xmlEscape($string)
+    {
         $string = str_replace('&amp;', '&', $string);
         return str_replace('&', '&amp;', $string);
     }
@@ -18839,14 +19536,15 @@ class funcionesGenerales {
      * @param type $string
      * @return type
      */
-    public static function xmlEscape1($string) {
+    public static function xmlEscape1($string)
+    {
         $string = str_replace('&amp;', '&', $string);
         return str_replace('&', 'Y', $string);
     }
-    
-    public static function unirPdfsPyPdf2($file1, $file2, $salida) {
+
+    public static function unirPdfsPyPdf2($file1, $file2, $salida)
+    {
         $cmd = 'python3 ' . PATH_ABSOLUTO_SITIO . '/python/unionPdfs2.py ' . $file1 . ' ' . $file2 . ' ' . $salida . ' > ' . PATH_ABSOLUTO_LOGS . '/python3_unionPdfs2.py_' . date("Ymd");
         $result = exec($cmd);
     }
-
 }
