@@ -10,10 +10,22 @@ ini_set('display_errors', '1');
 $_SESSION["generales"]["zonahoraria"] = "America/Bogota";
 $_SESSION["generales"]["idioma"] = "es";
 date_default_timezone_set($_SESSION["generales"]["zonahoraria"]);
-require_once('../../../configuracion/common.php');
+require_once('config/config.php');
 
-$_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
-$_SESSION["generales"]["pathabsoluto"] = PATH_ABSOLUTO_SITIO;
+if (file_exists(PATH_ABSOLUTO_SITIO)) {
+    $_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
+    $_SESSION["generales"]["pathabsoluto"] = PATH_ABSOLUTO_SITIO;
+} else {
+    echo "No existe la ruta del PATH_ABSOLUTO_SITIO";
+    die();
+}
+if (file_exists(PATH_ABSOLUTO_LOGS)) {
+    $_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
+    $_SESSION["generales"]["pathabsoluto"] = PATH_ABSOLUTO_SITIO;
+} else {
+    echo "No existe la ruta del PATH_ABSOLUTO_LOGS";
+    die();
+}
 $_SESSION["generales"]["pathabsolutologs"] = PATH_ABSOLUTO_LOGS;
 
 //2019-07-05 : Weymer : Inicializar clavevalor para evitar reutilización de sesiones entre CC
@@ -132,7 +144,8 @@ include("verificarRegistro.php");
 use libreriaswsRestSII\API;
 use libreriaswsRestSII\REST;
 
-class API extends REST {
+class API extends REST
+{
 
     use actualizarClienteLiquidacion;
     use actualizarControlesLiquidacion;
@@ -236,7 +249,8 @@ class API extends REST {
 
     public $data = "";
 
-    public function __construct() {
+    public function __construct()
+    {
         // Init parent contructor
         parent::__construct();
     }
@@ -247,7 +261,8 @@ class API extends REST {
      *
      */
 
-    public function processApi() {
+    public function processApi()
+    {
 
 
         // ********************************************************************** //
@@ -407,13 +422,15 @@ class API extends REST {
         call_user_func(array($this, $func), $this);
     }
 
-    public function json($data) {
+    public function json($data)
+    {
         if (is_array($data)) {
             return json_encode($data);
         }
     }
 
-    public function validarToken($metodo, $token_send, $usuariows = '') {
+    public function validarToken($metodo, $token_send, $usuariows = '')
+    {
         /*
          * Método que realiza la validación de tokens interpretando el string JWT
          */
@@ -511,11 +528,13 @@ class API extends REST {
         }
     }
 
-    public function response($data, $status) {
+    public function response($data, $status)
+    {
         parent::response($data, $status);
     }
 
-    public function validarParametro($parametro, $obligatorio, $valecero = false) {
+    public function validarParametro($parametro, $obligatorio, $valecero = false)
+    {
         if (!isset($_SESSION["entrada"][$parametro])) {
             if ($obligatorio) {
                 $_SESSION["jsonsalida"]["codigoerror"] = '9999';
@@ -541,11 +560,11 @@ class API extends REST {
         }
     }
 
-    public function isJsonApi($string) {
+    public function isJsonApi($string)
+    {
         return ((is_string($string) && (is_object(json_decode($string)) ||
-                is_array(json_decode($string))))) ? true : false;
+            is_array(json_decode($string))))) ? true : false;
     }
-
 }
 
 // Initiate Library
