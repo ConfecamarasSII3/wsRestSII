@@ -357,7 +357,6 @@ class API extends REST
         } else {
             $func = "";
         }
-
         \logApi::general2('logApiGeneral_' . date("Ymd"), '', $func . ' ' . $dataTexto);
 
         //
