@@ -10,7 +10,8 @@ ini_set('display_errors', '1');
 $_SESSION["generales"]["zonahoraria"] = "America/Bogota";
 $_SESSION["generales"]["idioma"] = "es";
 date_default_timezone_set($_SESSION["generales"]["zonahoraria"]);
-require_once('../config/config.php');
+
+require_once '../config/config.php';
 
 if (file_exists(PATH_ABSOLUTO_SITIO)) {
     $_SESSION["generales"]["pathabsolutositio"] = PATH_ABSOLUTO_SITIO;
@@ -33,111 +34,111 @@ $_SESSION["generales"]["clavevalor"] = array();
 /*
  * Archivos del CORE del API
  */
-require("Rest.inc.php");
-require("funcionesAPI.php");
-include("solicitarToken.php");
-include("ConsultarBD.php");
+require_once "Rest.inc.php";
+require_once "funcionesAPI.php";
+include_once "solicitarToken.php";
+include_once "ConsultarBD.php";
 
 /*
  * Archivos que realizan Consultas
  */
-include("actualizarClienteLiquidacion.php");
-include("actualizarControlesLiquidacion.php");
-include("actualizarEstadoLiquidacion.php");
-include('adicionarDocumentosExpediente.php');
-include("administrarAnexos.php");
-include("administrarFotosExpediente.php");
-include("almacenarFormularioRenovacion.php");
-include("aplicar1756Liquidacion.php");
-include("autenticarUsuarioVerificado.php");
-include("autenticarUsuarioRegistrado.php");
-include("busquedaExpedientes.php");
-include("calcularTamanoEmpresarial.php");
-include("confirmarMatriculasSistemasExternos.php");
-include("consultarANI.php");
-include("consultarBarrios.php");
-include("consultarCertificadoCapas.php");
-include("consultarCiius.php");
-include("consultarCodigosEmprendimientoSocial.php");
-include("consultarCodigosEsadl.php");
-include("consultarDevolucion.php");
-include("consultarDirectorioAfiliados.php");
-include("consultarEstablecimientosNacionales.php");
-include("consultarEstadoRadicado.php");
-include("consultarExpedienteMercantil.php");
-include("consultarExpedienteMercantilClientesExternos.php");
-include("consultarExpedienteProponente.php");
-include("consultarGeolocalizacionCenso.php");
-include("consultarImagenesExpedienteMercantil.php");
-include("consultarImagenesExpedienteProponentes.php");
-include("consultarInformacionSello.php");
-include("consultarInformacionSelloUnitario.php");
-include("consultarKardexExpediente.php");
-include("consultarLiquidacion.php");
-include("consultarLiquidacionReferencia.php");
-include("consultarListaResponsabilidadesTributarias.php");
-include("consultarMotivosCancelacion.php");
-include("consultarMultasPonal.php");
-include("consultarMunicipiosJurisdiccion.php");
-include("consultarRelacionRecibos.php");
-include("consultarRelacionRecibosParaSap.php");
-include("consultarRelacionTramites.php");
-include("consultarRecibo.php");
-include("consultarRadicado.php");
-include("consultarRadicadoSaia.php");
-include("consultarRadicados.php");
-include("consultarRues.php");
-include("consultarServicios.php");
-include("consultarTransaccion.php");
-include("consultarTransaccionesCliente.php");
-include("consultarUsuarioVerificado.php");
-include("consultarVinculosIdentificacion.php");
-include("construirRelacionInscritos.php");
-include("construirSobreDigital.php");
-include("directorioAfiliados.php");
-include("enviarPinSms.php");
-include("exportarMatriculados.php");
-include("firmarDigitalmenteDocumento.php");
-include("firmarElectronicamenteTramite.php");
-include("generarAlertasTempranas.php");
-include("inactivarUsuarioRegistradoVerificado.php");
-include("interoperabilidadRues.php");
-include("liquidarRenovacionMetodos.php");
-include("liquidarServicios.php");
-include("liquidarSolicitudCancelacion.php");
-include("liquidarTransaccion.php");
-include("ProcesosRegistrosPublicos.php");
-include("recibirCambioEstadoRadicado.php");
-include("recordarContrasenaAfiliado.php");
-include("recordarContrasenaVerificado.php");
-include("recuperarAnexoLiquidacion.php");
-include("recuperarFormularioMercantil.php");
-include("recuperarFormularioRenovacion.php");
-include("reingresarTramite.php");
-include("relacionActosInscritos.php");
-include("relacionExpedientesModificados.php");
-include("relacionMatriculasRenovar.php");
-include("relacionMovimientos.php");
-include("relacionPotencialesAfiliados.php");
-include("reportarAccionLog.php");
-include("reportarMatriculasSistemasExternos.php");
-include("reportarNovedadesGeoreferenciacion.php");
-include("reportarTransaccion.php");
-include("reportarPago.php");
-include("restaurarClaveRegistro.php");
-include("retornarDatosFormularioMercantil.php");
-include("retornarExpedienteMercantil.php");
-include("retornarMenuUsuario.php");
-include("retornarResumenMatriculadosCanceladosAno.php");
-include("retornarResumenServicios.php");
-include("retornarSoportesLiquidacion.php");
-include("solicitarCertificado.php");
-include("solicitarRegistro.php");
-include("uploadSoporteLiquidacion.php");
-include("verificarLimiteConsultas.php");
-include("verificarAfiliado.php");
-include("verificarParametrosFirmado.php");
-include("verificarRegistro.php");
+include_once "actualizarClienteLiquidacion.php";
+include_once "actualizarControlesLiquidacion.php";
+include_once "actualizarEstadoLiquidacion.php";
+include_once "adicionarDocumentosExpediente.php";
+include_once "administrarAnexos.php";
+include_once "administrarFotosExpediente.php";
+include_once "almacenarFormularioRenovacion.php";
+include_once "aplicar1756Liquidacion.php";
+include_once "autenticarUsuarioVerificado.php";
+include_once "autenticarUsuarioRegistrado.php";
+include_once "busquedaExpedientes.php";
+include_once "calcularTamanoEmpresarial.php";
+include_once "confirmarMatriculasSistemasExternos.php";
+include_once "consultarANI.php";
+include_once "consultarBarrios.php";
+include_once "consultarCertificadoCapas.php";
+include_once "consultarCiius.php";
+include_once "consultarCodigosEmprendimientoSocial.php";
+include_once "consultarCodigosEsadl.php";
+include_once "consultarDevolucion.php";
+include_once "consultarDirectorioAfiliados.php";
+include_once "consultarEstablecimientosNacionales.php";
+include_once "consultarEstadoRadicado.php";
+include_once "consultarExpedienteMercantil.php";
+include_once "consultarExpedienteMercantilClientesExternos.php";
+include_once "consultarExpedienteProponente.php";
+include_once "consultarGeolocalizacionCenso.php";
+include_once "consultarImagenesExpedienteMercantil.php";
+include_once "consultarImagenesExpedienteProponentes.php";
+include_once "consultarInformacionSello.php";
+include_once "consultarInformacionSelloUnitario.php";
+include_once "consultarKardexExpediente.php";
+include_once "consultarLiquidacion.php";
+include_once "consultarLiquidacionReferencia.php";
+include_once "consultarListaResponsabilidadesTributarias.php";
+include_once "consultarMotivosCancelacion.php";
+include_once "consultarMultasPonal.php";
+include_once "consultarMunicipiosJurisdiccion.php";
+include_once "consultarRelacionRecibos.php";
+include_once "consultarRelacionRecibosParaSap.php";
+include_once "consultarRelacionTramites.php";
+include_once "consultarRecibo.php";
+include_once "consultarRadicado.php";
+include_once "consultarRadicadoSaia.php";
+include_once "consultarRadicados.php";
+include_once "consultarRues.php";
+include_once "consultarServicios.php";
+include_once "consultarTransaccion.php";
+include_once "consultarTransaccionesCliente.php";
+include_once "consultarUsuarioVerificado.php";
+include_once "consultarVinculosIdentificacion.php";
+include_once "construirRelacionInscritos.php";
+include_once "construirSobreDigital.php";
+include_once "directorioAfiliados.php";
+include_once "enviarPinSms.php";
+include_once "exportarMatriculados.php";
+include_once "firmarDigitalmenteDocumento.php";
+include_once "firmarElectronicamenteTramite.php";
+include_once "generarAlertasTempranas.php";
+include_once "inactivarUsuarioRegistradoVerificado.php";
+include_once "interoperabilidadRues.php";
+include_once "liquidarRenovacionMetodos.php";
+include_once "liquidarServicios.php";
+include_once "liquidarSolicitudCancelacion.php";
+include_once "liquidarTransaccion.php";
+include_once "ProcesosRegistrosPublicos.php";
+include_once "recibirCambioEstadoRadicado.php";
+include_once "recordarContrasenaAfiliado.php";
+include_once "recordarContrasenaVerificado.php";
+include_once "recuperarAnexoLiquidacion.php";
+include_once "recuperarFormularioMercantil.php";
+include_once "recuperarFormularioRenovacion.php";
+include_once "reingresarTramite.php";
+include_once "relacionActosInscritos.php";
+include_once "relacionExpedientesModificados.php";
+include_once "relacionMatriculasRenovar.php";
+include_once "relacionMovimientos.php";
+include_once "relacionPotencialesAfiliados.php";
+include_once "reportarAccionLog.php";
+include_once "reportarMatriculasSistemasExternos.php";
+include_once "reportarNovedadesGeoreferenciacion.php";
+include_once "reportarTransaccion.php";
+include_once "reportarPago.php";
+include_once "restaurarClaveRegistro.php";
+include_once "retornarDatosFormularioMercantil.php";
+include_once "retornarExpedienteMercantil.php";
+include_once "retornarMenuUsuario.php";
+include_once "retornarResumenMatriculadosCanceladosAno.php";
+include_once "retornarResumenServicios.php";
+include_once "retornarSoportesLiquidacion.php";
+include_once "solicitarCertificado.php";
+include_once "solicitarRegistro.php";
+include_once "uploadSoporteLiquidacion.php";
+include_once "verificarLimiteConsultas.php";
+include_once "verificarAfiliado.php";
+include_once "verificarParametrosFirmado.php";
+include_once "verificarRegistro.php";
 
 use libreriaswsRestSII\API;
 use libreriaswsRestSII\REST;
@@ -261,8 +262,6 @@ class API extends REST
 
     public function processApi()
     {
-
-
         // ********************************************************************** //
         // Captura de parametros
         // ********************************************************************** //
@@ -342,13 +341,13 @@ class API extends REST
         // require_once($_SESSION["generales"]["pathabsoluto"] . '/librerias/funciones/persistencia.php');
         // require_once($_SESSION["generales"]["pathabsoluto"] . '/librerias/funciones/persistenciamreg.php');
         //Requerido en modo desacoplado
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
 
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
-        require_once('funcionesAPI.php');
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php';
+        require_once 'funcionesAPI.php';
         $resError = set_error_handler('myErrorHandler');
 
         //
