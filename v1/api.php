@@ -140,12 +140,8 @@ include_once "verificarAfiliado.php";
 include_once "verificarParametrosFirmado.php";
 include_once "verificarRegistro.php";
 
-use libreriaswsRestSII\API;
-use libreriaswsRestSII\REST;
-
 class API extends REST
 {
-
     use actualizarClienteLiquidacion;
     use actualizarControlesLiquidacion;
     use actualizarEstadoLiquidacion;
@@ -452,6 +448,11 @@ class API extends REST
             $validaTokenUnico = false;
         }
 
+        if (!$validaTokenUnico) {
+            $_SESSION["jsonsalida"]["codigoerror"] = "9998";
+            $_SESSION["jsonsalida"]["mensajeerror"] = 'Error en definición del Token Defecto';
+            return false;
+        }
         //WSI - 20170418 - Interpretación de JWT
 
         $classObj = new funcionesAPI();
@@ -517,13 +518,6 @@ class API extends REST
         } else {
             $_SESSION["jsonsalida"]["codigoerror"] = "9998";
             $_SESSION["jsonsalida"]["mensajeerror"] = $resp["mensajeerror"];
-            return false;
-        }
-
-        if ($validaTokenUnico == false) {
-            $mysqli->close();
-            $_SESSION["jsonsalida"]["codigoerror"] = "9998";
-            $_SESSION["jsonsalida"]["mensajeerror"] = 'Error en definición del Token Defecto';
             return false;
         }
     }
