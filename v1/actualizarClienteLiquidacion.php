@@ -24,9 +24,7 @@ trait actualizarClienteLiquidacion
 
         // Verifica que  método de recepcion de parámetros sea POST
         if ($api->get_request_method() != "POST") {
-            $_SESSION["jsonsalida"]["codigoerror"] = "9999";
-            $_SESSION["jsonsalida"]["mensajeerror"] = 'La petición debe ser POST';
-            $api->response($api->json($_SESSION["jsonsalida"]), 200);
+            $api->armarsalidaApi("9999", "La petición debe ser POST");
         }
 
         //
@@ -59,9 +57,7 @@ trait actualizarClienteLiquidacion
         $api->validarParametro("responsabilidadtributariacliente", false, false);
         //
         if (!filter_var($_SESSION["entrada"]["emailcliente"], FILTER_VALIDATE_EMAIL) === true) {
-            $_SESSION["jsonsalida"]["codigoerror"] = "9999";
-            $_SESSION["jsonsalida"]["mensajeerror"] = 'No se indicó un correo válido';
-            $api->response($api->json($_SESSION["jsonsalida"]), 200);
+            $api->armarsalidaApi("9999", "No se indicó un correo válido");
         }
 
         // ********************************************************************** //
@@ -79,17 +75,11 @@ trait actualizarClienteLiquidacion
         //
         $_SESSION["tramite"] = \funcionesRegistrales::retornarMregLiquidacion($mysqli, $_SESSION["entrada"]["idliquidacion"]);
         if ($_SESSION["tramite"] === false) {
-            $mysqli->close();
-            $_SESSION["jsonsalida"]["codigoerror"] = "9999";
-            $_SESSION["jsonsalida"]["mensajeerror"] = 'Liquidación no encontrada';
-            $api->response($api->json($_SESSION["jsonsalida"]), 200);
+            $api->armarsalidaApi("9999", "Liquidación no encontrada", $mysqli);
         }
 
         if ($_SESSION["tramite"]["estado"] > '06') {
-            $mysqli->close();
-            $_SESSION["jsonsalida"]["codigoerror"] = "9999";
-            $_SESSION["jsonsalida"]["mensajeerror"] = 'El estado de la liquidación no permite que esta sea modificada';
-            $api->response($api->json($_SESSION["jsonsalida"]), 200);
+            $api->armarsalidaApi("9999", "El estado de la liquidación no permite que esta sea modificada", $mysqli);
         }
 
         //Datos del cliente
@@ -135,16 +125,7 @@ trait actualizarClienteLiquidacion
         $_SESSION["tramite"]["emailpagador"] = $_SESSION["tramite"]["email"];
 
         \funcionesRegistrales::grabarLiquidacionMreg($mysqli);
-
-        //
-        $mysqli->close();
-
-        // **************************************************************************** //
-        // Resultado
-        // **************************************************************************** //
-        $_SESSION["jsonsalida"]["mensajeerror"] = 'Liquidación actualizada';
         \logApi::peticionRest('api_' . __FUNCTION__);
-        $json = $api->json($_SESSION["jsonsalida"]);
-        $api->response(str_replace("\\/", "/", $json), 200);
+        $api->armarsalidaApi("0000", "Liquidación actualizada", $mysqli);
     }
 }
