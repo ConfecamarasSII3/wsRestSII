@@ -4,9 +4,10 @@
 // INTERFAZ BASICA DE MYSQLI
 // *************************************************************************************
 //
-function conexionMysqliApi($fuente = '') {
+function conexionMysqliApi($fuente = '')
+{
     if (substr($fuente, 0, 2) != 'P-') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
         if (!defined('LOG_SQL')) {
             define('LOG_SQL', false);
         }
@@ -47,301 +48,301 @@ function conexionMysqliApi($fuente = '') {
         $dbpassword = '8nI0d:UtL+Fs';
         $debugdb = false;
         switch ($cam) {
-            case "01" :
+            case "01":
                 $dbname = 'sii_armenia';
                 $dbusuario = 'aurora_sii_1';
                 $dbpassword = '0pa6OMVddH1r..1';
                 break;
 
-            case "02" :
+            case "02":
                 $dbname = 'sii_barranca';
                 $dbusuario = 'aurora_sii_2';
                 $dbpassword = '0pa5G5fmQQOtk22';
                 break;
 
-            case "06" :
+            case "06":
                 $dbname = 'sii_buenaventura';
                 $dbusuario = 'aurora_sii_6';
                 $dbpassword = '0paslg3L4J4ZYY6';
                 break;
 
-            case "07" :
+            case "07":
                 $dbname = 'sii_buga';
                 $dbusuario = 'aurora_sii_7';
                 $dbpassword = '0pa8MelXxwx/9c7';
                 break;
 
-            case "10" :
+            case "10":
                 $dbname = 'sii_cartago';
                 $dbusuario = 'aurora_sii_10';
                 $dbpassword = '1papnE05lebDuA0';
                 break;
 
-            case "11" :
+            case "11":
                 $dbname = 'sii_11';
                 $dbusuario = 'aurora_sii_11';
                 $dbpassword = 'cnCnt4pr11';
                 break;
 
-            case "12" :
+            case "12":
                 $dbname = 'sii_chinchina';
                 $dbusuario = 'aurora_sii_12';
                 $dbpassword = '1pa0keevuSJb062';
                 break;
 
-            case "13" :
+            case "13":
                 $dbname = 'sii_duitama';
                 $dbusuario = 'aurora_sii_13';
                 $dbpassword = '1paEXMBHPwyRLk3';
                 break;
 
-            case "14" :
+            case "14":
                 $dbname = 'sii_girardot';
                 $dbusuario = 'aurora_sii_14';
                 $dbpassword = '1pavJu5bpZXcHU4';
                 break;
 
-            case "15" :
+            case "15":
                 $dbname = 'sii_honda';
                 $dbusuario = 'aurora_sii_15';
                 $dbpassword = '1paQDoqpYnqBks5';
                 break;
 
-            case "16" :
+            case "16":
                 $dbname = 'sii_ibague';
                 $dbusuario = 'aurora_sii_16';
                 $dbpassword = '1paGEzudBfZC5c6';
                 break;
 
-            case "17" :
+            case "17":
                 $dbname = 'sii_ipiales';
                 $dbusuario = 'aurora_sii_17';
                 $dbpassword = '1paxwekIyJeR6A7';
                 break;
 
-            case "18" :
+            case "18":
                 $dbname = 'sii_dorada';
                 $dbusuario = 'aurora_sii_18';
                 $dbpassword = '1patPzlXCw43qc8';
                 break;
 
-            case "19" :
+            case "19":
                 $dbname = 'sii_magangue';
                 $dbusuario = 'aurora_sii_19';
                 $dbpassword = '1pastfhgsfY6UU9';
                 break;
 
-            case "20" :
+            case "20":
                 $dbname = 'sii_manizales';
                 $dbusuario = 'aurora_sii_20';
                 $dbpassword = '2payGq/OCjNnn60';
                 break;
 
-            case "22" :
+            case "22":
                 $dbname = 'sii_monteria';
                 $dbusuario = 'aurora_sii_22';
                 $dbpassword = '2paQNrt3k.51dc2';
                 break;
 
-            case "23" :
+            case "23":
                 $dbname = 'sii_23';
                 $dbusuario = 'aurora_sii_23';
                 $dbpassword = '2paC2b/G2kqEL23';
                 break;
 
-            case "24" :
+            case "24":
                 $dbname = 'sii_palmira';
                 $dbusuario = 'aurora_sii_24';
                 $dbpassword = '2paf257HAjqGkM4';
                 break;
 
-            case "25" :
+            case "25":
                 $dbname = 'sii_pamplona';
                 $dbusuario = 'aurora_sii_25';
                 $dbpassword = '2pastH1m7RIN/25';
                 break;
 
-            case "26" :
+            case "26":
                 $dbname = 'sii_pasto';
                 $dbusuario = 'aurora_sii_26';
                 $dbpassword = '2pa2w4B1FoCHMI6';
                 break;
 
-            case "27" :
+            case "27":
                 $dbname = 'sii_pereira';
                 $dbusuario = 'aurora_sii_27';
                 $dbpassword = '2pa7UISFgw0E/o7';
                 break;
 
-            case "28" :
+            case "28":
                 $dbname = 'sii_cauca';
                 $dbusuario = 'aurora_sii_28';
                 $dbpassword = '2pa.nGeOl8BQzk8';
                 break;
 
-            case "30" :
+            case "30":
                 $dbname = 'sii_guajira';
                 $dbusuario = 'aurora_sii_30';
                 $dbpassword = '3panYYQnzVUOsM0';
                 break;
 
-            case "31" :
+            case "31":
                 $dbname = 'sii_sanandres';
                 $dbusuario = 'aurora_sii_31';
                 $dbpassword = '3pa5Ddhr31FwnM1';
                 break;
 
-            case "32" :
+            case "32":
                 $dbname = 'sii_santamarta';
                 $dbusuario = 'aurora_sii_32';
                 $dbpassword = 'paCdZhfBjShuc32';
                 break;
 
-            case "33" :
+            case "33":
                 $dbname = 'sii_santarosa';
                 $dbusuario = 'aurora_sii_33';
                 $dbpassword = '3pa/FYAoq5vx6c3';
                 break;
 
-            case "34" :
+            case "34":
                 $dbname = 'sii_sincelejo';
                 $dbusuario = 'aurora_sii_34';
                 $dbpassword = '3pah.6QYe2R7zM4';
                 break;
 
-            case "35" :
+            case "35":
                 $dbname = 'sii_sogamoso';
                 $dbusuario = 'aurora_sii_35';
                 $dbpassword = '3pakF8/PXzmMm.5';
                 break;
 
-            case "36" :
+            case "36":
                 $dbname = 'sii_tulua';
                 $dbusuario = 'aurora_sii_36';
                 $dbpassword = '3pa5eT1HoG9bFA6';
                 break;
 
-            case "37" :
+            case "37":
                 $dbname = 'sii_tumaco';
                 $dbusuario = 'aurora_sii_37';
                 $dbpassword = '3padp/6aYO3VeA7';
                 break;
 
-            case "38" :
+            case "38":
                 $dbname = 'sii_38';
                 $dbusuario = 'aurora_sii_38';
                 $dbpassword = 'TnUj4pr38';
                 break;
 
-            case "39" :
+            case "39":
                 $dbname = 'sii_valledupar';
                 $dbusuario = 'aurora_sii_39';
                 $dbpassword = '3palJyfIJtGVr.9';
                 break;
 
-            case "40" :
+            case "40":
                 $dbname = 'sii_40';
                 $dbusuario = 'aurora_sii_40';
                 $dbpassword = '4paAd3ZevpYn760';
                 break;
 
-            case "41" :
+            case "41":
                 $dbname = 'sii_florencia';
                 $dbusuario = 'aurora_sii_41';
                 $dbpassword = '4pafCnSqhUQI/A1';
                 break;
 
-            case "42" :
+            case "42":
                 $dbname = 'sii_amazonas';
                 $dbusuario = 'aurora_sii_42';
                 $dbpassword = '4paIIriA91yI4M2';
                 break;
 
-            case "43" :
+            case "43":
                 $dbname = 'sii_sevilla';
                 $dbusuario = 'aurora_sii_43';
                 $dbpassword = '4paE5rKqceOJe63';
                 break;
 
-            case "44" :
+            case "44":
                 $dbname = 'sii_uraba';
                 $dbusuario = 'aurora_sii_44';
                 $dbpassword = '4pa8JMlcQbnUW64';
                 break;
 
-            case "45" :
+            case "45":
                 $dbname = 'sii_espinal';
                 $dbusuario = 'aurora_sii_45';
                 $dbpassword = '4pactkbgWvUnEA5';
                 break;
 
-            case "46" :
+            case "46":
                 $dbname = 'sii_ptoasis';
                 $dbusuario = 'aurora_sii_46';
                 $dbpassword = '4paQMjx1zLUsjc6';
                 break;
 
-            case "47" :
+            case "47":
                 $dbname = 'sii_facatativa';
                 $dbusuario = 'aurora_sii_47';
                 $dbpassword = '4pa2BQPpu3l.4o7';
                 break;
 
-            case "48" :
+            case "48":
                 $dbname = 'sii_arauca';
                 $dbusuario = 'aurora_sii_48';
                 $dbpassword = '4pabMhYq92BTnU8';
                 break;
 
-            case "49" :
+            case "49":
                 $dbname = 'sii_ocana';
                 $dbusuario = 'aurora_sii_49';
                 $dbpassword = '4paiWzpPdq5iTg9';
                 break;
 
-            case "50" :
+            case "50":
                 $dbname = 'sii_casanare';
                 $dbusuario = 'aurora_sii_50';
                 $dbpassword = '5paWemup2H1qCk0';
                 break;
 
-            case "51" :
+            case "51":
                 $dbname = 'sii_orienteantioqueno';
                 $dbusuario = 'aurora_sii_51';
                 $dbpassword = '5paORYizuDiwMI1';
                 break;
 
-            case "52" :
+            case "52":
                 $dbname = 'sii_mmedio';
                 $dbusuario = 'aurora_sii_52';
                 $dbpassword = '5paCK2un9fS.N.2';
                 break;
 
-            case "53" :
+            case "53":
                 $dbname = 'sii_aguachica';
                 $dbusuario = 'aurora_sii_53';
                 $dbpassword = '5pa4muwMs6ii7w3';
                 break;
 
-            case "54" :
+            case "54":
                 $dbname = 'sii_dosquebradas';
                 $dbusuario = 'aurora_sii_54';
                 $dbpassword = '5paKL6EA3qB14Y4';
                 break;
 
-            case "55" :
+            case "55":
                 $dbname = 'sii_aburra';
                 $dbusuario = 'aurora_sii_55';
                 $dbpassword = '5pamwStQ6Si2';
                 break;
 
-            case "56" :
+            case "56":
                 $dbname = 'sii_saravena';
                 $dbusuario = 'aurora_sii_56';
                 $dbpassword = '5paRSFvg0MPKgc6';
                 break;
 
-            case "57" :
+            case "57":
                 $dbname = 'sii_sanjose';
                 $dbusuario = 'aurora_sii_57';
                 $dbpassword = '5paz88kDzkRNdY7';
@@ -361,7 +362,8 @@ function conexionMysqliApi($fuente = '') {
 // *************************************************************************************
 // RUTINAS COMPLEMENTARIAS ADAPTADAS PARA MYSQLI
 // *************************************************************************************
-function actualizarLogMysqliApi($dbx, $idaccion, $idusuario, $objeto, $idtipodoc, $idsede, $idnumdoc, $detalle, $matricula = '', $proponente = '', $identificacion = '', $numeroliq = 0, $codbarras = 0, $anexo = 0) {
+function actualizarLogMysqliApi($dbx, $idaccion, $idusuario, $objeto, $idtipodoc, $idsede, $idnumdoc, $detalle, $matricula = '', $proponente = '', $identificacion = '', $numeroliq = 0, $codbarras = 0, $anexo = 0)
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -369,13 +371,13 @@ function actualizarLogMysqliApi($dbx, $idaccion, $idusuario, $objeto, $idtipodoc
     }
 
     //
-    if (!empty($_SERVER ['HTTP_CLIENT_IP'])) {
-        $ip = $_SERVER ['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER ['HTTP_X_FORWARDED_FOR'])) {
-        $ip = $_SERVER ['HTTP_X_FORWARDED_FOR'];
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
     } else {
-        if (isset($_SERVER ['REMOTE_ADDR'])) {
-            $ip = $_SERVER ['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_ADDR'])) {
+            $ip = $_SERVER['REMOTE_ADDR'];
         } else {
             $ip = 'localhost';
         }
@@ -440,7 +442,8 @@ function actualizarLogMysqliApi($dbx, $idaccion, $idusuario, $objeto, $idtipodoc
     return $res;
 }
 
-function actualizarLogDocumentosMysqliApi($dbx, $periodo, $idtipodoc, $numdoc, $fecha, $hora, $accion, $usuario, $obs = '') {
+function actualizarLogDocumentosMysqliApi($dbx, $periodo, $idtipodoc, $numdoc, $fecha, $hora, $accion, $usuario, $obs = '')
+{
     $arrCampos = array(
         'ano',
         'idtipodoc',
@@ -467,8 +470,9 @@ function actualizarLogDocumentosMysqliApi($dbx, $periodo, $idtipodoc, $numdoc, $
 // ************************************************************************************************* //
 // Borrar registros Sii
 // ************************************************************************************************* //
-function borrarRegistrosMysqliApi($dbx, $tabla, $condicion) {
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+function borrarRegistrosMysqliApi($dbx, $tabla, $condicion)
+{
+    require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
     $cerrarMysql = 'no';
     if ($dbx === null) {
         $dbx = conexionMysqliApi();
@@ -493,7 +497,8 @@ function borrarRegistrosMysqliApi($dbx, $tabla, $condicion) {
     }
 }
 
-function clonarTablaVaciaMysqliApi($dbx, $base, $tabla) {
+function clonarTablaVaciaMysqliApi($dbx, $base, $tabla)
+{
     $res = mysqli_query($dbx, "CREATE TABLE `" . $tabla . "` LIKE `" . $base . "`");
     if ($res === false) {
         return false;
@@ -504,7 +509,8 @@ function clonarTablaVaciaMysqliApi($dbx, $base, $tabla) {
 // ************************************************************************************************* //
 // Buscar saldo del afiliado
 // ************************************************************************************************* //
-function buscarSaldoAfiliadoMysqliApi($dbx, $matricula, $gruposervicios = '', $formacalculo = '') {
+function buscarSaldoAfiliadoMysqliApi($dbx, $matricula, $gruposervicios = '', $formacalculo = '')
+{
     $cerrarMysql = 'no';
     if ($dbx === null) {
         $dbx = conexionMysqli();
@@ -593,7 +599,8 @@ function buscarSaldoAfiliadoMysqliApi($dbx, $matricula, $gruposervicios = '', $f
 // ************************************************************************************************* //
 // Contar registros Sii 
 // ************************************************************************************************* //
-function contarRegistrosMysqliApi($dbx, $tabla, $condicion) {
+function contarRegistrosMysqliApi($dbx, $tabla, $condicion)
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -614,7 +621,8 @@ function contarRegistrosMysqliApi($dbx, $tabla, $condicion) {
 // ************************************************************************************************* //
 // Construir noticia parta sur occidentew
 // ************************************************************************************************* //
-function construirNoticiaSurOccidenteMysqliApi($mysqli, $ins) {
+function construirNoticiaSurOccidenteMysqliApi($mysqli, $ins)
+{
     $salida = '';
 
     //
@@ -655,8 +663,9 @@ function construirNoticiaSurOccidenteMysqliApi($mysqli, $ins) {
     return $salida;
 }
 
-function encontrarHistoricoPagosMysqliApi($dbx = null, $mat = '', $serviciosRenovacion = array(), $serviciosAfiliacion = array(), $serviciosMatricula = array()) {
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+function encontrarHistoricoPagosMysqliApi($dbx = null, $mat = '', $serviciosRenovacion = array(), $serviciosAfiliacion = array(), $serviciosMatricula = array())
+{
+    require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
 
     $nameLog = 'encontrarHistoricoRenovacion_' . date("Ymd");
     \logApi::general2($nameLog, '', '');
@@ -909,8 +918,9 @@ function encontrarHistoricoPagosMysqliApi($dbx = null, $mat = '', $serviciosReno
     return $salida;
 }
 
-function encontrarHistoricoPagosAfiliacionMysqliApi($dbx = null, $mat = '', $serviciosAfiliacion = array()) {
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+function encontrarHistoricoPagosAfiliacionMysqliApi($dbx = null, $mat = '', $serviciosAfiliacion = array())
+{
+    require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
     $nameLog = 'encontrarHistoricoRenovacionAfiliacion_' . date("Ymd");
     \logApi::general2($nameLog, '', '');
     $salida = array();
@@ -999,7 +1009,8 @@ function encontrarHistoricoPagosAfiliacionMysqliApi($dbx = null, $mat = '', $ser
     return $salida;
 }
 
-function actualizarDatosRenovacionMysqliApi($dbx = null, $mat = '', $serviciosRenovacion = array(), $serviciosAfiliacion = array(), $serviciosMatricula = array()) {
+function actualizarDatosRenovacionMysqliApi($dbx = null, $mat = '', $serviciosRenovacion = array(), $serviciosAfiliacion = array(), $serviciosMatricula = array())
+{
     $datren = encontrarHistoricoPagosMysqliApi($dbx, $mat, $serviciosRenovacion, $serviciosAfiliacion, $serviciosMatricula);
     $datrenafil = encontrarHistoricoPagosAfiliacionMysqliApi($dbx, $mat, $serviciosRenovacion, $serviciosAfiliacion, $serviciosMatricula);
     if ($datren && $datren["fecultren"] != '') {
@@ -1027,7 +1038,8 @@ function actualizarDatosRenovacionMysqliApi($dbx = null, $mat = '', $serviciosRe
     return true;
 }
 
-function encontrarHistoricoPagosMysqliApiErroneo($mysqli = null, $mat = '', $serviciosRenovacion = array(), $serviciosAfiliacion = array()) {
+function encontrarHistoricoPagosMysqliApiErroneo($mysqli = null, $mat = '', $serviciosRenovacion = array(), $serviciosAfiliacion = array())
+{
 
     $salida = array();
     $salida["fecultren"] = '';
@@ -1107,7 +1119,8 @@ function encontrarHistoricoPagosMysqliApiErroneo($mysqli = null, $mat = '', $ser
                         $inc = 'si';
                     } else {
                         if (($r["tipogasto"] == '0' && !in_array($cba["estadofinal"], $estadosCbNoAsentadoLocal)) ||
-                                ($r["tipogasto"] == '8' && !in_array($cba["estadofinal"], $estadosCbNoAsentadoRues))) {
+                            ($r["tipogasto"] == '8' && !in_array($cba["estadofinal"], $estadosCbNoAsentadoRues))
+                        ) {
                             $inc = 'si';
                         }
                     }
@@ -1190,7 +1203,8 @@ function encontrarHistoricoPagosMysqliApiErroneo($mysqli = null, $mat = '', $ser
     return $salida;
 }
 
-function ejecutarQueryMysqliApi($dbx, $query) {
+function ejecutarQueryMysqliApi($dbx, $query)
+{
 
     //
     $cerrarMysqli = 'no';
@@ -1233,7 +1247,8 @@ function ejecutarQueryMysqliApi($dbx, $query) {
 // *************************************************************************
 // Valida que una tabla exista en la BD
 // *************************************************************************
-function existeTablaMysqliApi($mysqli, $tabla) {
+function existeTablaMysqliApi($mysqli, $tabla)
+{
     // $mysqli = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
     $result = mysqli_query($mysqli, "select count(*) as count from information_schema.tables WHERE table_schema = '" . DB_NAME . "' AND table_name = '" . $tabla . "'");
     $obj = $result->fetch_object();
@@ -1250,8 +1265,9 @@ function existeTablaMysqliApi($mysqli, $tabla) {
 // ************************************************************************************************* //
 // Rutina maestra para insercion de registros
 // ************************************************************************************************* //
-function insertarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores) {
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+function insertarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores)
+{
+    require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -1287,8 +1303,8 @@ function insertarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores) {
         }
         return false;
     } else {
-        $_SESSION ["generales"] ["lastId"] = 0;
-        $_SESSION ["generales"] ["lastId"] = mysqli_insert_id($dbx);
+        $_SESSION["generales"]["lastId"] = 0;
+        $_SESSION["generales"]["lastId"] = mysqli_insert_id($dbx);
         $_SESSION["generales"]["mensajeerror"] = '';
         if ($cerrarMysqli == 'si') {
             $dbx->close();
@@ -1297,8 +1313,9 @@ function insertarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores) {
     }
 }
 
-function insertarCamposHistoricosMysqliApi($dbx, $user, $mat, $cmp, $ori, $nue, $tt, $rec, $cb, $ip) {
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+function insertarCamposHistoricosMysqliApi($dbx, $user, $mat, $cmp, $ori, $nue, $tt, $rec, $cb, $ip)
+{
+    require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
     $arrCampos = array(
         'matricula',
         'campo',
@@ -1332,7 +1349,8 @@ function insertarCamposHistoricosMysqliApi($dbx, $user, $mat, $cmp, $ori, $nue, 
 // Localiza el dato anterior existente en un campo
 // Valida en los últimos 5 años
 // *****************************************************************
-function localizarCampoAnteriorMysqliApi($dbx, $mat, $campo) {
+function localizarCampoAnteriorMysqliApi($dbx, $mat, $campo)
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -1377,7 +1395,8 @@ function localizarCampoAnteriorMysqliApi($dbx, $mat, $campo) {
  * @param type $campo
  * @return type
  */
-function localizarCampoAnteriorTodosMysqliApi($dbx, $mat, $campo) {
+function localizarCampoAnteriorTodosMysqliApi($dbx, $mat, $campo)
+{
 
     //
     $cerrarMysqli = 'no';
@@ -1417,7 +1436,8 @@ function localizarCampoAnteriorTodosMysqliApi($dbx, $mat, $campo) {
     return $salida;
 }
 
-function retornarCargoUsuarioMysqliApi($dbx, $usua = '') {
+function retornarCargoUsuarioMysqliApi($dbx, $usua = '')
+{
     $idcargo = retornarRegistroMysqliApi($dbx, 'usuarios', "idusuario='" . $usua . "'", "idcargo");
     if ($idcargo == '') {
         return "";
@@ -1428,7 +1448,8 @@ function retornarCargoUsuarioMysqliApi($dbx, $usua = '') {
 // *****************************************************************
 // Retorna una clave valor
 // *****************************************************************
-function retornarClaveValorMysqliApi($dbx, $clave) {
+function retornarClaveValorMysqliApi($dbx, $clave)
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -1459,7 +1480,8 @@ function retornarClaveValorMysqliApi($dbx, $clave) {
     return $_SESSION["generales"]["clavevalor"][$clave];
 }
 
-function retornarConsecutivoTipoDocMysqliApi($mysqli, $periodo, $tipodoc, $estado = '', $fecha = '', $crear = 'N', $modulo = '', $identificacion = '', $nombre = '') {
+function retornarConsecutivoTipoDocMysqliApi($mysqli, $periodo, $tipodoc, $estado = '', $fecha = '', $crear = 'N', $modulo = '', $identificacion = '', $nombre = '')
+{
     $arrTipoDoc = retornarRegistroMysqliApi($mysqli, 'bas_tipodoc', "idtipodoc='" . $tipodoc . "'");
     if (($arrTipoDoc === false) || (empty($arrTipoDoc))) {
         return false;
@@ -1528,11 +1550,14 @@ function retornarConsecutivoTipoDocMysqliApi($mysqli, $periodo, $tipodoc, $estad
         while ($grabado == 'no') {
             $sec++;
             switch ($tam) {
-                case 0: $num = $sec;
+                case 0:
+                    $num = $sec;
                     break;
-                case 4: $num = $raiz . sprintf("%05s", $sec);
+                case 4:
+                    $num = $raiz . sprintf("%05s", $sec);
                     break;
-                case 6: $num = $raiz . sprintf("%03s", $sec);
+                case 6:
+                    $num = $raiz . sprintf("%03s", $sec);
                     break;
             }
             if (contarRegistrosMysqliApi($mysqli, 'documentos', "ano='" . $periodo . "' and idtipodoc='" . $tipodoc . "' and numdoc='" . $num . "'") == 0) {
@@ -1542,11 +1567,14 @@ function retornarConsecutivoTipoDocMysqliApi($mysqli, $periodo, $tipodoc, $estad
     } else {
         $sec++;
         switch ($tam) {
-            case 0: $num = $sec;
+            case 0:
+                $num = $sec;
                 break;
-            case 4: $num = $raiz . sprintf("%05s", $sec);
+            case 4:
+                $num = $raiz . sprintf("%05s", $sec);
                 break;
-            case 6: $num = $raiz . sprintf("%03s", $sec);
+            case 6:
+                $num = $raiz . sprintf("%03s", $sec);
                 break;
         }
     }
@@ -1596,8 +1624,9 @@ function retornarConsecutivoTipoDocMysqliApi($mysqli, $periodo, $tipodoc, $estad
 // ************************************************************************************************* //
 // Rutina maestra para insercion de registros
 // ************************************************************************************************* //
-function insertarRegistrosBloqueMysqliApi($dbx, $tabla, $arrCampos, $arrValores) {
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+function insertarRegistrosBloqueMysqliApi($dbx, $tabla, $arrCampos, $arrValores)
+{
+    require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -1614,10 +1643,10 @@ function insertarRegistrosBloqueMysqliApi($dbx, $tabla, $arrCampos, $arrValores)
         }
         $query .= $c;
     }
-    
+
     //
     $query .= ") VALUES ";
-    
+
     //
     $i = 0;
     foreach ($arrValores as $val) {
@@ -1660,8 +1689,9 @@ function insertarRegistrosBloqueMysqliApi($dbx, $tabla, $arrCampos, $arrValores)
 // ************************************************************************************************* //
 // Rutina maestra para regrabación de registros
 // ************************************************************************************************* //
-function regrabarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores, $condicion) {
-    require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+function regrabarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores, $condicion)
+{
+    require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -1675,7 +1705,7 @@ function regrabarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores, $cond
         if ($i != 1) {
             $query .= ",";
         }
-        $query .= $c . '=' . ($arrValores [$i - 1]);
+        $query .= $c . '=' . ($arrValores[$i - 1]);
     }
     $query .= " where " . $condicion;
     $dbx->set_charset("utf8");
@@ -1697,7 +1727,7 @@ function regrabarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores, $cond
 }
 
 /**
- * 
+ *
  * @param type $dbx
  * @param type $tabla
  * @param type $condicion
@@ -1707,7 +1737,8 @@ function regrabarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores, $cond
  * @param type $limit
  * @return mixed
  */
-function retornarRegistrosMysqliApi($dbx, $tabla, $condicion, $orden = '', $campos = '*', $offset = 0, $limit = 0) {
+function retornarRegistrosMysqliApi($dbx, $tabla, $condicion, $orden = '', $campos = '*', $offset = 0, $limit = 0)
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -1793,7 +1824,7 @@ function retornarRegistrosMysqliApi($dbx, $tabla, $condicion, $orden = '', $camp
 // Retornar Registros
 // ************************************************************************************************* //
 /**
- * 
+ *
  * @param type $dbx
  * @param type $tabla
  * @param type $condicion
@@ -1801,7 +1832,8 @@ function retornarRegistrosMysqliApi($dbx, $tabla, $condicion, $orden = '', $camp
  * @param type $tip
  * @return boolean|string
  */
-function retornarRegistroMysqliApi($dbx, $tabla, $condicion, $campos = '*', $tip = 'P') {
+function retornarRegistroMysqliApi($dbx, $tabla, $condicion, $campos = '*', $tip = 'P')
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -1887,7 +1919,8 @@ function retornarRegistroMysqliApi($dbx, $tabla, $condicion, $campos = '*', $tip
     }
 }
 
-function retornarTablaBasicaPorCodigoMysqliApi($dbx, $tab, $id) {
+function retornarTablaBasicaPorCodigoMysqliApi($dbx, $tab, $id)
+{
     $reg = retornarRegistroMysqliApi($dbx, $tab, "id='" . $id . "'");
     if ($reg === false || empty($reg)) {
         return "";
@@ -1900,11 +1933,13 @@ function retornarTablaBasicaPorCodigoMysqliApi($dbx, $tab, $id) {
     }
 }
 
-function retornarTipoRegistroMysqliApi($dbx, $tra) {
+function retornarTipoRegistroMysqliApi($dbx, $tra)
+{
     return retornarRegistroMysqliApi($dbx, 'bas_tipotramites', "where id='" . $tra . "'", "tiporegistro");
 }
 
-function retornarDescripcionCiiuMysqliApi($dbx, $id, $tipociiu = '') {
+function retornarDescripcionCiiuMysqliApi($dbx, $id, $tipociiu = '')
+{
     if ($tipociiu == '3.1') {
         return retornarRegistroMysqliApi($dbx, "bas_ciius_3_1", "idciiu='" . $id . "'", "descripcion");
     } else {
@@ -1912,7 +1947,8 @@ function retornarDescripcionCiiuMysqliApi($dbx, $id, $tipociiu = '') {
     }
 }
 
-function retornarListaOpcionesMysqliApi($dbx) {
+function retornarListaOpcionesMysqliApi($dbx)
+{
     $excluir = '';
     if ($_SESSION["generales"]["tipomenu"] != 'MOVIL') {
         $excluir = " and substring(idopcion,1,5) <> '00.00' ";
@@ -1920,25 +1956,25 @@ function retornarListaOpcionesMysqliApi($dbx) {
 
     $arreglo = array();
     $query = '';
-    if ((trim($_SESSION ["generales"] ["codigousuario"]) == '') || $_SESSION ["generales"] ["codigousuario"] == 'USUPUBXX' || $_SESSION ["generales"] ["tipousuario"] == '00') {
+    if ((trim($_SESSION["generales"]["codigousuario"]) == '') || $_SESSION["generales"]["codigousuario"] == 'USUPUBXX' || $_SESSION["generales"]["tipousuario"] == '00') {
         $query = "tipousuariopublico='X' and estado='1' and mostrarmenuaplicacion = 'S' " . $excluir;
     } else {
-        if (substr($_SESSION ["generales"] ["tipousuario"], 0, 2) == '01') {
+        if (substr($_SESSION["generales"]["tipousuario"], 0, 2) == '01') {
             $query = "'1=1'  " . $excluir;
         } else {
-            if (substr($_SESSION ["generales"] ["tipousuario"], 0, 2) == '02') {
+            if (substr($_SESSION["generales"]["tipousuario"], 0, 2) == '02') {
                 $query = "tipousuarioadministrativo='X' and estado='1' and mostrarmenuaplicacion = 'S'  " . $excluir;
             } else {
-                if (substr($_SESSION ["generales"] ["tipousuario"], 0, 2) == '03') {
+                if (substr($_SESSION["generales"]["tipousuario"], 0, 2) == '03') {
                     $query = "tipousuarioproduccion='X' and estado='1'  and mostrarmenuaplicacion = 'S'  " . $excluir;
                 } else {
-                    if (substr($_SESSION ["generales"] ["tipousuario"], 0, 2) == '04') {
+                    if (substr($_SESSION["generales"]["tipousuario"], 0, 2) == '04') {
                         $query = "tipousuarioventas='X' and estado='1' and mostrarmenuaplicacion = 'S'  " . $excluir;
                     } else {
-                        if (substr($_SESSION ["generales"] ["tipousuario"], 0, 2) == '05') {
+                        if (substr($_SESSION["generales"]["tipousuario"], 0, 2) == '05') {
                             $query = "tipousuarioregistro='X' and estado='1' and mostrarmenuaplicacion = 'S'  " . $excluir;
                         } else {
-                            if (substr($_SESSION ["generales"] ["tipousuario"], 0, 2) == '06') {
+                            if (substr($_SESSION["generales"]["tipousuario"], 0, 2) == '06') {
                                 $query = "tipousuarioexterno='X' and estado='1' and mostrarmenuaplicacion = 'S'  " . $excluir;
                             }
                         }
@@ -1953,39 +1989,39 @@ function retornarListaOpcionesMysqliApi($dbx) {
     } else {
 
         $result = retornarRegistrosMysqliApi($dbx, 'bas_opciones', $query, 'idopcion');
-        $i = - 1;
+        $i = -1;
         if ($result) {
             foreach ($result as $res) {
                 if ($res["estado"] == '1') {
                     $i++;
-                    $arreglo [$i] ["idopcion"] = $res["idopcion"];
-                    $arreglo [$i] ["nombre"] = str_replace("<br>", " ", $res["nombre"]);
-                    $arreglo [$i] ["tipo"] = $res["idtipoopcion"];
-                    $arreglo [$i] ["icono"] = $res["icono"];
-                    $arreglo [$i] ["tooltip"] = $res["tooltip"];
-                    $arreglo [$i] ["script"] = $res["script"];
-                    $arreglo [$i] ["mostrarbootstrap"] = '';
-                    $arreglo [$i] ["clasephp"] = '';
-                    $arreglo [$i] ["metodophp"] = '';
-                    $arreglo [$i] ["parametrosphp"] = '';
+                    $arreglo[$i]["idopcion"] = $res["idopcion"];
+                    $arreglo[$i]["nombre"] = str_replace("<br>", " ", $res["nombre"]);
+                    $arreglo[$i]["tipo"] = $res["idtipoopcion"];
+                    $arreglo[$i]["icono"] = $res["icono"];
+                    $arreglo[$i]["tooltip"] = $res["tooltip"];
+                    $arreglo[$i]["script"] = $res["script"];
+                    $arreglo[$i]["mostrarbootstrap"] = '';
+                    $arreglo[$i]["clasephp"] = '';
+                    $arreglo[$i]["metodophp"] = '';
+                    $arreglo[$i]["parametrosphp"] = '';
                     if (isset($res["mostrarbootstrap"])) {
-                        $arreglo [$i] ["mostrarbootstrap"] = $res["mostrarbootstrap"];
+                        $arreglo[$i]["mostrarbootstrap"] = $res["mostrarbootstrap"];
                     }
                     if (isset($res["clasephp"])) {
-                        $arreglo [$i] ["clasephp"] = $res["clasephp"];
+                        $arreglo[$i]["clasephp"] = $res["clasephp"];
                     }
                     if (isset($res["metodophp"])) {
-                        $arreglo [$i] ["metodophp"] = $res["metodophp"];
+                        $arreglo[$i]["metodophp"] = $res["metodophp"];
                     }
                     if (isset($res["parametrosphp"])) {
-                        $arreglo [$i] ["parametrosphp"] = $res["parametrosphp"];
+                        $arreglo[$i]["parametrosphp"] = $res["parametrosphp"];
                     }
-                    $arreglo [$i] ["enlace"] = $res["enlace"];
-                    $arreglo [$i] ["destino"] = $res["destino"];
-                    $arreglo [$i] ["estado"] = $res["estado"];
-                    $arreglo [$i] ["tipoempresa"] = $res["tipoempresa"];
-                    $arreglo [$i] ["cantidad"] = 0;
-                    $arreglo [$i] ["ejecutar"] = 0;
+                    $arreglo[$i]["enlace"] = $res["enlace"];
+                    $arreglo[$i]["destino"] = $res["destino"];
+                    $arreglo[$i]["estado"] = $res["estado"];
+                    $arreglo[$i]["tipoempresa"] = $res["tipoempresa"];
+                    $arreglo[$i]["cantidad"] = 0;
+                    $arreglo[$i]["ejecutar"] = 0;
                 }
             }
         } else {
@@ -1995,11 +2031,13 @@ function retornarListaOpcionesMysqliApi($dbx) {
     return $arreglo;
 }
 
-function retornarNombreDptoMysqliApi($dbx, $id) {
+function retornarNombreDptoMysqliApi($dbx, $id)
+{
     return retornarRegistroMysqliApi($dbx, "bas_municipios", "codigomunicipio='" . $id . "'", "departamento");
 }
 
-function retornarNombreIdentificacionMysqliApi($dbx, $ide) {
+function retornarNombreIdentificacionMysqliApi($dbx, $ide)
+{
     if (ltrim($ide, "0") == '') {
         return "";
     }
@@ -2007,7 +2045,8 @@ function retornarNombreIdentificacionMysqliApi($dbx, $ide) {
 }
 
 // 2020 01 22 - JINT - Se descomentarea la línea del utf8
-function retornarNombreMunicipioMysqliApi($dbx = null, $id = '', $forma = 'M') {
+function retornarNombreMunicipioMysqliApi($dbx = null, $id = '', $forma = 'M')
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -2042,7 +2081,8 @@ function retornarNombreMunicipioMysqliApi($dbx = null, $id = '', $forma = 'M') {
     }
 }
 
-function retornarNombrePaisMysqliApi($dbx, $id) {
+function retornarNombrePaisMysqliApi($dbx, $id)
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -2094,7 +2134,8 @@ function retornarNombrePaisMysqliApi($dbx, $id) {
     }
 }
 
-function retornarNombreCamaraMysqliApi($dbx = null, $id = null) {
+function retornarNombreCamaraMysqliApi($dbx = null, $id = null)
+{
     $retorno = false;
     $result = retornarRegistroMysqliApi($dbx, 'bas_camaras', "id='" . $id . "'");
     if ($result && !empty($result)) {
@@ -2104,7 +2145,8 @@ function retornarNombreCamaraMysqliApi($dbx = null, $id = null) {
     return $retorno;
 }
 
-function retornarNombreBarrioMysqliApi($dbx, $mun = '', $id = '') {
+function retornarNombreBarrioMysqliApi($dbx, $mun = '', $id = '')
+{
     $retorno = '';
     $result = retornarRegistroMysqliApi($dbx, 'mreg_barriosmuni', "idmunicipio='" . $mun . "' and idbarrio='" . $id . "'");
     if ($result && !empty($result)) {
@@ -2114,7 +2156,8 @@ function retornarNombreBarrioMysqliApi($dbx, $mun = '', $id = '') {
     return $retorno;
 }
 
-function retornarNombreTablaBasicaMysqliApi($dbx, $tabla, $id) {
+function retornarNombreTablaBasicaMysqliApi($dbx, $tabla, $id)
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -2147,11 +2190,13 @@ function retornarNombreTablaBasicaMysqliApi($dbx, $tabla, $id) {
     }
 }
 
-function retornarNombreTablasSirepMysqliApi($dbx, $idtabla, $idcodigo = '') {
+function retornarNombreTablasSirepMysqliApi($dbx, $idtabla, $idcodigo = '')
+{
     return retornarRegistroMysqliApi($dbx, 'mreg_tablassirep', "idtabla='" . $idtabla . "' and idcodigo='" . $idcodigo . "'", "descripcion");
 }
 
-function retornarNombreTipoDocumentalMysqliApi($dbx, $id) {
+function retornarNombreTipoDocumentalMysqliApi($dbx, $id)
+{
     $txt = retornarRegistroMysqliApi($dbx, 'bas_tipodoc', "idtipodoc='" . $id . "'", "nombre");
     if ($txt == '') {
         return false;
@@ -2161,7 +2206,8 @@ function retornarNombreTipoDocumentalMysqliApi($dbx, $id) {
     return $retornar;
 }
 
-function retornarNombreUsuarioMysqliApi($dbx, $usua) {
+function retornarNombreUsuarioMysqliApi($dbx, $usua)
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -2194,7 +2240,8 @@ function retornarNombreUsuarioMysqliApi($dbx, $usua) {
     }
 }
 
-function retornarNombreUsuarioSirepMysqliApi($dbx, $usua = '') {
+function retornarNombreUsuarioSirepMysqliApi($dbx, $usua = '')
+{
     $cerrarMysqli = 'no';
     if ($dbx === null) {
         $dbx = new mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
@@ -2228,15 +2275,18 @@ function retornarNombreUsuarioSirepMysqliApi($dbx, $usua = '') {
     //
 }
 
-function retornarNombreActosRegistroMysqliApi($dbx, $idlibro, $idacto = '') {
+function retornarNombreActosRegistroMysqliApi($dbx, $idlibro, $idacto = '')
+{
     return retornarRegistroMysqliApi($dbx, 'mreg_actos', "idlibro='" . $idlibro . "' and idacto='" . $idacto . "'", "nombre");
 }
 
-function retornarNombreActosProponentesMysqliApi($dbx, $idacto = '') {
+function retornarNombreActosProponentesMysqliApi($dbx, $idacto = '')
+{
     return retornarRegistroMysqliApi($dbx, 'mreg_actosproponente', "id='" . $idacto . "'", "descripcion");
 }
 
-function retornarPantallaPredisenadaMysqliApi($dbx, $pantalla = '', $fuente = '') {
+function retornarPantallaPredisenadaMysqliApi($dbx, $pantalla = '', $fuente = '')
+{
     $pant = retornarRegistroMysqliApi($dbx, 'pantallas_propias', "idpantalla='" . $pantalla . "'");
     if ($pant === false || empty($pant)) {
         $pant = retornarRegistroMysqliApi($dbx, 'bas_pantallas', "idpantalla='" . $pantalla . "'");
@@ -2250,7 +2300,8 @@ function retornarPantallaPredisenadaMysqliApi($dbx, $pantalla = '', $fuente = ''
     }
 }
 
-function retornarSalarioMinimoActualMysqliApi($dbx, $ano = '') {
+function retornarSalarioMinimoActualMysqliApi($dbx, $ano = '')
+{
     $smlvs = retornarRegistrosMysqliApi($dbx, 'bas_smlv', "1=1", "fecha asc");
     $minimo = 0;
     foreach ($smlvs as $sm) {
@@ -2268,5 +2319,3 @@ function retornarSalarioMinimoActualMysqliApi($dbx, $ano = '') {
     unset($sm);
     return $minimo;
 }
-
-?>

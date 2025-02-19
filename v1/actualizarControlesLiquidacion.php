@@ -7,12 +7,12 @@ use libreriaswsRestSII\API;
 trait actualizarControlesLiquidacion {
 
     public function actualizarControlesLiquidacion(API $api) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        $resError = set_error_handler('myErrorHandler');
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        set_error_handler('myErrorHandler');
 
         // array de respuesta
         $_SESSION["jsonsalida"] = array();
@@ -40,7 +40,7 @@ trait actualizarControlesLiquidacion {
 
         // ********************************************************************** //
         // Valida que el usuario reportado tenga acceso a la BD y al metodo
-        // ********************************************************************** // 
+        // ********************************************************************** //
         if (!$api->validarToken('actualizarControlesLiquidacion', $_SESSION["entrada"]["token"], $_SESSION["entrada"]["usuariows"])) {
             $api->response($api->json($_SESSION["jsonsalida"]), 200);
         }
