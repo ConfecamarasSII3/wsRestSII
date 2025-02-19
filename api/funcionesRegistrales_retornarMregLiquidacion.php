@@ -1,9 +1,11 @@
 <?php
 
-class funcionesRegistrales_retornarMregLiquidacion {
+class funcionesRegistrales_retornarMregLiquidacion
+{
 
-    public static function retornarMregLiquidacion($dbx, $numliq, $tipo = 'L') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function retornarMregLiquidacion($dbx, $numliq, $tipo = 'L')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
 
         // Inicializa las variables del tr&aacute;mite
         $respuesta = array();
@@ -48,7 +50,7 @@ class funcionesRegistrales_retornarMregLiquidacion {
         $respuesta["idepnat"] = '';
         $respuesta["nombrepnat"] = '';
 
-//
+        //
         $respuesta["nombreest"] = '';
         $respuesta["nombrepjur"] = '';
         $respuesta["nombresuc"] = '';
@@ -266,7 +268,7 @@ class funcionesRegistrales_retornarMregLiquidacion {
 
         $respuesta["idesecasa"] = ''; //
         $respuesta["nombre1secasa"] = ''; //
-        $respuesta["nombre2secasa"] = ''; //    
+        $respuesta["nombre2secasa"] = ''; //
         $respuesta["apellido1secasa"] = ''; //
         $respuesta["apellido2secasa"] = ''; //
         $respuesta["cargosecasa"] = ''; //
@@ -456,7 +458,6 @@ class funcionesRegistrales_retornarMregLiquidacion {
         $respuesta["rues_codigoerror"] = "";
         $respuesta["rues_mensajeerror"] = "";
         $respuesta["rues_firmadigital"] = "";
-        $respuesta["rues_firmadigital"] = "";
         $respuesta["rues_caracteres_por_linea"] = "";
 
         $respuesta["expedientes"] = array();
@@ -531,7 +532,7 @@ class funcionesRegistrales_retornarMregLiquidacion {
             $respuesta["sede"] = $_SESSION["generales"]["sedeusuario"];
         }
 
-//
+        //
         $respuesta["anodeposito"] = '';
         $respuesta["cantidadfolios"] = '';
         $respuesta["cantidadhojas"] = '';
@@ -605,15 +606,15 @@ class funcionesRegistrales_retornarMregLiquidacion {
             return $respuesta;
         }
 
-//
+        //
         $arrLiq = array();
 
-//
+        //
         if ($tipo == 'L') {
             $arrLiq = retornarRegistroMysqliApi($dbx, 'mreg_liquidacion', "idliquidacion=" . $numliq);
         }
 
-//
+        //
         if ($tipo == 'NR') {
             $arrLiq = retornarRegistroMysqliApi($dbx, 'mreg_liquidacion', "numerorecuperacion='" . $numliq . "'", '*', 'U');
             if (($arrLiq) && (!empty($arrLiq))) {
@@ -702,7 +703,6 @@ class funcionesRegistrales_retornarMregLiquidacion {
             $arrLiq["idproponentebase"] = '';
         }
 
-        // $respuesta = array();
         $respuesta["idliquidacion"] = $arrLiq["idliquidacion"];
         $respuesta["numeroliquidacion"] = $arrLiq["idliquidacion"];
         $respuesta["sistemacreacion"] = $arrLiq["sistemacreacion"];
@@ -961,30 +961,16 @@ class funcionesRegistrales_retornarMregLiquidacion {
         $respuesta["matriculabase"] = '';
         $respuesta["proponentebase"] = '';
         $respuesta["nrocontrolsipref"] = $arrLiq["nrocontrolsipref"];
-
-        //
-        /*
-          $arrTem1 = retornarRegistroMysqliApi($dbx, 'bas_tipotramites', "id='" . $respuesta["tipotramite"] . "'");
-          if ($arrTem1 && !empty($arrTem1)) {
-          if ($arrTem1["tiporegistro"] == 'RegMer' || $arrTem1["tiporegistro"] == 'RegEsadl') {
-          $respuesta["matriculabase"] = $respuesta["idexpedientebase"];
-          }
-          if ($arrTem1["tiporegistro"] == 'RegPro') {
-          $respuesta["proponentebase"] = $respuesta["idexpedientebase"];
-          }
-          }
-         */
-
         unset($arrLiq);
 
-	$respuesta["expedientes"] = array();
+        $respuesta["expedientes"] = array();
         $respuesta["transacciones"] = array();
-        $respuesta["liquidacion"] = array();									
+        $respuesta["liquidacion"] = array();
         // Arma arreglo de la liquidación
         $ix = 0;
-        $arrDet = retornarRegistrosMysqliApi($dbx, "mreg_liquidaciondetalle", "idliquidacion=" . $numliq, "idsec asc,secuencia asc");        
+        $arrDet = retornarRegistrosMysqliApi($dbx, "mreg_liquidaciondetalle", "idliquidacion=" . $numliq, "idsec asc,secuencia asc");
         if (isset($arrDet) && !empty($arrDet)) {
-            foreach ($arrDet as $lin) {                
+            foreach ($arrDet as $lin) {
                 if ($lin["idservicio"] != '') {
                     $renglon = array();
                     $renglon["secuencia"] = $lin["secuencia"];
@@ -1024,9 +1010,9 @@ class funcionesRegistrales_retornarMregLiquidacion {
                         $renglon["diasmora"] = $lin["diasmora"];
                     } else {
                         $renglon["servicioorigen"] = '';
-                        $renglon["diasmora"] = 0;                        
+                        $renglon["diasmora"] = 0;
                     }
-                    
+
                     if (isset($lin["porcentajeiva"]) && $lin["porcentajeiva"] != 0) {
                         $renglon["porcentajeiva"] = $lin["porcentajeiva"];
                         $renglon["valoriva"] = $lin["valoriva"];
@@ -1041,8 +1027,8 @@ class funcionesRegistrales_retornarMregLiquidacion {
             }
             unset($arrDet);
         }
-        
-        
+
+
         // Arma arreglo de la liquidación RUES
         $ix = 0;
         $arrDet = retornarRegistrosMysqliApi($dbx, "mreg_liquidaciondetalle_rues", "idliquidacion=" . $numliq, "secuencia");
@@ -1072,7 +1058,7 @@ class funcionesRegistrales_retornarMregLiquidacion {
         }
 
         // Arma arreglo de expedientes
-        $arrExp = array ();
+        $arrExp = array();
         $temx = retornarRegistrosMysqliApi($dbx, "mreg_liquidacionexpedientes", "idliquidacion=" . $numliq);
         if ($temx === false) {
             $arrExp = false;
@@ -1083,10 +1069,8 @@ class funcionesRegistrales_retornarMregLiquidacion {
                 foreach ($temx as $res) {
                     $i++;
                     $arrExp[$i] = $res;
-                    if ($arrExp[$i]["registrobase"] == 'S') {
-                        if (trim($arrExp[$i]["primeranorenovado"]) == '') {
+                    if ($arrExp[$i]["registrobase"] == 'S' && trim($arrExp[$i]["primeranorenovado"]) == '') {
                             $arrExp[$i]["primeranorenovado"] = $arrExp[$i]["ultimoanorenovado"];
-                        }
                     }
                 }
             }
@@ -1117,7 +1101,7 @@ class funcionesRegistrales_retornarMregLiquidacion {
                 $renglon["txtorganizacion"] = retornarRegistroMysqliApi($dbx, "bas_organizacionjuridica", "id='" . $lin["organizacion"] . "'", "descripcion");
                 $renglon["categoria"] = $lin["categoria"];
                 $renglon["txtcategoria"] = '';
-                if ($lin ["organizacion"] != '01' && $lin ["organizacion"] != '02') {
+                if ($lin["organizacion"] != '01' && $lin["organizacion"] != '02') {
                     $renglon["txtcategoria"] = retornarRegistroMysqliApi($dbx, "bas_categorias", "id='" . $lin["categoria"] . "'", "descripcion");
                 }
                 $renglon["afiliado"] = $lin["afiliado"];
@@ -1214,13 +1198,12 @@ class funcionesRegistrales_retornarMregLiquidacion {
             $respuesta["transacciones"][$ix]["idsecuencia"] = sprintf("%03s", $tra["idsecuencia"]);
             $razonsocialbase64 = retornarRegistroMysqliApi($dbx, 'mreg_liquidacion_transacciones_campos', "idliquidacion=" . $tra["idliquidacion"] . " and idsecuencia=" . $tra["idsecuencia"] . " and campo='razonsocialbase64'", "contenido");
             $siglabase64 = retornarRegistroMysqliApi($dbx, 'mreg_liquidacion_transacciones_campos', "idliquidacion=" . $tra["idliquidacion"] . " and idsecuencia=" . $tra["idsecuencia"] . " and campo='siglabase64'", "contenido");
-            if ($razonsocialbase64 != ''){
+            if ($razonsocialbase64 != '') {
                 $respuesta["transacciones"][$ix]["razonsocial"] = base64_decode($razonsocialbase64);
             }
-            if ($siglabase64 != ''){
+            if ($siglabase64 != '') {
                 $respuesta["transacciones"][$ix]["sigla"] = base64_decode($siglabase64);
             }
-            
         }
         unset($arrTra);
         $respuesta["iLin"] = $ix;
@@ -1263,8 +1246,10 @@ class funcionesRegistrales_retornarMregLiquidacion {
         $ases = retornarRegistrosMysqliApi($dbx, 'mreg_liquidacion_asesorias', "idliquidacion=" . $respuesta["numeroliquidacion"], "fecha,hora");
         if ($ases && !empty($ases)) {
             foreach ($ases as $s) {
-                if ($s["momento"] == 'solicitudasesoria' ||
-                        $s["momento"] == 'comentario') {
+                if (
+                    $s["momento"] == 'solicitudasesoria' ||
+                    $s["momento"] == 'comentario'
+                ) {
                     if ($s["comentario"] != '') {
                         $respuesta["seguimientoasesoria"] .= \funcionesGenerales::mostrarFecha($s["fecha"]) . ' ' . \funcionesGenerales::mostrarHora($s["hora"]) . ' - Cliente : ' . $s["comentario"];
                         $respuesta["seguimientoasesoria"] .= '<br><img src="../../images/sii/image/borde1.jpg" width="95%" height="11px"><br>';
@@ -1278,7 +1263,7 @@ class funcionesRegistrales_retornarMregLiquidacion {
             }
         }
         unset($ases);
-        
+
         if ($respuesta["nombrebasebase64"] != '') {
             $respuesta["nombrebase"] = base64_decode($respuesta["nombrebasebase64"]);
         }
@@ -1288,7 +1273,4 @@ class funcionesRegistrales_retornarMregLiquidacion {
 
         return $respuesta;
     }
-
 }
-
-?>

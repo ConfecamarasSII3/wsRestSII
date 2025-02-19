@@ -4,16 +4,18 @@ namespace libreriaswsRestSII;
 
 use libreriaswsRestSII\API;
 
-trait actualizarClienteLiquidacion {
+trait actualizarClienteLiquidacion
+{
 
-    public function actualizarClienteLiquidacion(API $api) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        $resError = set_error_handler('myErrorHandler');
+    public function actualizarClienteLiquidacion(API $api)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        set_error_handler('myErrorHandler');
 
         // array de respuesta
         $_SESSION["jsonsalida"] = array();
@@ -48,15 +50,14 @@ trait actualizarClienteLiquidacion {
         $api->validarParametro("celularcliente", true);
         $api->validarParametro("municipiocliente", true);
         $api->validarParametro("emailcliente", true);
-        $api->validarParametro("paiscliente", false,false);
-        $api->validarParametro("lenguajecliente", false,false);
-        $api->validarParametro("codigoregimencliente", false,false);
-        $api->validarParametro("codigoimpuestocliente", false,false);
-        $api->validarParametro("nombreimpuestocliente", false,false);
-        $api->validarParametro("responsabilidadfiscalcliente", false,false);
-        $api->validarParametro("responsabilidadtributariacliente", false,false);
-
-        //        
+        $api->validarParametro("paiscliente", false, false);
+        $api->validarParametro("lenguajecliente", false, false);
+        $api->validarParametro("codigoregimencliente", false, false);
+        $api->validarParametro("codigoimpuestocliente", false, false);
+        $api->validarParametro("nombreimpuestocliente", false, false);
+        $api->validarParametro("responsabilidadfiscalcliente", false, false);
+        $api->validarParametro("responsabilidadtributariacliente", false, false);
+        //
         if (!filter_var($_SESSION["entrada"]["emailcliente"], FILTER_VALIDATE_EMAIL) === true) {
             $_SESSION["jsonsalida"]["codigoerror"] = "9999";
             $_SESSION["jsonsalida"]["mensajeerror"] = 'No se indicó un correo válido';
@@ -69,10 +70,8 @@ trait actualizarClienteLiquidacion {
         if (!$api->validarToken('actualizarClienteLiquidacion', $_SESSION["entrada"]["token"], $_SESSION["entrada"]["usuariows"])) {
             $api->response($api->json($_SESSION["jsonsalida"]), 200);
         }
-        
         //
         $mysqli = conexionMysqliApi();
-        
         //
         $nombresCliente = $_SESSION["entrada"]["nombre1cliente"] . " " . $_SESSION["entrada"]["nombre2cliente"];
         $apellidosCliente = $_SESSION["entrada"]["apellido1cliente"] . " " . $_SESSION["entrada"]["apellido2cliente"];
@@ -85,14 +84,14 @@ trait actualizarClienteLiquidacion {
             $_SESSION["jsonsalida"]["mensajeerror"] = 'Liquidación no encontrada';
             $api->response($api->json($_SESSION["jsonsalida"]), 200);
         }
-        
+
         if ($_SESSION["tramite"]["estado"] > '06') {
             $mysqli->close();
             $_SESSION["jsonsalida"]["codigoerror"] = "9999";
             $_SESSION["jsonsalida"]["mensajeerror"] = 'El estado de la liquidación no permite que esta sea modificada';
             $api->response($api->json($_SESSION["jsonsalida"]), 200);
         }
-        
+
         //Datos del cliente
         $_SESSION["tramite"]["idtipoidentificacioncliente"] = $_SESSION["entrada"]["tipoidentificacioncliente"];
         $_SESSION["tramite"]["identificacioncliente"] = $_SESSION["entrada"]["identificacioncliente"];
@@ -114,7 +113,7 @@ trait actualizarClienteLiquidacion {
         $_SESSION["tramite"]["idmunicipio"] = sprintf("%05s", $_SESSION["entrada"]["municipiocliente"]);
         $_SESSION["tramite"]["telefono"] = $_SESSION["entrada"]["telefonocliente"];
         $_SESSION["tramite"]["movil"] = $_SESSION["entrada"]["celularcliente"];
-        
+
         $_SESSION["tramite"]["pais"] = $_SESSION["entrada"]["paiscliente"];
         $_SESSION["tramite"]["lenguaje"] = $_SESSION["entrada"]["lenguajecliente"];
         $_SESSION["tramite"]["codigoregimen"] = $_SESSION["entrada"]["codigoregimencliente"];
@@ -134,9 +133,9 @@ trait actualizarClienteLiquidacion {
         $_SESSION["tramite"]["movilpagador"] = $_SESSION["tramite"]["movil"];
         $_SESSION["tramite"]["municipiopagador"] = sprintf("%05s", $_SESSION["tramite"]["idmunicipio"]);
         $_SESSION["tramite"]["emailpagador"] = $_SESSION["tramite"]["email"];
-        
+
         \funcionesRegistrales::grabarLiquidacionMreg($mysqli);
-        
+
         //
         $mysqli->close();
 
@@ -147,5 +146,4 @@ trait actualizarClienteLiquidacion {
         $json = $api->json($_SESSION["jsonsalida"]);
         $api->response(str_replace("\\/", "/", $json), 200);
     }
-
 }

@@ -1705,7 +1705,7 @@ function regrabarRegistrosMysqliApi($dbx, $tabla, $arrCampos, $arrValores, $cond
  * @param type $campos
  * @param type $offset
  * @param type $limit
- * @return boolean|string
+ * @return mixed
  */
 function retornarRegistrosMysqliApi($dbx, $tabla, $condicion, $orden = '', $campos = '*', $offset = 0, $limit = 0) {
     $cerrarMysqli = 'no';

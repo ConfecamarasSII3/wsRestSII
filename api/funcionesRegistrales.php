@@ -1,6 +1,7 @@
 <?php
 
-class funcionesRegistrales {
+class funcionesRegistrales
+{
 
     /**
      * 
@@ -10,24 +11,26 @@ class funcionesRegistrales {
      * @param type $mom
      * @return type
      */
-    public static function almacenarDatosImportantesRenovacion($mysqli, $liq, $dat, $mom) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_almacenarDatosImportantesRenovacion.php');
+    public static function almacenarDatosImportantesRenovacion($mysqli, $liq, $dat, $mom)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_almacenarDatosImportantesRenovacion.php';
         return funcionesRegistrales_almacenarDatosImportantesRenovacion::almacenarDatosImportantesRenovacion($mysqli, $liq, $dat, $mom);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $data
      * @return type
      */
-    public static function alertarNoComerciales($mysqli, $data) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_alertarNoComerciales.php');
+    public static function alertarNoComerciales($mysqli, $data)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_alertarNoComerciales.php';
         return funcionesRegistrales_alertarNoComerciales::alertarNoComerciales($mysqli, $data);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $codbar
      * @param type $estado
@@ -38,13 +41,14 @@ class funcionesRegistrales {
      * @param type $hora
      * @return type
      */
-    public static function actualizarEstadoCodigoBarras($mysqli = null, $codbar = '', $estado = '', $ope = '', $sede = '', $imagenes = '', $fecha = '', $hora = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarEstadoCodigoBarras.php');
+    public static function actualizarEstadoCodigoBarras($mysqli = null, $codbar = '', $estado = '', $ope = '', $sede = '', $imagenes = '', $fecha = '', $hora = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarEstadoCodigoBarras.php';
         return funcionesRegistrales_actualizarEstadoCodigoBarras::actualizarEstadoCodigoBarras($mysqli, $codbar, $estado, $ope, $sede, $imagenes, $fecha, $hora);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $data
      * @param type $codbarras
@@ -57,13 +61,14 @@ class funcionesRegistrales {
      * @param type $arregloServiciosAfiliacion
      * @return type
      */
-    public static function actualizarMregEstInscritos($mysqli = null, $data = array(), $codbarras = '', $tt = '', $rec = '', $altoimpacto = 'no', $crear = 'si', $arregloServiciosMatricula = array (), $arregloServiciosRenovacion = array (), $arregloServiciosAfiliacion = array ()) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritos.php');
+    public static function actualizarMregEstInscritos($mysqli = null, $data = array(), $codbarras = '', $tt = '', $rec = '', $altoimpacto = 'no', $crear = 'si', $arregloServiciosMatricula = array(), $arregloServiciosRenovacion = array(), $arregloServiciosAfiliacion = array())
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritos.php';
         return \funcionesRegistrales_actualizarMregEstInscritos::actualizarMregEstInscritos($mysqli, $data, $codbarras, $tt, $rec, $altoimpacto, $crear, $arregloServiciosMatricula, $arregloServiciosRenovacion, $arregloServiciosAfiliacion);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $data
      * @param type $codbarras
@@ -71,14 +76,15 @@ class funcionesRegistrales {
      * @param type $rec
      * @return type
      */
-    public static function actualizarMregEstTextos($mysqli, $mat = '', $data = array (), $codbarras = '', $tt = '', $rec = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritos.php');
+    public static function actualizarMregEstTextos($mysqli, $mat = '', $data = array(), $codbarras = '', $tt = '', $rec = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritos.php';
         return \funcionesRegistrales_actualizarMregEstInscritos::actualizarMregEstTextos($mysqli, $mat, $data, $codbarras, $tt, $rec);
     }
-    
-    
+
+
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $data
      * @param type $codbarras
@@ -86,13 +92,14 @@ class funcionesRegistrales {
      * @param type $rec
      * @return type
      */
-    public static function actualizarMregEstInformacionFinanciera($mysqli, $data, $codbarras = '', $tt = '', $rec = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInformacionFinanciera.php');
+    public static function actualizarMregEstInformacionFinanciera($mysqli, $data, $codbarras = '', $tt = '', $rec = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInformacionFinanciera.php';
         return \funcionesRegistrales_actualizarMregEstInformacionFinanciera::actualizarMregEstInformacionFinanciera($mysqli, $data, $codbarras, $tt, $rec);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $data
      * @param type $codbarras
@@ -100,14 +107,15 @@ class funcionesRegistrales {
      * @param type $rec
      * @return type
      */
-    public static function actualizarMregEstInformacionFinancieraEstablecimientos($mysqli, $data, $codbarras = '', $tt = '', $rec = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInformacionFinancieraEstablecimientos.php');
+    public static function actualizarMregEstInformacionFinancieraEstablecimientos($mysqli, $data, $codbarras = '', $tt = '', $rec = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInformacionFinancieraEstablecimientos.php';
         return \funcionesRegistrales_actualizarMregEstInformacionFinancieraEstablecimientos::actualizarMregEstInformacionFinancieraEstablecimientos($mysqli, $data, $codbarras, $tt, $rec);
     }
 
-    
+
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $data
      * @param type $codbarras
@@ -115,13 +123,14 @@ class funcionesRegistrales {
      * @param type $rec
      * @return type
      */
-    public static function actualizarMregEstCapitales($mysqli, $data, $codbarras = '', $tt = '', $rec = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstCapitales.php');
+    public static function actualizarMregEstCapitales($mysqli, $data, $codbarras = '', $tt = '', $rec = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstCapitales.php';
         return \funcionesRegistrales_actualizarMregEstCapitales::actualizarMregEstCapitales($mysqli, $data, $codbarras, $tt, $rec);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $matricula
      * @param type $campo
@@ -132,13 +141,14 @@ class funcionesRegistrales {
      * @param type $recibo
      * @return type
      */
-    public static function actualizarMregEstInscritosCampo($dbx, $matricula, $campo, $contenido = '', $tipocampo = 'varchar', $codbarras = '', $tipotramite = '', $recibo = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritosCampo.php');
+    public static function actualizarMregEstInscritosCampo($dbx, $matricula, $campo, $contenido = '', $tipocampo = 'varchar', $codbarras = '', $tipotramite = '', $recibo = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritosCampo.php';
         return \funcionesRegistrales_actualizarMregEstInscritosCampo::actualizarMregEstInscritosCampo($dbx, $matricula, $campo, $contenido, $tipocampo, $codbarras, $tipotramite, $recibo);
     }
-    
+
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $matricula
      * @param type $campo
@@ -148,14 +158,15 @@ class funcionesRegistrales {
      * @param type $recibo
      * @return type
      */
-    public static function actualizarMregEstInscritosCampoCampos($dbx, $matricula, $campo, $contenido = '', $codbarras = '', $tipotramite = '', $recibo = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritosCampo.php');
+    public static function actualizarMregEstInscritosCampoCampos($dbx, $matricula, $campo, $contenido = '', $codbarras = '', $tipotramite = '', $recibo = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritosCampo.php';
         return \funcionesRegistrales_actualizarMregEstInscritosCampo::actualizarMregEstInscritosCampoCampos($dbx, $matricula, $campo, $contenido, $codbarras, $tipotramite, $recibo);
     }
-    
+
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $proponente
      * @param type $campo
@@ -166,13 +177,14 @@ class funcionesRegistrales {
      * @param type $recibo
      * @return type
      */
-    public static function actualizarMregEstInscritosCampoPorProponente($dbx = null, $proponente = '', $campo = '', $contenido = '', $tipocampo = 'varchar', $codbarras = '', $tipotramite = '', $recibo = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritosCampoPorProponente.php');
+    public static function actualizarMregEstInscritosCampoPorProponente($dbx = null, $proponente = '', $campo = '', $contenido = '', $tipocampo = 'varchar', $codbarras = '', $tipotramite = '', $recibo = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritosCampoPorProponente.php';
         return \funcionesRegistrales_actualizarMregEstInscritosCampoPorProponente::actualizarMregEstInscritosCampoPorProponente($dbx, $proponente, $campo, $contenido, $tipocampo, $codbarras, $tipotramite, $recibo);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $data
      * @param type $codbarras
@@ -180,13 +192,14 @@ class funcionesRegistrales {
      * @param type $rec
      * @return type
      */
-    public static function actualizarMregEstVinculos($mysqli, $data, $codbarras = '', $tt = '', $rec = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstVinculos.php');
+    public static function actualizarMregEstVinculos($mysqli, $data, $codbarras = '', $tt = '', $rec = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstVinculos.php';
         return \funcionesRegistrales_actualizarMregEstVinculos::actualizarMregEstVinculos($mysqli, $data, $codbarras, $tt, $rec);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $data
      * @param type $codbarras
@@ -194,13 +207,14 @@ class funcionesRegistrales {
      * @param type $rec
      * @return type
      */
-    public static function actualizarMregCertificasSii($mysqli, $data, $codbarras = '', $tt = '', $rec = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregCertificasSii.php');
+    public static function actualizarMregCertificasSii($mysqli, $data, $codbarras = '', $tt = '', $rec = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregCertificasSii.php';
         return \funcionesRegistrales_actualizarMregCertificasSii::actualizarMregCertificasSii($mysqli, $data, $codbarras, $tt, $rec);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $data
      * @param type $acto
@@ -208,8 +222,9 @@ class funcionesRegistrales {
      * @param type $estado
      * @return type
      */
-    public static function actualizarMregEstInscritosProponente($dbx, $data, $acto = '', $gm = array(), $estado = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritosProponente.php');
+    public static function actualizarMregEstInscritosProponente($dbx, $data, $acto = '', $gm = array(), $estado = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregEstInscritosProponente.php';
         return \funcionesRegistrales_actualizarMregEstInscritosProponente::actualizarMregEstInscritosProponente($dbx, $data, $acto, $gm, $estado);
     }
 
@@ -221,13 +236,14 @@ class funcionesRegistrales {
      * @param type $matricula
      * @return type
      */
-    public static function actualizarMregInscritosPendienteNuevoCertificado($mysqli = null, $libro = null, $acto = null, $matricula = null) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregInscritosPendienteNuevoCertificado.php');
+    public static function actualizarMregInscritosPendienteNuevoCertificado($mysqli = null, $libro = null, $acto = null, $matricula = null)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregInscritosPendienteNuevoCertificado.php';
         return \funcionesRegistrales_actualizarMregInscritosPendienteNuevoCertificado::actualizarMregInscritosPendienteNuevoCertificado($mysqli, $libro, $acto, $matricula);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $tt
      * @param type $numliq
@@ -240,13 +256,14 @@ class funcionesRegistrales {
      * @param type $horrec
      * @return type
      */
-    public static function actualizarMregLiquidacionFlujo($dbx, $tt, $numliq, $idsol, $est, $numrec, $numope, $numrad, $fecrec, $horrec) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionFlujo.php');
+    public static function actualizarMregLiquidacionFlujo($dbx, $tt, $numliq, $idsol, $est, $numrec, $numope, $numrad, $fecrec, $horrec)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionFlujo.php';
         return \funcionesRegistrales_actualizarMregLiquidacionFlujo::actualizarMregLiquidacionFlujo($dbx, $tt, $numliq, $idsol, $est, $numrec, $numope, $numrad, $fecrec, $horrec);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $liqui
      * @param type $est
@@ -284,25 +301,27 @@ class funcionesRegistrales {
      * @param type $formapago
      * @return type
      */
-    public static function actualizarMregLiquidacionPagoElectronico($dbx, $liqui, $est, $nomcli, $idtipide, $dir, $tel, $mun, $email, $ide, $pagefe, $pagche, $pagvis, $pagach, $pagmas, $pagame, $pagcre, $pagdin, $pagtdeb, $codban, $numche, $numaut, $caj, $numope = '', $numrec = '', $fecrec = '', $horrec = '', $numopegob = '', $numrecgob = '', $fecrecgob = '', $horrecgob = '', $codbar = '', $xfra = '', $xnfra = '', $formapago = '05') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionPagoElectronico.php');
+    public static function actualizarMregLiquidacionPagoElectronico($dbx, $liqui, $est, $nomcli, $idtipide, $dir, $tel, $mun, $email, $ide, $pagefe, $pagche, $pagvis, $pagach, $pagmas, $pagame, $pagcre, $pagdin, $pagtdeb, $codban, $numche, $numaut, $caj, $numope = '', $numrec = '', $fecrec = '', $horrec = '', $numopegob = '', $numrecgob = '', $fecrecgob = '', $horrecgob = '', $codbar = '', $xfra = '', $xnfra = '', $formapago = '05')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionPagoElectronico.php';
         return \funcionesRegistrales_actualizarMregLiquidacionPagoElectronico::actualizarMregLiquidacionPagoElectronico($dbx, $liqui, $est, $nomcli, $idtipide, $dir, $tel, $mun, $email, $ide, $pagefe, $pagche, $pagvis, $pagach, $pagmas, $pagame, $pagcre, $pagdin, $pagtdeb, $codban, $numche, $numaut, $caj, $numope, $numrec, $fecrec, $horrec, $numopegob, $numrecgob, $fecrecgob, $horrecgob, $codbar, $xfra, $xnfra, $formapago);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $liqui
      * @param type $est
      * @return type
      */
-    public static function actualizarMregLiquidacionEstado($dbx, $liqui, $est) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionEstado.php');
+    public static function actualizarMregLiquidacionEstado($dbx, $liqui, $est)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionEstado.php';
         return \funcionesRegistrales_actualizarMregLiquidacionEstado::actualizarMregLiquidacionEstado($dbx, $liqui, $est);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $liq
      * @param type $sec
@@ -313,13 +332,14 @@ class funcionesRegistrales {
      * @param type $est
      * @return type
      */
-    public static function actualizarMregLiquidacionDatos($dbx, $liq, $sec, $exp, $ide, $gru, $xml, $est) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionDatos.php');
+    public static function actualizarMregLiquidacionDatos($dbx, $liq, $sec, $exp, $ide, $gru, $xml, $est)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionDatos.php';
         return \funcionesRegistrales_actualizarMregLiquidacionDatos::actualizarMregLiquidacionDatos($dbx, $liq, $sec, $exp, $ide, $gru, $xml, $est);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $liq
      * @param type $sec
@@ -327,26 +347,28 @@ class funcionesRegistrales {
      * @param type $xml
      * @return type
      */
-    public static function actualizarMregLiquidacionDatosOriginal($dbx, $liq, $sec, $gru, $xml) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionDatosOriginal.php');
+    public static function actualizarMregLiquidacionDatosOriginal($dbx, $liq, $sec, $gru, $xml)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionDatosOriginal.php';
         return \funcionesRegistrales_actualizarMregLiquidacionDatosOriginal::actualizarMregLiquidacionDatosOriginal($dbx, $liq, $sec, $gru, $xml);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $idliquidacion
      * @param type $expediente
      * @param type $xml1
      * @return type
      */
-    public static function grabarMregLiquidacionDatosLog($dbx, $idliquidacion, $expediente, $xml1) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarMregLiquidacionDatosLog.php');
+    public static function grabarMregLiquidacionDatosLog($dbx, $idliquidacion, $expediente, $xml1)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarMregLiquidacionDatosLog.php';
         return \funcionesRegistrales_grabarMregLiquidacionDatosLog::grabarMregLiquidacionDatosLog($dbx, $idliquidacion, $expediente, $xml1);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $liq
      * @param type $sec
@@ -356,13 +378,14 @@ class funcionesRegistrales {
      * @param type $est
      * @return type
      */
-    public static function actualizarMregLiquidacionDatosControl($dbx, $liq, $sec, $exp, $ide, $dat, $est) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionDatosControl.php');
+    public static function actualizarMregLiquidacionDatosControl($dbx, $liq, $sec, $exp, $ide, $dat, $est)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionDatosControl.php';
         return \funcionesRegistrales_actualizarMregLiquidacionDatosControl::actualizarMregLiquidacionDatosControl($dbx, $liq, $sec, $exp, $ide, $dat, $est);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $liq
      * @param type $sec
@@ -372,13 +395,14 @@ class funcionesRegistrales {
      * @param type $est
      * @return type
      */
-    public static function actualizarMregLiquidacionGruposModificados($dbx, $liq, $sec, $exp, $ide, $dat, $est) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionGruposModificados.php');
+    public static function actualizarMregLiquidacionGruposModificados($dbx, $liq, $sec, $exp, $ide, $dat, $est)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregLiquidacionGruposModificados.php';
         return \funcionesRegistrales_actualizarMregLiquidacionGruposModificados::actualizarMregLiquidacionGruposModificados($dbx, $liq, $sec, $exp, $ide, $dat, $est);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $numrad
      * @param type $sec
@@ -388,13 +412,14 @@ class funcionesRegistrales {
      * @param type $xml
      * @return type
      */
-    public static function actualizarMregRadicacionesDatos($dbx, $numrad, $sec, $tipotra, $exp, $est, $xml) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregRadicacionesDatos.php');
+    public static function actualizarMregRadicacionesDatos($dbx, $numrad, $sec, $tipotra, $exp, $est, $xml)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregRadicacionesDatos.php';
         return \funcionesRegistrales_actualizarMregRadicacionesDatos::actualizarMregRadicacionesDatos($dbx, $numrad, $sec, $tipotra, $exp, $est, $xml);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $numrad
      * @param type $sec
@@ -402,7 +427,8 @@ class funcionesRegistrales {
      * @param type $xml
      * @return bool
      */
-    public static function actualizarMregRadicacionesDatosOriginal($mysqli, $numrad, $sec, $tipotra, $xml) {
+    public static function actualizarMregRadicacionesDatosOriginal($mysqli, $numrad, $sec, $tipotra, $xml)
+    {
         $arrCampos = array(
             'idradicacion',
             'secuencia',
@@ -430,7 +456,7 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $rad
      * @param type $sec
@@ -440,37 +466,40 @@ class funcionesRegistrales {
      * @param type $est
      * @return type
      */
-    public static function actualizarMregRadicacionDatosControl($dbx, $rad, $sec, $exp, $ide, $dat, $est) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregRadicacionDatosControl.php');
+    public static function actualizarMregRadicacionDatosControl($dbx, $rad, $sec, $exp, $ide, $dat, $est)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregRadicacionDatosControl.php';
         return \funcionesRegistrales_actualizarMregRadicacionDatosControl::actualizarMregRadicacionDatosControl($dbx, $rad, $sec, $exp, $ide, $dat, $est);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $clave
      * @param type $contenido
      * @return type
      */
-    public static function actualizarMregSecuencia($dbx, $clave, $contenido) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregSecuencia.php');
+    public static function actualizarMregSecuencia($dbx, $clave, $contenido)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregSecuencia.php';
         return \funcionesRegistrales_actualizarMregSecuencia::actualizarMregSecuencia($dbx, $clave, $contenido);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $clave
      * @param type $contenido
      * @return type
      */
-    public static function actualizarMregSecuenciasAsentarRecibo($dbx, $clave, $contenido) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregSecuenciasAsentarRecibo.php');
+    public static function actualizarMregSecuenciasAsentarRecibo($dbx, $clave, $contenido)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregSecuenciasAsentarRecibo.php';
         return \funcionesRegistrales_actualizarMregSecuenciasAsentarRecibo::actualizarMregSecuenciasAsentarRecibo($dbx, $clave, $contenido);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $tnot
      * @param type $rad
@@ -496,13 +525,14 @@ class funcionesRegistrales {
      * @param type $bandeja
      * @return type
      */
-    public static function actualizarMregNotificacionesParaEnviarEmail($mysqli, $tnot = '', $rad = '', $dev = '', $ope = '', $rec = '', $lib = '', $reg = '', $dup = '', $idc = '', $ide = '', $mat = '', $pro = '', $nom = '', $ema = '', $det = '', $fpro = '', $hpro = '', $fnot = '', $hnot = '', $est = '', $obs = '', $bandeja = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregNotificacionesParaEnviarEmail.php');
+    public static function actualizarMregNotificacionesParaEnviarEmail($mysqli, $tnot = '', $rad = '', $dev = '', $ope = '', $rec = '', $lib = '', $reg = '', $dup = '', $idc = '', $ide = '', $mat = '', $pro = '', $nom = '', $ema = '', $det = '', $fpro = '', $hpro = '', $fnot = '', $hnot = '', $est = '', $obs = '', $bandeja = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarMregNotificacionesParaEnviarEmail.php';
         return \funcionesRegistrales_actualizarMregNotificacionesParaEnviarEmail::actualizarMregNotificacionesParaEnviarEmail($mysqli, $tnot, $rad, $dev, $ope, $rec, $lib, $reg, $dup, $idc, $ide, $mat, $pro, $nom, $ema, $det, $fpro, $hpro, $fnot, $hnot, $est, $obs, $bandeja);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $pref
      * @param type $cel
@@ -521,13 +551,14 @@ class funcionesRegistrales {
      * @param type $bandeja
      * @return type
      */
-    public static function actualizarPilaSms($mysqli = null, $pref = '', $cel = '', $tip = '', $rec = '', $cba = '', $ins = '', $dev = '', $exp = '', $mat = '', $pro = '', $ide = '', $nom = '', $txt = '', $obs = '', $bandeja = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarPilaSms.php');
+    public static function actualizarPilaSms($mysqli = null, $pref = '', $cel = '', $tip = '', $rec = '', $cba = '', $ins = '', $dev = '', $exp = '', $mat = '', $pro = '', $ide = '', $nom = '', $txt = '', $obs = '', $bandeja = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarPilaSms.php';
         return \funcionesRegistrales_actualizarPilaSms::actualizarPilaSms($mysqli, $pref, $cel, $tip, $rec, $cba, $ins, $dev, $exp, $mat, $pro, $ide, $nom, $txt, $obs, $bandeja);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $tipo
      * @param type $radicacion
@@ -546,12 +577,14 @@ class funcionesRegistrales {
      * @param type $emailsdestino
      * @return type
      */
-    public static function actualizarPilaEmails($mysqli = null, $tipo = '', $radicacion = '', $devolucion = '', $operacion = '', $recibo = '', $libro = '', $registro = '', $dupli = '', $idclase = '', $numid = '', $matricula = '', $proponente = '', $nombre = '', $detalle = '', $emailsdestino = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarPilaSms.php');
+    public static function actualizarPilaEmails($mysqli = null, $tipo = '', $radicacion = '', $devolucion = '', $operacion = '', $recibo = '', $libro = '', $registro = '', $dupli = '', $idclase = '', $numid = '', $matricula = '', $proponente = '', $nombre = '', $detalle = '', $emailsdestino = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarPilaSms.php';
         return \funcionesRegistrales_actualizarPilaEmails::actualizarPilaEmails($mysqli, $tipo, $radicacion, $devolucion, $operacion, $recibo, $libro, $registro, $dupli, $idclase, $numid, $matricula, $proponente, $nombre, $detalle, $emailsdestino);
     }
 
-    public static function actualizarPasosDigitacion($mysqli = null, $codigobarras = '', $numlibro = '', $numreg = '', $codigopaso = '') {
+    public static function actualizarPasosDigitacion($mysqli = null, $codigobarras = '', $numlibro = '', $numreg = '', $codigopaso = '')
+    {
 
         //
         if ($codigobarras != '') {
@@ -588,7 +621,7 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $cri
      * @param type $ide
@@ -615,26 +648,28 @@ class funcionesRegistrales {
      * @param type $ape2
      * @return type
      */
-    public static function actualizarPrepago($dbx, $cri, $ide, $clave = '', $valor = '', $recibo = '', $numoperacion = '', $servicio = '', $cantidad = '', $detalle = '', $ip = '', $usuario = '', $expediente = '', $email = '', $nombre = '', $celular = '', $direccion = '', $municipio = '', $tipousuario = '', $telefono = '', $nom1 = '', $nom2 = '', $ape1 = '', $ape2 = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarPrepago.php');
+    public static function actualizarPrepago($dbx, $cri, $ide, $clave = '', $valor = '', $recibo = '', $numoperacion = '', $servicio = '', $cantidad = '', $detalle = '', $ip = '', $usuario = '', $expediente = '', $email = '', $nombre = '', $celular = '', $direccion = '', $municipio = '', $tipousuario = '', $telefono = '', $nom1 = '', $nom2 = '', $ape1 = '', $ape2 = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_actualizarPrepago.php';
         return \funcionesRegistrales_actualizarPrepago::actualizarPrepago($dbx, $cri, $ide, $clave, $valor, $recibo, $numoperacion, $servicio, $cantidad, $detalle, $ip, $usuario, $expediente, $email, $nombre, $celular, $direccion, $municipio, $tipousuario, $telefono, $nom1, $nom2, $ape1, $ape2);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $ind
      * @param type $tra
      * @param type $trans
      * @return type
      */
-    public static function adicionarActoEstudioAsentarRecibo($dbx, $ind, $tra, $trans) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_adicionarActoEstudioAsentarRecibo.php');
+    public static function adicionarActoEstudioAsentarRecibo($dbx, $ind, $tra, $trans)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_adicionarActoEstudioAsentarRecibo.php';
         return \funcionesRegistrales_adicionarActoEstudioAsentarRecibo::adicionarActoEstudioAsentarRecibo($dbx, $ind, $tra, $trans);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $tramae
      * @param type $tradat
@@ -642,76 +677,83 @@ class funcionesRegistrales {
      * @param type $numacto
      * @return type
      */
-    public static function adicionarInscripcionCancelacion($dbx, $tramae, $tradat, $tiptra, $numacto) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_adicionarInscripcionCancelacion.php');
+    public static function adicionarInscripcionCancelacion($dbx, $tramae, $tradat, $tiptra, $numacto)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_adicionarInscripcionCancelacion.php';
         return \funcionesRegistrales_adicionarInscripcionCancelacion::adicionarInscripcionCancelacion($dbx, $tramae, $tradat, $tiptra, $numacto);
     }
 
-    public static function adicionarInscripcionCancelacionIndividual($dbx = null, $matricula = '', $motivo = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_adicionarInscripcionCancelacion.php');
+    public static function adicionarInscripcionCancelacionIndividual($dbx = null, $matricula = '', $motivo = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_adicionarInscripcionCancelacion.php';
         return \funcionesRegistrales_adicionarInscripcionCancelacion::adicionarInscripcionCancelacionIndividual($dbx, $matricula, $motivo);
     }
-    
+
     /**
-     * 
+     *
      * @return type
      */
-    public static function armarDataBasicaMercantil() {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_armarDataBasicaMercantil.php');
+    public static function armarDataBasicaMercantil()
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_armarDataBasicaMercantil.php';
         return \funcionesRegistrales_armarDataBasicaMercantil::armarDataBasicaMercantil();
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $codbarras
      * @param type $iddevolucion
      * @param type $firma
      * @return type
      */
-    public static function armarDevolutivoNuevo($mysqli, $codbarras, $iddevolucion, $firma = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_armarDevolutivoNuevo.php');
+    public static function armarDevolutivoNuevo($mysqli, $codbarras, $iddevolucion, $firma = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_armarDevolutivoNuevo.php';
         return \funcionesRegistrales_armarDevolutivoNuevo::armarDevolutivoNuevo($mysqli, $codbarras, $iddevolucion, $firma);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $codbarras
      * @param type $iddevolucion
      * @param type $firma
      * @return type
      */
-    public static function armarFormatoResponsabilidades($mysqli, $numrec, $numliq) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_armarFormatoResponsabilidades.php');
+    public static function armarFormatoResponsabilidades($mysqli, $numrec, $numliq)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_armarFormatoResponsabilidades.php';
         return \funcionesRegistrales_armarFormatoResponsabilidades::armarFormatoResponsabilidades($mysqli, $numrec, $numliq);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $d
      * @param type $arrUsu
      * @return type
      */
-    public static function armarDesistimiento($mysqli, $d, $arrUsu) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_armarDesistimiento.php');
+    public static function armarDesistimiento($mysqli, $d, $arrUsu)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_armarDesistimiento.php';
         return \funcionesRegistrales_armarDesistimiento::armarDesistimiento($mysqli, $d, $arrUsu);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $numliq
      * @return type
      */
-    public static function borrarMregLiquidacion($dbx, $numliq) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_borrarMregLiquidacion.php');
+    public static function borrarMregLiquidacion($dbx, $numliq)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_borrarMregLiquidacion.php';
         return \funcionesRegistrales_borrarMregLiquidacion::borrarMregLiquidacion($dbx, $numliq);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $idservicio
      * @param type $ano
@@ -720,13 +762,14 @@ class funcionesRegistrales {
      * @param type $idclasevalor
      * @return type
      */
-    public static function buscarRangoTarifa($mysqli, $idservicio = '', $ano = 0, $base = 0, $tipotarifa = 'tarifa', $idclasevalor = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_buscarRangoTarifa.php');
+    public static function buscarRangoTarifa($mysqli, $idservicio = '', $ano = 0, $base = 0, $tipotarifa = 'tarifa', $idclasevalor = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_buscarRangoTarifa.php';
         return \funcionesRegistrales_buscarRangoTarifa::buscarRangoTarifa($mysqli, $idservicio, $ano, $base, $tipotarifa, $idclasevalor);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $idservicio
      * @param type $ano
@@ -734,13 +777,14 @@ class funcionesRegistrales {
      * @param type $tipotarifa
      * @return type
      */
-    public static function buscarTarifaValor($mysqli, $idservicio = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_buscarTarifaValor.php');
+    public static function buscarTarifaValor($mysqli, $idservicio = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_buscarTarifaValor.php';
         return \funcionesRegistrales_buscarTarifaValor::buscarTarifaValor($mysqli, $idservicio);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $idservicio
      * @param type $ano
@@ -753,31 +797,34 @@ class funcionesRegistrales {
      * @param type $descuentoaplicable
      * @return type
      */
-    public static function buscaTarifa($mysqli, $idservicio = '', $ano = 0, $cantidad = 0, $base = 0, $tipotarifa = 'tarifa', $actprop = 0, $cantesttot = 0, $matricula = '', $descuentoaplicable = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_buscaTarifa.php');
-        return \funcionesRegistrales_buscaTarifa::buscaTarifa($mysqli, $idservicio, $ano, $cantidad, $base, $tipotarifa, $actprop, $cantesttot, $matricula,$descuentoaplicable);
+    public static function buscaTarifa($mysqli, $idservicio = '', $ano = 0, $cantidad = 0, $base = 0, $tipotarifa = 'tarifa', $actprop = 0, $cantesttot = 0, $matricula = '', $descuentoaplicable = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_buscaTarifa.php';
+        return \funcionesRegistrales_buscaTarifa::buscaTarifa($mysqli, $idservicio, $ano, $cantidad, $base, $tipotarifa, $actprop, $cantesttot, $matricula, $descuentoaplicable);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $mat
      * @param type $actos
      * @param type $fini
      * @return type
      */
-    public static function busqueInscripciones($mysqli, $mat, $actos, $fini = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_busqueInscripciones.php');
+    public static function busqueInscripciones($mysqli, $mat, $actos, $fini = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_busqueInscripciones.php';
         return \funcionesRegistrales_busqueInscripciones::busqueInscripciones($mysqli, $mat, $actos, $fini);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $atra
      * @param type $nameLog
      */
-    public static function recalcularValorTotalLiquidacion($mysqli, $atra, $nameLog) {
+    public static function recalcularValorTotalLiquidacion($mysqli, $atra, $nameLog)
+    {
         $valtot = 0;
         $valbru = 0;
         $valiva = 0;
@@ -816,30 +863,32 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $servicio
      * @param type $valor
      * @return type
      */
-    public static function redondearServicio($mysqli, $servicio, $valor) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_redondearServicio.php');
+    public static function redondearServicio($mysqli, $servicio, $valor)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_redondearServicio.php';
         return \funcionesRegistrales_redondearServicio::redondearServicio($mysqli, $servicio, $valor);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $txt
      * @return type
      */
-    public static function relacionMatriculasRenovar($mysqli, $txt) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_relacionMatriculasRenovar.php');
+    public static function relacionMatriculasRenovar($mysqli, $txt)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_relacionMatriculasRenovar.php';
         return \funcionesRegistrales_relacionMatriculasRenovar::relacionMatriculasRenovar($mysqli, $servicio, $valor);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $criterio
      * @param type $matbase
@@ -857,35 +906,38 @@ class funcionesRegistrales {
      * @param type $registroexacto
      * @return type
      */
-    public static function retornarBusquedaExpedientes($mysqli, $criterio = '', $matbase = '', $propbase = '', $nombase = '', $palbase = '', $idebase = '', $tipoide = '', $semilla = '0', $cantidadregistros = 15, $mostrarnomatriculados = 'S', $soloestablecimientos = 'N', $mostrarcancelados = 'S', $relacionestablecimientos = 'N', $registroexacto = 'N') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarBusquedaExpedientes.php');
+    public static function retornarBusquedaExpedientes($mysqli, $criterio = '', $matbase = '', $propbase = '', $nombase = '', $palbase = '', $idebase = '', $tipoide = '', $semilla = '0', $cantidadregistros = 15, $mostrarnomatriculados = 'S', $soloestablecimientos = 'N', $mostrarcancelados = 'S', $relacionestablecimientos = 'N', $registroexacto = 'N')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarBusquedaExpedientes.php';
         return \funcionesRegistrales_retornarBusquedaExpedientes::retornarBusquedaExpedientes($mysqli, $criterio, $matbase, $propbase, $nombase, $palbase, $idebase, $tipoide, $semilla, $cantidadregistros, $mostrarnomatriculados, $soloestablecimientos, $mostrarcancelados, $relacionestablecimientos, $registroexacto);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $codbarras
      * @return type
      */
-    public static function retornarCodigoBarras($mysqli, $codbarras) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarCodigoBarras.php');
+    public static function retornarCodigoBarras($mysqli, $codbarras)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarCodigoBarras.php';
         return \funcionesRegistrales_retornarCodigoBarras::retornarCodigoBarras($mysqli, $codbarras);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $arrTem
      * @return type
      */
-    public static function retornarExpedienteSolicitudNit($dbx, $arrTem) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteSolicitudNit.php');
+    public static function retornarExpedienteSolicitudNit($dbx, $arrTem)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteSolicitudNit.php';
         return \funcionesRegistrales_retornarExpedienteSolicitudNit::retornarExpedienteSolicitudNit($dbx, $arrTem);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $cri
      * @param type $lib
@@ -895,25 +947,27 @@ class funcionesRegistrales {
      * @param type $tipo
      * @return type
      */
-    public static function retornarInscripcionesNoNotificadas($mysqli, $cri, $lib = '', $regi = '', $dup = '', $fecini = '', $tipo = 'I') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarInscripcionesNoNotificadas.php');
+    public static function retornarInscripcionesNoNotificadas($mysqli, $cri, $lib = '', $regi = '', $dup = '', $fecini = '', $tipo = 'I')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarInscripcionesNoNotificadas.php';
         return \funcionesRegistrales_retornarInscripcionesNoNotificadas::retornarInscripcionesNoNotificadas($mysqli, $cri, $lib, $regi, $dup, $fecini, $tipo);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $mat
      * @param type $retorno
      * @return type
      */
-    public static function calcularHashMercantil($dbx, $mat = '', $retorno = array()) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_calcularHashMercantil.php');
+    public static function calcularHashMercantil($dbx, $mat = '', $retorno = array())
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_calcularHashMercantil.php';
         return \funcionesRegistrales_calcularHashMercantil::calcularHashMercantil($dbx, $mat, $retorno);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $mat
      * @param type $idclase
@@ -927,19 +981,21 @@ class funcionesRegistrales {
      * @param type $serviciosAfiliacionE
      * @return type
      */
-    public static function retornarExpedienteMercantil($dbx = null, $mat = '', $idclase = '', $numid = '', $namex = '', $tipodata = '', $tipoconsulta = 'T', $establecimientosnacionales = 'N', $serviciosMatriculaE = array(), $serviciosRenovacionE = array(), $serviciosAfiliacionE = array()) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteMercantil.php');
+    public static function retornarExpedienteMercantil($dbx = null, $mat = '', $idclase = '', $numid = '', $namex = '', $tipodata = '', $tipoconsulta = 'T', $establecimientosnacionales = 'N', $serviciosMatriculaE = array(), $serviciosRenovacionE = array(), $serviciosAfiliacionE = array())
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteMercantil.php';
         return \funcionesRegistrales_retornarExpedienteMercantil::retornarExpedienteMercantil($dbx, $mat, $idclase, $numid, $namex, $tipodata, $tipoconsulta, $establecimientosnacionales, $serviciosMatriculaE, $serviciosRenovacionE, $serviciosAfiliacionE);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $mat
      * @return type
      */
-    public static function retornarExpedienteMercantilPropietarios($dbx = null, $mat = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteMercantilPropietarios.php');
+    public static function retornarExpedienteMercantilPropietarios($dbx = null, $mat = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteMercantilPropietarios.php';
         return \funcionesRegistrales_retornarExpedienteMercantilPropietarios::retornarExpedienteMercantilPropietarios($dbx, $mat);
     }
 
@@ -949,25 +1005,27 @@ class funcionesRegistrales {
      * @param type $mat
      * @return type
      */
-    public static function retornarExpedienteMercantilRazonSocial($dbx = null, $mat = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteMercantilRazonSocial.php');
+    public static function retornarExpedienteMercantilRazonSocial($dbx = null, $mat = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteMercantilRazonSocial.php';
         return \funcionesRegistrales_retornarExpedienteMercantilRazonSocial::retornarExpedienteMercantilRazonSocial($dbx, $mat);
     }
-    
+
     /**
      * 
      * @param type $dbx
      * @param type $mat
      * @return type
      */
-    
-    public static function retornarExpedienteMercantilCodigosBarrasPendientes($dbx = null, $mat = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteMercantilCodigosBarrasPendientes.php');
+
+    public static function retornarExpedienteMercantilCodigosBarrasPendientes($dbx = null, $mat = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteMercantilCodigosBarrasPendientes.php';
         return \funcionesRegistrales_retornarExpedienteMercantilCodigosBarrasPendientes::retornarExpedienteMercantilCodigosBarrasPendientes($dbx, $mat);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $prop
      * @param type $mat
@@ -979,13 +1037,14 @@ class funcionesRegistrales {
      * @param type $incluir
      * @return type
      */
-    public static function retornarExpedienteProponente($dbx = null, $prop = '', $mat = '', $tipotramite = '', $proceso = 'Sin identificar la rutina', $origen = '', $retornarInhabilidad = 'si', $retornarRee = 'si', $incluir = 'todos') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteProponente.php');
+    public static function retornarExpedienteProponente($dbx = null, $prop = '', $mat = '', $tipotramite = '', $proceso = 'Sin identificar la rutina', $origen = '', $retornarInhabilidad = 'si', $retornarRee = 'si', $incluir = 'todos')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarExpedienteProponente.php';
         return \funcionesRegistrales_retornarExpedienteProponente::retornarExpedienteProponente($dbx, $prop, $mat, $tipotramite, $proceso, $origen, $retornarInhabilidad, $retornarRee, $incluir);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $numliq
      * @param type $tipotramite
@@ -995,13 +1054,14 @@ class funcionesRegistrales {
      * @param type $secuencia
      * @return type
      */
-    public static function retornarLiquidacionDatosExpediente($mysqli, $numliq, $tipotramite, $numexp = '', $grudat = '', $proceso = '', $secuencia = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarLiquidacionDatosExpediente.php');
+    public static function retornarLiquidacionDatosExpediente($mysqli, $numliq, $tipotramite, $numexp = '', $grudat = '', $proceso = '', $secuencia = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarLiquidacionDatosExpediente.php';
         return \funcionesRegistrales_retornarLiquidacionDatosExpediente::retornarLiquidacionDatosExpediente($mysqli, $numliq, $tipotramite, $numexp, $grudat, $proceso, $secuencia);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $mat
      * @param type $procesartodas
@@ -1010,13 +1070,14 @@ class funcionesRegistrales {
      * @param type $controlmultas
      * @return type
      */
-    public static function retornarListaMatriculasRenovar($mysqli, $mat = '', $procesartodas = 'L', $ide = '', $idliq = 0, $controlmultas = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarListaMatriculasRenovar.php');
+    public static function retornarListaMatriculasRenovar($mysqli, $mat = '', $procesartodas = 'L', $ide = '', $idliq = 0, $controlmultas = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarListaMatriculasRenovar.php';
         return \funcionesRegistrales_retornarListaMatriculasRenovar::retornarListaMatriculasRenovar($mysqli, $mat, $procesartodas, $ide, $idliq, $controlmultas);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $mat
      * @param type $ide
@@ -1024,13 +1085,14 @@ class funcionesRegistrales {
      * @param type $usuario
      * @return type
      */
-    public static function retornarListaMatriculasRenovarNuevo($mysqli, $mat = '', $ide = '', $procesartodas = 'L', $usuario = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarListaMatriculasRenovar.php');
+    public static function retornarListaMatriculasRenovarNuevo($mysqli, $mat = '', $ide = '', $procesartodas = 'L', $usuario = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarListaMatriculasRenovar.php';
         return \funcionesRegistrales_retornarListaMatriculasRenovar::retornarListaMatriculasRenovarNuevo($mysqli, $mat, $ide, $procesartodas, $usuario);
     }
-    
+
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $criterio
      * @param type $pagina
@@ -1040,7 +1102,8 @@ class funcionesRegistrales {
      * @param type $reg
      * @return type
      */
-    public static function retornarParaFirma($mysqli = null, $criterio = '1', $pagina = 0, $fecini = '', $caj = '', $dig = '', $reg = '') {
+    public static function retornarParaFirma($mysqli = null, $criterio = '1', $pagina = 0, $fecini = '', $caj = '', $dig = '', $reg = '')
+    {
         $origen = 'SII';
         $retorno = array();
         $i = -1;
@@ -1093,9 +1156,7 @@ class funcionesRegistrales {
                     $inx .= "'" . $c . "'";
                 }
             }
-
             //
-            //print_r($inx);          
             if ($inx != '') {
                 $arrTems = retornarRegistrosMysqliApi($mysqli, 'mreg_est_codigosbarras', "fecharadicacion>='" . $fecini . "' and actoreparto NOT IN ('09','33','53') and estadofinal IN ('34','35') and operadorfinal IN (" . $inx . ")", "codigobarras");
             } else {
@@ -1189,7 +1250,6 @@ class funcionesRegistrales {
             }
 
             //
-            // echo "inx:" . $inx . '<br>';
             if ($inx != '') {
                 $arrTems1 = retornarRegistrosMysqliApi($mysqli, 'mreg_est_inscripciones', "fecharegistro >= '" . $fecini . "' and LENGTH(firma) = 0 and operador IN (" . $inx . ")", "fecharegistro", $pagina - 1 * 200, 200);
             } else {
@@ -1249,7 +1309,7 @@ class funcionesRegistrales {
         if ($criterio == '2') {
             $arrTems = retornarRegistrosMysqliApi($mysqli, 'mreg_est_codigosbarras', "fecharadicacion>='" . $fecini . "' and actoreparto IN ('09','33','53') and estadofinal IN ('34')", "codigobarras");
             foreach ($arrTems as $t) {
-                $arrTems1 = retornarRegistrosMysqliApi($mysqli,'mreg_est_inscripciones_proponentes', "idradicacion=" . $t["codigobarras"], "libro,registro");
+                $arrTems1 = retornarRegistrosMysqliApi($mysqli, 'mreg_est_inscripciones_proponentes', "idradicacion=" . $t["codigobarras"], "libro,registro");
                 if ($arrTems1 && !empty($arrTems1)) {
                     foreach ($arrTems1 as $reg) {
                         $i++;
@@ -1278,7 +1338,7 @@ class funcionesRegistrales {
                         $retorno[$i]["txtnoticia"] = $retorno[$i]["noticia"];
                         $retorno[$i]["firma"] = $reg["firma"];
                         $retorno[$i]["clavefirmado"] = $reg["clavefirmado"];
-                        $retorno[$i]["usuariofirma"] = $reg["usuariofirma"];                        
+                        $retorno[$i]["usuariofirma"] = $reg["usuariofirma"];
                     }
                 }
             }
@@ -1350,14 +1410,15 @@ class funcionesRegistrales {
         return $retorno;
     }
 
-    public static function retornarParaFirmaInscripcion($mysqli, $criterio, $libro, $registro, $dupli) {
+    public static function retornarParaFirmaInscripcion($mysqli, $criterio, $libro, $registro, $dupli)
+    {
         $origen = 'SII';
         $retorno = array();
         if ($criterio == '5') {
-            $reg1 = retornarRegistroMysqliApi($mysqli,'mreg_est_inscripciones', "libro='" . $libro . "' and registro='" . $registro . "' and dupli='" . $dupli . "'");
+            $reg1 = retornarRegistroMysqliApi($mysqli, 'mreg_est_inscripciones', "libro='" . $libro . "' and registro='" . $registro . "' and dupli='" . $dupli . "'");
         }
         if ($criterio == '6') {
-            $reg1 = retornarRegistroMysqliApi($mysqli,'mreg_est_inscripciones_proponentes', "libro='" . $libro . "' and registro='" . $registro . "'");
+            $reg1 = retornarRegistroMysqliApi($mysqli, 'mreg_est_inscripciones_proponentes', "libro='" . $libro . "' and registro='" . $registro . "'");
         }
 
         if ($reg1 && !empty($reg1)) {
@@ -1405,10 +1466,10 @@ class funcionesRegistrales {
             $retorno["nombre"] = $reg1["nombre"];
             $retorno["idcertif"] = $reg1["acto"];
             if ($criterio == '5') {
-                $retorno["txtcertif"] = retornarNombreActosRegistroMysqliApi($mysqli,$reg1["libro"], $reg1["acto"]);
+                $retorno["txtcertif"] = retornarNombreActosRegistroMysqliApi($mysqli, $reg1["libro"], $reg1["acto"]);
             }
             if ($criterio == '6') {
-                $retorno["txtcertif"] = retornarNombreActosProponentesMysqliApi($mysqli,$reg1["acto"]);
+                $retorno["txtcertif"] = retornarNombreActosProponentesMysqliApi($mysqli, $reg1["acto"]);
             }
             $retorno["idope"] = $reg1["operador"];
             $retorno["idopera"] = $reg1["numerooperacion"];
@@ -1447,35 +1508,39 @@ class funcionesRegistrales {
      * @param type $recibo
      * @return type
      */
-    public static function retornarRadicadosNoNotificados($mysqli, $cri, $recibo = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarRadicadosNoNotificados.php');
+    public static function retornarRadicadosNoNotificados($mysqli, $cri, $recibo = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarRadicadosNoNotificados.php';
         return \funcionesRegistrales_retornarRadicadosNoNotificados::retornarRadicadosNoNotificados($mysqli, $cri, $recibo);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $numliq
      * @param type $tipo
      * @return type
      */
-    public static function retornarMregLiquidacion($dbx, $numliq, $tipo = 'L') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarMregLiquidacion.php');
+    public static function retornarMregLiquidacion($dbx, $numliq, $tipo = 'L')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarMregLiquidacion.php';
         return \funcionesRegistrales_retornarMregLiquidacion::retornarMregLiquidacion($dbx, $numliq, $tipo);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $numrec
      * @return type
      */
-    public static function retornarMregRecibo($dbx, $numrec) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarMregRecibo.php');
+    public static function retornarMregRecibo($dbx, $numrec)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarMregRecibo.php';
         return \funcionesRegistrales_retornarMregRecibo::retornarMregRecibo($dbx, $numrec);
     }
 
-    public static function retornarMregSecuencia($dbx, $clave) {
+    public static function retornarMregSecuencia($dbx, $clave)
+    {
         $arrTem = retornarRegistroMysqliApi($dbx, 'mreg_secuencias', "id='" . $clave . "'");
         if ($arrTem === false || empty($arrTem)) {
             return 0;
@@ -1484,7 +1549,8 @@ class funcionesRegistrales {
         }
     }
 
-    public static function retornarTipoRegistro($dbx, $tra) {
+    public static function retornarTipoRegistro($dbx, $tra)
+    {
         $arr = retornarRegistroMysqliApi($dbx, 'bas_tipotramites', "id='" . $tra . "'");
         if ($arr === false || empty($arr)) {
             return '';
@@ -1493,9 +1559,10 @@ class funcionesRegistrales {
         }
     }
 
-    public static function retornarMregSecuenciaMaxAsentarRecibo($dbx, $clave) {
+    public static function retornarMregSecuenciaMaxAsentarRecibo($dbx, $clave)
+    {
 
-//
+        //
         if ($clave == 'RECIBOS-NORMALES') {
             $query = "select max(recibo) as a from mreg_recibosgenerados where substring(recibo,1,1) = 'S'";
         }
@@ -1509,16 +1576,16 @@ class funcionesRegistrales {
             $query = "select max(recibo) as a from mreg_recibosgenerados where substring(recibo,1,1) = 'D'";
         }
 
-//
+        //
         $temx = ejecutarQueryMysqliApi($dbx, $query);
         $siguiente = ltrim(substr($temx[1]["a"], 1), "0");
 
-//
+        //
         return $siguiente;
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $recibo
      * @param type $codbarras
@@ -1528,13 +1595,14 @@ class funcionesRegistrales {
      * @param type $idliquidacion
      * @return type
      */
-    public static function rutinaNotificarRadicacion($mysqli, $recibo = '', $codbarras = '', $emailsentrada = array(), $celularesentrada = array(), $nameLog = '', $idliquidacion = 0) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarRadicacion.php');
+    public static function rutinaNotificarRadicacion($mysqli, $recibo = '', $codbarras = '', $emailsentrada = array(), $celularesentrada = array(), $nameLog = '', $idliquidacion = 0)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarRadicacion.php';
         return \funcionesRegistrales_rutinaNotificarRadicacion::rutinaNotificarRadicacion($mysqli, $recibo, $codbarras, $emailsentrada, $celularesentrada, $nameLog, $idliquidacion);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $recibo
      * @param type $codbarras
@@ -1544,44 +1612,48 @@ class funcionesRegistrales {
      * @param type $idliquidacion
      * @return type
      */
-    public static function rutinaNotificarAsentamiento($mysqli, $recibo = '', $codbarras = '', $emailsentrada = array(), $celularesentrada = array(), $nameLog = '', $idliquidacion = 0) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarRadicacion.php');
+    public static function rutinaNotificarAsentamiento($mysqli, $recibo = '', $codbarras = '', $emailsentrada = array(), $celularesentrada = array(), $nameLog = '', $idliquidacion = 0)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarRadicacion.php';
         return \funcionesRegistrales_rutinaNotificarRadicacion::rutinaNotificarAsentamiento($mysqli, $recibo, $codbarras, $emailsentrada, $celularesentrada, $nameLog, $idliquidacion);
     }
-        
+
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $codbarras
      * @param type $nameLog
      * @return type
      */
-    public static function rutinaInformarArchivoTramite($mysqli, $codbarras = '', $nameLog = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarRadicacion.php');
+    public static function rutinaInformarArchivoTramite($mysqli, $codbarras = '', $nameLog = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarRadicacion.php';
         return \funcionesRegistrales_rutinaNotificarRadicacion::rutinaInformarArchivoTramite($mysqli, $codbarras, $nameLog);
     }
-    
+
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $transaccion
      * @param type $tipoliquidacion
      * @param type $expediente
      * @return type
      */
-    public static function rutinaLiquidacionTransacciones($mysqli, $transaccion = '', $tipoliquidacion = '', $expediente = false) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaLiquidacionTransacciones.php');
+    public static function rutinaLiquidacionTransacciones($mysqli, $transaccion = '', $tipoliquidacion = '', $expediente = false)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaLiquidacionTransacciones.php';
         return \funcionesRegistrales_rutinaLiquidacionTransacciones::rutinaLiquidacionTransacciones($mysqli, $transaccion, $tipoliquidacion, $expediente);
     }
 
-    public static function retornarListaSoportesCaja($dbx, $tramite) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION ["generales"] ["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
+    public static function retornarListaSoportesCaja($dbx, $tramite)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php';
 
-//
+        //
         $res = retornarRegistrosMysqliApi($dbx, 'mreg_soportescaja', "tipotramite='" . $tramite . "'", "secuencia");
         $retornar = array();
         $i = 0;
@@ -1603,27 +1675,28 @@ class funcionesRegistrales {
         }
     }
 
-    public static function retornarListaSoportesTramite($mysqli, $tipotramite, $grupodatos, $idliquidacion, $idsecuencia, $matricula) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION ["generales"] ["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
-//
+    public static function retornarListaSoportesTramite($mysqli, $tipotramite, $grupodatos, $idliquidacion, $idsecuencia, $matricula)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php';
+        //
         $arrSoportes = array();
         $iSop = 0;
 
-//
+        //
         $arrTem = retornarRegistrosMysqliApi($mysqli, 'mreg_soportesproponentes_1510', "tipotramitegenerico='" . $tipotramite . "' and grupodatos='" . $grupodatos . "'", "orden");
 
         if (!empty($arrTem)) {
 
             foreach ($arrTem as $t) {
                 $iSop++;
-                $arrSoportes [$iSop] = $t;
-                $arrSoportes [$iSop]["archivo"] = '';
-                $arrSoportes [$iSop]["formulario"] = 'NO';
-                $arrSoportes [$iSop]["anexos"] = array();
+                $arrSoportes[$iSop] = $t;
+                $arrSoportes[$iSop]["archivo"] = '';
+                $arrSoportes[$iSop]["formulario"] = 'NO';
+                $arrSoportes[$iSop]["anexos"] = array();
                 $arrIdx = retornarRegistrosMysqliApi($mysqli, 'mreg_anexos_liquidaciones', "idliquidacion=" . $idliquidacion . " and sectransaccion='" . sprintf("%03s", $idsecuencia) . "' and identificador='" . $t["identificador"] . "'", "secuenciaanexo");
                 $iAnx = 0;
                 if (!empty($arrIdx)) {
@@ -1634,22 +1707,23 @@ class funcionesRegistrales {
                 }
 
                 if ($t["tipoformulario"] != '' && $t["tipoformulario"] != 'NO') {
-                    if ($matricula != '' &&
-                            $matricula != 'NUEVANAT' &&
-                            $matricula != 'NUEVAEST' &&
-                            $matricula != 'NUEVAJUR' &&
-                            $matricula != 'NUEVAAGE' &&
-                            $matricula != 'NUEVASUC' &&
-                            $matricula != 'NUEVAESA'
+                    if (
+                        $matricula != '' &&
+                        $matricula != 'NUEVANAT' &&
+                        $matricula != 'NUEVAEST' &&
+                        $matricula != 'NUEVAJUR' &&
+                        $matricula != 'NUEVAAGE' &&
+                        $matricula != 'NUEVASUC' &&
+                        $matricula != 'NUEVAESA'
                     ) {
                         $arrTem1 = retornarRegistroMysqliApi($mysqli, 'mreg_liquidaciondatos', "idliquidacion=" . $idliquidacion . " and secuencia='" . sprintf("%03s", $idsecuencia) . "' and expediente='" . $matricula . "'");
                     } else {
                         $arrTem1 = retornarRegistroMysqliApi($mysqli, 'mreg_liquidaciondatos', "idliquidacion=" . $idliquidacion . " and secuencia='" . sprintf("%03s", $idsecuencia) . "'");
                     }
                     if ($arrTem1 && !empty($arrTem1)) {
-                        $arrSoportes [$iSop]["formulario"] = 'SI';
+                        $arrSoportes[$iSop]["formulario"] = 'SI';
                     } else {
-                        $arrSoportes [$iSop]["formulario"] = 'NO';
+                        $arrSoportes[$iSop]["formulario"] = 'NO';
                     }
                 }
             }
@@ -1659,7 +1733,7 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $criterio
      * @param type $lib
@@ -1672,13 +1746,14 @@ class funcionesRegistrales {
      * @param type $numid
      * @return type
      */
-    public static function retornarNoticiaMercantil($mysqli, $criterio = '1', $lib = '', $numreg = '', $dup = '', $fini = '', $mat = '', $pro = '', $tide = '', $numid = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarNoticiaMercantil.php');
+    public static function retornarNoticiaMercantil($mysqli, $criterio = '1', $lib = '', $numreg = '', $dup = '', $fini = '', $mat = '', $pro = '', $tide = '', $numid = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_retornarNoticiaMercantil.php';
         return \funcionesRegistrales_retornarNoticiaMercantil::retornarNoticiaMercantil($mysqli, $criterio, $lib, $numreg, $dup, $fini, $mat, $pro, $tide, $numid);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $codbarras
      * @param type $idliquidacion
@@ -1689,49 +1764,54 @@ class funcionesRegistrales {
      * @param type $forzar
      * @return type
      */
-    public static function rutinaNotificarInscripciones($mysqli, $codbarras = '', $idliquidacion = 0, $nameLog = '', $libro = '', $inscripcion = '', $tipo = 'todos', $forzar = 'no') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarInscripciones.php');
+    public static function rutinaNotificarInscripciones($mysqli, $codbarras = '', $idliquidacion = 0, $nameLog = '', $libro = '', $inscripcion = '', $tipo = 'todos', $forzar = 'no')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarInscripciones.php';
         return \funcionesRegistrales_rutinaNotificarInscripciones::rutinaNotificarInscripciones($mysqli, $codbarras, $idliquidacion, $nameLog, $libro, $inscripcion, $tipo, $forzar);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $proponente
      * @param type $libro
      * @param type $registro
      * @return type
      */
-    public static function rutinaNotificarInscripcionesProponentes($mysqli, $proponente, $libro, $registro) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarInscripcionesProponentes.php');
+    public static function rutinaNotificarInscripcionesProponentes($mysqli, $proponente, $libro, $registro)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_rutinaNotificarInscripcionesProponentes.php';
         return \funcionesRegistrales_rutinaNotificarInscripcionesProponentes::rutinaNotificarInscripcionesProponentes($mysqli, $proponente, $libro, $registro);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $r
      * @param type $inscs
      * @param type $arrActos
      * @return type
      */
-    public static function ajustarRazonSocial($mysqli, $r, $inscs, $arrActos) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_ajustarRazonSocial.php');
+    public static function ajustarRazonSocial($mysqli, $r, $inscs, $arrActos)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_ajustarRazonSocial.php';
         return \funcionesRegistrales_ajustarRazonSocial::ajustarRazonSocial($mysqli, $r, $inscs, $arrActos);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $codbarras
      * @return type
      */
-    public static function emailsCeluaresAsociadosRadicacion($mysqli, $codbarras) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_emailsCeluaresAsociadosRadicacion.php');
+    public static function emailsCeluaresAsociadosRadicacion($mysqli, $codbarras)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_emailsCeluaresAsociadosRadicacion.php';
         return \funcionesRegistrales_emailsCeluaresAsociadosRadicacion::emailsCeluaresAsociadosRadicacion($mysqli, $codbarras);
     }
 
-    public static function serializacionLineal($arr) {
+    public static function serializacionLineal($arr)
+    {
         $sal = '';
         foreach ($arr as $key => $datos) {
             if (!is_array($datos)) {
@@ -1764,7 +1844,7 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $numrec
      * @param type $datos
@@ -1772,36 +1852,40 @@ class funcionesRegistrales {
      * @param type $extendido
      * @return type
      */
-    public static function serializarExpedienteMatricula($dbx, $numrec = '', $datos = array(), $reemplazar = 'si', $extendido = 'si') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_serializarExpedienteMatricula.php');
+    public static function serializarExpedienteMatricula($dbx, $numrec = '', $datos = array(), $reemplazar = 'si', $extendido = 'si')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_serializarExpedienteMatricula.php';
         return \funcionesRegistrales_serializarExpedienteMatricula::serializarExpedienteMatricula($dbx, $numrec, $datos, $reemplazar, $extendido);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $data
      * @return type
      */
-    public static function serializarExpedienteProponente($dbx = null, $data = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_serializarExpedienteProponente.php');
+    public static function serializarExpedienteProponente($dbx = null, $data = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_serializarExpedienteProponente.php';
         return \funcionesRegistrales_serializarExpedienteProponente::serializarExpedienteProponente($dbx, $data);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $tiposerializacion
      * @param type $gruposmodificados
      * @return type
      */
-    public static function serializarExpedienteProponenteEnviarSirep($dbx, $tiposerializacion = '', $gruposmodificados = array()) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_serializarExpedienteProponenteEnviarSirep.php');
+    public static function serializarExpedienteProponenteEnviarSirep($dbx, $tiposerializacion = '', $gruposmodificados = array())
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_serializarExpedienteProponenteEnviarSirep.php';
         return \funcionesRegistrales_serializarExpedienteProponenteEnviarSirep::serializarExpedienteProponenteEnviarSirep($dbx, $tiposerializacion, $gruposmodificados);
     }
 
-    public static function sumarCargaDiaria($mysqli, $est, $us, $tt) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function sumarCargaDiaria($mysqli, $est, $us, $tt)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
 
         $condicion = "fecha='" . date("Ymd") . "' and idestado='" . $est . "' and idusuario='" . $us . "' and tiporuta='" . $tt . "'";
         $arr = retornarRegistroMysqliApi($mysqli, 'mreg_carga_diaria', $condicion);
@@ -1841,7 +1925,7 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $key
      * @param type $serv
@@ -1855,8 +1939,9 @@ class funcionesRegistrales {
      * @param type $liqtotestnal
      * @return int
      */
-    public static function sumarServicio($mysqli, $key, $serv, $tran, $servs = array(), $temServ = array(), $indice = '', $cant = '', $fcorte = '', $liqactprop = 0, $liqtotestnal = 0) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function sumarServicio($mysqli, $key, $serv, $tran, $servs = array(), $temServ = array(), $indice = '', $cant = '', $fcorte = '', $liqactprop = 0, $liqtotestnal = 0)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $ok = 'no';
 
         // **************************************************************************** //
@@ -1935,24 +2020,32 @@ class funcionesRegistrales {
             'iva' => 'N',
         );
 
-//
+        //
         $tipobase = '';
         switch ($indice) {
-            case 1 : $tipobase = $tran["maetrans"]["valorbase1"];
+            case 1:
+                $tipobase = $tran["maetrans"]["valorbase1"];
                 break;
-            case 2 : $tipobase = $tran["maetrans"]["valorbase2"];
+            case 2:
+                $tipobase = $tran["maetrans"]["valorbase2"];
                 break;
-            case 3 : $tipobase = $tran["maetrans"]["valorbase3"];
+            case 3:
+                $tipobase = $tran["maetrans"]["valorbase3"];
                 break;
-            case 4 : $tipobase = $tran["maetrans"]["valorbase4"];
+            case 4:
+                $tipobase = $tran["maetrans"]["valorbase4"];
                 break;
-            case 5 : $tipobase = $tran["maetrans"]["valorbase5"];
+            case 5:
+                $tipobase = $tran["maetrans"]["valorbase5"];
                 break;
-            case 6 : $tipobase = $tran["maetrans"]["valorbase6"];
+            case 6:
+                $tipobase = $tran["maetrans"]["valorbase6"];
                 break;
-            case 7 : $tipobase = $tran["maetrans"]["valorbase7"];
+            case 7:
+                $tipobase = $tran["maetrans"]["valorbase7"];
                 break;
-            case 8 : $tipobase = $tran["maetrans"]["valorbase8"];
+            case 8:
+                $tipobase = $tran["maetrans"]["valorbase8"];
                 break;
         }
 
@@ -1973,63 +2066,63 @@ class funcionesRegistrales {
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'valorcontrato') {
             $arrSal["valorbase"] = $tran["dattrans"]["costotransaccion"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $tran["dattrans"]["costotransaccion"], 'tarifa', $liqactprop, $liqtotestnal);
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'valorcompraventa') {
             $arrSal["valorbase"] = $tran["dattrans"]["costotransaccion"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $tran["dattrans"]["costotransaccion"], 'tarifa', $liqactprop, $liqtotestnal);
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'patrimonio') {
             $arrSal["valorbase"] = $tran["dattrans"]["patrimonio"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $tran["dattrans"]["patrimonio"], 'tarifa', $liqactprop, $liqtotestnal);
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'capitalsocial') {
             $arrSal["valorbase"] = $tran["dattrans"]["capitalsocial"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $tran["dattrans"]["capitalsocial"], 'tarifa', $liqactprop, $liqtotestnal);
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'capitalautorizado') {
             $arrSal["valorbase"] = $tran["dattrans"]["capitalautorizado"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $tran["dattrans"]["capitalautorizado"], 'tarifa', $liqactprop, $liqtotestnal);
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'capitalsuscrito') {
             $arrSal["valorbase"] = $tran["dattrans"]["capitalsuscrito"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $tran["dattrans"]["capitalsuscrito"], 'tarifa', $liqactprop, $liqtotestnal);
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'capitalpagado') {
             $arrSal["valorbase"] = $tran["dattrans"]["capitalpagado"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $tran["dattrans"]["capitalpagado"], 'tarifa', $liqactprop, $liqtotestnal);
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'capitalasociativas') {
             $arrSal["valorbase"] = $tran["dattrans"]["aporteactivos"] + $tran["dattrans"]["aportedinero"] + $tran["dattrans"]["aportelaboral"] + $tran["dattrans"]["aportelaboraladicional"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $arrSal["valorbase"], 'tarifa', $liqactprop, $liqtotestnal);
             $ok = 'si';
         }
 
-//
+        //
         if ($tipobase == 'patrimonio' || $tipobase == 'capitalasignado') {
             $arrSal["valorbase"] = $tran["dattrans"]["capitalasignado"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $tran["dattrans"]["capitalasignado"], 'tarifa', $liqactprop, $liqtotestnal);
@@ -2042,7 +2135,7 @@ class funcionesRegistrales {
             $ok = 'si';
         }
 
-//
+        //
         if ($ok == 'no') {
             $arrSal["valorbase"] = $tran["dattrans"]["costotransaccion"];
             $arrSal["valorservicio"] = \funcionesRegistrales::buscaTarifa($mysqli, $serv, date("Y"), $cant, $arrSal["valorbase"], 'tarifa', $liqactprop, $liqtotestnal);
@@ -2116,7 +2209,8 @@ class funcionesRegistrales {
      * @param type $diasmora
      * @return type
      */
-    public static function sumarServicioGeneral($mysqli, $idsec = '', $serv = '', $expediente = '', $nombre = '', $ano = '', $cantidad = 0, $valorbase = 0, $porcentaje = 0, $valorservicio = 0, $benart7 = 'N', $reliquidacion = 'N', $serviciobase = 'N', $pagoafiliacion = 'N', $ir = 'N', $iva = 'N', $liqactprop = 0, $liqtotestnal = 0, $servicioorigen = '', $diasmora = 0) {
+    public static function sumarServicioGeneral($mysqli, $idsec = '', $serv = '', $expediente = '', $nombre = '', $ano = '', $cantidad = 0, $valorbase = 0, $porcentaje = 0, $valorservicio = 0, $benart7 = 'N', $reliquidacion = 'N', $serviciobase = 'N', $pagoafiliacion = 'N', $ir = 'N', $iva = 'N', $liqactprop = 0, $liqtotestnal = 0, $servicioorigen = '', $diasmora = 0)
+    {
         $arrSal = array(
             'idsec' => sprintf("%03s", $idsec),
             'idservicio' => $serv,
@@ -2139,11 +2233,12 @@ class funcionesRegistrales {
         return $arrSal;
     }
 
-    public static function tieneLibros($dbx = null, $mat = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
+    public static function tieneLibros($dbx = null, $mat = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php';
 
         set_error_handler('myErrorHandler');
 
@@ -2154,9 +2249,9 @@ class funcionesRegistrales {
             \logApi::general2($nameLog, $mat, 'Inicia lectura expediente');
         }
 
-// ********************************************************************************** //
-// Instancia la BD si no existe
-// ********************************************************************************** //
+        // ********************************************************************************** //
+        // Instancia la BD si no existe
+        // ********************************************************************************** //
         if ($dbx === null) {
             $mysqli = new \mysqli(DB_HOST, DB_USUARIO, DB_PASSWORD, DB_NAME, DB_PORT);
             if (mysqli_connect_error()) {
@@ -2167,9 +2262,9 @@ class funcionesRegistrales {
             $mysqli = $dbx;
         }
 
-// ********************************************************************************** //
-// carga maestro de actos
-// ********************************************************************************** //
+        // ********************************************************************************** //
+        // carga maestro de actos
+        // ********************************************************************************** //
         $_SESSION["maestroactos"] = array();
         $temx = retornarRegistrosMysqliApi($mysqli, "mreg_actos", "1=1", "idlibro,idacto");
         foreach ($temx as $x) {
@@ -2178,7 +2273,7 @@ class funcionesRegistrales {
         }
         unset($temx);
 
-// Armado del arreglo de respuesta
+        // Armado del arreglo de respuesta
         $retorno = 'no';
         $arrX = retornarRegistrosMysqliApi($mysqli, 'mreg_est_inscripciones', "matricula='" . $mat . "'", "fecharegistro,libro,registro,dupli");
         if ($arrX && !empty($arrX)) {
@@ -2207,23 +2302,24 @@ class funcionesRegistrales {
             }
         }
 
-//
+        //
         if ($genlog == 'si') {
             \logApi::general2($nameLog, $retorno["matricula"], 'Leyo inscripciones en libros');
         }
 
-//
+        //
         if ($dbx == null) {
             $mysqli->close();
         }
 
-//
+        //
         return $retorno;
     }
 
-    public static function validarEstadoMatriculasRenovar($txt) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function validarEstadoMatriculasRenovar($txt)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         if ($txt != '') {
             $lista = explode(',', $txt);
             $canceladas = 0;
@@ -2270,9 +2366,10 @@ class funcionesRegistrales {
         }
     }
 
-    public static function consultarSaldoAfiliadoMysqliApi($mysqli = null, $matricula = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function consultarSaldoAfiliadoMysqliApi($mysqli = null, $matricula = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
 
         $salida = array(
             'valorultpagoafi' => 0,
@@ -2284,11 +2381,11 @@ class funcionesRegistrales {
         if ($matricula == '') {
             return $salida;
         }
-//
+        //
         $_SESSION["generales"]["corterenovacion"] = retornarRegistroMysqliApi($mysqli, 'mreg_cortes_renovacion', "ano='" . date("Y") . "'", "corte");
         $_SESSION["generales"]["corterenovacionmesdia"] = substr($_SESSION["generales"]["corterenovacion"], 4, 4);
 
-//
+        //
         $formaCalculoAfiliacion = retornarClaveValorMysqliApi($mysqli, '90.01.60');
 
         $salida = array(
@@ -2298,7 +2395,7 @@ class funcionesRegistrales {
             'cupo' => 0
         );
 
-//
+        //
         $arrSerAfil = retornarRegistrosMysqliApi($mysqli, "mreg_servicios", "grupoventas='02'", "idservicio");
         $Servicios = "";
         $ServiciosAfiliacion = array();
@@ -2310,13 +2407,13 @@ class funcionesRegistrales {
             $ServiciosAfiliacion[] = $ServAfil["idservicio"];
         }
 
-//
+        //
         $arrFecValAfi = retornarRegistroMysqliApi($mysqli, 'mreg_est_recibos', "(matricula='" . $matricula . "' or expedienteafectado='" . $matricula . "') and servicio in (" . $Servicios . ") and (ctranulacion = '0') and (substring(numerorecibo,1,1)='R' or substring(numerorecibo,1,1)='S') and (tipogasto <> '7') order by fecoperacion desc limit 1");
         $salida["valorultpagoafi"] = $arrFecValAfi["valor"];
         $salida["fechaultpagoafi"] = $arrFecValAfi["fecoperacion"];
         unset($arrFecValAfi);
 
-//
+        //
         $fecpagoafiliacion = '';
         $detalle = array();
         $iDetalle = 0;
@@ -2357,7 +2454,7 @@ class funcionesRegistrales {
                         }
                     }
 
-//
+                    //
                     $iDetalle++;
                     $detalle[$iDetalle] = array(
                         'tipo' => 'PagoAfiliación',
@@ -2414,23 +2511,24 @@ class funcionesRegistrales {
         return $detalle;
     }
 
-    public static function consultarSaldoAfiliadoCantidadMysqliApi($mysqli = null, $matricula = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function consultarSaldoAfiliadoCantidadMysqliApi($mysqli = null, $matricula = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
 
         $detalle = array();
         if ($matricula == '') {
             return $detalle;
         }
 
-//
+        //
         $_SESSION["generales"]["corterenovacion"] = retornarRegistroMysqliApi($mysqli, 'mreg_cortes_renovacion', "ano='" . date("Y") . "'", "corte");
         $_SESSION["generales"]["corterenovacionmesdia"] = substr($_SESSION["generales"]["corterenovacion"], 4, 4);
 
-//
+        //
         $cupo = 0;
 
-//
+        //
         $arrSerAfil = retornarRegistrosMysqliApi($mysqli, "mreg_servicios", "grupoventas='02'", "idservicio");
         $Servicios = "";
         $ServiciosAfiliacion = array();
@@ -2442,13 +2540,13 @@ class funcionesRegistrales {
             $ServiciosAfiliacion[] = $ServAfil["idservicio"];
         }
 
-//
+        //
         $arrFecValAfi = retornarRegistroMysqliApi($mysqli, 'mreg_est_recibos', "(matricula='" . $matricula . "' or expedienteafectado='" . $matricula . "') and servicio in (" . $Servicios . ") and ctranulacion = '0' and (substring(numerorecibo,1,1)='R' or substring(numerorecibo,1,1)='S') and (tipogasto <> '7') order by fecoperacion desc limit 1");
         $salida["valorultpagoafi"] = $arrFecValAfi["valor"];
         $salida["fechaultpagoafi"] = $arrFecValAfi["fecoperacion"];
         unset($arrFecValAfi);
 
-//
+        //
         $fecpagoafiliacion = '';
         $detalle = array();
         $iDetalle = 0;
@@ -2460,12 +2558,12 @@ class funcionesRegistrales {
             $feciniafi = date("Y") . '0101';
         }
 
-//
+        //
         $arrRecs = retornarRegistrosMysqliApi($mysqli, 'mreg_est_recibos', "(matricula='" . $matricula . "' or expedienteafectado='" . $matricula . "') and ctranulacion = '0' and left(numerorecibo,1) IN ('H','G','R','S') and (fecoperacion >= '" . $feciniafi . "') and (tipogasto <> '7')", "fecoperacion");
         if ($arrRecs && !empty($arrRecs)) {
             foreach ($arrRecs as $rx) {
                 if (in_array($rx["servicio"], $ServiciosAfiliacion)) {
-// Si se cambia de año en el pago, se reinicia el histórico e pagos
+                    // Si se cambia de año en el pago, se reinicia el histórico e pagos
                     if (substr($rx["fecoperacion"], 0, 4) != substr($feciniafi, 0, 4)) {
                         $iDetalle = 0;
                         $detalle = array();
@@ -2476,7 +2574,7 @@ class funcionesRegistrales {
                         }
                     }
 
-//
+                    //
                     $iDetalle++;
                     $detalle[$iDetalle] = array(
                         'tipo' => 'PagoAfiliación',
@@ -2518,11 +2616,12 @@ class funcionesRegistrales {
         return $detalle;
     }
 
-    public static function consultarWsSipp($cod, $liq) {
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/includes/nusoap_5.3/lib/nusoap.php');
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
+    public static function consultarWsSipp($cod, $liq)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/includes/nusoap_5.3/lib/nusoap.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
 
-// Consumir el servicio web de SIPP para consultar estado de transacciones
+        // Consumir el servicio web de SIPP para consultar estado de transacciones
 
         $client = new nusoap_client(URL_SIPP_WS, 'wsdl');
         $resultado = $client->call("consultarLiquidacion", array('datosEntrada' => $cod . sprintf("%07s", $liq)));
@@ -2614,17 +2713,18 @@ class funcionesRegistrales {
         return $retorno;
     }
 
-    public static function consultarWsZonaVirtual($cod, $numliq, $log = 'sondaZonaVirtual') {
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/includes/nusoap_5.3/lib/nusoap.php');
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function consultarWsZonaVirtual($cod, $numliq, $log = 'sondaZonaVirtual')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/includes/nusoap_5.3/lib/nusoap.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
 
         $nameLog = $log;
         if ($nameLog == '') {
             $nameLog = 'sondaZonaVirtual_' . date("Ymd");
         }
 
-// Consumir el servicio web de ZonaVirtual para consultar estado de transacciones
+        // Consumir el servicio web de ZonaVirtual para consultar estado de transacciones
         $client = new nusoap_client(URL_ZONAVIRTUAL_WS, 'wsdl', '', '', '', '');
         $client->setUseCurl('0');
         $client->soap_defencoding = 'UTF-8';
@@ -2672,8 +2772,8 @@ class funcionesRegistrales {
             }
         }
         \logApi::general2($nameLog, 0, utf8_encode('Result Parser:' . $txt));
-// Se retorno una respuesta
-// Se encontraron pagos
+        // Se retorno una respuesta
+        // Se encontraron pagos
 
         $arrSal = array();
         if ($result1["verificar_pago_v3Result"] == '0') { // No se retornaron registros
@@ -2771,34 +2871,34 @@ class funcionesRegistrales {
         }
 
         if ($result1["verificar_pago_v3Result"] > '0') {
-//
+            //
             if ($result1["int_error"] == '-1') {
                 $_SESSION["mensajeerror"] = $result1["str_error"];
                 return false;
             }
 
-// No se encontraron pagos
+            // No se encontraron pagos
             if ($result1["int_error"] == '1') {
                 $_SESSION["mensajeerror"] = $result1["str_error"];
                 return false;
             }
 
-// Datos incorrectos
+            // Datos incorrectos
             if ($result1["int_error"] == '2') {
                 $_SESSION["mensajeerror"] = $result1["str_error"];
                 return false;
             }
 
-// Error inesperado
+            // Error inesperado
             if ($result1["int_error"] == '3') {
                 $_SESSION["mensajeerror"] = $result1["str_error"];
                 return false;
             }
 
-// Se encontraron pagos
+            // Se encontraron pagos
             if ($result1["int_error"] == '0') {
 
-// pago satisfactorio
+                // pago satisfactorio
 
                 if ($arrSal["int_estado_pago"] == '1') {
                     $arrSal["idestado"] = '07';
@@ -2807,7 +2907,7 @@ class funcionesRegistrales {
                     return $arrSal;
                 }
 
-// 	Si el pago no ha sido iniciado a&uacute;n
+                // 	Si el pago no ha sido iniciado a&uacute;n
                 if ($arrSal["int_estado_pago"] == '888') {
                     $arrSal["idliquidacion"] = $numliq;
                     $arrSal["idestado"] = '88';
@@ -2815,7 +2915,7 @@ class funcionesRegistrales {
                     return $arrSal;
                 }
 
-// Si el pago no ha sido finalizado a&uacute;n
+                // Si el pago no ha sido finalizado a&uacute;n
                 if ($arrSal["int_estado_pago"] == '999') {
                     $arrSal["idliquidacion"] = $numliq;
                     $arrSal["idestado"] = '06';
@@ -2825,30 +2925,30 @@ class funcionesRegistrales {
             }
         }
 
-// Se retorno una respuesta
-// No se encontraron pagos
+        // Se retorno una respuesta
+        // No se encontraron pagos
         if ($result1["verificar_pago_v3Result"] == '-1') {
 
-// No se encontraron pagos (Clave o usaurio inv&aacute;lido
+            // No se encontraron pagos (Clave o usaurio inv&aacute;lido
             if ($result1["int_error"] == '1') {
                 $arrSal["idliquidacion"] = $numliq;
                 $arrSal["idestado"] = '08';
                 $arrSal["numeroautorizacion"] = $result1["str_codigo_transaccion"];
                 return $arrSal;
             }
-// Datos incorrectos
+            // Datos incorrectos
             if ($result1["int_error"] == '2') {
                 $_SESSION["mensajeerror"] = $result1["str_error"];
                 return false;
             }
 
-// Error inesperado
+            // Error inesperado
             if ($result1["int_error"] == '3') {
                 $_SESSION["mensajeerror"] = $result1["str_error"];
                 return false;
             }
 
-// Error inesperado
+            // Error inesperado
             if ($result1["int_error"] == '-1') {
                 $_SESSION["mensajeerror"] = $result1["str_error"];
                 return false;
@@ -2882,18 +2982,19 @@ class funcionesRegistrales {
         }
     }
 
-    public static function consultarMultasPolicia($mysqli, $tid, $id, $idliq = 0) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
+    public static function consultarMultasPolicia($mysqli, $tid, $id, $idliq = 0)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php';
 
         $nameLog = 'validacionMultasPonal_' . date("Ymd");
 
-//
+        //
         $reintentar = 3;
         $multadovencido = 'ER';
         $textoerror = '';
@@ -2903,7 +3004,7 @@ class funcionesRegistrales {
             $name = PATH_ABSOLUTO_SITIO . '/tmp/' . CODIGO_EMPRESA . '-tokenponal.txt';
             if (file_exists($name)) {
                 $x = file_get_contents(PATH_ABSOLUTO_SITIO . '/tmp/' . CODIGO_EMPRESA . '-tokenponal.txt', true);
-                list ($token, $expira) = explode("|", $x);
+                list($token, $expira) = explode("|", $x);
                 $act = date("Y-m-d H:i:s");
                 if ($act <= $expira) {
                     $buscartoken = false;
@@ -2922,7 +3023,7 @@ class funcionesRegistrales {
                 $result = curl_exec($ch);
                 curl_close($ch);
                 if ((is_string($result) &&
-                        (is_object(json_decode($result)) ||
+                    (is_object(json_decode($result)) ||
                         is_array(json_decode($result))))) {
                     $resultado = json_decode($result, true);
                     $access_token = $resultado['access_token'];
@@ -2938,11 +3039,11 @@ class funcionesRegistrales {
                 }
             }
 
-//
+            //
             if ($buscarmulta) {
                 if (file_exists($name)) {
                     $x = file_get_contents(PATH_ABSOLUTO_SITIO . '/tmp/' . CODIGO_EMPRESA . '-tokenponal.txt', true);
-                    list ($access_token, $expira) = explode("|", $x);
+                    list($access_token, $expira) = explode("|", $x);
                 } else {
                     $textoerror = 'NO FUE POSIBLE SOLICITAR EL TOKEN (2), NO EXISTE ARCHIVO CON EL TOKEN ALMACENADO';
                     $buscarmulta = false;
@@ -2950,7 +3051,7 @@ class funcionesRegistrales {
                 }
             }
 
-//
+            //
             if ($buscarmulta) {
                 $data = array(
                     'codigoCamara' => CODIGO_EMPRESA,
@@ -2958,7 +3059,7 @@ class funcionesRegistrales {
                     'numeroIdentificacion' => $id
                 );
 
-//            
+                //
                 $fields = json_encode($data);
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, 'https://catalogoservicioweb.policia.gov.co/sw/api/Multa/ConsultaMultaVencidaSeisMeses');
@@ -2992,7 +3093,7 @@ class funcionesRegistrales {
                 fwrite($f1, date("Y-m-d") . '|' . date("His") . '|' . $tid . '|' . $id . '|' . $result . chr(13) . chr(10));
                 fclose($f1);
                 if ((is_string($result) &&
-                        (is_object(json_decode($result)) ||
+                    (is_object(json_decode($result)) ||
                         is_array(json_decode($result))))) {
                     $resultado = json_decode($result, true);
                     if (isset($resultado["Message"])) {
@@ -3054,7 +3155,7 @@ class funcionesRegistrales {
                                 $idliq
                             );
                             insertarRegistrosMysqliApi($mysqli, 'mreg_multas_ponal', $arrCampos, $arrValores);
-//
+                            //
                             if ($multa["MULTA_VENCIDA"] == 'SI') {
                                 $multadovencido = 'SI';
                             }
@@ -3108,19 +3209,20 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $ope
      * @param type $rec
      * @return type
      */
-    public static function consumirWsVRRECREC($mysqli = null, $rec = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_consumirWsVRRECREC.php');
+    public static function consumirWsVRRECREC($mysqli = null, $rec = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_consumirWsVRRECREC.php';
         return \funcionesRegistrales_consumirWsVRRECREC::consumirWsVRRECREC($mysqli, $rec);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $cri
      * @param type $ide
@@ -3147,14 +3249,16 @@ class funcionesRegistrales {
      * @param type $ape2
      * @return type
      */
-    public static function consumirPrepago($mysqli, $cri, $ide, $clave = '', $valor = '', $recibo = '', $numoperacion = '', $servicio = '', $cantidad = '', $detalle = '', $ip = '', $usuario = '', $expediente = '', $email = '', $nombre = '', $celular = '', $direccion = '', $municipio = '', $tipousuario = '', $telefono = '', $nom1 = '', $nom2 = '', $ape1 = '', $ape2 = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_consumirPrepago.php');
+    public static function consumirPrepago($mysqli, $cri, $ide, $clave = '', $valor = '', $recibo = '', $numoperacion = '', $servicio = '', $cantidad = '', $detalle = '', $ip = '', $usuario = '', $expediente = '', $email = '', $nombre = '', $celular = '', $direccion = '', $municipio = '', $tipousuario = '', $telefono = '', $nom1 = '', $nom2 = '', $ape1 = '', $ape2 = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_consumirPrepago.php';
         return \funcionesRegistrales_consumirPrepago::consumirPrepago($mysqli, $cri, $ide, $clave, $valor, $recibo, $numoperacion, $servicio, $cantidad, $detalle, $ip, $usuario, $expediente, $email, $nombre, $celular, $direccion, $municipio, $tipousuario, $telefono, $nom1, $nom2, $ape1, $ape2);
     }
 
-    public static function consultarRelacionMatriculasPendientesRenovar($mysqli, $txt) {
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function consultarRelacionMatriculasPendientesRenovar($mysqli, $txt)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
 
         if ($txt != '') {
             $lista = explode(',', $txt);
@@ -3207,22 +3311,23 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $nameLog
      * @param type $cb
      * @param type $usuariodesiste
      * @return bool
      */
-    public static function desistirCodigoBarras($mysqli, $nameLog, $cb, $usuariodesiste = 'BATCH', $nuevoestado = '39') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRues.php');
+    public static function desistirCodigoBarras($mysqli, $nameLog, $cb, $usuariodesiste = 'BATCH', $nuevoestado = '39')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRues.php';
 
         //
         if (!isset($_SESSION["generales"]["batch"])) {
@@ -3515,27 +3620,29 @@ class funcionesRegistrales {
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $xml
      * @return type
      */
-    public static function desserializarReciboSirep($mysqli = null, $xml = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_desserializarReciboSirep.php');
+    public static function desserializarReciboSirep($mysqli = null, $xml = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_desserializarReciboSirep.php';
         return \funcionesRegistrales_desserializarReciboSirep::desserializarReciboSirep($mysqli, $xml);
     }
 
     /**
-     * 
+     *
      * @return type
      */
-    public static function docXflowSolicitarToken() {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_docXflowSolicitarToken.php');
+    public static function docXflowSolicitarToken()
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_docXflowSolicitarToken.php';
         return \funcionesRegistrales_docXflowSolicitarToken::docXflowSolicitarToken();
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $ciiu
      * @param type $ingresos
@@ -3544,28 +3651,32 @@ class funcionesRegistrales {
      * @param type $anomatricula
      * @return type
      */
-    public static function determinarTamanoEmpresarial($mysqli = null, $ciiu = '', $ingresos = 0, $anodatos = '', $fechadatos = '', $anomatricula = 'no') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarial.php');
+    public static function determinarTamanoEmpresarial($mysqli = null, $ciiu = '', $ingresos = 0, $anodatos = '', $fechadatos = '', $anomatricula = 'no')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarial.php';
         return \funcionesRegistrales_determinarTamanoEmpresarial::determinarTamanoEmpresarial($mysqli, $ciiu, $ingresos, $anodatos, $fechadatos, $anomatricula);
     }
-    
-    public static function determinarTamanoEmpresarialUvts($mysqli = null, $ciiu = '', $ingresos = 0, $anodatos = '', $fechadatos = '', $anomatricula = 'no') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarial.php');
+
+    public static function determinarTamanoEmpresarialUvts($mysqli = null, $ciiu = '', $ingresos = 0, $anodatos = '', $fechadatos = '', $anomatricula = 'no')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarial.php';
         return \funcionesRegistrales_determinarTamanoEmpresarial::determinarTamanoEmpresarialUvts($mysqli, $ciiu, $ingresos, $anodatos, $fechadatos, $anomatricula);
     }
-    
-    public static function determinarTamanoEmpresarialUvbs($mysqli = null, $ciiu = '', $ingresos = 0, $anodatos = '', $fechadatos = '', $anomatricula = 'no') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarial.php');
+
+    public static function determinarTamanoEmpresarialUvbs($mysqli = null, $ciiu = '', $ingresos = 0, $anodatos = '', $fechadatos = '', $anomatricula = 'no')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarial.php';
         return \funcionesRegistrales_determinarTamanoEmpresarial::determinarTamanoEmpresarialUvbs($mysqli, $ciiu, $ingresos, $anodatos, $fechadatos, $anomatricula);
     }
-    
-    public static function determinarTamanoEmpresarialActivos($mysqli = null, $activos = 0, $personal = 0, $fechadatos = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarial.php');
+
+    public static function determinarTamanoEmpresarialActivos($mysqli = null, $activos = 0, $personal = 0, $fechadatos = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarial.php';
         return \funcionesRegistrales_determinarTamanoEmpresarial::determinarTamanoEmpresarialActivos($mysqli, $activos, $personal, $fechadatos);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $ciiu
      * @param type $ingresos
@@ -3574,38 +3685,41 @@ class funcionesRegistrales {
      * @param type $anomatricula
      * @return type
      */
-    public static function determinarTamanoEmpresarialCodigo($mysqli, $ciiu, $ingresos, $anodatos, $fechadatos, $anomatricula = 'no') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarialCodigo.php');
+    public static function determinarTamanoEmpresarialCodigo($mysqli, $ciiu, $ingresos, $anodatos, $fechadatos, $anomatricula = 'no')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_determinarTamanoEmpresarialCodigo.php';
         return \funcionesRegistrales_determinarTamanoEmpresarialCodigo::determinarTamanoEmpresarialCodigo($mysqli, $ciiu, $ingresos, $anodatos, $fechadatos, $anomatricula);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $cb
      * @param type $estado
      * @return type
      */
-    public static function docXflowNotificarCambioEstado($mysqli, $cb, $estado) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_docXflowNotificarCambioEstado.php');
+    public static function docXflowNotificarCambioEstado($mysqli, $cb, $estado)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_docXflowNotificarCambioEstado.php';
         return \funcionesRegistrales_docXflowNotificarCambioEstado::docXflowNotificarCambioEstado($mysqli, $cb, $estado);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $mat
      * @param type $prop
      * @param type $rad
      * @return type
      */
-    public static function docXflowConsultarExpediente($mysqli, $mat = '', $prop = '', $rad = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_docXflowConsultarExpediente.php');
+    public static function docXflowConsultarExpediente($mysqli, $mat = '', $prop = '', $rad = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_docXflowConsultarExpediente.php';
         return \funcionesRegistrales_docXflowConsultarExpediente::docXflowConsultarExpediente($mysqli, $mat, $prop, $rad);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $tiporegistro
      * @param type $liquidacion
@@ -3614,13 +3728,14 @@ class funcionesRegistrales {
      * @param type $tipotramite
      * @return type
      */
-    public static function programarAlertaTemprana($mysqli, $tiporegistro, $liquidacion, $matricula, $proponente, $tipotramite) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_programarAlertaTemprana.php');
+    public static function programarAlertaTemprana($mysqli, $tiporegistro, $liquidacion, $matricula, $proponente, $tipotramite)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_programarAlertaTemprana.php';
         return \funcionesRegistrales_programarAlertaTemprana::programarAlertaTemprana($mysqli, $tiporegistro, $liquidacion, $matricula, $proponente, $tipotramite);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $expediente
      * @param type $usuariocontrol
@@ -3629,13 +3744,14 @@ class funcionesRegistrales {
      * @param type $celularusuariocontrol
      * @return type
      */
-    public static function generarAlertaSiprefConsulta($mysqli = null, $expediente = '', $usuariocontrol = '', $emailusuariocontrol = '', $nombreusuariocontrol = '', $celularusuariocontrol = '', $ipcliente = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarAlertasSipref.php');
+    public static function generarAlertaSiprefConsulta($mysqli = null, $expediente = '', $usuariocontrol = '', $emailusuariocontrol = '', $nombreusuariocontrol = '', $celularusuariocontrol = '', $ipcliente = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarAlertasSipref.php';
         return \funcionesRegistrales_generarAlertasSipref::generarAlertaSiprefConsulta($mysqli, $expediente, $usuariocontrol, $emailusuariocontrol, $nombreusuariocontrol, $celularusuariocontrol, $ipcliente);
     }
 
     /**
-     * 
+     *
      * @param type $dbx
      * @param type $idliquidacion
      * @param type $expediente
@@ -3647,35 +3763,38 @@ class funcionesRegistrales {
      * @param type $celularusuariocontrol
      * @return type
      */
-    public static function generarAlertaSiprefTemprana($dbx = null, $idliquidacion = '', $expediente = '', $tiporegistro = '', $tipotramite = '', $usuariocontrol = '', $emailusuariocontrol = '', $nombreusuariocontrol = '', $celularusuariocontrol = '', $ipcliente = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarAlertasSipref.php');
+    public static function generarAlertaSiprefTemprana($dbx = null, $idliquidacion = '', $expediente = '', $tiporegistro = '', $tipotramite = '', $usuariocontrol = '', $emailusuariocontrol = '', $nombreusuariocontrol = '', $celularusuariocontrol = '', $ipcliente = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarAlertasSipref.php';
         return \funcionesRegistrales_generarAlertasSipref::generarAlertaSiprefTemprana($dbx, $idliquidacion, $expediente, $tiporegistro, $tipotramite, $usuariocontrol, $emailusuariocontrol, $nombreusuariocontrol, $celularusuariocontrol, $ipcliente);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $pathsalida
      * @return type
      */
-    public static function powerFileReportarDevolutivo($mysqli, $pathsalida) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_powerFileReportarDevolutivo.php');
+    public static function powerFileReportarDevolutivo($mysqli, $pathsalida)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_powerFileReportarDevolutivo.php';
         return \funcionesRegistrales_powerFileReportarDevolutivo::powerFileReportarDevolutivo($mysqli, $pathsalida);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $pathsalida
      * @return type
      */
-    public static function powerFileReportarDesistimiento($mysqli, $pathsalida) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_powerFileReportarDesistimiento.php');
+    public static function powerFileReportarDesistimiento($mysqli, $pathsalida)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_powerFileReportarDesistimiento.php';
         return \funcionesRegistrales_powerFileReportarDesistimiento::powerFileReportarDesistimiento($mysqli, $pathsalida);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @param type $cb
      * @param type $rec
@@ -3685,22 +3804,25 @@ class funcionesRegistrales {
      * @param type $sed
      * @return type
      */
-    public static function powerFileReportarReingreso($mysqli, $cb, $rec, $usu, $fec, $hor, $sed) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_powerFileReportarReingreso.php');
+    public static function powerFileReportarReingreso($mysqli, $cb, $rec, $usu, $fec, $hor, $sed)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_powerFileReportarReingreso.php';
         return \funcionesRegistrales_powerFileReportarReingreso::powerFileReportarReingreso($mysqli, $cb, $rec, $usu, $fec, $hor, $sed);
     }
 
     /**
-     * 
+     *
      * @param type $mysqli
      * @return type
      */
-    public static function powerFileGenerarSecuenciaDesistimiento($mysqli) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_powerFileGenerarSecuenciaDesistimiento.php');
+    public static function powerFileGenerarSecuenciaDesistimiento($mysqli)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_powerFileGenerarSecuenciaDesistimiento.php';
         return \funcionesRegistrales_powerFileGenerarSecuenciaDesistimiento::powerFileGenerarSecuenciaDesistimiento($mysqli);
     }
 
-    public static function evaluarArchivadorAsentarRecibo($idserv) {
+    public static function evaluarArchivadorAsentarRecibo($idserv)
+    {
         $archivador = '01';
         if (substr($idserv, 0, 6) == '010101') {
             $archivador = '01';
@@ -3717,18 +3839,24 @@ class funcionesRegistrales {
         if (substr($idserv, 0, 6) == '010202') {
             $archivador = '01';
         }
-        if (substr($idserv, 0, 6) == '010203' ||
-                substr($idserv, 0, 6) == '010204' ||
-                substr($idserv, 0, 6) == '010205' ||
-                substr($idserv, 0, 6) == '010206') {
+        if (
+            substr($idserv, 0, 6) == '010203' ||
+            substr($idserv, 0, 6) == '010204' ||
+            substr($idserv, 0, 6) == '010205' ||
+            substr($idserv, 0, 6) == '010206'
+        ) {
             $archivador = '02';
         }
-        if (substr($idserv, 0, 6) >= '010301' &&
-                substr($idserv, 0, 6) <= '010322') {
+        if (
+            substr($idserv, 0, 6) >= '010301' &&
+            substr($idserv, 0, 6) <= '010322'
+        ) {
             $archivador = '01';
         }
-        if (substr($idserv, 0, 6) >= '010351' &&
-                substr($idserv, 0, 6) <= '010355') {
+        if (
+            substr($idserv, 0, 6) >= '010351' &&
+            substr($idserv, 0, 6) <= '010355'
+        ) {
             $archivador = '03';
         }
         if (substr($idserv, 0, 8) == '01020208') {
@@ -3746,14 +3874,15 @@ class funcionesRegistrales {
         return $archivador;
     }
 
-    public static function funcValidarFormularioProponente1510($mysqli, $liq, $datos, $codigoEmpresa, $tipotramite = '', $funcion = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php');
+    public static function funcValidarFormularioProponente1510($mysqli, $liq, $datos, $codigoEmpresa, $tipotramite = '', $funcion = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php';
         set_error_handler('myErrorHandler');
 
         //
@@ -3901,13 +4030,14 @@ class funcionesRegistrales {
         return $arrErrores;
     }
 
-    public static function funcValidarFormularioProponenteSoportes1510($mysqli, $liq, $datos, $codigoEmpresa, $tipotramite = '', $funcion = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php');
+    public static function funcValidarFormularioProponenteSoportes1510($mysqli, $liq, $datos, $codigoEmpresa, $tipotramite = '', $funcion = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/configuracion/common' . $_SESSION["generales"]["codigoempresa"] . '.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistralesCalculos.php';
 
         if ($mysqli == null) {
             $mysqli = conexionMysqliApi();
@@ -3915,7 +4045,7 @@ class funcionesRegistrales {
         } else {
             $cerrarMysqli = 'no';
         }
-//
+        //
         $arrErrores = array();
         $counterr = 0;
         $arrErroresCambioDomicilio = array();
@@ -4049,7 +4179,8 @@ class funcionesRegistrales {
         return $arrErrores;
     }
 
-    public static function funcValidarDatosBasicos1510($mysqli, $idliq, $datos, $codigoEmpresa) {
+    public static function funcValidarDatosBasicos1510($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
         $incon = 0;
         $arrIncon = array();
 
@@ -4100,9 +4231,10 @@ class funcionesRegistrales {
         } else {
 
             if ((trim($datos["ape1"]) != '') ||
-                    (trim($datos["ape2"]) != '') ||
-                    (trim($datos["nom1"]) != '') ||
-                    (trim($datos["nom2"]) != '')) {
+                (trim($datos["ape2"]) != '') ||
+                (trim($datos["nom1"]) != '') ||
+                (trim($datos["nom2"]) != '')
+            ) {
                 $incon++;
                 $arrIncon[$incon] = 'Datos b&aacute;sicos: No debe reportar apellidos y/o nombres cuando se trate de personas jur&iacute;dicas';
             }
@@ -4126,12 +4258,13 @@ class funcionesRegistrales {
             return $arrIncon;
         }
 
-//
+        //
         return $arrIncon;
     }
 
-    public static function funcValidarDatosBasicosSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarDatosBasicosSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $incon = 0;
         $arrIncon = array();
 
@@ -4151,11 +4284,12 @@ class funcionesRegistrales {
             }
         }
 
-//
+        //
         return $arrIncon;
     }
 
-    public static function funcValidarClasificacion1510($mysqli, $datos, $codigoEmpresa) {
+    public static function funcValidarClasificacion1510($mysqli, $datos, $codigoEmpresa)
+    {
         $incon = 0;
         $arrIncon = array();
 
@@ -4178,7 +4312,8 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarCambioDomicilio($mysqli, $datos, $codigoEmpresa) {
+    public static function funcValidarCambioDomicilio($mysqli, $datos, $codigoEmpresa)
+    {
         $incon = 0;
         $arrIncon = array();
         if (trim($datos["cambidom_idmunicipioorigen"]) == '') {
@@ -4203,7 +4338,8 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarExperiencia1510($mysqli, $idliq, $datos, $codigoEmpresa, $validar = 'S') {
+    public static function funcValidarExperiencia1510($mysqli, $idliq, $datos, $codigoEmpresa, $validar = 'S')
+    {
 
         $arrContratos = array();
         $incon = 0;
@@ -4222,8 +4358,9 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarExperienciaSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa, $validar = 'S') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarExperienciaSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa, $validar = 'S')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $incon = 0;
         $arrIncon = array();
         if ($datos["tipotramite"] == 'inscripcionproponente' || $datos["tipotramite"] == 'renovacionproponente') {
@@ -4238,8 +4375,9 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarInformacionFinanciera1510($mysqli, $idliq, $datos, $codigoEmpresa) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarInformacionFinanciera1510($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $incon = 0;
         $arrIncon = array();
 
@@ -4339,8 +4477,9 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarInformacionFinanciera399a($mysqli, $idliq, $datos, $codigoEmpresa) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarInformacionFinanciera399a($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $incon = 0;
         $arrIncon = array();
 
@@ -4437,8 +4576,9 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarInformacionFinanciera399b($mysqli, $idliq, $datos, $codigoEmpresa) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarInformacionFinanciera399b($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $incon = 0;
         $arrIncon = array();
 
@@ -4535,8 +4675,9 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarInformacionFinancieraSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarInformacionFinancieraSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $_SESSION["generales"]["codigoempresa"] = $codigoEmpresa;
         $incon = 0;
         $arrIncon = array();
@@ -4551,8 +4692,9 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarInformacionFinancieraSoportes399a($mysqli, $idliq, $datos, $codigoEmpresa) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarInformacionFinancieraSoportes399a($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $_SESSION["generales"]["codigoempresa"] = $codigoEmpresa;
         $incon = 0;
         $arrIncon = array();
@@ -4566,8 +4708,9 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarInformacionFinancieraSoportes399b($mysqli, $idliq, $datos, $codigoEmpresa) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarInformacionFinancieraSoportes399b($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $_SESSION["generales"]["codigoempresa"] = $codigoEmpresa;
         $incon = 0;
         $arrIncon = array();
@@ -4581,7 +4724,8 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarFacultades($mysqli, $datos, $codigoEmpresa) {
+    public static function funcValidarFacultades($mysqli, $datos, $codigoEmpresa)
+    {
         $incon = 0;
         $arrIncon = array();
 
@@ -4606,7 +4750,8 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarPersoneriaJuridica1510($mysqli, $idliq, $datos, $codigoEmpresa) {
+    public static function funcValidarPersoneriaJuridica1510($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
         $incon = 0;
         $arrIncon = array();
 
@@ -4639,11 +4784,12 @@ class funcionesRegistrales {
             }
         } else {
             if ((trim($datos["idtipodocperjur"]) != '') ||
-                    (ltrim($datos["numdocperjur"], '0') != '') ||
-                    (ltrim($datos["fecdocperjur"], '0') != '') ||
-                    (trim($datos["origendocperjur"]) != '') ||
-                    (ltrim($datos["fechaconstitucion"], '0') != '') ||
-                    (ltrim($datos["fechavencimiento"], '0') != '')) {
+                (ltrim($datos["numdocperjur"], '0') != '') ||
+                (ltrim($datos["fecdocperjur"], '0') != '') ||
+                (trim($datos["origendocperjur"]) != '') ||
+                (ltrim($datos["fechaconstitucion"], '0') != '') ||
+                (ltrim($datos["fechavencimiento"], '0') != '')
+            ) {
                 $incon++;
                 $arrIncon[$incon] = 'Personer&iacute;a jur&iacute;dica: No debe reportar ning&uacute;n dato relacionado con la Personer&iacute;a jur&iacute;dica (cuando se trate de personas naturales)';
             }
@@ -4652,8 +4798,9 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarPersoneriaJuridicaSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarPersoneriaJuridicaSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
         $incon = 0;
         $arrIncon = array();
 
@@ -4677,7 +4824,8 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarRepresentantesLegales($mysqli, $datos, $codigoEmpresa) {
+    public static function funcValidarRepresentantesLegales($mysqli, $datos, $codigoEmpresa)
+    {
 
         $incon = 0;
         $arrIncon = array();
@@ -4696,8 +4844,9 @@ class funcionesRegistrales {
                 $sinRepresentantes = '';
                 foreach ($datos["representanteslegales"] as $r) {
                     if ((ltrim($r["idtipoidentificacionrepleg"], '0') != '') &&
-                            (ltrim($r["identificacionrepleg"], '0') != '') &&
-                            (trim($r["nombrerepleg"]) != '')) {
+                        (ltrim($r["identificacionrepleg"], '0') != '') &&
+                        (trim($r["nombrerepleg"]) != '')
+                    ) {
                         $sinRepresentantes = 'no';
                     }
                 }
@@ -4713,14 +4862,16 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarSitControl1510($mysqli, $idliq, $datos, $codigoEmpresa, $validar = 'S') {
+    public static function funcValidarSitControl1510($mysqli, $idliq, $datos, $codigoEmpresa, $validar = 'S')
+    {
         $incon = 0;
         $arrIncon = array();
         return $arrIncon;
     }
 
-    public static function funcValidarSitControlSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa, $validar = 'S') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function funcValidarSitControlSoportes1510($mysqli, $idliq, $datos, $codigoEmpresa, $validar = 'S')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
 
         $incon = 0;
         $arrIncon = array();
@@ -4736,10 +4887,11 @@ class funcionesRegistrales {
         return $arrIncon;
     }
 
-    public static function funcValidarUbicacion($mysqli, $datos, $codigoEmpresa) {
+    public static function funcValidarUbicacion($mysqli, $datos, $codigoEmpresa)
+    {
 
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
         $incon = 0;
         $arrIncon = array();
 
@@ -4887,34 +5039,36 @@ class funcionesRegistrales {
         exit();
     }
 
-    public static function generarEmailNotificacionInscripcionSipref($dbx, $t) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarEmailNotificacionInscripcionSipref.php');
+    public static function generarEmailNotificacionInscripcionSipref($dbx, $t)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarEmailNotificacionInscripcionSipref.php';
         return \funcionesRegistrales_generarEmailNotificacionInscripcionSipref::generarEmailNotificacionInscripcionSipref($dbx, $t);
     }
 
-    public static function generarFormularioRenovacionRepositorio($dbx, $mat = '', $nameLog = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsMercantil.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/unirPdfs.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function generarFormularioRenovacionRepositorio($dbx, $mat = '', $nameLog = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsMercantil.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/unirPdfs.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
 
         if ($nameLog == '') {
             $nameLog = 'generarFormularioRenovacionRepositorio_' . date("Ymd");
         }
 
-//
+        //
         $iForm = 0;
         $iEstab = 0;
         $iPpal = 0;
 
-//
+        //
         $_SESSION["formulario"]["datos"] = array();
         $_SESSION["formulario"]["datoshijos"] = array();
         $_SESSION["formulario"]["matriculashijos"] = array();
         $_SESSION["formulario"]["tipotramite"] = $_SESSION["tramite"]["tipotramite"];
 
-//
+        //
         $datPrincipal = array();
         $textoFirmadoDatPrincipal = '';
         $tramasha1DatPrincipal = '';
@@ -4930,15 +5084,15 @@ class funcionesRegistrales {
                     if ($_SESSION["tramite"]["tipotramite"] == 'renovacionmatricula') {
                         if ($x["organizacion"] == '01' || $x["organizacion"] > '02') {
                             if ($x["afiliado"] == '1') {
-//                                $datPrincipal = $x;
+                                //                                $datPrincipal = $x;
                             }
                         }
                     }
                 }
 
                 if (
-                        $x["organizacion"] == '01' ||
-                        ($x["organizacion"] > '02' && $x["categoria"] == '1')
+                    $x["organizacion"] == '01' ||
+                    ($x["organizacion"] > '02' && $x["categoria"] == '1')
                 ) {
                     $_SESSION["formulario"]["datos"] = $x;
                     $_SESSION["formulario"]["datos"]["fechaultimamodificacion"] = $_SESSION["tramite"]["fechaultimamodificacion"];
@@ -4958,31 +5112,34 @@ class funcionesRegistrales {
 
                     $det = '';
 
-                    if ($_SESSION["tramite"]["tipotramite"] == 'renovacionmatricula' || $_SESSION["tramite"]["tipotramite"] == 'renovacionesadl'
+                    if (
+                        $_SESSION["tramite"]["tipotramite"] == 'renovacionmatricula' || $_SESSION["tramite"]["tipotramite"] == 'renovacionesadl'
                     ) {
                         $det = 'FORMULARIO DE RENOVACION - MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0");
                     }
 
-                    if ($_SESSION["tramite"]["tipotramite"] == 'matriculapnat' ||
-                            $_SESSION["tramite"]["tipotramite"] == 'matriculaest' ||
-                            $_SESSION["tramite"]["tipotramite"] == 'matriculapjur'
+                    if (
+                        $_SESSION["tramite"]["tipotramite"] == 'matriculapnat' ||
+                        $_SESSION["tramite"]["tipotramite"] == 'matriculaest' ||
+                        $_SESSION["tramite"]["tipotramite"] == 'matriculapjur'
                     ) {
                         $det = 'FORMULARIO DE MATRICULA - MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0");
                     }
 
-                    if ($_SESSION["tramite"]["tipotramite"] == 'matriculaesadl'
+                    if (
+                        $_SESSION["tramite"]["tipotramite"] == 'matriculaesadl'
                     ) {
                         $det = 'FORMULARIO DE INSCRIPCION AL REG-ESADL - NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0");
                     }
 
-//
+                    //
                     if (!defined('FECHA_INICIAL_FORMULARIO_2020') || FECHA_INICIAL_FORMULARIO_2020 == '') {
                         $fecfor2020 = '20200803';
                     } else {
                         $fecfor2020 = FECHA_INICIAL_FORMULARIO_2020;
                     }
 
-//
+                    //
                     if (defined('ACTIVAR_IMPRESION_FORMULARIO_2023') && ACTIVAR_IMPRESION_FORMULARIO_2023 == 'SI') {
                         $name = armarPdfPrincipalNuevo2023Api($dbx, $_SESSION["tramite"]["numerorecuperacion"], $_SESSION["tramite"]["numeroliquidacion"], '');
                     } else {
@@ -4993,7 +5150,7 @@ class funcionesRegistrales {
                         unirPdfsApiV2(array($_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name, $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name1), $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name);
                     }
                     if (!defined('ACTIVAR_IMPRESION_FORMULARIO_2023') || ACTIVAR_IMPRESION_FORMULARIO_2023 != 'SI') {
-                        if ($_SESSION ["formulario"] ["datos"]["emprendimientosocial"] != '') {
+                        if ($_SESSION["formulario"]["datos"]["emprendimientosocial"] != '') {
                             $name2 = armarPdfFormatoEmpSoc($dbx, $_SESSION["tramite"]["numerorecuperacion"], $_SESSION["tramite"]["numeroliquidacion"]);
                             unirPdfsApiV2(array($_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name, $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name2), $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name);
                         }
@@ -5006,37 +5163,41 @@ class funcionesRegistrales {
                         $bandeja = '4.-REGMER';
                     }
 
-//
+                    //
                     $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                                    $dbx,
-                                    ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), // Codigo barras
-                                    trim($_SESSION["tramite"]["numerorecibo"]), // Recibo
-                                    trim($_SESSION["tramite"]["numerooperacion"]), // Operacion
-                                    ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), // Identificacion
-                                    trim($_SESSION["tramite"]["nombrecliente"]), // Nombre
-                                    '', // Acreedor
-                                    '', // Nombre acreedor
-                                    ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
-                                    '', // N&uacute;mero de proponente
-                                    TIPO_DOC_FOR_MERCANTIL, // Tipo de documento
-                                    '', // N&uacute;mero del documento
-                                    $_SESSION["tramite"]["fecharecibo"], '', // C&oacute;digo de origen
-                                    'EL COMERCIANTE', '', // Clasificaci&oacute;n
-                                    '', // N&uacute;mero del contrato
-                                    '', // Idfuente
-                                    1, // versi&oacute;n
-                                    '', // Path
-                                    '1', // Estado
-                                    date("Ymd"), // fecha de escaneo o generaci&oacute;n
-                                    $_SESSION["generales"]["codigousuario"], '', // Caja
-                                    '', // Libro
-                                    $det, '', // Libro del registro
-                                    '', // Numero del registro
-                                    '', // Dupli
-                                    $bandeja, // Bandeja de registro
-                                    'S', // Soporte del recibo
-                                    '', // identificador
-                                    '503' // Tipo anexo
+                        $dbx,
+                        ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), // Codigo barras
+                        trim($_SESSION["tramite"]["numerorecibo"]), // Recibo
+                        trim($_SESSION["tramite"]["numerooperacion"]), // Operacion
+                        ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), // Identificacion
+                        trim($_SESSION["tramite"]["nombrecliente"]), // Nombre
+                        '', // Acreedor
+                        '', // Nombre acreedor
+                        ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
+                        '', // N&uacute;mero de proponente
+                        TIPO_DOC_FOR_MERCANTIL, // Tipo de documento
+                        '', // N&uacute;mero del documento
+                        $_SESSION["tramite"]["fecharecibo"],
+                        '', // C&oacute;digo de origen
+                        'EL COMERCIANTE',
+                        '', // Clasificaci&oacute;n
+                        '', // N&uacute;mero del contrato
+                        '', // Idfuente
+                        1, // versi&oacute;n
+                        '', // Path
+                        '1', // Estado
+                        date("Ymd"), // fecha de escaneo o generaci&oacute;n
+                        $_SESSION["generales"]["codigousuario"],
+                        '', // Caja
+                        '', // Libro
+                        $det,
+                        '', // Libro del registro
+                        '', // Numero del registro
+                        '', // Dupli
+                        $bandeja, // Bandeja de registro
+                        'S', // Soporte del recibo
+                        '', // identificador
+                        '503' // Tipo anexo
                     );
 
                     $dirx = date("Ymd");
@@ -5059,32 +5220,34 @@ class funcionesRegistrales {
                         $_SESSION["formulario"]["datos"] = $hijo;
                         $det = '';
 
-//
-                        if ($_SESSION["tramite"]["tipotramite"] == 'renovacionmatricula' ||
-                                $_SESSION["tramite"]["tipotramite"] == 'renovacionesadl'
+                        //
+                        if (
+                            $_SESSION["tramite"]["tipotramite"] == 'renovacionmatricula' ||
+                            $_SESSION["tramite"]["tipotramite"] == 'renovacionesadl'
                         ) {
                             $det = 'FORMULARIO DE RENOVACION - MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0");
                         }
 
-//
-                        if ($_SESSION["tramite"]["tipotramite"] == 'matriculapnat' ||
-                                $_SESSION["tramite"]["tipotramite"] == 'matriculaest' ||
-                                $_SESSION["tramite"]["tipotramite"] == 'matriculapjur' ||
-                                $_SESSION["tramite"]["tipotramite"] == 'matriculaesadl'
+                        //
+                        if (
+                            $_SESSION["tramite"]["tipotramite"] == 'matriculapnat' ||
+                            $_SESSION["tramite"]["tipotramite"] == 'matriculaest' ||
+                            $_SESSION["tramite"]["tipotramite"] == 'matriculapjur' ||
+                            $_SESSION["tramite"]["tipotramite"] == 'matriculaesadl'
                         ) {
                             $det = 'FORMULARIO DE MATRICULA - MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0");
                         }
 
-//
+                        //
                         $name = armarPdfEstablecimientoNuevo1082Api($dbx, $_SESSION["tramite"]["numerorecuperacion"], $_SESSION["tramite"]["numeroliquidacion"], '');
 
-//
+                        //
                         if (count($_SESSION["formulario"]["datos"]["f"]) > 1) {
                             $name1 = armarPdfEstablecimientoNuevoAnosAnteriores1082Api($dbx, $_SESSION["tramite"]["numerorecuperacion"], $_SESSION["tramite"]["numeroliquidacion"], '');
                             unirPdfsApi(array($_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name, $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name1), $_SESSION["generales"]["pathabsoluto"] . '/tmp/' . $name);
                         }
 
-//
+                        //
                         $bandeja = '';
                         if (substr(ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), 0, 1) == 'S') {
                             $bandeja = '5.-REGESADL';
@@ -5092,32 +5255,41 @@ class funcionesRegistrales {
                             $bandeja = '4.-REGMER';
                         }
 
-//
+                        //
                         $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                                        $dbx, // Conexion BD
-                                        ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), trim($_SESSION["tramite"]["numerorecibo"]), trim($_SESSION["tramite"]["numerooperacion"]), ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), trim($_SESSION["tramite"]["nombrecliente"]), '', // Acreedor
-                                        '', // Nombre acreedor
-                                        ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
-                                        '', // N&uacute;mero de proponente
-                                        TIPO_DOC_FOR_MERCANTIL, // Tipo de documento
-                                        '', // N&uacute;mero del documento
-                                        $_SESSION["tramite"]["fecharecibo"], '', // C&oacute;digo de origen
-                                        'EL COMERCIANTE', '', // Clasificaci&oacute;n
-                                        '', // N&uacute;mero del contrato
-                                        '', // Idfuente
-                                        1, // versi&oacute;n
-                                        '', // Path
-                                        '1', // Estado
-                                        date("Ymd"), // fecha de escaneo o generaci&oacute;n
-                                        $_SESSION["generales"]["codigousuario"], '', // Caja
-                                        '', // Libro
-                                        $det, '', // Libro del registro
-                                        '', // Numero del registro
-                                        '', // Dupli
-                                        $bandeja, // Bandeja de registro
-                                        'S', // Soporte del recibo
-                                        '', // Identificador
-                                        '503' // Tipo de anexo
+                            $dbx, // Conexion BD
+                            ltrim($_SESSION["tramite"]["numeroradicacion"], "0"),
+                            trim($_SESSION["tramite"]["numerorecibo"]),
+                            trim($_SESSION["tramite"]["numerooperacion"]),
+                            ltrim($_SESSION["tramite"]["identificacioncliente"], "0"),
+                            trim($_SESSION["tramite"]["nombrecliente"]),
+                            '', // Acreedor
+                            '', // Nombre acreedor
+                            ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
+                            '', // N&uacute;mero de proponente
+                            TIPO_DOC_FOR_MERCANTIL, // Tipo de documento
+                            '', // N&uacute;mero del documento
+                            $_SESSION["tramite"]["fecharecibo"],
+                            '', // C&oacute;digo de origen
+                            'EL COMERCIANTE',
+                            '', // Clasificaci&oacute;n
+                            '', // N&uacute;mero del contrato
+                            '', // Idfuente
+                            1, // versi&oacute;n
+                            '', // Path
+                            '1', // Estado
+                            date("Ymd"), // fecha de escaneo o generaci&oacute;n
+                            $_SESSION["generales"]["codigousuario"],
+                            '', // Caja
+                            '', // Libro
+                            $det,
+                            '', // Libro del registro
+                            '', // Numero del registro
+                            '', // Dupli
+                            $bandeja, // Bandeja de registro
+                            'S', // Soporte del recibo
+                            '', // Identificador
+                            '503' // Tipo de anexo
                         );
 
                         $dirx = date("Ymd");
@@ -5137,7 +5309,7 @@ class funcionesRegistrales {
             unset($arrForms);
             unset($form);
 
-//
+            //
             if (!empty($datPrincipal)) {
                 $bandeja = '4.-REGMER';
                 $_SESSION["formulario"]["datos"] = $datPrincipal;
@@ -5145,38 +5317,39 @@ class funcionesRegistrales {
                 $name = armarPdfFormatoAfiliacion($dbx, $_SESSION["tramite"]["numerorecuperacion"], $_SESSION["tramite"]["numeroliquidacion"], '', '');
                 $det = 'Formato de renovación de afiliación matrícula No. ' . $datPrincipal["matricula"];
                 $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                                $dbx, // COnexion bd
-                                ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), // COdigo barras
-                                trim($_SESSION["tramite"]["numerorecibo"]), // Recibo
-                                trim($_SESSION["tramite"]["numerooperacion"]), // Operacion
-                                ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), // identificacion
-                                trim($_SESSION["tramite"]["nombrecliente"]), // Nombre
-                                '', // Acreedor
-                                '', // Nombre acreedor
-                                ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // Numero de matricula
-                                '', // N&uacute;mero de proponente
-                                TIPO_DOC_FOR_AFILIACION, // Tipo de documento
-                                '', // Numero del documento
-                                $_SESSION["tramite"]["fecharecibo"], // fecha del recibo
-                                '', // Codigo de origen
-                                'EL COMERCIANTE', '', // Clasificacion
-                                '', // Numero del contrato
-                                '', // Idfuente
-                                1, // version
-                                '', // Path
-                                '1', // Estado
-                                date("Ymd"), // fecha de escaneo o generacion
-                                $_SESSION["generales"]["codigousuario"], // Usuario que genera
-                                '', // Caja
-                                '', // Libro
-                                $det, // Detalle
-                                '', // Libro del registro
-                                '', // Numero del registro
-                                '', // Dupli
-                                $bandeja, // Bandeja de registro
-                                'S', // Soporte del recibo
-                                '', // Identificador
-                                '503' // Tipo de anexo
+                    $dbx, // COnexion bd
+                    ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), // COdigo barras
+                    trim($_SESSION["tramite"]["numerorecibo"]), // Recibo
+                    trim($_SESSION["tramite"]["numerooperacion"]), // Operacion
+                    ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), // identificacion
+                    trim($_SESSION["tramite"]["nombrecliente"]), // Nombre
+                    '', // Acreedor
+                    '', // Nombre acreedor
+                    ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // Numero de matricula
+                    '', // N&uacute;mero de proponente
+                    TIPO_DOC_FOR_AFILIACION, // Tipo de documento
+                    '', // Numero del documento
+                    $_SESSION["tramite"]["fecharecibo"], // fecha del recibo
+                    '', // Codigo de origen
+                    'EL COMERCIANTE',
+                    '', // Clasificacion
+                    '', // Numero del contrato
+                    '', // Idfuente
+                    1, // version
+                    '', // Path
+                    '1', // Estado
+                    date("Ymd"), // fecha de escaneo o generacion
+                    $_SESSION["generales"]["codigousuario"], // Usuario que genera
+                    '', // Caja
+                    '', // Libro
+                    $det, // Detalle
+                    '', // Libro del registro
+                    '', // Numero del registro
+                    '', // Dupli
+                    $bandeja, // Bandeja de registro
+                    'S', // Soporte del recibo
+                    '', // Identificador
+                    '503' // Tipo de anexo
                 );
 
                 $dirx = date("Ymd");
@@ -5194,8 +5367,9 @@ class funcionesRegistrales {
         }
     }
 
-    public static function generarMutacionRepositorio($dbx = null) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsMutacion.php');
+    public static function generarMutacionRepositorio($dbx = null)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsMutacion.php';
 
         $_SESSION["formulario"]["datos"] = array();
         $_SESSION["formulario"]["numrec"] = $_SESSION["tramite"]["numerorecuperacion"];
@@ -5211,31 +5385,39 @@ class funcionesRegistrales {
             }
             $name = armarPdfMutacion($dbx, $_SESSION["tramite"]["numerorecuperacion"], $_SESSION["tramite"]["numeroliquidacion"]);
             $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                            $dbx, // Conexion BD
-                            ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), trim($_SESSION["tramite"]["numerorecibo"]), trim($_SESSION["tramite"]["numerooperacion"]), ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), trim($_SESSION["tramite"]["nombrecliente"]), '', // Acreedor
-                            '', // Nombre acreedor
-                            ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
-                            '', // N&uacute;mero de proponente
-                            retornarClaveValorMysqliApi($dbx, $clavevalor), // Tipo de documento
-                            'N/A', // N&uacute;mero del documento
-                            $_SESSION["tramite"]["fecharecibo"], '', // C&oacute;digo de origen
-                            'EL COMERCIANTE - INSCRITO', '', // Clasificaci&oacute;n
-                            '', // N&uacute;mero del contrato
-                            '', // Idfuente
-                            1, // versi&oacute;n
-                            '', // Path
-                            '1', // Estado
-                            date("Ymd"), // fecha de escaneo o generaci&oacute;n
-                            $_SESSION["generales"]["codigousuario"], '', // Caja
-                            '', // Libro
-                            'SOLICITUD DE MUTACION DE ACTIVIDAD ECONOMICA MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // Noticia
-                            '', // LIBRO
-                            '', // Registro
-                            '', // Dupli
-                            $bandeja, // Bandeja de registro
-                            'S', // Soporte del recibo de caja
-                            '', // Identificador
-                            '501' // Tipo anexo	
+                $dbx, // Conexion BD
+                ltrim($_SESSION["tramite"]["numeroradicacion"], "0"),
+                trim($_SESSION["tramite"]["numerorecibo"]),
+                trim($_SESSION["tramite"]["numerooperacion"]),
+                ltrim($_SESSION["tramite"]["identificacioncliente"], "0"),
+                trim($_SESSION["tramite"]["nombrecliente"]),
+                '', // Acreedor
+                '', // Nombre acreedor
+                ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
+                '', // N&uacute;mero de proponente
+                retornarClaveValorMysqliApi($dbx, $clavevalor), // Tipo de documento
+                'N/A', // N&uacute;mero del documento
+                $_SESSION["tramite"]["fecharecibo"],
+                '', // C&oacute;digo de origen
+                'EL COMERCIANTE - INSCRITO',
+                '', // Clasificaci&oacute;n
+                '', // N&uacute;mero del contrato
+                '', // Idfuente
+                1, // versi&oacute;n
+                '', // Path
+                '1', // Estado
+                date("Ymd"), // fecha de escaneo o generaci&oacute;n
+                $_SESSION["generales"]["codigousuario"],
+                '', // Caja
+                '', // Libro
+                'SOLICITUD DE MUTACION DE ACTIVIDAD ECONOMICA MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // Noticia
+                '', // LIBRO
+                '', // Registro
+                '', // Dupli
+                $bandeja, // Bandeja de registro
+                'S', // Soporte del recibo de caja
+                '', // Identificador
+                '501' // Tipo anexo	
             );
             $dirx = date("Ymd");
             $path = PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/mreg/' . $dirx;
@@ -5253,10 +5435,11 @@ class funcionesRegistrales {
         }
     }
 
-    public static function generarReingresoAutomatico($dbx, $cb) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php');
+    public static function generarReingresoAutomatico($dbx, $cb)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesGenerales.php';
 
         //
         $nameLog = 'generarReingresoAutomatico_' . date("Ymd");
@@ -5269,18 +5452,6 @@ class funcionesRegistrales {
             return false;
         }
         $_SESSION["temporal"]["codigobarras"] = $cb;
-
-        // ************************************************************************************* //
-        // Verifica que el estado del código de barras si permita el reingreso
-        // ************************************************************************************* //
-        /*
-          if ($_SESSION["temporal"]["radicacion"]["estado"] != '05' &&
-          $_SESSION["temporal"]["radicacion"]["estado"] != '06' &&
-          $_SESSION["temporal"]["radicacion"]["estado"] != '07') {
-          \logApi::general2($nameLog, $_SESSION["tramite"]["numeroradicacion"], 'Código de barras no permite reingreso por su estado');
-          return false;
-          }
-         */
 
         // ************************************************************************************* //
         // Localiza bandeja de digitalización
@@ -5433,12 +5604,13 @@ class funcionesRegistrales {
                 //
                 $pptx = '';
                 $matx = '';
-                if ($_SESSION["tramite"]["tipotramite"] == 'inscripcionproponente' ||
-                        $_SESSION["tramite"]["tipotramite"] == 'renovacionproponente' ||
-                        $_SESSION["tramite"]["tipotramite"] == 'actualizacionproponente' ||
-                        $_SESSION["tramite"]["tipotramite"] == 'actualizacionproponente399' ||
-                        $_SESSION["tramite"]["tipotramite"] == 'cancelacionproponente' ||
-                        $_SESSION["tramite"]["tipotramite"] == 'cambiodomicilioproponente'
+                if (
+                    $_SESSION["tramite"]["tipotramite"] == 'inscripcionproponente' ||
+                    $_SESSION["tramite"]["tipotramite"] == 'renovacionproponente' ||
+                    $_SESSION["tramite"]["tipotramite"] == 'actualizacionproponente' ||
+                    $_SESSION["tramite"]["tipotramite"] == 'actualizacionproponente399' ||
+                    $_SESSION["tramite"]["tipotramite"] == 'cancelacionproponente' ||
+                    $_SESSION["tramite"]["tipotramite"] == 'cambiodomicilioproponente'
                 ) {
                     $pptx = ltrim($temAnx["expediente"], "0");
                     $matx = '';
@@ -5449,36 +5621,39 @@ class funcionesRegistrales {
 
                 //
                 $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                                $dbx,
-                                $_SESSION["temporal"]["codigobarras"], // Codigo de barras
-                                $_SESSION["tramite"]["numerorecibo"], // Número de recibo
-                                $_SESSION["tramite"]["numerooperacion"], // Número de operacion
-                                ltrim($temAnx["identificacion"], "0"), //Identificacion
-                                trim($temAnx["nombre"]), '', // Acreedor
-                                '', // Nombre acreedor
-                                $matx, // Matrícula
-                                $pptx, // Proponente
-                                $tipoDocumento, // Tipo de documento
-                                $temAnx["numdoc"], // Número del documento
-                                $temAnx["fechadoc"], '', // Código de origen
-                                $temAnx["txtorigendoc"], // txt origen del documento
-                                '', // Clasificación
-                                '', // Número del contrato
-                                '', // Idfuente
-                                1, // versión
-                                '', // Path
-                                '1', // Estado
-                                date("Ymd"), // fecha de escaneo o generación
-                                $_SESSION["generales"]["codigousuario"], '', // Caja
-                                '', // Libro
-                                $temAnx["observaciones"],
-                                '', // Libro
-                                '', // Número de registro en libros
-                                '', // Dupli
-                                $temAnx["bandeja"], // Bandeja
-                                'N', // Soporte del recibo de caja
-                                $temAnx["identificador"], // Identificador del tipo de soporte
-                                $temAnx["tipoanexo"] // Tipo de anexo
+                    $dbx,
+                    $_SESSION["temporal"]["codigobarras"], // Codigo de barras
+                    $_SESSION["tramite"]["numerorecibo"], // Número de recibo
+                    $_SESSION["tramite"]["numerooperacion"], // Número de operacion
+                    ltrim($temAnx["identificacion"], "0"), //Identificacion
+                    trim($temAnx["nombre"]),
+                    '', // Acreedor
+                    '', // Nombre acreedor
+                    $matx, // Matrícula
+                    $pptx, // Proponente
+                    $tipoDocumento, // Tipo de documento
+                    $temAnx["numdoc"], // Número del documento
+                    $temAnx["fechadoc"],
+                    '', // Código de origen
+                    $temAnx["txtorigendoc"], // txt origen del documento
+                    '', // Clasificación
+                    '', // Número del contrato
+                    '', // Idfuente
+                    1, // versión
+                    '', // Path
+                    '1', // Estado
+                    date("Ymd"), // fecha de escaneo o generación
+                    $_SESSION["generales"]["codigousuario"],
+                    '', // Caja
+                    '', // Libro
+                    $temAnx["observaciones"],
+                    '', // Libro
+                    '', // Número de registro en libros
+                    '', // Dupli
+                    $temAnx["bandeja"], // Bandeja
+                    'N', // Soporte del recibo de caja
+                    $temAnx["identificador"], // Identificador del tipo de soporte
+                    $temAnx["tipoanexo"] // Tipo de anexo
                 );
 
                 $namefx = PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/' . $temAnx["path"] . $temAnx["idanexo"] . '.' . $temAnx["tipoarchivo"];
@@ -5533,38 +5708,39 @@ class funcionesRegistrales {
                 $tipoDocumento = TIPO_DOC_SOBRE_PROPONENTES;
             }
             $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                            $dbx,
-                            $_SESSION["temporal"]["codigobarras"], // Codigo de barras
-                            $_SESSION["temporal"]["numerorecibo"], // Numero del recibo
-                            $_SESSION["temporal"]["numerooperacion"], // Numero de operacion
-                            ltrim($arrTem["identificacionfirmante"], "0"), // Identificacion
-                            trim($nombre), // Nombre
-                            '', // Acreedor
-                            '', // Nombre acreedor
-                            '', // Matricula
-                            '', // Proponente
-                            $tipoDocumento, // Tipo de documento 
-                            '', // Numero del documento
-                            $arrTem["fecha"], '', // Codigo de origen
-                            'EL CLIENTE', // txt origen del documento
-                            '', // Clasificacion
-                            '', // Numero del contrato
-                            '', // Idfuente
-                            1, // version
-                            '', // Path
-                            '1', // Estado
-                            date("Ymd"), // fecha de escaneo o generacion
-                            $_SESSION["generales"]["codigousuario"], // COdigo del usuario
-                            '', // Caja
-                            '', // Libro
-                            'SOBRE DIGITAL - REINGRESO', // Detalle
-                            '', // Libro
-                            '', // Numero de registro en libros
-                            '', // Dupli
-                            $bandejaDigitalizacion, // Bandeja
-                            'N', // Soporte del recibo de caja
-                            '', // Identificador del tipo de soporte
-                            '601' // Tipo de anexo	
+                $dbx,
+                $_SESSION["temporal"]["codigobarras"], // Codigo de barras
+                $_SESSION["temporal"]["numerorecibo"], // Numero del recibo
+                $_SESSION["temporal"]["numerooperacion"], // Numero de operacion
+                ltrim($arrTem["identificacionfirmante"], "0"), // Identificacion
+                trim($nombre), // Nombre
+                '', // Acreedor
+                '', // Nombre acreedor
+                '', // Matricula
+                '', // Proponente
+                $tipoDocumento, // Tipo de documento 
+                '', // Numero del documento
+                $arrTem["fecha"],
+                '', // Codigo de origen
+                'EL CLIENTE', // txt origen del documento
+                '', // Clasificacion
+                '', // Numero del contrato
+                '', // Idfuente
+                1, // version
+                '', // Path
+                '1', // Estado
+                date("Ymd"), // fecha de escaneo o generacion
+                $_SESSION["generales"]["codigousuario"], // COdigo del usuario
+                '', // Caja
+                '', // Libro
+                'SOBRE DIGITAL - REINGRESO', // Detalle
+                '', // Libro
+                '', // Numero de registro en libros
+                '', // Dupli
+                $bandejaDigitalizacion, // Bandeja
+                'N', // Soporte del recibo de caja
+                '', // Identificador del tipo de soporte
+                '601' // Tipo de anexo	
             );
             $tipoarchivo = \funcionesGenerales::encontrarExtension($arrTem["path"]);
             $namefx = PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/' . $arrTem["path"];
@@ -5706,47 +5882,24 @@ class funcionesRegistrales {
         // 2017-08-10: JINT: Reporta el reingreso a DocXflow
         $mensajeSalida = 'Radicado/código de barras ' . $_SESSION["temporal"]["radicacion"]["codbarras"] . ' reingresado';
 
-        /*
-          \logApi::general2($nameLog, $_SESSION["temporal"]["codigobarras"], 'Evaluara envio del reingreso al sistema de gestión documental');
-          if (SISTEMA_IMAGENES_REGISTRO == 'DOCXFLOW') {
-          \logApi::general2($nameLog, $_SESSION["temporal"]["codigobarras"], 'Encontro que el sistema es DOCXFLOW');
-          if (defined('DOCXFLOW_SERVER') && trim(DOCXFLOW_SERVER) != '') {
-          \logApi::general2($nameLog, $_SESSION["temporal"]["codigobarras"], 'Enviara el reingreso a DOCXFLOW : ' . $_SESSION["temporal"]["radicacion"]["codbarras"]);
-          $resDocXflow = \funcionesRegistrales::docXflowNotificarCambioEstado($dbx, $_SESSION["temporal"]["radicacion"]["codbarras"], '09');
-          if ($resDocXflow === false) {
-          \logApi::general2($nameLog, $_SESSION["temporal"]["codigobarras"], 'Error enviando el reingreso a DOCXFLOW');
-          $mensajeSalida = 'Radicado reingresado pero no fue posible su notificación a docXflow : ' . $_SESSION["generales"]["mensajeerror"];
-          } else {
-          \logApi::general2($nameLog, $_SESSION["temporal"]["codigobarras"], 'Ok enviando el reingreso a DOCXFLOW');
-          }
-          }
-          }
-
-
-          // 2017-11-13: JINT: Envío de reingresos a PowerFile
-          if (SISTEMA_IMAGENES_REGISTRO == 'POWERFILE') {
-          \funcionesPowerFile::reportarReingresoPowerFile($dbx, $_SESSION["temporal"]["radicacion"]["codbarras"], $_SESSION["temporal"]["radicacion"]["recibo"], $_SESSION["generales"]["codigousuario"], date("Ymd"), date("Hi"), $_SESSION["generales"]["sedeusuario"]);
-          \logApi::general2($nameLog, $_SESSION["temporal"]["codigobarras"], 'Reporto reingreso a PowerFile');
-          }
-         */
-
         return true;
     }
 
     /**
      * 
      * @param type $dbx
-     * @param type $mat
-     * @param type $pro
+     * @param string $mat
+     * @param string $pro
      * @param type $arreglo
      * @param type $tiporegistro
      * @param type $genrec
      * @param type $tiporecibo (S o G
      */
-    public static function generarReciboCajaRepositorio($dbx, $mat, $pro, $arreglo = array(), $tiporegistro = 'RegMer', $genrec = '', $tiporecibo = 'S') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsGenerales.php');
+    public static function generarReciboCajaRepositorio($dbx, $mat, $pro, $arreglo = array(), $tiporegistro = 'RegMer', $genrec = '', $tiporecibo = 'S')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsGenerales.php';
 
-//
+        //
         if (!isset($_SESSION["tramite"]["claveprepago"])) {
             $_SESSION["tramite"]["claveprepago"] = '';
         }
@@ -5804,7 +5957,7 @@ class funcionesRegistrales {
                 $tipodoc = TIPO_DOC_REC_CAJA_MERCANTIL;
                 $bandeja = '4.-REGMER';
                 break;
-            default :
+            default:
                 $tipodoc = TIPO_DOC_REC_CAJA_MERCANTIL;
                 $bandeja = '4.-REGMER';
                 break;
@@ -5824,54 +5977,54 @@ class funcionesRegistrales {
             }
         }
         $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                        $dbx, // COnexion
-                        ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), // NumRad
-                        trim($nrec), // NumRecibo
-                        trim($nope), // NumOpe
-                        ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), // IdeCliente
-                        trim($_SESSION["tramite"]["nombrecliente"]), // NomCliente
-                        '', // Acreedor
-                        '', // Nombre acreedor
-                        ltrim($mat, "0"), // mat
-                        ltrim($pro, "0"), // Prop
-                        $tipodoc, // Tipo de documento
-                        '', // N&uacute;mero del documento
-                        $_SESSION["tramite"]["fecharecibo"], // fechaRecibo
-                        '', // C&oacute;digo de origen
-                        'CAJA DE LA CAMARA DE COMERCIO', // Txtorigen
-                        '', // Clasificaci&oacute;n
-                        '', // N&uacute;mero del contrato
-                        '', // Idfuente
-                        1, // versi&oacute;n
-                        '', // Path
-                        '1', // Estado
-                        date("Ymd"), // fecha de escaneo o generaci&oacute;n
-                        $_SESSION["generales"]["codigousuario"], // Usuario
-                        '', // Caja
-                        '', // Libro
-                        'RECIBO DE CAJA No. ' . $nrec, // Detalle
-                        '', // Libro de comercio
-                        '', // Numero de registros en libro
-                        '', // Dupli
-                        $bandeja, // Bandeja de registro
-                        'S', // Soporte del recibo de caja
-                        '', // Identificador
-                        '509' // Tipo anexo	
+            $dbx, // COnexion
+            ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), // NumRad
+            trim($nrec), // NumRecibo
+            trim($nope), // NumOpe
+            ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), // IdeCliente
+            trim($_SESSION["tramite"]["nombrecliente"]), // NomCliente
+            '', // Acreedor
+            '', // Nombre acreedor
+            ltrim($mat, "0"), // mat
+            ltrim($pro, "0"), // Prop
+            $tipodoc, // Tipo de documento
+            '', // N&uacute;mero del documento
+            $_SESSION["tramite"]["fecharecibo"], // fechaRecibo
+            '', // C&oacute;digo de origen
+            'CAJA DE LA CAMARA DE COMERCIO', // Txtorigen
+            '', // Clasificaci&oacute;n
+            '', // N&uacute;mero del contrato
+            '', // Idfuente
+            1, // versi&oacute;n
+            '', // Path
+            '1', // Estado
+            date("Ymd"), // fecha de escaneo o generaci&oacute;n
+            $_SESSION["generales"]["codigousuario"], // Usuario
+            '', // Caja
+            '', // Libro
+            'RECIBO DE CAJA No. ' . $nrec, // Detalle
+            '', // Libro de comercio
+            '', // Numero de registros en libro
+            '', // Dupli
+            $bandeja, // Bandeja de registro
+            'S', // Soporte del recibo de caja
+            '', // Identificador
+            '509' // Tipo anexo	
         );
 
         $dirx = date("Ymd");
         $path = PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/mreg/' . $dirx;
-        
+
         if (!is_dir(PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"]) || !is_readable(PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"])) {
             mkdir(PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"], 0777);
             \funcionesGenerales::crearIndex(PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"]);
         }
-        
+
         if (!is_dir(PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/mreg') || !is_readable(PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/mreg')) {
             mkdir(PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/mreg', 0777);
             \funcionesGenerales::crearIndex(PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/mreg');
         }
-        
+
         if (!is_dir($path) || !is_readable($path)) {
             mkdir($path, 0777);
             \funcionesGenerales::crearIndex($path);
@@ -5883,8 +6036,9 @@ class funcionesRegistrales {
         \funcionesRegistrales::grabarPathAnexoRadicacion($dbx, $id, $pathsalida);
     }
 
-    public static function generarMutacionDireccionRepositorio($dbx = null) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsMutacionDireccion.php');
+    public static function generarMutacionDireccionRepositorio($dbx = null)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsMutacionDireccion.php';
 
         $_SESSION["formulario"]["datos"] = array();
         $_SESSION["formulario"]["numrec"] = $_SESSION["tramite"]["numerorecuperacion"];
@@ -5902,31 +6056,39 @@ class funcionesRegistrales {
             }
             $name = armarPdfMutacionDireccion($_SESSION["tramite"]["numerorecuperacion"], $_SESSION["tramite"]["numeroliquidacion"]);
             $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                            $dbx, // Conexion BD
-                            ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), trim($_SESSION["tramite"]["numerorecibo"]), trim($_SESSION["tramite"]["numerooperacion"]), ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), trim($_SESSION["tramite"]["nombrecliente"]), '', // Acreedor
-                            '', // Nombre acreedor
-                            ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
-                            '', // N&uacute;mero de proponente
-                            retornarClaveValorMysqliApi($dbx, $clavevalor), // Tipo de documento
-                            'N/A', // N&uacute;mero del documento
-                            $_SESSION["tramite"]["fecharecibo"], '', // C&oacute;digo de origen
-                            'EL COMERCIANTE - INSCRITO', '', // Clasificaci&oacute;n
-                            '', // N&uacute;mero del contrato
-                            '', // Idfuente
-                            1, // versi&oacute;n
-                            '', // Path
-                            '1', // Estado
-                            date("Ymd"), // fecha de escaneo o generaci&oacute;n
-                            $_SESSION["generales"]["codigousuario"], '', // Caja
-                            '', // Libro
-                            'SOLICITUD DE MUTACION DE DIRECCION MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // Noticia
-                            '', // LIBRO
-                            '', // Registro
-                            '', // Dupli
-                            $bandeja, // Bandeja de registro
-                            'S', // Soporte del recibo de caja
-                            '', // identificador
-                            '501' // Tipo anexo				
+                $dbx, // Conexion BD
+                ltrim($_SESSION["tramite"]["numeroradicacion"], "0"),
+                trim($_SESSION["tramite"]["numerorecibo"]),
+                trim($_SESSION["tramite"]["numerooperacion"]),
+                ltrim($_SESSION["tramite"]["identificacioncliente"], "0"),
+                trim($_SESSION["tramite"]["nombrecliente"]),
+                '', // Acreedor
+                '', // Nombre acreedor
+                ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
+                '', // N&uacute;mero de proponente
+                retornarClaveValorMysqliApi($dbx, $clavevalor), // Tipo de documento
+                'N/A', // N&uacute;mero del documento
+                $_SESSION["tramite"]["fecharecibo"],
+                '', // C&oacute;digo de origen
+                'EL COMERCIANTE - INSCRITO',
+                '', // Clasificaci&oacute;n
+                '', // N&uacute;mero del contrato
+                '', // Idfuente
+                1, // versi&oacute;n
+                '', // Path
+                '1', // Estado
+                date("Ymd"), // fecha de escaneo o generaci&oacute;n
+                $_SESSION["generales"]["codigousuario"],
+                '', // Caja
+                '', // Libro
+                'SOLICITUD DE MUTACION DE DIRECCION MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // Noticia
+                '', // LIBRO
+                '', // Registro
+                '', // Dupli
+                $bandeja, // Bandeja de registro
+                'S', // Soporte del recibo de caja
+                '', // identificador
+                '501' // Tipo anexo				
             );
             $dirx = date("Ymd");
             $path = PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/mreg/' . $dirx;
@@ -5944,8 +6106,9 @@ class funcionesRegistrales {
         }
     }
 
-    public static function generarMutacionNombreRepositorio($dbx = null) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsMutacionNombre.php');
+    public static function generarMutacionNombreRepositorio($dbx = null)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/genPdfsMutacionNombre.php';
 
         $_SESSION["formulario"]["datos"] = array();
         $_SESSION["formulario"]["numrec"] = $_SESSION["tramite"]["numerorecuperacion"];
@@ -5961,31 +6124,39 @@ class funcionesRegistrales {
             }
             $name = armarPdfMutacionNombre($dbx, $_SESSION["tramite"]["numerorecuperacion"], $_SESSION["tramite"]["numeroliquidacion"]);
             $id = \funcionesRegistrales::grabarAnexoRadicacion(
-                            $dbx, // Conexion BD
-                            ltrim($_SESSION["tramite"]["numeroradicacion"], "0"), trim($_SESSION["tramite"]["numerorecibo"]), trim($_SESSION["tramite"]["numerooperacion"]), ltrim($_SESSION["tramite"]["identificacioncliente"], "0"), trim($_SESSION["tramite"]["nombrecliente"]), '', // Acreedor
-                            '', // Nombre acreedor
-                            ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
-                            '', // N&uacute;mero de proponente
-                            retornarClaveValorMysqliApi($dbx, $clavevalor), // Tipo de documento
-                            'N/A', // N&uacute;mero del documento
-                            $_SESSION["tramite"]["fecharecibo"], '', // C&oacute;digo de origen
-                            'EL COMERCIANTE - INSCRITO', '', // Clasificaci&oacute;n
-                            '', // Numero del contrato
-                            '', // Idfuente
-                            1, // version
-                            '', // Path
-                            '1', // Estado
-                            date("Ymd"), // fecha de escaneo o generaci&oacute;n
-                            $_SESSION["generales"]["codigousuario"], '', // Caja
-                            '', // Libro
-                            'SOLICITUD DE MUTACION DE NOMBRE MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // Noticia
-                            '', // LIBRO
-                            '', // Registro
-                            '', // Dupli
-                            $bandeja, // Bandeja de registro
-                            'S', // Soporte del recibo de caja
-                            '', // identificador
-                            '501' // Tipo anexo
+                $dbx, // Conexion BD
+                ltrim($_SESSION["tramite"]["numeroradicacion"], "0"),
+                trim($_SESSION["tramite"]["numerorecibo"]),
+                trim($_SESSION["tramite"]["numerooperacion"]),
+                ltrim($_SESSION["tramite"]["identificacioncliente"], "0"),
+                trim($_SESSION["tramite"]["nombrecliente"]),
+                '', // Acreedor
+                '', // Nombre acreedor
+                ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // N&uacute;mero de matr&iacute;cula
+                '', // N&uacute;mero de proponente
+                retornarClaveValorMysqliApi($dbx, $clavevalor), // Tipo de documento
+                'N/A', // N&uacute;mero del documento
+                $_SESSION["tramite"]["fecharecibo"],
+                '', // C&oacute;digo de origen
+                'EL COMERCIANTE - INSCRITO',
+                '', // Clasificaci&oacute;n
+                '', // Numero del contrato
+                '', // Idfuente
+                1, // version
+                '', // Path
+                '1', // Estado
+                date("Ymd"), // fecha de escaneo o generaci&oacute;n
+                $_SESSION["generales"]["codigousuario"],
+                '', // Caja
+                '', // Libro
+                'SOLICITUD DE MUTACION DE NOMBRE MATRICULA NO. ' . ltrim($_SESSION["formulario"]["datos"]["matricula"], "0"), // Noticia
+                '', // LIBRO
+                '', // Registro
+                '', // Dupli
+                $bandeja, // Bandeja de registro
+                'S', // Soporte del recibo de caja
+                '', // identificador
+                '501' // Tipo anexo
             );
             $dirx = date("Ymd");
             $path = PATH_ABSOLUTO_IMAGES . '/' . $_SESSION["generales"]["codigoempresa"] . '/mreg/' . $dirx;
@@ -6003,10 +6174,11 @@ class funcionesRegistrales {
         }
     }
 
-    public static function generarSecuenciaCodigoBarras($dbx, $fechacb = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/log.php');
+    public static function generarSecuenciaCodigoBarras($dbx, $fechacb = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
         $nameLog = 'generarSecuenciaCodigoBarras_' . date("Ymd");
-//
+        //
         $cb = 0;
         $cb = \funcionesRegistrales::retornarMregSecuencia($dbx, 'CODIGOS-BARRAS');
         if ($cb == 0) {
@@ -6015,9 +6187,9 @@ class funcionesRegistrales {
             return false;
         }
 
-// ************************************************************************************************ //
-// Revisa que el codigo de barras no este previamente creado
-// ************************************************************************************************ //
+        // ************************************************************************************************ //
+        // Revisa que el codigo de barras no este previamente creado
+        // ************************************************************************************************ //
         $seguir = "si";
         while ($seguir == 'si') {
             $cb++;
@@ -6026,14 +6198,14 @@ class funcionesRegistrales {
             }
         }
 
-// ************************************************************************************************ //
-// Actualiza el consecutivo en claves valor
-// ************************************************************************************************ //	
+        // ************************************************************************************************ //
+        // Actualiza el consecutivo en claves valor
+        // ************************************************************************************************ //	
         \funcionesRegistrales::actualizarMregSecuencia($dbx, 'CODIGOS-BARRAS', $cb);
 
-// ************************************************************************************************ //
-// Arma los arreglos para grabar el recibo
-// ************************************************************************************************ //
+        // ************************************************************************************************ //
+        // Arma los arreglos para grabar el recibo
+        // ************************************************************************************************ //
 
         if ($fechacb != '') {
             $fecasignar = $fechacb;
@@ -6081,7 +6253,7 @@ class funcionesRegistrales {
             'clavefirmado'
         );
 
-//
+        //
         $arrValores = array(
             "'" . $cb . "'",
             "''", // operacion
@@ -6123,7 +6295,7 @@ class funcionesRegistrales {
             "''" // clave firmado
         );
 
-//
+        //
         $res = insertarRegistrosMysqliApi($dbx, 'mreg_est_codigosbarras', $arrCampos, $arrValores);
         if ($res === false) {
             \logApi::general2($nameLog, '', 'Error creando codigo de barras : ' . $_SESSION["generales"]["mensajeerror"]);
@@ -6134,7 +6306,8 @@ class funcionesRegistrales {
         return $cb;
     }
 
-    public static function generarSecuenciaCodigoBarrasPowerFile($dbx) {
+    public static function generarSecuenciaCodigoBarrasPowerFile($dbx)
+    {
         $cb = false;
         $headers = array(
             'function: authenticationUser',
@@ -6142,7 +6315,8 @@ class funcionesRegistrales {
             'workspace: cccucuta',
             'Content-Type: application/json'
         );
-        $data = array('pmhost' => 'http://bpm.cccucuta.org.co',
+        $data = array(
+            'pmhost' => 'http://bpm.cccucuta.org.co',
             'workspace' => 'cccucuta',
             'clientId' => 'NZPXVTXFOLFZTOGQVGGYUDXGCGLLRFQV',
             'clientSecret' => '13653564459a7194df19bb2021547438',
@@ -6167,8 +6341,8 @@ class funcionesRegistrales {
         $scope = $resultado['scope'];
         $refresh_token = $resultado['refresh_token'];
 
-//echo $access_token;
-//Validacion de Autenticacion
+        //echo $access_token;
+        //Validacion de Autenticacion
         if ($access_token != '') {
             $header = array(
                 'function: newCaseTrigger',
@@ -6197,9 +6371,9 @@ class funcionesRegistrales {
             }
         }
 
-// ************************************************************************************************ //
-// Arma los arreglos para grabar el recibo
-// ************************************************************************************************ //
+        // ************************************************************************************************ //
+        // Arma los arreglos para grabar el recibo
+        // ************************************************************************************************ //
 
         if ($cb && $cb != '') {
             $arrCampos = array(
@@ -6243,7 +6417,7 @@ class funcionesRegistrales {
                 'clavefirmado'
             );
 
-//
+            //
             $arrValores = array(
                 "'" . $cb . "'",
                 "''", // operacion
@@ -6285,7 +6459,7 @@ class funcionesRegistrales {
                 "''" // clave firmado
             );
 
-//
+            //
             $res = insertarRegistrosMysqliApi($dbx, 'mreg_est_codigosbarras', $arrCampos, $arrValores);
             if ($res === false) {
                 return false;
@@ -6303,8 +6477,9 @@ class funcionesRegistrales {
      * @param type $libro
      * @return type
      */
-    public static function generarSecuenciaLibros($dbx, $libro = '', $crear = 'si') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaLibros.php');
+    public static function generarSecuenciaLibros($dbx, $libro = '', $crear = 'si')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaLibros.php';
         return \funcionesRegistrales_generarSecuenciaLibros::generarSecuenciaLibros($dbx, $libro, $crear);
     }
 
@@ -6313,8 +6488,9 @@ class funcionesRegistrales {
      * @param type $dbx
      * @return type
      */
-    public static function generarSecuenciaLibrosProponentes($dbx) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaLibrosProponentes.php');
+    public static function generarSecuenciaLibrosProponentes($dbx)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaLibrosProponentes.php';
         return \funcionesRegistrales_generarSecuenciaLibrosProponentes::generarSecuenciaLibrosProponentes($dbx);
     }
 
@@ -6333,8 +6509,9 @@ class funcionesRegistrales {
      * @param type $proceso
      * @return type
      */
-    public static function generarSecuenciaMatricula($dbx, $tipomat = '', $org = '', $cat = '', $nom = '', $fmat = '', $fren = '', $aren = '', $est = '', $codbar = '', $proceso = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaMatricula.php');
+    public static function generarSecuenciaMatricula($dbx, $tipomat = '', $org = '', $cat = '', $nom = '', $fmat = '', $fren = '', $aren = '', $est = '', $codbar = '', $proceso = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaMatricula.php';
         return \funcionesRegistrales_generarSecuenciaMatricula::generarSecuenciaMatricula($dbx, $tipomat, $org, $cat, $nom, $fmat, $fren, $aren, $est, $codbar, $proceso);
     }
 
@@ -6343,8 +6520,9 @@ class funcionesRegistrales {
      * @param type $dbx
      * @return type
      */
-    public static function generarSecuenciaProponente($dbx) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaProponente.php');
+    public static function generarSecuenciaProponente($dbx)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaProponente.php';
         return \funcionesRegistrales_generarSecuenciaProponente::generarSecuenciaProponente($dbx);
     }
 
@@ -6357,7 +6535,8 @@ class funcionesRegistrales {
      * @param type $sedex
      * @return type
      */
-    public static function generarSecuenciaOperacion($dbx, $usuario, $fecha, $cajero = '', $sedex = '') {
+    public static function generarSecuenciaOperacion($dbx, $usuario, $fecha, $cajero = '', $sedex = '')
+    {
         $sec = 0;
         $sec1 = 0;
         $sede = $sedex;
@@ -6443,8 +6622,9 @@ class funcionesRegistrales {
      * @param type $arrServs
      * @return type
      */
-    public static function generarSecuenciaRecibo($mysqli, $tipo = 'S', $fps = array(), $operacion = '', $fecha = '', $hora = '', $codbarras = '', $tiporegistro = '', $identificacion = '', $nombre = '', $organizacion = '', $categoria = '', $idtipodoc = '', $numdoc = '', $origendoc = '', $fechadoc = '', $estado = '', $fecharenovacionaplicable = '', $tiporecibo = 'S', $arrServs = array()) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaRecibo.php');
+    public static function generarSecuenciaRecibo($mysqli, $tipo = 'S', $fps = array(), $operacion = '', $fecha = '', $hora = '', $codbarras = '', $tiporegistro = '', $identificacion = '', $nombre = '', $organizacion = '', $categoria = '', $idtipodoc = '', $numdoc = '', $origendoc = '', $fechadoc = '', $estado = '', $fecharenovacionaplicable = '', $tiporecibo = 'S', $arrServs = array())
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaRecibo.php';
         return \funcionesRegistrales_generarSecuenciaRecibo::generarSecuenciaRecibo($mysqli, $tipo, $fps, $operacion, $fecha, $hora, $codbarras, $tiporegistro, $identificacion, $nombre, $organizacion, $categoria, $idtipodoc, $numdoc, $origendoc, $fechadoc, $estado, $fecharenovacionaplicable, $tiporecibo, $arrServs);
     }
 
@@ -6454,8 +6634,9 @@ class funcionesRegistrales {
      * @param type $tipo
      * @return type
      */
-    public static function generarSecuenciaReciboVacia($mysqli, $tipo = 'S') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaReciboVacia.php');
+    public static function generarSecuenciaReciboVacia($mysqli, $tipo = 'S')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaReciboVacia.php';
         return \funcionesRegistrales_generarSecuenciaReciboVacia::generarSecuenciaReciboVacia($mysqli, $tipo);
     }
 
@@ -6483,8 +6664,9 @@ class funcionesRegistrales {
      * @param type $nameLog
      * @return type
      */
-    public static function generarSecuenciaReciboReversion($mysqli, $tipo = 'S', $recori = array(), $arrDet = array(), $arrTot = array(), $fps = array(), $operacion = '', $fecha = '', $hora = '', $codbarras = '', $tiporegistro = '', $identificacion = '', $nombre = '', $organizacion = '', $categoria = '', $idtipodoc = '', $numdoc = '', $origendoc = '', $fechadoc = '', $nameLog = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaReciboReversion.php');
+    public static function generarSecuenciaReciboReversion($mysqli, $tipo = 'S', $recori = array(), $arrDet = array(), $arrTot = array(), $fps = array(), $operacion = '', $fecha = '', $hora = '', $codbarras = '', $tiporegistro = '', $identificacion = '', $nombre = '', $organizacion = '', $categoria = '', $idtipodoc = '', $numdoc = '', $origendoc = '', $fechadoc = '', $nameLog = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_generarSecuenciaReciboReversion.php';
         return \funcionesRegistrales_generarSecuenciaReciboReversion::generarSecuenciaReciboReversion($mysqli, $tipo, $recori, $arrDet, $arrTot, $fps, $operacion, $fecha, $hora, $codbarras, $tiporegistro, $identificacion, $nombre, $organizacion, $categoria, $idtipodoc, $numdoc, $origendoc, $fechadoc, $nameLog);
     }
 
@@ -6529,8 +6711,9 @@ class funcionesRegistrales {
      * @param type $datareferencia
      * @return type
      */
-    public static function grabarAnexoRadicacion($dbx = null, $idradicacion = 0, $numerorecibo = '', $numerooperacion = '', $identificacion = '', $nombre = '', $acreedor = '', $nombreacreedor = '', $matricula = '', $proponente = '', $idtipodoc = '', $numdoc = '', $fechadoc = '', $idorigendoc = '', $txtorigendoc = '', $idclasificacion = '', $numcontrato = '', $idfuente = '', $version = 1, $path = '', $estado = '', $fechaescaneo = '', $idusuarioescaneo = '', $idcajaarchivo = '', $idlibroarchivo = '', $observaciones = '', $libro = '', $registro = '', $dupli = '', $bandeja = '', $soporterecibo = '', $identificador = '', $tipoanexo = '', $procesoespecial = '', $nir = '', $nuc = '', $datareferencia = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarAnexoRadicacion.php');
+    public static function grabarAnexoRadicacion($dbx = null, $idradicacion = 0, $numerorecibo = '', $numerooperacion = '', $identificacion = '', $nombre = '', $acreedor = '', $nombreacreedor = '', $matricula = '', $proponente = '', $idtipodoc = '', $numdoc = '', $fechadoc = '', $idorigendoc = '', $txtorigendoc = '', $idclasificacion = '', $numcontrato = '', $idfuente = '', $version = 1, $path = '', $estado = '', $fechaescaneo = '', $idusuarioescaneo = '', $idcajaarchivo = '', $idlibroarchivo = '', $observaciones = '', $libro = '', $registro = '', $dupli = '', $bandeja = '', $soporterecibo = '', $identificador = '', $tipoanexo = '', $procesoespecial = '', $nir = '', $nuc = '', $datareferencia = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarAnexoRadicacion.php';
         return \funcionesRegistrales_grabarAnexoRadicacion::grabarAnexoRadicacion($dbx, $idradicacion, $numerorecibo, $numerooperacion, $identificacion, $nombre, $acreedor, $nombreacreedor, $matricula, $proponente, $idtipodoc, $numdoc, $fechadoc, $idorigendoc, $txtorigendoc, $idclasificacion, $numcontrato, $idfuente, $version, $path, $estado, $fechaescaneo, $idusuarioescaneo, $idcajaarchivo, $idlibroarchivo, $observaciones, $libro, $registro, $dupli, $bandeja, $soporterecibo, $identificador, $tipoanexo, $procesoespecial, $nir, $nuc, $datareferencia);
     }
 
@@ -6557,21 +6740,23 @@ class funcionesRegistrales {
      * @param type $ip
      * @return type
      */
-    public static function grabarHistoricos($dbx, $fecha = '', $hora = '', $mat = '', $pro = '', $tipoid = '', $numid = '', $nom = '', $tt = '', $reg = '', $lib = '', $numreg = '', $rec = '', $ope = '', $codbar = '', $xmlo = '', $xmlf = '', $usu = '', $ip = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarHistoricos.php');
+    public static function grabarHistoricos($dbx, $fecha = '', $hora = '', $mat = '', $pro = '', $tipoid = '', $numid = '', $nom = '', $tt = '', $reg = '', $lib = '', $numreg = '', $rec = '', $ope = '', $codbar = '', $xmlo = '', $xmlf = '', $usu = '', $ip = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarHistoricos.php';
         return \funcionesRegistrales_grabarHistoricos::grabarHistoricos($dbx, $fecha, $hora, $mat, $pro, $tipoid, $numid, $nom, $tt, $reg, $lib, $numreg, $rec, $ope, $codbar, $xmlo, $xmlf, $usu, $ip);
     }
 
-    
+
     /**
      * 
      * @param type $dbx
      * @param type $datax
      * @return type
      */
-    public static function grabarLiquidacionMreg($dbx = null, $datat = array ()) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarLiquidacionMreg.php');
-        return \funcionesRegistrales_grabarLiquidacionMreg::grabarLiquidacionMreg($dbx,$datat);
+    public static function grabarLiquidacionMreg($dbx = null, $datat = array())
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarLiquidacionMreg.php';
+        return \funcionesRegistrales_grabarLiquidacionMreg::grabarLiquidacionMreg($dbx, $datat);
     }
 
     /**
@@ -6582,8 +6767,9 @@ class funcionesRegistrales {
      * @param type $xml1
      * @return type
      */
-    public static function grabarMregLiquidacionDatosAnteriores($dbx, $idliquidacion, $expediente, $xml1) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarMregLiquidacionDatosAnteriores.php');
+    public static function grabarMregLiquidacionDatosAnteriores($dbx, $idliquidacion, $expediente, $xml1)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarMregLiquidacionDatosAnteriores.php';
         return \funcionesRegistrales_grabarMregLiquidacionDatosAnteriores::grabarMregLiquidacionDatosAnteriores($dbx, $idliquidacion, $expediente, $xml1);
     }
 
@@ -6594,8 +6780,9 @@ class funcionesRegistrales {
      * @param type $path
      * @return type
      */
-    public static function grabarPathAnexoRadicacion($dbx = null, $idanexo = '', $path = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarPathAnexoRadicacion.php');
+    public static function grabarPathAnexoRadicacion($dbx = null, $idanexo = '', $path = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarPathAnexoRadicacion.php';
         return \funcionesRegistrales_grabarPathAnexoRadicacion::grabarPathAnexoRadicacion($dbx, $idanexo, $path);
     }
 
@@ -6610,8 +6797,9 @@ class funcionesRegistrales {
      * @param type $idusuarioe
      * @return type
      */
-    public static function grabarRegistroAnulacion($mysqli, $cb, $estado, $nameLog = '', $idmotivoe = '', $motivoe = '', $idusuarioe = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarRegistroAnulacion.php');
+    public static function grabarRegistroAnulacion($mysqli, $cb, $estado, $nameLog = '', $idmotivoe = '', $motivoe = '', $idusuarioe = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_grabarRegistroAnulacion.php';
         return \funcionesRegistrales_grabarRegistroAnulacion::grabarRegistroAnulacion($mysqli, $cb, $estado, $nameLog, $idmotivoe, $motivoe, $idusuarioe);
     }
 
@@ -6623,8 +6811,9 @@ class funcionesRegistrales {
      * @param type $fren
      * @return type
      */
-    public static function inactivarSiprefMatriculas($mysqli, $mat, $fmat, $fren) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_inactivarSiprefMatriculas.php');
+    public static function inactivarSiprefMatriculas($mysqli, $mat, $fmat, $fren)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_inactivarSiprefMatriculas.php';
         return \funcionesRegistrales_inactivarSiprefMatriculas::inactivarSiprefMatriculas($mysqli, $mat, $fmat, $fren);
     }
 
@@ -6634,8 +6823,9 @@ class funcionesRegistrales {
      * @param type $ide
      * @return type
      */
-    public static function localizarSaldoPrepago($mysqli, $ide) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_localizarSaldoPrepago.php');
+    public static function localizarSaldoPrepago($mysqli, $ide)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_localizarSaldoPrepago.php';
         return \funcionesRegistrales_localizarSaldoPrepago::localizarSaldoPrepago($mysqli, $ide);
     }
 
@@ -6649,8 +6839,9 @@ class funcionesRegistrales {
      * @param type $motivox
      * @return type
      */
-    public static function localizarMotivoCancelacion($mysqli, $mat, $org, $cat, $libs, $motivox) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_localizarMotivoCancelacion.php');
+    public static function localizarMotivoCancelacion($mysqli, $mat, $org, $cat, $libs, $motivox)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_localizarMotivoCancelacion.php';
         return \funcionesRegistrales_localizarMotivoCancelacion::localizarMotivoCancelacion($mysqli, $mat, $org, $cat, $libs, $motivox);
     }
 
@@ -6661,8 +6852,9 @@ class funcionesRegistrales {
      * @param type $condicion
      * @return type
      */
-    public static function matrizActividadEconomica($mysqli, $numcon, $condicion) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_matrizActividadEconomica.php');
+    public static function matrizActividadEconomica($mysqli, $numcon, $condicion)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_matrizActividadEconomica.php';
         return \funcionesRegistrales_matrizActividadEconomica::matrizActividadEconomica($mysqli, $numcon, $condicion);
     }
 
@@ -6673,8 +6865,9 @@ class funcionesRegistrales {
      * @param type $condicion
      * @return type
      */
-    public static function matrizActividadEconomicaS($mysqli, $numcon, $condicion) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_matrizActividadEconomicaS.php');
+    public static function matrizActividadEconomicaS($mysqli, $numcon, $condicion)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_matrizActividadEconomicaS.php';
         return \funcionesRegistrales_matrizActividadEconomicaS::matrizActividadEconomicaS($mysqli, $numcon, $condicion);
     }
 
@@ -6694,8 +6887,9 @@ class funcionesRegistrales {
      * @param type $serviciosCertificados
      * @return type
      */
-    public static function matrizActividadservicio($mysqli, $tipo, $anno, $fechaini, $fechafin, $condicionPresencial, $condicionVirtual, $condicionRueReceptora, $condicionRueResponsable, $servicios, $serviciosRenovacion, $serviciosCertificados) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_matrizActividadservicio.php');
+    public static function matrizActividadservicio($mysqli, $tipo, $anno, $fechaini, $fechafin, $condicionPresencial, $condicionVirtual, $condicionRueReceptora, $condicionRueResponsable, $servicios, $serviciosRenovacion, $serviciosCertificados)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_matrizActividadservicio.php';
         return \funcionesRegistrales_matrizActividadservicio::matrizActividadservicio($mysqli, $tipo, $anno, $fechaini, $fechafin, $condicionPresencial, $condicionVirtual, $condicionRueReceptora, $condicionRueResponsable, $servicios, $serviciosRenovacion, $serviciosCertificados);
     }
 
@@ -6704,8 +6898,9 @@ class funcionesRegistrales {
      * @param type $mysqli
      * @return type
      */
-    public static function matrizRevisionfiscal($mysqli = null, $listavinc = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_matrizRevisionfiscal.php');
+    public static function matrizRevisionfiscal($mysqli = null, $listavinc = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_matrizRevisionfiscal.php';
         return \funcionesRegistrales_matrizRevisionfiscal::matrizRevisionfiscal($mysqli, $listavinc);
     }
 
@@ -6714,8 +6909,9 @@ class funcionesRegistrales {
      * @param type $mysqli
      * @return type
      */
-    public static function validarParametrosFirmado($mysqli = null) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarParametrosFirmado.php');
+    public static function validarParametrosFirmado($mysqli = null)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarParametrosFirmado.php';
         return \funcionesRegistrales_validarParametrosFirmado::validarParametrosFirmado($mysqli);
     }
 
@@ -6726,8 +6922,9 @@ class funcionesRegistrales {
      * @param type $expentrada
      * @return type
      */
-    public static function validarFirmante($mysqli, $tram = array(), $expentrada = false) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarFirmante.php');
+    public static function validarFirmante($mysqli, $tram = array(), $expentrada = false)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarFirmante.php';
         return \funcionesRegistrales_validarFirmante::validarFirmante($mysqli, $tram, $expentrada);
     }
 
@@ -6737,8 +6934,9 @@ class funcionesRegistrales {
      * @param type $exp
      * @return type
      */
-    public static function validarFirmanteReactivacion($mysqli, $exp) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarFirmanteReactivacion.php');
+    public static function validarFirmanteReactivacion($mysqli, $exp)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarFirmanteReactivacion.php';
         return \funcionesRegistrales_validarFirmanteReactivacion::validarFirmanteReactivacion($mysqli, $exp);
     }
 
@@ -6747,8 +6945,9 @@ class funcionesRegistrales {
      * @param type $mysqli
      * @return type
      */
-    public static function validarFirmanteReingresoGenerico($mysqli) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarFirmanteReingresoGenerico.php');
+    public static function validarFirmanteReingresoGenerico($mysqli)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarFirmanteReingresoGenerico.php';
         return \funcionesRegistrales_validarFirmanteReingresoGenerico::validarFirmanteReingresoGenerico($mysqli);
     }
 
@@ -6758,8 +6957,9 @@ class funcionesRegistrales {
      * @param type $exp
      * @return type
      */
-    public static function validarFirmanteMatriculaPnatEst($mysqli, $exp) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarFirmanteMatriculaPnatEst.php');
+    public static function validarFirmanteMatriculaPnatEst($mysqli, $exp)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarFirmanteMatriculaPnatEst.php';
         return \funcionesRegistrales_validarFirmanteMatriculaPnatEst::validarFirmanteMatriculaPnatEst($mysqli, $exp);
     }
 
@@ -6769,8 +6969,9 @@ class funcionesRegistrales {
      * @param type $liquidacion
      * @return type
      */
-    public static function validarMatriculasRenovadas($mysqli, $liquidacion) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarMatriculasRenovadas.php');
+    public static function validarMatriculasRenovadas($mysqli, $liquidacion)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarMatriculasRenovadas.php';
         return \funcionesRegistrales_validarMatriculasRenovadas::validarMatriculasRenovadas($mysqli, $exp);
     }
 
@@ -6780,8 +6981,9 @@ class funcionesRegistrales {
      * @param type $mun
      * @return type
      */
-    public static function validarMunicipioJurisdiccion($mysqli, $mun) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarMunicipioJurisdiccion.php');
+    public static function validarMunicipioJurisdiccion($mysqli, $mun)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarMunicipioJurisdiccion.php';
         return \funcionesRegistrales_validarMunicipioJurisdiccion::validarMunicipioJurisdiccion($mysqli, $mun);
     }
 
@@ -6792,8 +6994,9 @@ class funcionesRegistrales {
      * @param type $logName
      * @return type
      */
-    public static function validarPagoPendienteLog($mysqli, $numliq, $logName = 'validarPagoPendienteLog_') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarPagoPendienteLog.php');
+    public static function validarPagoPendienteLog($mysqli, $numliq, $logName = 'validarPagoPendienteLog_')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarPagoPendienteLog.php';
         return \funcionesRegistrales_validarPagoPendienteLog::validarPagoPendienteLog($mysqli, $numliq, $logName);
     }
 
@@ -6805,8 +7008,9 @@ class funcionesRegistrales {
      * @param type $ano
      * @return type
      */
-    public static function validarReglasEspecialesRenovacion($mysqli, $codcam = '', $servicio = '', $ano = '') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarReglasEspecialesRenovacion.php');
+    public static function validarReglasEspecialesRenovacion($mysqli, $codcam = '', $servicio = '', $ano = '')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarReglasEspecialesRenovacion.php';
         return \funcionesRegistrales_validarReglasEspecialesRenovacion::validarReglasEspecialesRenovacion($mysqli, $codcam, $servicio, $ano);
     }
 
@@ -6815,8 +7019,9 @@ class funcionesRegistrales {
      * @param type $mysqli
      * @return type
      */
-    public static function validarUsuarioVerificado($mysqli) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarUsuarioVerificado.php');
+    public static function validarUsuarioVerificado($mysqli)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_validarUsuarioVerificado.php';
         return \funcionesRegistrales_validarUsuarioVerificado::validarUsuarioVerificado($mysqli);
     }
 
@@ -6831,17 +7036,19 @@ class funcionesRegistrales {
      * @param type $version
      * @return type
      */
-    public static function verificarDatosModificadosApi($dbx, $numliq, $numrad, $tipotra, $datos, $codigoEmpresa = '', $version = '1510') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_verificarDatosModificadosApi.php');
+    public static function verificarDatosModificadosApi($dbx, $numliq, $numrad, $tipotra, $datos, $codigoEmpresa = '', $version = '1510')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_verificarDatosModificadosApi.php';
         return \funcionesRegistrales_verificarDatosModificadosApi::verificarDatosModificadosApi($dbx, $numliq, $numrad, $tipotra, $datos, $codigoEmpresa, $version);
     }
 
-    
-    public static function encontrarAnexoBalances($mysqli, $idliq) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_encontrarAnexoBalances.php');
+
+    public static function encontrarAnexoBalances($mysqli, $idliq)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_encontrarAnexoBalances.php';
         return \funcionesRegistrales_encontrarAnexoBalances::encontrarAnexoBalances($mysqli, $idliq);
     }
-    
+
     /**
      * 
      * @param type $mysqli
@@ -6849,8 +7056,9 @@ class funcionesRegistrales {
      * @param type $tipoenvio
      * @return type
      */
-    public static function encontrarNuevas($mysqli, $control, $tipoenvio = '1') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_encontrarNuevas.php');
+    public static function encontrarNuevas($mysqli, $control, $tipoenvio = '1')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_encontrarNuevas.php';
         return \funcionesRegistrales_encontrarNuevas::encontrarNuevas($mysqli, $control, $tipoenvio);
     }
 
@@ -6861,8 +7069,9 @@ class funcionesRegistrales {
      * @param type $tipoenvio
      * @return type
      */
-    public static function encontrarModificaciones($mysqli, $control, $tipoenvio = '1') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_encontrarModificaciones.php');
+    public static function encontrarModificaciones($mysqli, $control, $tipoenvio = '1')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_encontrarModificaciones.php';
         return \funcionesRegistrales_encontrarModificaciones::encontrarModificaciones($mysqli, $control, $tipoenvio);
     }
 
@@ -6873,8 +7082,9 @@ class funcionesRegistrales {
      * @param type $tipoenvio
      * @return type
      */
-    public static function encontrarCancelaciones($mysqli, $control, $tipoenvio = '1') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_encontrarCancelaciones.php');
+    public static function encontrarCancelaciones($mysqli, $control, $tipoenvio = '1')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_encontrarCancelaciones.php';
         return \funcionesRegistrales_encontrarCancelaciones::encontrarCancelaciones($mysqli, $control, $tipoenvio);
     }
 
@@ -6887,8 +7097,9 @@ class funcionesRegistrales {
      * @param type $tipoenvio: 0.- pruebas 1.- Produccion
      * @return type
      */
-    public static function construirJsonSistemasExternos($mysqli, $exp, $tiporeporte, $sistemadestino, $tipoenvio = '1') {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_construirJsonSistemasExternos.php');
+    public static function construirJsonSistemasExternos($mysqli, $exp, $tiporeporte, $sistemadestino, $tipoenvio = '1')
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_construirJsonSistemasExternos.php';
         return \funcionesRegistrales_construirJsonSistemasExternos::construirJsonSistemasExternos($mysqli, $exp, $tiporeporte, $sistemadestino, $tipoenvio);
     }
 
@@ -6898,12 +7109,14 @@ class funcionesRegistrales {
      * @param type $exp
      * @return type
      */
-    public static function construirJsonGeoreferenciacion($mysqli, $exp) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_construirJsonGeoreferenciacion.php');
+    public static function construirJsonGeoreferenciacion($mysqli, $exp)
+    {
+        require_once $_SESSION["generales"]["pathabsoluto"] . '/api/funcionesRegistrales_construirJsonGeoreferenciacion.php';
         return \funcionesRegistrales_construirJsonGeoreferenciacion::construirJsonGeoreferenciacion($mysqli, $exp);
     }
-    
-    public static function validarCancelacionEnTramite ($mysqli,$tra) {
+
+    public static function validarCancelacionEnTramite($mysqli, $tra)
+    {
         $cancelacionentramite = '';
         $estadosvalidos = array('00', '05', '06', '07', '15', '16', '17', '19', '39,', '40', '41', '42', '99');
         foreach ($tra["expedientes"] as $exp1) {

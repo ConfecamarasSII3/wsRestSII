@@ -1,9 +1,11 @@
 <?php
 
-class funcionesRegistrales_grabarLiquidacionMreg {
+class funcionesRegistrales_grabarLiquidacionMreg
+{
 
-    public static function grabarLiquidacionMreg($dbx = null, $datat = array()) {
-        require_once ($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
+    public static function grabarLiquidacionMreg($dbx = null, $datat = array())
+    {
+        require_once($_SESSION["generales"]["pathabsoluto"] . '/api/mysqli.php');
         if ($dbx === null) {
             $cerrarMysqli = 'si';
             $dbx = conexionMysqliApi();
@@ -1872,7 +1874,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
             $arrValores[$ix] = array($datat["numeroliquidacion"], "'emailnot'", "'" . addslashes($datat["emailnot"]) . "'");
         }
 
-// En caso de mutaciones - actividad
+        // En caso de mutaciones - actividad
         if (trim($datat["ant_versionciiu"]) != '') {
             $ix++;
             $arrValores[$ix] = array($datat["numeroliquidacion"], "'ant_versionciiu'", "'" . $datat["ant_versionciiu"] . "'");
@@ -2757,13 +2759,13 @@ class funcionesRegistrales_grabarLiquidacionMreg {
             $ix++;
             $arrValores[$ix] = array($datat["numeroliquidacion"], "'tipotramiterue'", "'" . $datat["tipotramiterue"] . "'");
         }
-        
+
         if (isset($datat["solicitaractivopropietario"]) && $datat["solicitaractivopropietario"] != '') {
             $ix++;
             $arrValores[$ix] = array($datat["numeroliquidacion"], "'solicitaractivopropietario'", "'" . $datat["solicitaractivopropietario"] . "'");
         }
-        
-         if (isset($datat["incluirafiliacion"]) && $datat["incluirafiliacion"] != '') {
+
+        if (isset($datat["incluirafiliacion"]) && $datat["incluirafiliacion"] != '') {
             $ix++;
             $arrValores[$ix] = array($datat["numeroliquidacion"], "'incluirafiliacion'", "'" . $datat["incluirafiliacion"] . "'");
         }
@@ -2889,7 +2891,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                     $nom1 = $liq["nombre"];
                 }
 
-//
+                //
                 $arrCampos = array(
                     'idliquidacion',
                     'secuencia',
@@ -2968,7 +2970,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                 //
                 $result = insertarRegistrosMysqliApi($dbx, 'mreg_liquidaciondetalle', $arrCampos, $arrValues);
                 if ($result === false) {
-                    $_SESSION["generales"]["mensajeerror"] = 'Error insertando registros en mreg_liquidaciondetalle (' . $_SESSION ["generales"] ["mensajeerror"] . ')';
+                    $_SESSION["generales"]["mensajeerror"] = 'Error insertando registros en mreg_liquidaciondetalle (' . $_SESSION["generales"]["mensajeerror"] . ')';
                     if ($cerrarMysqli == 'si') {
                         $dbx->close();
                     }
@@ -2990,12 +2992,12 @@ class funcionesRegistrales_grabarLiquidacionMreg {
         $nom1 = '';
         $i = 0;
 
-//
+        //
         if (!isset($datat["rues_servicios"])) {
             $datat["rues_servicios"] = array();
         }
 
-//
+        //
         foreach ($datat["rues_servicios"] as $liq) {
             if (!isset($liq["codigo_servicio"])) {
                 $liq["codigo_servicio"] = '';
@@ -3082,7 +3084,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
 
             $result = insertarRegistrosMysqliApi($dbx, 'mreg_liquidaciondetalle_rues', $arrCampos, $arrValues);
             if ($result === false) {
-                $_SESSION["generales"]["mensajeerror"] = 'Error insertando registros en mreg_liquidaciondetalle_rues (' . $_SESSION ["generales"] ["mensajeerror"] . ')';
+                $_SESSION["generales"]["mensajeerror"] = 'Error insertando registros en mreg_liquidaciondetalle_rues (' . $_SESSION["generales"]["mensajeerror"] . ')';
                 if ($cerrarMysqli == 'si') {
                     $dbx->close();
                 }
@@ -3090,37 +3092,37 @@ class funcionesRegistrales_grabarLiquidacionMreg {
             }
         }
 
-//
+        //
         if (!isset($datat["rues_textos"])) {
             $datat["rues_textos"] = array();
         }
 
-//
+        //
         borrarRegistrosMysqliApi($dbx, 'mreg_liquidacion_textos_rues', "idliquidacion=" . $datat["numeroliquidacion"]);
 
-//
+        //
         $ix = 0;
         foreach ($datat["rues_textos"] as $tx) {
             $ix++;
 
-//
+            //
             $arrCampos = array(
                 'idliquidacion',
                 'secuencia',
                 'texto',
             );
 
-//
+            //
             $arrValues = array(
                 $datat["numeroliquidacion"],
                 $ix,
                 "'" . addslashes(\funcionesGenerales::utf8_decode($tx)) . "'"
             );
 
-//
+            //
             $result = insertarRegistrosMysqliApi($dbx, 'mreg_liquidacion_textos_rues', $arrCampos, $arrValues);
             if ($result === false) {
-                $_SESSION["generales"]["mensajeerror"] = 'Error insertando registros en mreg_liquidaciontextos_rues (' . $_SESSION ["generales"] ["mensajeerror"] . ')';
+                $_SESSION["generales"]["mensajeerror"] = 'Error insertando registros en mreg_liquidaciontextos_rues (' . $_SESSION["generales"]["mensajeerror"] . ')';
                 if ($cerrarMysqli == 'si') {
                     $dbx->close();
                 }
@@ -3144,7 +3146,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
         if ($result && !empty($result)) {
             $existeProtegerActivos = 'si';
         }
-        
+
         if (!empty($datat["expedientes"])) {
             $i = 0;
             foreach ($datat["expedientes"] as $mat) {
@@ -3245,7 +3247,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                 if (!isset($mat["protegeractivos"])) {
                     $mat["protegeractivos"] = '';
                 }
-                
+
                 if ($mat["ultimosactivos"] == '') {
                     $mat["ultimosactivos"] = 0;
                 }
@@ -3253,7 +3255,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                     $mat["nuevosactivos"] = 0;
                 }
 
-//                
+                //                
                 $i++;
                 $arrCampos = array(
                     'idliquidacion',
@@ -3291,19 +3293,19 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                     'dircom',
                     'muncom'
                 );
-                
+
                 if ($existeProtegerActivos == 'si') {
                     $arrCampos[] = 'protegeractivos';
                 }
-                
+
                 if (!isset($mat["primeranorenovado"])) {
                     $mat["primeranorenovado"] = '';
                 }
                 if (!isset($mat["controlpot"])) {
                     $mat["controlpot"] = '';
                 }
-                
-                
+
+
                 $arrValues = array(
                     $datat["numeroliquidacion"],
                     sprintf("%03s", $i),
@@ -3340,11 +3342,11 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                     "'" . addslashes($mat["dircom"]) . "'",
                     "'" . $mat["muncom"] . "'"
                 );
-                
+
                 if ($existeProtegerActivos == 'si') {
                     $arrValues[] = "'" . $mat["protegeractivos"] . "'";
                 }
-                
+
                 $result = insertarRegistrosMysqliApi($dbx, 'mreg_liquidacionexpedientes', $arrCampos, $arrValues);
                 if ($result === false) {
                     $_SESSION["generales"]["mensajeerror"] = 'Error insertando registros de mreg_liquidacionexpedientes : ' . $_SESSION["generales"]["mensajeerror"];
@@ -3402,7 +3404,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
         $nom1 = '';
         $i = 0;
 
-//
+        //
         $retornar = true;
         $mensajeRetornar = '';
         $existeRazonSocialBase64 = '';
@@ -3417,7 +3419,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                     $tra["ultimoanorenovadoanterior"] = '';
                 }
 
-//
+                //
                 if (!isset($tra["benart7"])) {
                     $tra["benart7"] = '';
                 }
@@ -3428,7 +3430,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                     $tra["fechanacimientopnat"] = '';
                 }
 
-//
+                //
                 if (!isset($tra["patrimonio"])) {
                     $tra["patrimonio"] = 0;
                 }
@@ -3696,7 +3698,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                     $tra["fechafininscripciones_libroelectronico"] = '';
                 }
 
-//
+                //
                 if (!isset($tra["libeleanot_libro"])) {
                     $tra["libeleanot_libro"] = '';
                 }
@@ -3727,7 +3729,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                 }
 
 
-//
+                //
                 if (!isset($tra["embargo"])) {
                     $tra["embargo"] = '';
                 }
@@ -3750,7 +3752,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                     $tra["ape2embargante"] = '';
                 }
 
-//
+                //
                 if (!isset($tra["desembargo"])) {
                     $tra["desembargo"] = '';
                 }
@@ -4149,7 +4151,7 @@ class funcionesRegistrales_grabarLiquidacionMreg {
                 if ($tra['sigla'] != '') {
                     $tra['siglabase64'] = base64_encode($tra['sigla']);
                 }
-                
+
                 $arrValores = array(
                     $datat["numeroliquidacion"],
                     $tra["idsecuencia"],
@@ -4327,34 +4329,34 @@ class funcionesRegistrales_grabarLiquidacionMreg {
 
                 if (existeTablaMysqliApi($dbx, 'mreg_liquidacion_transacciones_campos')) {
                     if (isset($tra['razonsocialbase64']) && $tra['razonsocialbase64'] != '') {
-                        $arrCampos = array (
+                        $arrCampos = array(
                             'idliquidacion',
                             'idsecuencia',
                             'campo',
                             'contenido'
                         );
-                        $arrValores = array (
+                        $arrValores = array(
                             $datat["numeroliquidacion"],
                             $tra["idsecuencia"],
                             "'razonsocialbase64'",
                             "'" . $tra['razonsocialbase64'] . "'"
                         );
-                        insertarRegistrosMysqliApi($dbx,'mreg_liquidacion_transacciones_campos', $arrCampos, $arrValores);
+                        insertarRegistrosMysqliApi($dbx, 'mreg_liquidacion_transacciones_campos', $arrCampos, $arrValores);
                     }
                     if (isset($tra['siglabase64']) && $tra['siglabase64'] != '') {
-                        $arrCampos = array (
+                        $arrCampos = array(
                             'idliquidacion',
                             'idsecuencia',
                             'campo',
                             'contenido'
                         );
-                        $arrValores = array (
+                        $arrValores = array(
                             $datat["numeroliquidacion"],
                             $tra["idsecuencia"],
                             "'siglabase64'",
                             "'" . $tra['siglabase64'] . "'"
                         );
-                        insertarRegistrosMysqliApi($dbx,'mreg_liquidacion_transacciones_campos', $arrCampos, $arrValores);
+                        insertarRegistrosMysqliApi($dbx, 'mreg_liquidacion_transacciones_campos', $arrCampos, $arrValores);
                     }
                 }
             }
@@ -4368,7 +4370,4 @@ class funcionesRegistrales_grabarLiquidacionMreg {
         \logApi::general2('grabarLiquidacionMreg_' . date("Ymd"), $datat["numeroliquidacion"], 'Grabo liquidacion');
         return $retornar;
     }
-
 }
-
-?>
