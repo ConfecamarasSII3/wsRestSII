@@ -142,6 +142,7 @@ trait actualizarClienteLiquidacion
         // **************************************************************************** //
         // Resultado
         // **************************************************************************** //
+        $_SESSION["jsonsalida"]["mensajeerror"] = 'Liquidación actualizada';
         \logApi::peticionRest('api_' . __FUNCTION__);
         $json = $api->json($_SESSION["jsonsalida"]);
         $api->response(str_replace("\\/", "/", $json), 200);

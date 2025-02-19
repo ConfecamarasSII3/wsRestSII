@@ -344,7 +344,7 @@ class API extends REST
         require_once $_SESSION["generales"]["pathabsoluto"] . '/api/log.php';
         require_once $_SESSION["generales"]["pathabsoluto"] . '/api/myErrorHandler.php';
         require_once 'funcionesAPI.php';
-        $resError = set_error_handler('myErrorHandler');
+        set_error_handler('myErrorHandler');
 
         //
         if (isset($_REQUEST['rquest'])) {
@@ -381,7 +381,6 @@ class API extends REST
             $mysqli = conexionMysqliApi('Q-' . $_SESSION["generales"]["codigoempresa"]);
         }
 
-        // $mysqli = conexionMysqliApi();
         if ($mysqli === false) {
             $_SESSION["jsonsalida"]["codigoerror"] = "9999";
             $_SESSION["jsonsalida"]["mensajeerror"] = 'No fue posible la conexion a la BD (***)';
@@ -559,11 +558,21 @@ class API extends REST
         return ((is_string($string) && (is_object(json_decode($string)) ||
             is_array(json_decode($string))))) ? true : false;
     }
-    public function armarsalidaApi($cod, $msj)
+    /**
+     * armarsalidaApi
+     * Funcion que se encarga de retornada la salida de servicio REST
+     * @param  mixed $codError
+     * @param  mixed $msgError
+     * @param  mixed $mysqli
+     * @return void
+     */
+    public function armarsalidaApi($codError, $msgError, $mysqli = false)
     {
-
-        $_SESSION["jsonsalida"]["codigoerror"] = $cod;
-        $_SESSION["jsonsalida"]["mensajeerror"] = $msj;
+        if (!empty($mysqli)) {
+            $mysqli->close();
+        }
+        $_SESSION["jsonsalida"]["codigoerror"] = $codError;
+        $_SESSION["jsonsalida"]["mensajeerror"] = $msgError;
         $this->response($this->json($_SESSION["jsonsalida"]), 200);
     }
 }

@@ -930,16 +930,6 @@ class funcionesGenerales
     public static function descargaPdf($url, $directorio)
     {
         $newfname = $directorio;
-        /*
-          $opts = array(
-          "ssl" => array(
-          "verify_peer" => false,
-          "verify_peer_name" => false,
-          ),
-          );
-          $file = fopen($url, 'rb', false, stream_context_create($opts));
-         */
-
         $file = fopen($url, 'rb');
 
         if ($file) {

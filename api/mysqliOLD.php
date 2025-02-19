@@ -1826,10 +1826,10 @@ function retornarRegistrosMysqliApi($dbx, $tabla, $condicion, $orden = '', $camp
 /**
  *
  * @param type $dbx
- * @param type $tabla
- * @param type $condicion
- * @param type $campos
- * @param type $tip
+ * @param string $tabla
+ * @param string $condicion
+ * @param string $campos
+ * @param string $tip
  * @return boolean|string
  */
 function retornarRegistroMysqliApi($dbx, $tabla, $condicion, $campos = '*', $tip = 'P')
@@ -1841,10 +1841,8 @@ function retornarRegistroMysqliApi($dbx, $tabla, $condicion, $campos = '*', $tip
     }
 
     $uncampo = 'no';
-    if ($campos != '*') {
-        if (strpos($campos, ',') === false) {
-            $uncampo = 'si';
-        }
+    if ($campos != '*' && strpos($campos, ',') === false) {
+        $uncampo = 'si';
     }
     $dbx->set_charset("utf8");
     if ($campos == '*') {
